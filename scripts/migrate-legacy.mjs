@@ -65,6 +65,195 @@ function parsePits(p, r) {
   return { hcp: null, shape: null, needsReview: true };
 }
 
+/* ---------------- 从说明文字补牌型约束 ----------------
+   旧资料的「点力」字段只写了 HCP，真正决定能不能叫的牌型写在说明里，
+   例如「3 张以上红心支持」「6 张以上所叫花色」「否认 4 张黑桃」。
+   这里只解析含义明确的句式，不猜没有写出来的要求：
+     - 明确花色名、『所叫花色/高花/低花』、『N 张支持』
+     - 『均型』（排除『半均型/非均型』）
+     - 『带单缺』、『否认/不足 N 张』
+   解析结果与 p 字段已有的 shape 合并取更严格的边界。 */
+const CN_NUM = { 零: 0, 一: 1, 二: 2, 两: 2, 三: 3, 四: 4, 五: 5, 六: 6, 七: 7, 八: 8, 九: 9, 十: 10 };
+
+function cnNums(text) {
+  return String(text).replace(/[零一二两三四五六七八九十]+/g, (m) => {
+    if (m.length === 1) return String(CN_NUM[m]);
+    // 十一、十二 …… 十九
+    if (m[0] === '十') return String(10 + (CN_NUM[m[1]] || 0));
+    if (m[1] === '十' && m.length === 2) return String(CN_NUM[m[0]] * 10);
+    if (m[1] === '十' && m.length === 3) return String(CN_NUM[m[0]] * 10 + (CN_NUM[m[2]] || 0));
+    return m;
+  });
+}
+
+const SUIT_CN = { 红心: 'H', 黑桃: 'S', 方块: 'D', 梅花: 'C' };
+
+function addMin(shape, suit, n) {
+  if (!suit || !n) return;
+  shape.suitMin = shape.suitMin || {};
+  shape.suitMin[suit] = Math.max(shape.suitMin[suit] || 0, n);
+}
+
+function addMax(shape, suit, n) {
+  if (!suit || n == null) return;
+  shape.suitMax = shape.suitMax || {};
+  shape.suitMax[suit] = Math.min(shape.suitMax[suit] == null ? 13 : shape.suitMax[suit], n);
+}
+
+/** 说明文字 → shape；没有可靠信息时返回 null */
+function shapeFromMeaning(text, bid) {
+  if (!text) return null;
+  const raw = cnNums(text);
+  const shape = {};
+  const own = bid && C.isBid(bid) ? C.strainOf(bid) : null;
+  // 括号里通常是例外说明（“三张也可”“持 4-3-3-3 除外”），先判断再移除
+  const clauses = raw.split(/[，。；、]/).map((x) => x.trim()).filter(Boolean);
+
+  for (const rawClause of clauses) {
+    if (!rawClause) continue;
+    const soft = /(通常|除外|可选|非原版|不保证|可能|或许)/.test(rawClause);
+    const clause = rawClause.replace(/（[^）]*）/g, '').replace(/\([^)]*\)/g, '');
+    const relaxed = /也可|亦可|至少可/.test(rawClause);
+    const num = (m) => {
+      let n = +m[1];
+      if (relaxed && n > 1) n -= 1;     // “6 张以上（5 张也可）” → 按 5 张兜底
+      return n;
+    };
+
+    // 均型（半均型/非均型不算）
+    if (/均型|平均牌型/.test(clause) && !/半均型|非均型/.test(clause)) {
+      shape.balanced = true;
+    }
+    // 斯台曼：至少一门四张高花
+    let mm = clause.match(/至少\s*[一1]\s*门\s*(\d+)\s*张高花/);
+    if (mm && +mm[1] === 4) {
+      shape.major4 = true;
+      continue;
+    }
+    // 至少一门低花 N 张（2♠ 弱低花接力 / 拼搏 3NT）
+    mm = clause.match(/^(\d+)\s*[~-]\s*(\d+)\s*张.*低花/);
+    if (mm) {
+      shape.anyMinorMin = +mm[1];
+      continue;
+    }
+    mm = clause.match(/^(\d+)\s*张以上低花/);
+    if (mm) {
+      shape.anyMinorMin = +mm[1];
+      continue;
+    }
+    // 单缺
+    if (/单缺/.test(clause) && !/无单缺|否认/.test(clause)) {
+      const m = clause.match(/(红心|黑桃|方块|梅花)单缺/);
+      if (m) {
+        shape.shortage = SUIT_CN[m[1]];
+      } else {
+        shape.shortage = 'any';
+      }
+    }
+
+    // 否认 / 不足 N 张（同一句里可能同时否认两门花色）
+    if (/否认|不足|无\s*\d+\s*张高花/.test(clause)) {
+      if (!soft) {
+        for (const m of clause.matchAll(/(\d+)\s*张\s*(红心|黑桃|方块|梅花)/g)) {
+          addMax(shape, SUIT_CN[m[2]], +m[1] - 1);
+        }
+        for (const m of clause.matchAll(/(\d+)\s*张高花/g)) {
+          addMax(shape, 'H', +m[1] - 1);
+          addMax(shape, 'S', +m[1] - 1);
+        }
+      }
+      continue;
+    }
+    // “可以是/允许”只是描述可能性，不是要求
+    if (/可以是|允许|也可|亦可/.test(clause)) continue;
+    let m;
+
+    // N 张以上支持 / N 张支持 / N~M 张支持 / 至少 N 张
+    m = clause.match(/(\d+)\s*张(?:以上)?\s*(红心|黑桃|方块|梅花)?\s*支持/);
+    if (m) {
+      // 2NT 这类无将叫品说「N 张支持」时，指的是支持同伴的花色
+      const suit = m[2] ? SUIT_CN[m[2]] : (own === 'N' ? 'partner' : (own || 'bid'));
+      if (m[1] === '2' && !/以上/.test(clause)) {
+        addMax(shape, suit, 2);       // “两张红心支持”= 恰好两张
+      } else {
+        addMin(shape, suit, num(m));
+      }
+      continue;
+    }
+    m = clause.match(/(\d+)\s*[~-]\s*(\d+)\s*张\s*(红心|黑桃|方块|梅花)?\s*支持/);
+    if (m) {
+      const suit = m[3] ? SUIT_CN[m[3]] : (own || 'bid');
+      addMin(shape, suit, +m[1]);
+      continue;
+    }
+    m = clause.match(/至少\s*(\d+)\s*张/);
+    if (m && !/高花|低花/.test(clause)) {
+      addMin(shape, own || 'bid', +m[1]);
+      continue;
+    }
+    m = clause.match(/保证\s*(\d+)\s*张/);
+    if (m && !/高花|低花/.test(clause)) {
+      addMin(shape, own || 'bid', +m[1]);
+      continue;
+    }
+
+    // N 张以上 + 花色
+    m = clause.match(/(\d+)\s*张以上\s*(所叫花色|所叫高花|所叫低花|红心|黑桃|方块|梅花|该花色)/);
+    if (m) {
+      const suit = SUIT_CN[m[2]] || own || 'bid';
+      addMin(shape, suit, num(m));
+      continue;
+    }
+    // N 张 + 花色（限制性加叫等）
+    m = clause.match(/(\d+)\s*张\s*(红心|黑桃|方块|梅花)/);
+    if (m && !soft) {
+      addMin(shape, SUIT_CN[m[2]], num(m));
+      continue;
+    }
+    // 「N 张所叫花色」「N 张以上好套」（争叫类，未写出具体花色）
+    m = clause.match(/(\d+)\s*张(?:以上)?\s*(?:好套|所叫花色)/);
+    if (m && !soft) {
+      addMin(shape, own || 'bid', num(m));
+      continue;
+    }
+    // “4 张以上”但没有花色名：只在明确说“新花色/原花色/开叫花色”时归到所叫花色
+    m = clause.match(/(\d+)\s*张以上/);
+    if (m && /新花色|原花色|开叫花色|开叫低花|开叫高花|所叫/.test(clause)) {
+      addMin(shape, own || 'bid', num(m));
+    }
+  }
+
+  const keys = Object.keys(shape);
+  if (!keys.length) return null;
+  if (shape.suitMin) {
+    for (const s of Object.keys(shape.suitMin)) {
+      if (shape.suitMax && shape.suitMax[s] != null && shape.suitMin[s] > shape.suitMax[s]) {
+        delete shape.suitMax[s];
+      }
+    }
+    if (!Object.keys(shape.suitMin).length) delete shape.suitMin;
+  }
+  if (shape.suitMax && !Object.keys(shape.suitMax).length) delete shape.suitMax;
+  return Object.keys(shape).length ? shape : null;
+}
+
+function mergeShape(a, b) {
+  if (!a) return b || null;
+  if (!b) return a;
+  const out = JSON.parse(JSON.stringify(a));
+  if (b.balanced != null) out.balanced = b.balanced;
+  if (b.shortage) out.shortage = b.shortage;
+  for (const key of ['suitMin', 'suitMax']) {
+    if (!b[key]) continue;
+    out[key] = out[key] || {};
+    for (const s of Object.keys(b[key])) {
+      if (key === 'suitMin') addMin(out, s, b[key][s]);
+      else addMax(out, s, b[key][s]);
+    }
+  }
+  return out;
+}
+
 /* ---------------- 语境键生成 ---------------- */
 const arr = (v) => (v == null ? [] : Array.isArray(v) ? v : [v]);
 
@@ -102,12 +291,12 @@ function toCoreForm(spec) {
 const OPEN_SHAPE = {
   sayc: {
     '1C': { suitMin: { C: 3 } },
-    '1D': { suitMin: { D: 3 } },
+    '1D': { suitMin: { D: 4 } },
     '1H': { suitMin: { H: 5 } },
     '1S': { suitMin: { S: 5 } },
     '1N': { balanced: true },
     '2N': { balanced: true },
-    '3N': { balanced: true },
+    '3N': { anyMinorMin: 7 },
     '2D': { suitMin: { bid: 6 } },
     '2H': { suitMin: { bid: 6 } },
     '2S': { suitMin: { bid: 6 } },
@@ -117,8 +306,8 @@ const OPEN_SHAPE = {
     '3S': { suitMin: { bid: 7 } },
     '4C': { suitMin: { bid: 8 } },
     '4D': { suitMin: { bid: 8 } },
-    '4H': { suitMin: { bid: 7 } },
-    '4S': { suitMin: { bid: 7 } }
+    '4H': { suitMin: { bid: 8 } },
+    '4S': { suitMin: { bid: 8 } }
   },
   zju: {
     '1C': { suitMin: { C: 3 }, suitMax: { H: 4, S: 4 } },
@@ -201,10 +390,11 @@ function contextKeysOf(rule) {
 
 /* ---------------- 争叫类人工归位（审计 P0-6：8 条 X 撞在一起） ---------------- */
 const DEF_OVERRIDE = {
-  'sayc:157': { keys: ['O:*'] },
-  'sayc:158': { keys: ['O:*'] },
-  'sayc:159': { keys: ['O:*'] },
-  'sayc:160': { keys: ['O:*'] },
+  'sayc:157': { keys: ['O:*', 'O:* P:P'], note: '同伴已在平衡位 pass 后同样适用' },
+  'sayc:158': { keys: ['O:*', 'O:* P:P'] },
+  'sayc:159': { keys: ['O:*', 'O:* P:P'] },
+  'sayc:160': { keys: ['O:*', 'O:* P:P'] },
+  'sayc:216': { keys: ['O:*'] },
   'sayc:161': { keys: ['O:*'] },
   'sayc:162': { keys: ['O:*'] },
   'sayc:163': { keys: ['O:* M:* O:X P:P'], note: '同伴叫过牌、我争叫被惩罚性加倍后' },
@@ -386,8 +576,14 @@ for (const leg of LEGACY) {
         }
 
         const tags = v.tags || rule.k || [];
-        // 开叫的张数约束写在旧规则说明里，按 OPEN_SHAPE 补齐
-        const shape = parsed.shape || (rule.t === 'open' && bid ? openShapeOf(leg.key, bid) : null);
+        // 开叫的张数约束写在旧规则说明里，按 OPEN_SHAPE 补齐；
+        // 其余叫品从说明文字里解析牌型要求（支持张数、套长、均型、否认高花等）。
+        let shape = parsed.shape;
+        if (rule.t === 'open') {
+          if (!shape && bid) shape = openShapeOf(leg.key, bid);
+        } else {
+          shape = mergeShape(shape, shapeFromMeaning(v.desc || rule.d, bid));
+        }
         const entry = {
           id: `${leg.key}.${idx}.${bid || 'form'}.${out.length}`,
           system: leg.key,

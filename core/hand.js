@@ -57,18 +57,37 @@
 
   /**
    * 手牌是否满足规则里的 shape 约束
-   * shape: { balanced?:boolean, suitMin?:{H:5}, suitMax?:{S:3}, shortage?:'C'|'D'|'H'|'S' }
-   * bidStrain: 用于「所叫花色」类约束（由迁移脚本展开为具体花色，通常不需要）
+   * shape: {
+   *   balanced?:boolean, shortage?:'C'|'D'|'H'|'S'|'any',
+   *   suitMin?:{H:5, bid:4, partner:3}, suitMax?:{S:3},
+   *   major4?:boolean,      // 至少一门高花 4 张（斯台曼）
+   *   anyMinorMin?:number   // 至少一门低花 N 张（2S 接力 / 拼搏 3NT）
+   * }
+   * bidStrain: 所叫花色；partnerStrain: 同伴最后叫出的花色
    */
-  function fitsShape(shape, hand, bidStrain) {
+  function fitsShape(shape, hand, bidStrain, partnerStrain) {
     if (!shape) return null;               // 没有牌型约束 → 不确定（不是匹配）
     var sh = shapeOf(hand);
     var used = false;
+    var resolve = function (s) {
+      if (s === 'bid') return bidStrain;
+      if (s === 'partner') return partnerStrain;
+      return s;
+    };
 
     if (typeof shape.balanced === 'boolean') {
       used = true;
       if (shape.balanced && !sh.balanced) return false;
       if (!shape.balanced && sh.balanced) return false;
+    }
+    if (typeof shape.major4 === 'boolean') {
+      used = true;
+      var major4 = (hand.H || 0) >= 4 || (hand.S || 0) >= 4;
+      if (shape.major4 !== major4) return false;
+    }
+    if (typeof shape.anyMinorMin === 'number') {
+      used = true;
+      if (Math.max(hand.C || 0, hand.D || 0) < shape.anyMinorMin) return false;
     }
     if (shape.shortage) {
       used = true;
@@ -79,7 +98,7 @@
       used = true;
       for (var s in shape.suitMin) {
         if (!shape.suitMin.hasOwnProperty(s)) continue;
-        var suit = s === 'bid' ? bidStrain : s;
+        var suit = resolve(s);
         if (!suit || (hand[suit] || 0) < shape.suitMin[s]) return false;
       }
     }
@@ -87,7 +106,7 @@
       used = true;
       for (var t in shape.suitMax) {
         if (!shape.suitMax.hasOwnProperty(t)) continue;
-        var suit2 = t === 'bid' ? bidStrain : t;
+        var suit2 = resolve(t);
         if (!suit2 || (hand[suit2] || 0) > shape.suitMax[t]) return false;
       }
     }

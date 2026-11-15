@@ -94,7 +94,8 @@ for (const icon of manifest.icons || []) {
 for (const f of ['index.html', 'app.js', 'engine.js', 'sw.js', 'manifest.json']) {
   ok('build.sh 复制 ' + f, buildSh.includes(f));
 }
-ok('build.sh 复制 core/*.js', buildSh.includes('core/*.js'));
+const copiesCore = buildSh.includes('core/*.js') || (buildSh.includes('/core') && buildSh.includes("*.test.js"));
+ok('build.sh 复制 core 运行时脚本（排除测试）', copiesCore);
 ok('build.sh 复制 data/bridge-data.js', buildSh.includes('data/bridge-data.js'));
 ok('build.sh 复制 icons/*', buildSh.includes('icons/*'));
 

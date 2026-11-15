@@ -62,21 +62,35 @@ jobs:
           fi
           bash android/build.sh
 
+      - name: 打包网页版
+        run: node scripts/package-web.mjs
+
       - name: 生成发布说明
         run: |
           ver="$(cat VERSION)"
           sha="$(sha256sum dist/ZJU-bidding.apk | cut -d' ' -f1)"
+          web_sha="$(sha256sum dist/ZJU-bidding-web-v"$ver".zip | cut -d' ' -f1)"
           {
             echo "## 安装"
             echo
             echo "- 版本：\`$ver\`（versionCode $(grep -o 'versionCode=\"[0-9]*\"' android/AndroidManifest.xml | grep -o '[0-9]*')）"
+            echo
+            echo "### Android"
+            echo
+            echo "- 附件：\`ZJU-bidding.apk\`"
             echo "- 适用：Android 6.0 (API 23) 及以上"
             echo "- SHA256：\`$sha\`"
             echo
+            echo "### 网页版（PWA）"
+            echo
+            echo "- 附件：\`ZJU-bidding-web-v$ver.zip\`"
+            echo "- 用法：解压后用 HTTP 静态服务打开（例如 \`python -m http.server 8000\`），支持添加到主屏幕与离线使用"
+            echo "- SHA256：\`$web_sha\`"
+            echo
             if [ -n "$KEYSTORE_B64" ]; then
-              echo "本版本使用项目发布密钥签名。"
+              echo "Android 版使用项目发布密钥签名。"
             else
-              echo "> 本版本使用临时调试密钥签名，与历史安装包签名不同，覆盖安装前请先卸载旧版。"
+              echo "> Android 版使用临时调试密钥签名，与历史安装包签名不同，覆盖安装前请先卸载旧版。"
             fi
             echo
             echo "## 变更"
@@ -93,6 +107,8 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          gh release create "$GITHUB_REF_NAME" dist/ZJU-bidding.apk \
+          gh release create "$GITHUB_REF_NAME" \
+            dist/ZJU-bidding.apk \
+            dist/ZJU-bidding-web-v*.zip \
             --title "ZJU 叫牌 ${GITHUB_REF_NAME}" \
             --notes-file "$RUNNER_TEMP/notes.md"

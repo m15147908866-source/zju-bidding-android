@@ -49,6 +49,15 @@ jobs:
       - name: 资源与引用一致性
         run: node scripts/check-assets.mjs
 
+      - name: 网页版打包
+        run: node scripts/package-web.mjs
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ZJU-bidding-web
+          path: dist/ZJU-bidding-web-v*.zip
+          retention-days: 7
+
       - name: manifest.json 校验
         run: node -e "JSON.parse(require('node:fs').readFileSync('manifest.json','utf8'))"
 

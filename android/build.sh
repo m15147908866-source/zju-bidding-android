@@ -73,7 +73,7 @@ fi
 echo "==> 1/7 复制网页资源"
 mkdir -p assets/core assets/data assets/icons
 cp "$ROOT"/index.html "$ROOT"/app.js "$ROOT"/engine.js "$ROOT"/sw.js "$ROOT"/manifest.json assets/
-cp "$ROOT"/core/*.js assets/core/
+find "$ROOT"/core -maxdepth 1 -name '*.js' ! -name '*.test.js' -exec cp {} assets/core/ \;
 cp "$ROOT"/data/bridge-data.js assets/data/
 cp "$ROOT"/icons/* assets/icons/
 ls -R assets/ | head -40

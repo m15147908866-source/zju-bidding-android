@@ -1245,6 +1245,7 @@ function init() {
       else state.hand[id.replace(/^(s|ah)/, '')] = v;
       save();
       paintAdvice();
+      paintAIHand();
       syncHandInputs();
     });
   });

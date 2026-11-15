@@ -281,7 +281,11 @@ function snapshotFor(bd, seat, bid, legalAt) {
  */
 function recommendFor(bd, seat) {
   if (!$store) return [];
-  const hand = state.hand || { hcp: 0, S: 0, H: 0, D: 0, C: 0 };
+  const base = state.hand || { hcp: 0, S: 0, H: 0, D: 0, C: 0 };
+  // AI 页选了具体牌张时，把牌张一并交给推荐器，用于无将挡张等判断
+  const hand = Object.assign({}, base, {
+    cards: Array.isArray(state.aiHand) && state.aiHand.length ? state.aiHand : base.cards
+  });
   const res = BC.recommend($store, bdAuction(bd), seat, hand);
   return res.candidates.map((c) => ({
     bid: C.toLegacy(c.bid),

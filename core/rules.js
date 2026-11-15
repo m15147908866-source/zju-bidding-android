@@ -55,6 +55,7 @@
 
     switch (form.type) {
       case 'newSuit':
+        if (form.excludeJump && lv > minLv) return false;
         return !fc.seen[st] && st !== 'N';
       case 'jumpNewSuit':
         return !fc.seen[st] && st !== 'N' && lv > minLv;
