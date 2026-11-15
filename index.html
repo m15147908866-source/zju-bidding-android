@@ -477,6 +477,7 @@ body{display:flex;flex-direction:column;overflow:hidden;padding-top:env(safe-are
 .t-missing{background:#f6e9e9;color:#a4585c}
 .t-open{background:#efece4;color:#6f6455}
 .t-warn{background:#fdeee2;color:#a85a1f}
+.t-alert{background:#fbe3c8;color:#8a4b12;border:1px solid #ecc79f}
 .t-misc{background:#efece4;color:#7a7060}
 
 /* ---------- 叫品面板 ---------- */
@@ -827,13 +828,17 @@ body.done .meaning-card{display:none}
   </div>
 </div>
 
+<script src="core/calls.js"></script>
+<script src="core/auction.js"></script>
+<script src="core/context.js"></script>
+<script src="core/hand.js"></script>
+<script src="core/rules.js"></script>
+<script src="core/recommend.js"></script>
+<script src="data/bridge-data.js"></script>
 <script src="engine.js"></script>
-<script src="data.js"></script>
-<script src="data-zju.js"></script>
-<script src="data-xinrui.js"></script>
 <script src="app.js"></script>
 <script>
-if ('serviceWorker' in navigator && location.protocol !== 'file:') {
+if ('serviceWorker' in navigator && location.protocol !== 'file:' && !window.AndroidStore) {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('sw.js').catch(() => {});
   });

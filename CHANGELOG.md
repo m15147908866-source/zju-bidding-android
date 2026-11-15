@@ -2,6 +2,46 @@
 
 本项目的所有重要改动记录在此。格式参考 [Keep a Changelog](https://keepachangelog.com/zh-CN/1.1.0/)，版本号遵循 [语义化版本](https://semver.org/lang/zh-CN/)。
 
+## [5.0.0] - 2026-11-15
+
+叫牌内核重写。规则数据由「扁平列表 + 界面里再判断」改为「结构化规则 + 单一语境键」，
+结算、语境、推荐三类 P0 缺陷在根上修复。
+
+### Added
+
+- `core/` 纯函数层：`calls` / `auction` / `context` / `rules` / `hand` / `recommend`，可在 Node 里直接单测
+- `contextKey` 语境键（`M/P/O` 相对身份 + 规范叫品），彻底取代 `contested` 布尔
+- 规则 schema：`contextKeys`、`hcp`、`shape`、`forcing`、`alert`、`recommendable`、`source`
+- 迁移脚本 `scripts/migrate-legacy.mjs`：把 599 条旧规则转成 745 条结构化规则，保留 `legacyP` / `meaning` / `source` 以便回指资料
+- 校验脚本 `scripts/validate-rules.mjs`：结构、语境可达性、同语境同叫品唯一性
+- 打包脚本 `scripts/build-data.mjs`：生成 `data/bridge-data.js`，`file://` 与 APK 均可同步加载
+- 单元测试（`core/*.test.js`）、适配层冒烟（`scripts/smoke-engine.mjs`）与资源引用检查（`scripts/check-assets.mjs`），CI 全量执行
+
+### Changed
+
+- `engine.js` 改为适配层：内部调用 `core`，对外保持 `legalSet / analyze / lookupRules / contractInfo` 等接口，存档格式不变
+- 三套体系数据移入 `legacy/`，不再随应用发布
+- Android 页面改用虚拟 https 源 `https://appassets.androidplatform.net/`，移除 `setAllowUniversalAccessFromFileURLs` 等 file:// 开关
+- 推荐改由 `recommend.js` 统一计算：必须命中「语境 + 点力 + 牌型」且 `recommendable !== false`
+
+### Fixed
+
+- 庄家按「同阵营中最早叫出最终花色的人」判定（Laws 2017 Definitions），修正结算页做庄人错误
+- 同方不能再加倍；新叫品覆盖先前的加倍；被加倍后仍可再加倍
+- `1S-(2H)-3H` 不再被当成「强跳新花」：语境键包含对手争叫，未收录时如实显示「未收录」
+- 0 点手牌不再推荐 2S~7S 扣叫，6 点手牌不再推荐 4NT 黑木
+- 同一语境下一个叫品只取最具体的一条规则（具体叫品 > 扣叫 > 爆裂 > 跳叫 > 加叫）
+- `bidStrain` 误返回阶数，导致花色形态规则长期匹配失败
+- 开叫推荐补齐原说明里的张数/牌型约束：4 张高花不再被推荐为 1♥/1♠，1NT 要求均型，弱二与阻击要求所叫花色张数
+- 迁移时叫品比较误用字符串，斯台曼/转移/2♣ 后续说明的语境键被清空、页面上不可达
+- 浙大体系「对抗 2 阶阻击用 Lebensohl」的语境键写成半截通配 `O:2*`，永远匹配不上真实叫品；改为具体二阶花色并降级为语境说明（加倍本身的含义仍由「技术性加倍」提供），校验脚本同时拒绝半截通配
+- 离线缓存补上 `apple-touch-icon.png`
+- 约定叫的含义卡补上「提示」标记（规则自带 `alert`，新睿斯台曼/转移此前不可见），旧标签「约定 / 转移」也按约定叫着色
+- 新一局或切换体系时清空记牌器：记牌器按局生效，不把上一副已出的牌带进下一副
+- Android 返回键先关设置、体系选择、含义气泡与结算卡，没有可关的层才退出；字体缩放交还系统设置
+- Android 关闭 `allowBackup`（API Key 不进云备份），屏幕方向与 PWA 统一为竖屏
+- AI 请求增加 90 秒超时与并发保护；回看历史叫品时约定叫不再显示成 `[object Object]`
+
 ## [Unreleased]
 
 ### Added

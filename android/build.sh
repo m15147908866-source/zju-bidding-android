@@ -63,9 +63,20 @@ cd "$APP"
 rm -rf build assets
 mkdir -p build/gen build/classes build/dex assets
 
+echo "==> 0/7 生成规则数据（data/bridge-data.js）"
+if command -v node >/dev/null 2>&1; then
+  node "$ROOT/scripts/build-data.mjs"
+else
+  echo "缺少 Node，直接使用仓库里已生成的 data/bridge-data.js" >&2
+fi
+
 echo "==> 1/7 复制网页资源"
-cp "$ROOT/index.html" "$ROOT"/app.js "$ROOT"/engine.js "$ROOT"/data*.js assets/
-ls -la assets/
+mkdir -p assets/core assets/data assets/icons
+cp "$ROOT"/index.html "$ROOT"/app.js "$ROOT"/engine.js "$ROOT"/sw.js "$ROOT"/manifest.json assets/
+cp "$ROOT"/core/*.js assets/core/
+cp "$ROOT"/data/bridge-data.js assets/data/
+cp "$ROOT"/icons/* assets/icons/
+ls -R assets/ | head -40
 
 echo "==> 2/7 编译资源"
 "$AAPT2" compile --dir res -o build/res.zip

@@ -1,0 +1,1287 @@
+[
+  {
+    "key": "sayc",
+    "name": "SAYC",
+    "full": "Standard American Yellow Card",
+    "by": "ACBL · bridgebum.com",
+    "blurb": "五张高花开叫、1NT 15~17 的强无将体系，BBO 等平台的默认约定卡。",
+    "notes": [
+      {
+        "id": "sayc.note.0",
+        "seatRole": "responder",
+        "contextKeys": [
+          "P:1C",
+          "P:1D",
+          "P:1H",
+          "P:1S"
+        ],
+        "text": "跳叫新花色为强跳叫（Strong Jump Shift）：17~19 点、5 张以上好套，逼叫到局。",
+        "source": "SAYC 通则",
+        "bids": [
+          "2D",
+          "2H",
+          "2S",
+          "3C",
+          "3D",
+          "3H"
+        ]
+      },
+      {
+        "id": "sayc.note.1",
+        "seatRole": "opener",
+        "contextKeys": [
+          "M:1C P:*",
+          "M:1D P:*"
+        ],
+        "text": "开叫方的优先顺序：先加叫同伴高花（4 张支持），再叫无将显示 12~14 / 18~19，再叫开叫低花显示 6 张，最后才是叫新花色。",
+        "source": "1♣/1♦ 再叫通则"
+      },
+      {
+        "id": "sayc.note.2",
+        "seatRole": "opener",
+        "contextKeys": [
+          "M:1H P:*",
+          "M:1S P:*"
+        ],
+        "text": "开叫方 12~14 均型叫 1NT；13~15 六张套再叫原花色；18~19 均型跳叫 2NT；19~22 跳叫新花色为逼叫到局。",
+        "source": "一阶高花再叫通则"
+      },
+      {
+        "id": "sayc.note.3",
+        "seatRole": "opener",
+        "contextKeys": [
+          "M:1N P:2C"
+        ],
+        "text": "2♦ 否认四张高花；2♥ 四张红心、可能还有四张黑桃；2♠ 四张黑桃、否认四张红心。",
+        "source": "斯台曼答叫（stayman.php）"
+      },
+      {
+        "id": "sayc.note.4",
+        "seatRole": "responder",
+        "contextKeys": [
+          "P:1N M:2C P:2D",
+          "P:1N M:2C P:2H",
+          "P:1N M:2C P:2S"
+        ],
+        "text": "2NT 邀局；3♣/3♦ 逼局、5 张以上（通常 6 张）低花；3♥/3♠ 显示 5-4 双高花；4NT 定量邀 6NT。",
+        "source": "斯台曼后续（stayman.php）"
+      },
+      {
+        "id": "sayc.note.5",
+        "seatRole": "responder",
+        "contextKeys": [
+          "P:1N O:*"
+        ],
+        "text": "对方加倍：斯台曼与转移仍然有效（2♣ 仍是斯台曼，2♦/2♥ 仍是转移）。对方争叫：约定应叫关闭，叫品均为自然，唯一例外是扣叫对方花色——表示进局实力，代替斯台曼。",
+        "source": "1NT 被干扰后（ACBL 手册）"
+      },
+      {
+        "id": "sayc.note.6",
+        "seatRole": "opener",
+        "contextKeys": [
+          "M:1N P:2D",
+          "M:1N P:2H"
+        ],
+        "text": "开叫方必须完成转移（2♦→2♥、2♥→2♠）。持 4 张支持且 17 点时可「超级接受」，直接跳叫 3♥/3♠。",
+        "source": "转移叫完成（jacoby_transfers.php）"
+      },
+      {
+        "id": "sayc.note.7",
+        "seatRole": "responder",
+        "contextKeys": [
+          "P:1N M:2D P:2H",
+          "P:1N M:2H P:2S"
+        ],
+        "text": "转移完成后：PASS 示弱 0~7；2NT 均型邀局；3 阶低花 5 张以上第二套、逼局；3 阶原高花 6 张邀局；3NT 均型 5 张高花；4 阶原高花 6 张止叫；4NT 定量。",
+        "source": "转移后续（jacoby_transfers.php）"
+      },
+      {
+        "id": "sayc.note.8",
+        "seatRole": "opener",
+        "contextKeys": [
+          "M:1H P:2N",
+          "M:1S P:2N"
+        ],
+        "text": "3♣/3♦/3♥/3♠ 叫新花色 = 该花色单缺；叫回将牌到 3 阶 = 16 点以上、满贯兴趣；3NT = 14~15 均型；4 阶将牌 = 12~14 均型止叫；4 阶低花 = 5 张以上第二套。",
+        "source": "杰克贝 2NT 答叫（jacoby_2nt.php）"
+      },
+      {
+        "id": "sayc.note.9",
+        "seatRole": "opener",
+        "contextKeys": [
+          "M:2C P:2D"
+        ],
+        "text": "花色再叫自然、逼叫一轮；无将再叫不逼叫（2NT 22~24、3NT 25~27、4NT 28~30、5NT 31~32）。",
+        "source": "2♣ — 2♦ 之后（strong_2c.php）"
+      },
+      {
+        "id": "sayc.note.10",
+        "seatRole": "responder",
+        "contextKeys": [
+          "P:2C M:2D P:2H",
+          "P:2C M:2D P:2S",
+          "P:2C M:2D P:3C",
+          "P:2C M:2D P:3D"
+        ],
+        "text": "单加叫同伴花色 = 3 张以上支持、有满贯兴趣（即使首叫是 2♦）；双跳加叫 = 止叫（「快达」原则）。其余叫品自然。",
+        "source": "2♣ — 2D 之后应叫方再叫（strong_2c.php）"
+      },
+      {
+        "id": "sayc.note.11",
+        "seatRole": "opener",
+        "contextKeys": [
+          "M:2D P:2N",
+          "M:2H P:2N",
+          "M:2S P:2N"
+        ],
+        "text": "开叫方在三阶叫出有 A 或 K 的旁花；叫回原花色表示低限、无旁花大牌。",
+        "source": "弱二 — 2NT 之后（weak_two.php）"
+      },
+      {
+        "id": "sayc.note.12",
+        "seatRole": "responder",
+        "contextKeys": [
+          "P:3N"
+        ],
+        "text": "3NT 为 25~27 均型；应叫方 4♣ 盖伯问 A，4♦/4♥ 为转移叫。",
+        "source": "3NT 开叫后（sayc.php）"
+      }
+    ],
+    "conventions": [
+      {
+        "id": "sayc.conv.0",
+        "title": "黑木 Blackwood 4NT（blackwood.php）",
+        "ask": "4NT",
+        "meaning": "问同伴手上有几个 A（有将定约）",
+        "rows": [
+          [
+            "5♣",
+            "0 个或 4 个 A"
+          ],
+          [
+            "5♦",
+            "1 个 A"
+          ],
+          [
+            "5♥",
+            "2 个 A"
+          ],
+          [
+            "5♠",
+            "3 个 A"
+          ]
+        ],
+        "note": "同伴答叫后，问叫方的再叫均为自然叫，唯一例外是 5NT 继续问 K：6♣=0或4、6♦=1、6♥=2、6♠=3。",
+        "bid": "4N"
+      },
+      {
+        "id": "sayc.conv.1",
+        "title": "盖伯 Gerber 4♣（gerber.php）",
+        "ask": "4♣",
+        "meaning": "问同伴手上有几个 A（无将定约）",
+        "rows": [
+          [
+            "4♦",
+            "0 个或 4 个 A"
+          ],
+          [
+            "4♥",
+            "1 个 A"
+          ],
+          [
+            "4♠",
+            "2 个 A"
+          ],
+          [
+            "4NT",
+            "3 个 A"
+          ]
+        ],
+        "note": "再叫 5♣ 问 K：5♦=0或4、5♥=1、5♠=2、5NT=3。仅用于无将；1NT—4NT 是定量邀叫，不是黑木。",
+        "bid": "4C"
+      },
+      {
+        "id": "sayc.conv.2",
+        "title": "斯台曼 Stayman（stayman.php）",
+        "ask": "2♣ / 3♣",
+        "meaning": "问开叫方的四张高花",
+        "rows": [
+          [
+            "2♦",
+            "否认四张高花"
+          ],
+          [
+            "2♥",
+            "四张红心，可能还有四张黑桃"
+          ],
+          [
+            "2♠",
+            "四张黑桃，否认四张红心"
+          ]
+        ],
+        "note": "1NT—2♣、2NT—3♣ 使用；1NT 被惩罚性加倍后 2♣ 改为自然止叫。",
+        "bid": null
+      },
+      {
+        "id": "sayc.conv.3",
+        "title": "杰克贝转移叫 Jacoby Transfers（jacoby_transfers.php）",
+        "ask": "2♦ / 2♥",
+        "meaning": "转移高花",
+        "rows": [
+          [
+            "2♦ → 2♥",
+            "五张以上红心"
+          ],
+          [
+            "2♥ → 2♠",
+            "五张以上黑桃"
+          ],
+          [
+            "2♠ → 3♣",
+            "六张以上低花（人工）"
+          ]
+        ],
+        "note": "1NT 被加倍后转移仍开；被争叫后转移关闭。开叫方持 4 张支持且 17 点可跳叫 3 阶「超级接受」。",
+        "bid": null
+      },
+      {
+        "id": "sayc.conv.4",
+        "title": "大满贯逼叫 Grand Slam Force（sayc.php）",
+        "ask": "5NT",
+        "meaning": "要求同伴在三张将牌大牌中持两张时叫大满贯",
+        "rows": [
+          [
+            "6 阶将牌",
+            "将牌大牌不足两张以上"
+          ],
+          [
+            "7 阶将牌",
+            "持三张将牌大牌中的两张"
+          ]
+        ],
+        "note": "SAYC 总览页仅列出此用途；5NT 在 1NT 开叫后另有「大满贯定量邀叫」用法。",
+        "bid": "5N"
+      },
+      {
+        "id": "sayc.conv.5",
+        "title": "杰克贝 2NT Jacoby 2NT（jacoby_2nt.php）",
+        "ask": "1♥/1♠ — 2NT",
+        "meaning": "4 张以上将牌支持的逼局加叫",
+        "rows": [
+          [
+            "3 阶新花色",
+            "该花色单缺"
+          ],
+          [
+            "3 阶将牌",
+            "16 点以上，满贯兴趣"
+          ],
+          [
+            "3NT",
+            "14~15 点均型"
+          ],
+          [
+            "4 阶将牌",
+            "12~14 点均型，止叫"
+          ]
+        ],
+        "note": "要求 13 点以上、其中至少 11 HCP；同伴加倍后 2NT 改为乔丹 2NT（限制性加叫或更好）。",
+        "bid": null
+      }
+    ],
+    "answers": {
+      "blackwood": {
+        "5C": [
+          {
+            "hcp": null,
+            "meaning": "答 0 个或 4 个 A。",
+            "source": "黑木 4NT（blackwood.php）",
+            "tags": [
+              "满贯"
+            ]
+          }
+        ],
+        "5D": [
+          {
+            "hcp": null,
+            "meaning": "答 1 个 A。",
+            "source": "黑木 4NT（blackwood.php）",
+            "tags": [
+              "满贯"
+            ]
+          }
+        ],
+        "5H": [
+          {
+            "hcp": null,
+            "meaning": "答 2 个 A。",
+            "source": "黑木 4NT（blackwood.php）",
+            "tags": [
+              "满贯"
+            ]
+          }
+        ],
+        "5S": [
+          {
+            "hcp": null,
+            "meaning": "答 3 个 A。",
+            "source": "黑木 4NT（blackwood.php）",
+            "tags": [
+              "满贯"
+            ]
+          }
+        ]
+      },
+      "blackwoodK": {
+        "6C": [
+          {
+            "hcp": null,
+            "meaning": "答 0 个或 4 个 K。",
+            "source": "黑木 5NT 问 K（blackwood.php）",
+            "tags": [
+              "满贯"
+            ]
+          }
+        ],
+        "6D": [
+          {
+            "hcp": null,
+            "meaning": "答 1 个 K。",
+            "source": "黑木 5NT 问 K（blackwood.php）",
+            "tags": [
+              "满贯"
+            ]
+          }
+        ],
+        "6H": [
+          {
+            "hcp": null,
+            "meaning": "答 2 个 K。",
+            "source": "黑木 5NT 问 K（blackwood.php）",
+            "tags": [
+              "满贯"
+            ]
+          }
+        ],
+        "6S": [
+          {
+            "hcp": null,
+            "meaning": "答 3 个 K。",
+            "source": "黑木 5NT 问 K（blackwood.php）",
+            "tags": [
+              "满贯"
+            ]
+          }
+        ]
+      },
+      "gerber": {
+        "4D": [
+          {
+            "hcp": null,
+            "meaning": "答 0 个或 4 个 A。",
+            "source": "盖伯 4♣（gerber.php）",
+            "tags": [
+              "满贯"
+            ]
+          }
+        ],
+        "4H": [
+          {
+            "hcp": null,
+            "meaning": "答 1 个 A。",
+            "source": "盖伯 4♣（gerber.php）",
+            "tags": [
+              "满贯"
+            ]
+          }
+        ],
+        "4S": [
+          {
+            "hcp": null,
+            "meaning": "答 2 个 A。",
+            "source": "盖伯 4♣（gerber.php）",
+            "tags": [
+              "满贯"
+            ]
+          }
+        ],
+        "4N": [
+          {
+            "hcp": null,
+            "meaning": "答 3 个 A。",
+            "source": "盖伯 4♣（gerber.php）",
+            "tags": [
+              "满贯"
+            ]
+          }
+        ]
+      },
+      "gerberK": {
+        "5D": [
+          {
+            "hcp": null,
+            "meaning": "答 0 个或 4 个 K。",
+            "source": "盖伯 5♣ 问 K（gerber.php）",
+            "tags": [
+              "满贯"
+            ]
+          }
+        ],
+        "5H": [
+          {
+            "hcp": null,
+            "meaning": "答 1 个 K。",
+            "source": "盖伯 5♣ 问 K（gerber.php）",
+            "tags": [
+              "满贯"
+            ]
+          }
+        ],
+        "5S": [
+          {
+            "hcp": null,
+            "meaning": "答 2 个 K。",
+            "source": "盖伯 5♣ 问 K（gerber.php）",
+            "tags": [
+              "满贯"
+            ]
+          }
+        ],
+        "5N": [
+          {
+            "hcp": null,
+            "meaning": "答 3 个 K。",
+            "source": "盖伯 5♣ 问 K（gerber.php）",
+            "tags": [
+              "满贯"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "key": "zju",
+    "name": "浙大自然",
+    "full": "浙大自然叫牌体系",
+    "by": "《公共体系最终版》· 世界桥联约定卡格式",
+    "blurb": "五张高花开叫、1NT 15~17；含 XYZ 双路重询、逆朱瑞、Namyats、低花斯台曼、Cappelletti、Lebensohl 等约定。",
+    "notes": [
+      {
+        "id": "zju.note.0",
+        "seatRole": "opener",
+        "contextKeys": [
+          ""
+        ],
+        "text": "五张高花开叫。低花 4-4 开 1♦、3-3 开 1♣；1♣/1♦ 只保证 3 张，通常否认 5 张高花。1NT 允许 5 张高花与 6 张低花。",
+        "source": "浙大体系 · 开叫通则"
+      },
+      {
+        "id": "zju.note.1",
+        "seatRole": "responder",
+        "contextKeys": [
+          "P:1C",
+          "P:1D"
+        ],
+        "text": "一盖一 6P 以上、4 张高花，未 PASS 过逼叫；1♣ 后优先显示 4 张高花。二盖一 12P 以上进局逼叫。单加叫 11P 以上、逼叫。",
+        "source": "1♣/1♦ 应叫通则"
+      },
+      {
+        "id": "zju.note.2",
+        "seatRole": "responder",
+        "contextKeys": [
+          "P:1H",
+          "P:1S"
+        ],
+        "text": "1NT 为 5~12P 逼叫；二盖一 12P 以上进局逼叫；单加叫 8~10P 保证 3 张；2NT 为均型逼局；跳叫新花为爆裂叫。",
+        "source": "1♥/1♠ 应叫通则"
+      },
+      {
+        "id": "zju.note.3",
+        "seatRole": "opener",
+        "contextKeys": [
+          "M:1C P:*",
+          "M:1D P:*"
+        ],
+        "text": "优先加叫同伴高花（12~14 单加叫 / 15~17 双加叫 / 18~19 三加叫），其次 1NT 12~14、再叫原花 12~14、顺叫新花 12~17；逆叫 17P 以上、跳叫新花 18P 以上。",
+        "source": "1♣/1♦ 开叫方再叫通则"
+      },
+      {
+        "id": "zju.note.4",
+        "seatRole": "opener",
+        "contextKeys": [
+          "M:1H P:*",
+          "M:1S P:*"
+        ],
+        "text": "1NT 后再叫 2♣ 只保证 3 张，优先作其他描述性叫品；二盖一后逆叫不需要额外实力。",
+        "source": "1♥/1♠ 开叫方再叫通则"
+      },
+      {
+        "id": "zju.note.5",
+        "seatRole": "opener",
+        "contextKeys": [
+          "M:1N P:2C"
+        ],
+        "text": "2♦ 无 4 张高花；2♥ 4 张红心、不排除 4 张黑桃；2♠ 4 张黑桃、无 4 张红心。",
+        "source": "斯台曼答叫"
+      },
+      {
+        "id": "zju.note.6",
+        "seatRole": "responder",
+        "contextKeys": [
+          "P:1N M:2C P:2D",
+          "P:1N M:2C P:2H",
+          "P:1N M:2C P:2S"
+        ],
+        "text": "弱斯台曼（7P 以下）用 PASS；2NT 8~9P 邀请；3♣/3♦ 单套低花邀请；3♥/3♠ 为斯莫伦（5-4 或 6-4 高花，进局逼叫）；4NT 定量。",
+        "source": "斯台曼后续"
+      },
+      {
+        "id": "zju.note.7",
+        "seatRole": "opener",
+        "contextKeys": [
+          "M:1N P:2D",
+          "M:1N P:2H"
+        ],
+        "text": "2~3 张接受转移；持 4 张支持且高限时用 2NT（4333 或双张）或叫双张花色表示；3 阶原高花表示 4 张支持但非高限。",
+        "source": "转移叫答叫"
+      },
+      {
+        "id": "zju.note.8",
+        "seatRole": "responder",
+        "contextKeys": [
+          "P:1N M:2D P:2H",
+          "P:1N M:2H P:2S"
+        ],
+        "text": "2NT 仅 5 张、邀请；3 阶低花保证 4 张、进局逼叫；3 阶原高花 6 张或很好 5 张、邀请；3NT 半均型 10P 以上逼叫；爆裂叫表示满贯邀请。",
+        "source": "转移后续"
+      },
+      {
+        "id": "zju.note.9",
+        "seatRole": "opener",
+        "contextKeys": [
+          "M:2C P:2D"
+        ],
+        "text": "2♥ 为过渡叫，2♠ 为接力示弱（0~3P 或均型等待）；无将阶梯 2NT 24~25、3NT 26~27。",
+        "source": "2♣ 强开叫后续"
+      },
+      {
+        "id": "zju.note.10",
+        "seatRole": "opener",
+        "contextKeys": [
+          "M:2H P:2N",
+          "M:2S P:2N"
+        ],
+        "text": "3♣ 烂牌烂套、3♦ 好牌烂套、3♥ 烂牌好套、3♠ 好牌好套；新花为控制问叫。",
+        "source": "弱二问叫答叫"
+      },
+      {
+        "id": "zju.note.11",
+        "seatRole": "opener",
+        "contextKeys": [
+          "M:2D P:2N"
+        ],
+        "text": "3♣/3♦ 单缺（5-4-3-1 或 6-4-2-1）；3♥ 5-4-2-2 低限；3♠ 5-5-2-1 以上；3NT 5-4-2-2 高限。",
+        "source": "双高阻击问叫答叫"
+      },
+      {
+        "id": "zju.note.12",
+        "seatRole": "responder",
+        "contextKeys": [
+          "P:1C",
+          "P:1D",
+          "P:1H",
+          "P:1S"
+        ],
+        "text": "XYZ（双路重询）：1X—1Y—1Z 后，2♣ = 转移到 2♦（之后任何再叫为邀请）；2♦ = 进局逼叫。",
+        "source": "XYZ 约定叫",
+        "bids": [
+          "1D",
+          "1H",
+          "1S",
+          "1N"
+        ]
+      },
+      {
+        "id": "zju.note.13",
+        "seatRole": "responder",
+        "contextKeys": [
+          "P:1C",
+          "P:1D"
+        ],
+        "text": "1♣/1♦ 开叫后应 1♥/1♠ 为沃尔什风格：优先显示 4 张高花，可能掩盖更长的低花。",
+        "source": "沃尔什应叫",
+        "bids": [
+          "1H",
+          "1S"
+        ]
+      },
+      {
+        "id": "zju.note.legacy80",
+        "seatRole": "responder",
+        "contextKeys": [
+          "P:1H",
+          "P:1S"
+        ],
+        "text": "逆朱瑞（应叫人已 PASS 过）：3 张高花支持，9 至 12 减。（与 81 二盖一在同一语境冲突；逆朱瑞只在「应叫人已 PASS 过」时成立，当前不跟踪 PASS 状态）",
+        "source": "浙大体系 · 1♥/1♠ 应叫",
+        "tags": [
+          "约定叫"
+        ]
+      },
+      {
+        "id": "zju.note.legacy105",
+        "seatRole": "opener",
+        "contextKeys": [
+          "M:1H P:1N",
+          "M:1S P:1N"
+        ],
+        "text": "跳叫 2NT：除 5332 外任何牌型。（原文「跳叫 2NT」与 98「2NT 12~14 均型」在同一语境冲突；1NT 应叫后 2NT 不是跳叫，故降级为语境说明）",
+        "source": "浙大体系 · 1♥/1♠ 开叫方再叫",
+        "tags": [
+          "邀局"
+        ]
+      },
+      {
+        "id": "zju.note.legacy277",
+        "seatRole": "responder",
+        "contextKeys": [
+          "P:3C"
+        ],
+        "text": "两门高花均为 3 张。（与 279 RKCB 4D 在同一语境（3♣—4♦）冲突，保留更常用且更明确的 RKCB）",
+        "source": "浙大体系 · 阻击开叫应叫",
+        "tags": []
+      },
+      {
+        "id": "zju.note.legacy324",
+        "seatRole": "overcaller",
+        "contextKeys": [
+          "O:2D",
+          "O:2H",
+          "O:2S"
+        ],
+        "text": "对抗阻击叫：加倍对手 2 阶阻击后使用 Lebensohl 约定叫。（加倍本身的含义见「技术性加倍」，本条说明加倍后的 Lebensohl 后续）",
+        "source": "浙大体系 · 对抗 NT / 阻击",
+        "tags": [
+          "约定叫"
+        ]
+      },
+      {
+        "id": "zju.note.18",
+        "seatRole": "overcaller",
+        "contextKeys": [
+          "O:* M:* O:*"
+        ],
+        "text": "高限争叫加倍：高限争叫加倍：至 3♥（表示邀请实力，如 1♠—2♥—2♠—3♥—X）。",
+        "source": "浙大体系 · 技术性加倍之后",
+        "tags": [
+          "约定叫"
+        ]
+      },
+      {
+        "id": "zju.note.19",
+        "seatRole": "overcaller",
+        "contextKeys": [
+          "O:* M:* O:*"
+        ],
+        "text": "首攻指示加倍：首攻指示加倍。",
+        "source": "浙大体系 · 技术性加倍之后",
+        "tags": [
+          "约定叫"
+        ]
+      },
+      {
+        "id": "zju.note.20",
+        "seatRole": "opener",
+        "contextKeys": [
+          "M:* O:* P:*"
+        ],
+        "text": "首攻指示加倍：首攻指示加倍。",
+        "source": "浙大体系 · 技术性加倍之后",
+        "tags": [
+          "约定叫"
+        ]
+      }
+    ],
+    "conventions": [
+      {
+        "id": "zju.conv.0",
+        "title": "罗马关键张问叫 RKCB（4NT）",
+        "ask": "4NT",
+        "meaning": "以将牌为关键张的满贯问叫",
+        "rows": [
+          [
+            "5♣",
+            "1 或 4 个关键张"
+          ],
+          [
+            "5♦",
+            "0 或 3 个关键张"
+          ],
+          [
+            "5♥",
+            "2 个关键张，无将牌 Q"
+          ],
+          [
+            "5♠",
+            "2 个关键张，有将牌 Q"
+          ]
+        ],
+        "note": "即 14/03/22 制。排除关键张问叫用逆双跳新花。",
+        "bid": "4N"
+      },
+      {
+        "id": "zju.conv.1",
+        "title": "罗马关键张（14/03/25/25+Q）",
+        "ask": "1NT",
+        "meaning": "部分序列采用的六段答叫",
+        "rows": [
+          [
+            "5♣",
+            "1 或 4 个关键张"
+          ],
+          [
+            "5♦",
+            "0 或 3 个关键张"
+          ],
+          [
+            "5♥",
+            "2 个关键张，无 Q"
+          ],
+          [
+            "5♠",
+            "2 个关键张，有 Q"
+          ]
+        ],
+        "note": "约定卡另注明「6 阶低于将牌花色为奇数张关键张 + 缺门、5NT 为偶数张关键张 + 缺门」。",
+        "bid": null
+      },
+      {
+        "id": "zju.conv.2",
+        "title": "格伯 Gerber（4♣）",
+        "ask": "4♣",
+        "meaning": "无将定约问 A",
+        "rows": [
+          [
+            "4♦",
+            "0 或 4 个 A"
+          ],
+          [
+            "4♥",
+            "1 个 A"
+          ],
+          [
+            "4♠",
+            "2 个 A"
+          ],
+          [
+            "4NT",
+            "3 个 A"
+          ]
+        ],
+        "note": "5♣ 继续问 K。2♣ 后 5♣ 为「高格伯」。",
+        "bid": "4C"
+      },
+      {
+        "id": "zju.conv.3",
+        "title": "斯台曼 Stayman（2♣ / 傀儡 3♣）",
+        "ask": "2♣",
+        "meaning": "问 4 张高花",
+        "rows": [
+          [
+            "2♦",
+            "无 4 张高花"
+          ],
+          [
+            "2♥",
+            "4 张红心"
+          ],
+          [
+            "2♠",
+            "4 张黑桃"
+          ]
+        ],
+        "note": "1NT 后用 2♣，2NT 后用 3♣（傀儡斯台曼，可问 5 张高花）。",
+        "bid": null
+      },
+      {
+        "id": "zju.conv.4",
+        "title": "杰克贝转移叫 Jacoby Transfers",
+        "ask": "2♦",
+        "meaning": "转移高花",
+        "rows": [
+          [
+            "2♦ → 2♥",
+            "5 张以上红心"
+          ],
+          [
+            "2♥ → 2♠",
+            "5 张以上黑桃"
+          ],
+          [
+            "3♣ → 3♦",
+            "转移低花"
+          ]
+        ],
+        "note": "本体系的转移为「高级杰克贝」，开叫人可用 2NT / 双张花色表示高限 4 张支持。",
+        "bid": null
+      },
+      {
+        "id": "zju.conv.5",
+        "title": "低花斯台曼",
+        "ask": "2♠",
+        "meaning": "1NT 后问两门低花",
+        "rows": [
+          [
+            "2NT",
+            "两门低花均少于 4 张"
+          ],
+          [
+            "3♣",
+            "双低 5-5 弱牌"
+          ],
+          [
+            "3♦",
+            "双低 5-5 进局逼叫"
+          ]
+        ],
+        "note": "3♥/3♠ 表示该高花单缺、双低 5-4、进局逼叫。",
+        "bid": null
+      },
+      {
+        "id": "zju.conv.6",
+        "title": "朱瑞 / 逆朱瑞",
+        "ask": "2♣",
+        "meaning": "1M 后的 3 张支持约定叫",
+        "rows": [
+          [
+            "（已 PASS 过）2♣",
+            "3 张高花支持，9~12P"
+          ],
+          [
+            "2NT",
+            "均型逼局"
+          ]
+        ],
+        "note": "1M—2♣ 为逆朱瑞，仅限已 PASS 过的应叫人。",
+        "bid": null
+      },
+      {
+        "id": "zju.conv.7",
+        "title": "Namyats（4♣/4♦）",
+        "ask": "4♣",
+        "meaning": "4♣ 表示红心长套、4♦ 表示黑桃长套",
+        "rows": [
+          [
+            "4♣",
+            "红心 7~8 张，旁门最多 1A"
+          ],
+          [
+            "4♦",
+            "黑桃 7~8 张，旁门最多 1A"
+          ]
+        ],
+        "note": "8~8.5 个做牌赢墩、至少 1.5 个防守赢墩。应叫 4NT 为 RKCB，5NT 请上 7 阶。",
+        "bid": "4C"
+      },
+      {
+        "id": "zju.conv.8",
+        "title": "Cappelletti（对抗 1NT）",
+        "ask": "2♣",
+        "meaning": "对抗对方 1NT 的约定叫",
+        "rows": [
+          [
+            "X",
+            "惩罚"
+          ],
+          [
+            "2♣",
+            "单套"
+          ],
+          [
+            "2♦",
+            "双高套"
+          ],
+          [
+            "2♥/2♠",
+            "该高花 + 一门低花"
+          ],
+          [
+            "2NT",
+            "双低套"
+          ]
+        ],
+        "note": "对强、弱均使用。",
+        "bid": null
+      },
+      {
+        "id": "zju.conv.9",
+        "title": "Lebensohl（对抗阻击）",
+        "ask": "2NT",
+        "meaning": "加倍对方 2 阶阻击后使用",
+        "rows": [
+          [
+            "直接扣叫 3 阶敌花",
+            "敌花无挡"
+          ],
+          [
+            "先 2NT 再扣叫",
+            "敌花有挡，另有 4 张高花"
+          ],
+          [
+            "直接 3NT",
+            "无敌花挡张"
+          ],
+          [
+            "先 2NT 再 3NT",
+            "敌花有挡，无另外 4 张高花"
+          ]
+        ],
+        "note": "弱低花套经 2NT 过渡。",
+        "bid": null
+      },
+      {
+        "id": "zju.conv.10",
+        "title": "迈克尔斯 Michaels",
+        "ask": "扣叫",
+        "meaning": "扣叫对方花色表示两套",
+        "rows": [
+          [
+            "扣低花",
+            "双高套"
+          ],
+          [
+            "扣高花",
+            "另一门高花 + 一门低花"
+          ],
+          [
+            "跳至 3 阶扣叫",
+            "高花问挡张，低花为套"
+          ]
+        ],
+        "note": "无局 6~11P 或强牌，有局 12P 以上。",
+        "bid": null
+      },
+      {
+        "id": "zju.conv.11",
+        "title": "不寻常 2NT",
+        "ask": "2NT",
+        "meaning": "争叫 2NT 表示最低两套",
+        "rows": [
+          [
+            "2NT",
+            "除外开叫花色的最低两套 5-5 以上"
+          ],
+          [
+            "4NT/5NT",
+            "同义，阶数更高"
+          ]
+        ],
+        "note": "应叫自然，对 2 阶高花的 2NT 应叫为问叫。",
+        "bid": null
+      }
+    ],
+    "answers": {
+      "blackwood": {
+        "5C": [
+          {
+            "hcp": null,
+            "meaning": "1 或 4 个关键张。",
+            "source": "浙大体系 · RKCB",
+            "tags": [
+              "满贯"
+            ]
+          }
+        ],
+        "5D": [
+          {
+            "hcp": null,
+            "meaning": "0 或 3 个关键张。",
+            "source": "浙大体系 · RKCB",
+            "tags": [
+              "满贯"
+            ]
+          }
+        ],
+        "5H": [
+          {
+            "hcp": null,
+            "meaning": "2 个关键张，无将牌 Q。",
+            "source": "浙大体系 · RKCB",
+            "tags": [
+              "满贯"
+            ]
+          }
+        ],
+        "5S": [
+          {
+            "hcp": null,
+            "meaning": "2 个关键张，有将牌 Q。",
+            "source": "浙大体系 · RKCB",
+            "tags": [
+              "满贯"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "key": "xinrui",
+    "name": "新睿桥牌",
+    "full": "新睿桥牌训练体系",
+    "by": "新睿桥牌 · 体系卡",
+    "blurb": "五张高花、1NT 15~17，二盖一逼局、第四花色逼局，满贯扣叫从 3♠ 起。",
+    "notes": [
+      {
+        "id": "xinrui.note.0",
+        "seatRole": "opener",
+        "contextKeys": [
+          ""
+        ],
+        "text": "一阶有将开叫 ≥12 点；高花需五张以上，低花三张以上（3-3 开 1♣，4-4 开 1♦）。1♣ 不逼叫。1NT 15~17（允许五张高花或六张低花），2NT 20~21，2♣ ≥22 点或 9 个赢墩，2♦/2♥/2♠ 弱二 6~10 点。",
+        "source": "新睿体系卡 · 开叫总则"
+      },
+      {
+        "id": "xinrui.note.1",
+        "seatRole": "responder",
+        "contextKeys": [
+          "P:*"
+        ],
+        "text": "有将应叫 ≥6 点；二盖一应叫逼叫到局。低花后 1NT 6~10、2NT 11~12 邀叫、3NT 13~17、跳加叫 11~12 且五张以上；高花后 1NT 6~12 不逼叫、2NT 13 点以上且四张将牌支持、跳加叫 11~12 且三张以上。",
+        "source": "新睿体系卡 · 应叫总则"
+      },
+      {
+        "id": "xinrui.note.2",
+        "seatRole": "opener",
+        "contextKeys": [
+          "M:* P:*",
+          "M:* O:* P:*"
+        ],
+        "text": "一盖一后的 2NT ≥18 点；二盖一后的 2NT 不保证挡张；二盖一后的花色再叫保证张数。",
+        "source": "新睿体系卡 · 再叫总则"
+      },
+      {
+        "id": "xinrui.note.3",
+        "seatRole": "opener",
+        "contextKeys": [
+          "M:* P:*",
+          "M:* O:* P:*"
+        ],
+        "text": "扣叫显示第一、第二控制（花色的 A、K、单张、缺门）。显示某一门花色控制的满贯扣叫从 3♠ 开始；扣叫选择最便宜的花色，越过某花色没有扣叫即表示该花色没有控制；同伴明确某门无控制后，我方继续扣叫表示该门有控制。",
+        "source": "新睿体系卡 · 满贯进程的扣叫"
+      },
+      {
+        "id": "xinrui.note.4",
+        "seatRole": "opener",
+        "contextKeys": [
+          "M:* P:*",
+          "M:* O:* P:*"
+        ],
+        "text": "第四花色逼叫进局；新高花、新低花逼叫进局；黑木问叫（0/4、1、2、3）。",
+        "source": "新睿体系卡 · 其他约定叫"
+      },
+      {
+        "id": "xinrui.note.5",
+        "seatRole": "overcaller",
+        "contextKeys": [
+          "O:*",
+          "O:* P:P"
+        ],
+        "text": "一盖一 8~16 点、二盖一 11~17 点，一般为五张以上套；1NT 争叫第二家 15~18、第四家 12~15；跳叫为阻击；平衡位置 2NT 19~20；技术性加倍 ≥12+ 且其他花色大于三张；对抗对方 1NT 时 2♣ 表示双高花；1 阶开叫—应叫后争叫 1NT 为 15~18 点自然叫。",
+        "source": "新睿体系卡 · 争叫总则"
+      }
+    ],
+    "conventions": [
+      {
+        "id": "xinrui.conv.0",
+        "title": "斯台曼 Stayman",
+        "ask": "2♣（1NT 后）/ 3♣（2NT 后）",
+        "meaning": "问开叫方的四张高花",
+        "rows": [
+          [
+            "2♦ / 3♦",
+            "否认四张高花"
+          ],
+          [
+            "2♥ / 3♥",
+            "四张红心"
+          ],
+          [
+            "2♠ / 3♠",
+            "四张黑桃"
+          ]
+        ],
+        "note": "体系卡只写「2♣ 斯台曼」「3♣ 斯台曼」，答叫细节按通行用法列示。",
+        "bid": null
+      },
+      {
+        "id": "xinrui.conv.1",
+        "title": "雅各比转移叫",
+        "ask": "2♦ / 2♥（1NT 后）、3♦ / 3♥（2NT 后）",
+        "meaning": "转移高花",
+        "rows": [
+          [
+            "2♦ → 2♥",
+            "红心套"
+          ],
+          [
+            "2♥ → 2♠",
+            "黑桃套"
+          ],
+          [
+            "3♦ → 3♥",
+            "2NT 后转移红心"
+          ],
+          [
+            "3♥ → 3♠",
+            "2NT 后转移黑桃"
+          ]
+        ],
+        "note": "体系卡未写超级接受、转移后新花等后续。",
+        "bid": null
+      },
+      {
+        "id": "xinrui.conv.2",
+        "title": "黑木问叫 Blackwood",
+        "ask": "4NT",
+        "meaning": "问 A 的个数",
+        "rows": [
+          [
+            "5♣",
+            "0 个或 4 个 A"
+          ],
+          [
+            "5♦",
+            "1 个 A"
+          ],
+          [
+            "5♥",
+            "2 个 A"
+          ],
+          [
+            "5♠",
+            "3 个 A"
+          ]
+        ],
+        "note": "体系卡原文「黑木问叫（0/4、1、2、3）」。",
+        "bid": "4N"
+      },
+      {
+        "id": "xinrui.conv.3",
+        "title": "第四花色逼叫",
+        "ask": "第四花色",
+        "meaning": "逼叫进局",
+        "rows": [],
+        "note": "体系卡原文「第 4 花色逼叫进局」，未列后续答叫。",
+        "bid": null
+      },
+      {
+        "id": "xinrui.conv.4",
+        "title": "新高花 / 新低花逼叫进局",
+        "ask": "新花色",
+        "meaning": "逼叫进局",
+        "rows": [],
+        "note": "体系卡原文「新高花、新低花逼叫进局」。",
+        "bid": null
+      },
+      {
+        "id": "xinrui.conv.5",
+        "title": "满贯进程的扣叫",
+        "ask": "3♠ 起",
+        "meaning": "显示第一、第二控制",
+        "rows": [
+          [
+            "A / K",
+            "第一、第二轮控制"
+          ],
+          [
+            "单张 / 缺门",
+            "同样算控制"
+          ],
+          [
+            "越过未扣",
+            "该花色无控制"
+          ]
+        ],
+        "note": "扣叫选最便宜花色；从 3♠ 起；同伴表明某门无控制后，继续扣该门表示有控制。",
+        "bid": null
+      },
+      {
+        "id": "xinrui.conv.6",
+        "title": "对抗 1NT",
+        "ask": "2♣",
+        "meaning": "双高花",
+        "rows": [],
+        "note": "体系卡原文「对抗 1NT：2C 表示双高花」。",
+        "bid": null
+      },
+      {
+        "id": "xinrui.conv.7",
+        "title": "防守信号（打牌，非叫牌）",
+        "ask": "信号",
+        "meaning": "首攻与跟牌约定",
+        "rows": [
+          [
+            "长四",
+            "无将长套首攻"
+          ],
+          [
+            "大欢迎",
+            "跟牌表示欢迎"
+          ],
+          [
+            "张数信号",
+            "大-小表示偶数张"
+          ]
+        ],
+        "note": "体系卡「信号」页为有将/无将的首攻与信号细则，属防守打牌范畴。本工具只做叫牌，此处仅作备注收录。",
+        "bid": null
+      }
+    ],
+    "answers": {
+      "blackwood": {
+        "5C": [
+          {
+            "hcp": null,
+            "meaning": "答 0 个或 4 个 A。",
+            "source": "黑木问叫",
+            "tags": [
+              "满贯"
+            ]
+          }
+        ],
+        "5D": [
+          {
+            "hcp": null,
+            "meaning": "答 1 个 A。",
+            "source": "黑木问叫",
+            "tags": [
+              "满贯"
+            ]
+          }
+        ],
+        "5H": [
+          {
+            "hcp": null,
+            "meaning": "答 2 个 A。",
+            "source": "黑木问叫",
+            "tags": [
+              "满贯"
+            ]
+          }
+        ],
+        "5S": [
+          {
+            "hcp": null,
+            "meaning": "答 3 个 A。",
+            "source": "黑木问叫",
+            "tags": [
+              "满贯"
+            ]
+          }
+        ]
+      }
+    }
+  }
+]

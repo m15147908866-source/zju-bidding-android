@@ -1,0 +1,1616 @@
+[
+  {
+    "id": "xinrui.0.1C.0",
+    "system": "xinrui",
+    "seatRole": "opener",
+    "contextKeys": [
+      ""
+    ],
+    "hcp": {
+      "min": 12,
+      "max": 37
+    },
+    "shape": {
+      "suitMin": {
+        "C": 3
+      }
+    },
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "一阶有将开叫 ≥12 点，三张以上梅花。低花 3-3 时开 1♣。1♣ 不逼叫。",
+    "source": "新睿体系卡 · 开叫",
+    "tags": [
+      "开叫"
+    ],
+    "legacyP": "12 以上",
+    "bid": "1C"
+  },
+  {
+    "id": "xinrui.1.1D.1",
+    "system": "xinrui",
+    "seatRole": "opener",
+    "contextKeys": [
+      ""
+    ],
+    "hcp": {
+      "min": 12,
+      "max": 37
+    },
+    "shape": {
+      "suitMin": {
+        "D": 3
+      }
+    },
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "一阶有将开叫 ≥12 点，三张以上方块。低花 4-4 时开 1♦。",
+    "source": "新睿体系卡 · 开叫",
+    "tags": [
+      "开叫"
+    ],
+    "legacyP": "12 以上",
+    "bid": "1D"
+  },
+  {
+    "id": "xinrui.2.1H.2",
+    "system": "xinrui",
+    "seatRole": "opener",
+    "contextKeys": [
+      ""
+    ],
+    "hcp": {
+      "min": 12,
+      "max": 37
+    },
+    "shape": {
+      "suitMin": {
+        "H": 5
+      }
+    },
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "一阶高花开叫，五张以上红心。",
+    "source": "新睿体系卡 · 开叫",
+    "tags": [
+      "开叫"
+    ],
+    "legacyP": "12 以上",
+    "bid": "1H"
+  },
+  {
+    "id": "xinrui.3.1S.3",
+    "system": "xinrui",
+    "seatRole": "opener",
+    "contextKeys": [
+      ""
+    ],
+    "hcp": {
+      "min": 12,
+      "max": 37
+    },
+    "shape": {
+      "suitMin": {
+        "S": 5
+      }
+    },
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "一阶高花开叫，五张以上黑桃。",
+    "source": "新睿体系卡 · 开叫",
+    "tags": [
+      "开叫"
+    ],
+    "legacyP": "12 以上",
+    "bid": "1S"
+  },
+  {
+    "id": "xinrui.4.1N.4",
+    "system": "xinrui",
+    "seatRole": "opener",
+    "contextKeys": [
+      ""
+    ],
+    "hcp": {
+      "min": 15,
+      "max": 17
+    },
+    "shape": {
+      "balanced": true
+    },
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "无将开叫，允许五张高花或六张低花。",
+    "source": "新睿体系卡 · 开叫",
+    "tags": [
+      "开叫"
+    ],
+    "legacyP": "15~17",
+    "bid": "1N"
+  },
+  {
+    "id": "xinrui.5.2C.5",
+    "system": "xinrui",
+    "seatRole": "opener",
+    "contextKeys": [
+      ""
+    ],
+    "hcp": null,
+    "shape": null,
+    "forcing": "one_round",
+    "alert": false,
+    "recommendable": false,
+    "meaning": "强开叫：≥22 点，或者 9 个赢墩。",
+    "source": "新睿体系卡 · 开叫",
+    "tags": [
+      "开叫",
+      "逼叫"
+    ],
+    "legacyP": null,
+    "bid": "2C"
+  },
+  {
+    "id": "xinrui.6.2D.6",
+    "system": "xinrui",
+    "seatRole": "opener",
+    "contextKeys": [
+      ""
+    ],
+    "hcp": {
+      "min": 6,
+      "max": 10
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "弱二开叫，长套。",
+    "source": "新睿体系卡 · 开叫",
+    "tags": [
+      "开叫",
+      "阻击"
+    ],
+    "legacyP": "6~10",
+    "bid": "2D"
+  },
+  {
+    "id": "xinrui.6.2H.7",
+    "system": "xinrui",
+    "seatRole": "opener",
+    "contextKeys": [
+      ""
+    ],
+    "hcp": {
+      "min": 6,
+      "max": 10
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "弱二开叫，长套。",
+    "source": "新睿体系卡 · 开叫",
+    "tags": [
+      "开叫",
+      "阻击"
+    ],
+    "legacyP": "6~10",
+    "bid": "2H"
+  },
+  {
+    "id": "xinrui.6.2S.8",
+    "system": "xinrui",
+    "seatRole": "opener",
+    "contextKeys": [
+      ""
+    ],
+    "hcp": {
+      "min": 6,
+      "max": 10
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "弱二开叫，长套。",
+    "source": "新睿体系卡 · 开叫",
+    "tags": [
+      "开叫",
+      "阻击"
+    ],
+    "legacyP": "6~10",
+    "bid": "2S"
+  },
+  {
+    "id": "xinrui.7.2N.9",
+    "system": "xinrui",
+    "seatRole": "opener",
+    "contextKeys": [
+      ""
+    ],
+    "hcp": {
+      "min": 20,
+      "max": 21
+    },
+    "shape": {
+      "balanced": true
+    },
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "无将开叫。",
+    "source": "新睿体系卡 · 开叫",
+    "tags": [
+      "开叫"
+    ],
+    "legacyP": "20~21",
+    "bid": "2N"
+  },
+  {
+    "id": "xinrui.8.1D.10",
+    "system": "xinrui",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1C"
+    ],
+    "hcp": {
+      "min": 6,
+      "max": 37
+    },
+    "shape": null,
+    "forcing": "one_round",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "有将应叫：≥6 点，所叫花色四张以上。",
+    "source": "新睿体系卡 · 应叫",
+    "tags": [
+      "逼叫"
+    ],
+    "legacyP": "6 以上",
+    "bid": "1D"
+  },
+  {
+    "id": "xinrui.8.1H.11",
+    "system": "xinrui",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1C"
+    ],
+    "hcp": {
+      "min": 6,
+      "max": 37
+    },
+    "shape": null,
+    "forcing": "one_round",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "有将应叫：≥6 点，所叫花色四张以上。",
+    "source": "新睿体系卡 · 应叫",
+    "tags": [
+      "逼叫"
+    ],
+    "legacyP": "6 以上",
+    "bid": "1H"
+  },
+  {
+    "id": "xinrui.8.1S.12",
+    "system": "xinrui",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1C"
+    ],
+    "hcp": {
+      "min": 6,
+      "max": 37
+    },
+    "shape": null,
+    "forcing": "one_round",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "有将应叫：≥6 点，所叫花色四张以上。",
+    "source": "新睿体系卡 · 应叫",
+    "tags": [
+      "逼叫"
+    ],
+    "legacyP": "6 以上",
+    "bid": "1S"
+  },
+  {
+    "id": "xinrui.9.1H.13",
+    "system": "xinrui",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1D"
+    ],
+    "hcp": {
+      "min": 6,
+      "max": 37
+    },
+    "shape": null,
+    "forcing": "one_round",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "有将应叫：≥6 点，所叫花色四张以上。",
+    "source": "新睿体系卡 · 应叫",
+    "tags": [
+      "逼叫"
+    ],
+    "legacyP": "6 以上",
+    "bid": "1H"
+  },
+  {
+    "id": "xinrui.9.1S.14",
+    "system": "xinrui",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1D"
+    ],
+    "hcp": {
+      "min": 6,
+      "max": 37
+    },
+    "shape": null,
+    "forcing": "one_round",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "有将应叫：≥6 点，所叫花色四张以上。",
+    "source": "新睿体系卡 · 应叫",
+    "tags": [
+      "逼叫"
+    ],
+    "legacyP": "6 以上",
+    "bid": "1S"
+  },
+  {
+    "id": "xinrui.10.1S.15",
+    "system": "xinrui",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1H"
+    ],
+    "hcp": {
+      "min": 6,
+      "max": 37
+    },
+    "shape": null,
+    "forcing": "one_round",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "有将应叫：≥6 点，四张以上黑桃。",
+    "source": "新睿体系卡 · 应叫",
+    "tags": [
+      "逼叫"
+    ],
+    "legacyP": "6 以上",
+    "bid": "1S"
+  },
+  {
+    "id": "xinrui.11.2D.16",
+    "system": "xinrui",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1C"
+    ],
+    "hcp": null,
+    "shape": null,
+    "forcing": "game",
+    "alert": false,
+    "recommendable": false,
+    "meaning": "二盖一应叫，逼叫到局。",
+    "source": "新睿体系卡 · 应叫",
+    "tags": [
+      "逼叫",
+      "进局"
+    ],
+    "legacyP": null,
+    "bid": "2D"
+  },
+  {
+    "id": "xinrui.11.2H.17",
+    "system": "xinrui",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1C"
+    ],
+    "hcp": null,
+    "shape": null,
+    "forcing": "game",
+    "alert": false,
+    "recommendable": false,
+    "meaning": "二盖一应叫，逼叫到局。",
+    "source": "新睿体系卡 · 应叫",
+    "tags": [
+      "逼叫",
+      "进局"
+    ],
+    "legacyP": null,
+    "bid": "2H"
+  },
+  {
+    "id": "xinrui.11.2S.18",
+    "system": "xinrui",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1C"
+    ],
+    "hcp": null,
+    "shape": null,
+    "forcing": "game",
+    "alert": false,
+    "recommendable": false,
+    "meaning": "二盖一应叫，逼叫到局。",
+    "source": "新睿体系卡 · 应叫",
+    "tags": [
+      "逼叫",
+      "进局"
+    ],
+    "legacyP": null,
+    "bid": "2S"
+  },
+  {
+    "id": "xinrui.12.2C.19",
+    "system": "xinrui",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1D"
+    ],
+    "hcp": null,
+    "shape": null,
+    "forcing": "game",
+    "alert": false,
+    "recommendable": false,
+    "meaning": "二盖一应叫，逼叫到局。",
+    "source": "新睿体系卡 · 应叫",
+    "tags": [
+      "逼叫",
+      "进局"
+    ],
+    "legacyP": null,
+    "bid": "2C"
+  },
+  {
+    "id": "xinrui.12.2H.20",
+    "system": "xinrui",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1D"
+    ],
+    "hcp": null,
+    "shape": null,
+    "forcing": "game",
+    "alert": false,
+    "recommendable": false,
+    "meaning": "二盖一应叫，逼叫到局。",
+    "source": "新睿体系卡 · 应叫",
+    "tags": [
+      "逼叫",
+      "进局"
+    ],
+    "legacyP": null,
+    "bid": "2H"
+  },
+  {
+    "id": "xinrui.12.2S.21",
+    "system": "xinrui",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1D"
+    ],
+    "hcp": null,
+    "shape": null,
+    "forcing": "game",
+    "alert": false,
+    "recommendable": false,
+    "meaning": "二盖一应叫，逼叫到局。",
+    "source": "新睿体系卡 · 应叫",
+    "tags": [
+      "逼叫",
+      "进局"
+    ],
+    "legacyP": null,
+    "bid": "2S"
+  },
+  {
+    "id": "xinrui.13.2C.22",
+    "system": "xinrui",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1H"
+    ],
+    "hcp": null,
+    "shape": null,
+    "forcing": "game",
+    "alert": false,
+    "recommendable": false,
+    "meaning": "二盖一应叫，逼叫到局。",
+    "source": "新睿体系卡 · 应叫",
+    "tags": [
+      "逼叫",
+      "进局"
+    ],
+    "legacyP": null,
+    "bid": "2C"
+  },
+  {
+    "id": "xinrui.13.2D.23",
+    "system": "xinrui",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1H"
+    ],
+    "hcp": null,
+    "shape": null,
+    "forcing": "game",
+    "alert": false,
+    "recommendable": false,
+    "meaning": "二盖一应叫，逼叫到局。",
+    "source": "新睿体系卡 · 应叫",
+    "tags": [
+      "逼叫",
+      "进局"
+    ],
+    "legacyP": null,
+    "bid": "2D"
+  },
+  {
+    "id": "xinrui.14.2C.24",
+    "system": "xinrui",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1S"
+    ],
+    "hcp": null,
+    "shape": null,
+    "forcing": "game",
+    "alert": false,
+    "recommendable": false,
+    "meaning": "二盖一应叫，逼叫到局。",
+    "source": "新睿体系卡 · 应叫",
+    "tags": [
+      "逼叫",
+      "进局"
+    ],
+    "legacyP": null,
+    "bid": "2C"
+  },
+  {
+    "id": "xinrui.14.2D.25",
+    "system": "xinrui",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1S"
+    ],
+    "hcp": null,
+    "shape": null,
+    "forcing": "game",
+    "alert": false,
+    "recommendable": false,
+    "meaning": "二盖一应叫，逼叫到局。",
+    "source": "新睿体系卡 · 应叫",
+    "tags": [
+      "逼叫",
+      "进局"
+    ],
+    "legacyP": null,
+    "bid": "2D"
+  },
+  {
+    "id": "xinrui.14.2H.26",
+    "system": "xinrui",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1S"
+    ],
+    "hcp": null,
+    "shape": null,
+    "forcing": "game",
+    "alert": false,
+    "recommendable": false,
+    "meaning": "二盖一应叫，逼叫到局。",
+    "source": "新睿体系卡 · 应叫",
+    "tags": [
+      "逼叫",
+      "进局"
+    ],
+    "legacyP": null,
+    "bid": "2H"
+  },
+  {
+    "id": "xinrui.15.1N.27",
+    "system": "xinrui",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1C"
+    ],
+    "hcp": {
+      "min": 6,
+      "max": 10
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "低花后的无将应叫：1NT 6~10 点，不逼叫。",
+    "source": "新睿体系卡 · 应叫",
+    "tags": [],
+    "legacyP": "6~10",
+    "bid": "1N"
+  },
+  {
+    "id": "xinrui.16.1N.28",
+    "system": "xinrui",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1D"
+    ],
+    "hcp": {
+      "min": 6,
+      "max": 10
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "低花后的无将应叫：1NT 6~10 点，不逼叫。",
+    "source": "新睿体系卡 · 应叫",
+    "tags": [],
+    "legacyP": "6~10",
+    "bid": "1N"
+  },
+  {
+    "id": "xinrui.17.2N.29",
+    "system": "xinrui",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1C"
+    ],
+    "hcp": {
+      "min": 11,
+      "max": 12
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "低花后的无将应叫：2NT 11~12 点，邀叫。",
+    "source": "新睿体系卡 · 应叫",
+    "tags": [
+      "邀局"
+    ],
+    "legacyP": "11~12",
+    "bid": "2N"
+  },
+  {
+    "id": "xinrui.18.2N.30",
+    "system": "xinrui",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1D"
+    ],
+    "hcp": {
+      "min": 11,
+      "max": 12
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "低花后的无将应叫：2NT 11~12 点，邀叫。",
+    "source": "新睿体系卡 · 应叫",
+    "tags": [
+      "邀局"
+    ],
+    "legacyP": "11~12",
+    "bid": "2N"
+  },
+  {
+    "id": "xinrui.19.3N.31",
+    "system": "xinrui",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1C"
+    ],
+    "hcp": {
+      "min": 13,
+      "max": 17
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "低花后的无将应叫：3NT 13~17 点。",
+    "source": "新睿体系卡 · 应叫",
+    "tags": [],
+    "legacyP": "13~17",
+    "bid": "3N"
+  },
+  {
+    "id": "xinrui.20.3N.32",
+    "system": "xinrui",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1D"
+    ],
+    "hcp": {
+      "min": 13,
+      "max": 17
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "低花后的无将应叫：3NT 13~17 点。",
+    "source": "新睿体系卡 · 应叫",
+    "tags": [],
+    "legacyP": "13~17",
+    "bid": "3N"
+  },
+  {
+    "id": "xinrui.21.2C.33",
+    "system": "xinrui",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1C"
+    ],
+    "hcp": {
+      "min": 11,
+      "max": 12
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "低花后的跳加叫：11~12 点，梅花五张以上。",
+    "source": "新睿体系卡 · 应叫",
+    "tags": [
+      "邀局"
+    ],
+    "legacyP": "11~12",
+    "bid": "2C"
+  },
+  {
+    "id": "xinrui.22.2D.34",
+    "system": "xinrui",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1D"
+    ],
+    "hcp": {
+      "min": 11,
+      "max": 12
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "低花后的跳加叫：11~12 点，方块五张以上。",
+    "source": "新睿体系卡 · 应叫",
+    "tags": [
+      "邀局"
+    ],
+    "legacyP": "11~12",
+    "bid": "2D"
+  },
+  {
+    "id": "xinrui.23.1N.35",
+    "system": "xinrui",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1H"
+    ],
+    "hcp": {
+      "min": 6,
+      "max": 12
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "高花后的无将应叫：1NT 6~12 点，不逼叫。",
+    "source": "新睿体系卡 · 应叫",
+    "tags": [],
+    "legacyP": "6~12",
+    "bid": "1N"
+  },
+  {
+    "id": "xinrui.24.1N.36",
+    "system": "xinrui",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1S"
+    ],
+    "hcp": {
+      "min": 6,
+      "max": 12
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "高花后的无将应叫：1NT 6~12 点，不逼叫。",
+    "source": "新睿体系卡 · 应叫",
+    "tags": [],
+    "legacyP": "6~12",
+    "bid": "1N"
+  },
+  {
+    "id": "xinrui.25.2N.37",
+    "system": "xinrui",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1H"
+    ],
+    "hcp": {
+      "min": 13,
+      "max": 37
+    },
+    "shape": null,
+    "forcing": "game",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "高花后的无将应叫：2NT 13 点以上，四张将牌支持。",
+    "source": "新睿体系卡 · 应叫",
+    "tags": [
+      "进局"
+    ],
+    "legacyP": "13 以上",
+    "bid": "2N"
+  },
+  {
+    "id": "xinrui.26.2N.38",
+    "system": "xinrui",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1S"
+    ],
+    "hcp": {
+      "min": 13,
+      "max": 37
+    },
+    "shape": null,
+    "forcing": "game",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "高花后的无将应叫：2NT 13 点以上，四张将牌支持。",
+    "source": "新睿体系卡 · 应叫",
+    "tags": [
+      "进局"
+    ],
+    "legacyP": "13 以上",
+    "bid": "2N"
+  },
+  {
+    "id": "xinrui.27.3H.39",
+    "system": "xinrui",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1H"
+    ],
+    "hcp": {
+      "min": 11,
+      "max": 12
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "高花后的跳加叫：11~12 点，所叫花色三张以上。",
+    "source": "新睿体系卡 · 应叫",
+    "tags": [
+      "邀局"
+    ],
+    "legacyP": "11~12",
+    "bid": "3H"
+  },
+  {
+    "id": "xinrui.28.3S.40",
+    "system": "xinrui",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1S"
+    ],
+    "hcp": {
+      "min": 11,
+      "max": 12
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "高花后的跳加叫：11~12 点，所叫花色三张以上。",
+    "source": "新睿体系卡 · 应叫",
+    "tags": [
+      "邀局"
+    ],
+    "legacyP": "11~12",
+    "bid": "3S"
+  },
+  {
+    "id": "xinrui.29.2C.41",
+    "system": "xinrui",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1N"
+    ],
+    "hcp": null,
+    "shape": null,
+    "forcing": "none",
+    "alert": true,
+    "recommendable": false,
+    "meaning": "斯台曼：问开叫方的四张高花。",
+    "source": "新睿体系卡 · 1NT 开叫的应叫",
+    "tags": [
+      "约定"
+    ],
+    "legacyP": null,
+    "bid": "2C"
+  },
+  {
+    "id": "xinrui.30.2D.42",
+    "system": "xinrui",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1N"
+    ],
+    "hcp": null,
+    "shape": null,
+    "forcing": "none",
+    "alert": true,
+    "recommendable": false,
+    "meaning": "雅各比转移叫，转移红心。",
+    "source": "新睿体系卡 · 1NT 开叫的应叫",
+    "tags": [
+      "转移",
+      "约定"
+    ],
+    "legacyP": null,
+    "bid": "2D"
+  },
+  {
+    "id": "xinrui.31.2H.43",
+    "system": "xinrui",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1N"
+    ],
+    "hcp": null,
+    "shape": null,
+    "forcing": "none",
+    "alert": true,
+    "recommendable": false,
+    "meaning": "雅各比转移叫，转移黑桃。",
+    "source": "新睿体系卡 · 1NT 开叫的应叫",
+    "tags": [
+      "转移",
+      "约定"
+    ],
+    "legacyP": null,
+    "bid": "2H"
+  },
+  {
+    "id": "xinrui.32.3C.44",
+    "system": "xinrui",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1N"
+    ],
+    "hcp": {
+      "min": 13,
+      "max": 37
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "所叫花色六张以上，满贯兴趣。",
+    "source": "新睿体系卡 · 1NT 开叫的应叫",
+    "tags": [
+      "满贯"
+    ],
+    "legacyP": "13 以上",
+    "bid": "3C"
+  },
+  {
+    "id": "xinrui.32.3D.45",
+    "system": "xinrui",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1N"
+    ],
+    "hcp": {
+      "min": 13,
+      "max": 37
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "所叫花色六张以上，满贯兴趣。",
+    "source": "新睿体系卡 · 1NT 开叫的应叫",
+    "tags": [
+      "满贯"
+    ],
+    "legacyP": "13 以上",
+    "bid": "3D"
+  },
+  {
+    "id": "xinrui.32.3H.46",
+    "system": "xinrui",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1N"
+    ],
+    "hcp": {
+      "min": 13,
+      "max": 37
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "所叫花色六张以上，满贯兴趣。",
+    "source": "新睿体系卡 · 1NT 开叫的应叫",
+    "tags": [
+      "满贯"
+    ],
+    "legacyP": "13 以上",
+    "bid": "3H"
+  },
+  {
+    "id": "xinrui.32.3S.47",
+    "system": "xinrui",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1N"
+    ],
+    "hcp": {
+      "min": 13,
+      "max": 37
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "所叫花色六张以上，满贯兴趣。",
+    "source": "新睿体系卡 · 1NT 开叫的应叫",
+    "tags": [
+      "满贯"
+    ],
+    "legacyP": "13 以上",
+    "bid": "3S"
+  },
+  {
+    "id": "xinrui.33.3C.48",
+    "system": "xinrui",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:2N"
+    ],
+    "hcp": null,
+    "shape": null,
+    "forcing": "none",
+    "alert": true,
+    "recommendable": false,
+    "meaning": "斯台曼：问开叫方的四张高花。",
+    "source": "新睿体系卡 · 2NT 开叫的应叫",
+    "tags": [
+      "约定"
+    ],
+    "legacyP": null,
+    "bid": "3C"
+  },
+  {
+    "id": "xinrui.34.3D.49",
+    "system": "xinrui",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:2N"
+    ],
+    "hcp": null,
+    "shape": null,
+    "forcing": "none",
+    "alert": true,
+    "recommendable": false,
+    "meaning": "雅各比转移叫，转移红心。",
+    "source": "新睿体系卡 · 2NT 开叫的应叫",
+    "tags": [
+      "转移",
+      "约定"
+    ],
+    "legacyP": null,
+    "bid": "3D"
+  },
+  {
+    "id": "xinrui.35.3H.50",
+    "system": "xinrui",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:2N"
+    ],
+    "hcp": null,
+    "shape": null,
+    "forcing": "none",
+    "alert": true,
+    "recommendable": false,
+    "meaning": "雅各比转移叫，转移黑桃。",
+    "source": "新睿体系卡 · 2NT 开叫的应叫",
+    "tags": [
+      "转移",
+      "约定"
+    ],
+    "legacyP": null,
+    "bid": "3H"
+  },
+  {
+    "id": "xinrui.36.4C.51",
+    "system": "xinrui",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:2N"
+    ],
+    "hcp": {
+      "min": 10,
+      "max": 37
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "所叫花色六张以上。",
+    "source": "新睿体系卡 · 2NT 开叫的应叫",
+    "tags": [
+      "满贯"
+    ],
+    "legacyP": "10 以上",
+    "bid": "4C"
+  },
+  {
+    "id": "xinrui.36.4D.52",
+    "system": "xinrui",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:2N"
+    ],
+    "hcp": {
+      "min": 10,
+      "max": 37
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "所叫花色六张以上。",
+    "source": "新睿体系卡 · 2NT 开叫的应叫",
+    "tags": [
+      "满贯"
+    ],
+    "legacyP": "10 以上",
+    "bid": "4D"
+  },
+  {
+    "id": "xinrui.37.4H.53",
+    "system": "xinrui",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:2N"
+    ],
+    "hcp": {
+      "min": 5,
+      "max": 9
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "所叫花色六张以上。",
+    "source": "新睿体系卡 · 2NT 开叫的应叫",
+    "tags": [
+      "止叫"
+    ],
+    "legacyP": "5~9",
+    "bid": "4H"
+  },
+  {
+    "id": "xinrui.37.4S.54",
+    "system": "xinrui",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:2N"
+    ],
+    "hcp": {
+      "min": 5,
+      "max": 9
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "所叫花色六张以上。",
+    "source": "新睿体系卡 · 2NT 开叫的应叫",
+    "tags": [
+      "止叫"
+    ],
+    "legacyP": "5~9",
+    "bid": "4S"
+  },
+  {
+    "id": "xinrui.38.2D.55",
+    "system": "xinrui",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:2C"
+    ],
+    "hcp": {
+      "min": 0,
+      "max": 7
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "2♣ 强开叫后的应叫 2♦：弱牌，≤7 点。",
+    "source": "新睿体系卡 · 2♣ 开叫的应叫",
+    "tags": [
+      "示弱"
+    ],
+    "legacyP": "7 以下",
+    "bid": "2D"
+  },
+  {
+    "id": "xinrui.39.2N.56",
+    "system": "xinrui",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:2D"
+    ],
+    "hcp": {
+      "min": 15,
+      "max": 18
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "2♦/2♥/2♠ 后的 2NT：15~18 点，邀请。",
+    "source": "新睿体系卡 · 弱二开叫的应叫",
+    "tags": [
+      "邀局"
+    ],
+    "legacyP": "15~18",
+    "bid": "2N"
+  },
+  {
+    "id": "xinrui.40.2N.57",
+    "system": "xinrui",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:2H"
+    ],
+    "hcp": {
+      "min": 15,
+      "max": 18
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "2♦/2♥/2♠ 后的 2NT：15~18 点，邀请。",
+    "source": "新睿体系卡 · 弱二开叫的应叫",
+    "tags": [
+      "邀局"
+    ],
+    "legacyP": "15~18",
+    "bid": "2N"
+  },
+  {
+    "id": "xinrui.41.2N.58",
+    "system": "xinrui",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:2S"
+    ],
+    "hcp": {
+      "min": 15,
+      "max": 18
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "2♦/2♥/2♠ 后的 2NT：15~18 点，邀请。",
+    "source": "新睿体系卡 · 弱二开叫的应叫",
+    "tags": [
+      "邀局"
+    ],
+    "legacyP": "15~18",
+    "bid": "2N"
+  },
+  {
+    "id": "xinrui.42.form.59",
+    "system": "xinrui",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:2D"
+    ],
+    "hcp": {
+      "min": 14,
+      "max": 37
+    },
+    "shape": null,
+    "forcing": "one_round",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "弱二开叫后的新花：14 点以上自然叫，逼叫一轮。",
+    "source": "新睿体系卡 · 弱二开叫的应叫",
+    "tags": [
+      "逼叫"
+    ],
+    "legacyP": "14 以上",
+    "bidForm": {
+      "type": "newSuit"
+    }
+  },
+  {
+    "id": "xinrui.43.form.60",
+    "system": "xinrui",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:2H"
+    ],
+    "hcp": {
+      "min": 14,
+      "max": 37
+    },
+    "shape": null,
+    "forcing": "one_round",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "弱二开叫后的新花：14 点以上自然叫，逼叫一轮。",
+    "source": "新睿体系卡 · 弱二开叫的应叫",
+    "tags": [
+      "逼叫"
+    ],
+    "legacyP": "14 以上",
+    "bidForm": {
+      "type": "newSuit"
+    }
+  },
+  {
+    "id": "xinrui.44.form.61",
+    "system": "xinrui",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:2S"
+    ],
+    "hcp": {
+      "min": 14,
+      "max": 37
+    },
+    "shape": null,
+    "forcing": "one_round",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "弱二开叫后的新花：14 点以上自然叫，逼叫一轮。",
+    "source": "新睿体系卡 · 弱二开叫的应叫",
+    "tags": [
+      "逼叫"
+    ],
+    "legacyP": "14 以上",
+    "bidForm": {
+      "type": "newSuit"
+    }
+  },
+  {
+    "id": "xinrui.45.form.62",
+    "system": "xinrui",
+    "seatRole": "overcaller",
+    "contextKeys": [
+      "O:*"
+    ],
+    "hcp": {
+      "min": 8,
+      "max": 16
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "一盖一争叫：8~16 点，一般为五张以上套。",
+    "source": "新睿体系卡 · 争叫",
+    "tags": [
+      "争叫"
+    ],
+    "legacyP": "8~16",
+    "bidForm": {
+      "type": "newSuit",
+      "level": 1
+    }
+  },
+  {
+    "id": "xinrui.46.form.63",
+    "system": "xinrui",
+    "seatRole": "overcaller",
+    "contextKeys": [
+      "O:*"
+    ],
+    "hcp": {
+      "min": 11,
+      "max": 17
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "二盖一争叫：11~17 点，一般为五张以上套。",
+    "source": "新睿体系卡 · 争叫",
+    "tags": [
+      "争叫"
+    ],
+    "legacyP": "11~17",
+    "bidForm": {
+      "type": "newSuit",
+      "level": 2
+    }
+  },
+  {
+    "id": "xinrui.47.1N.64",
+    "system": "xinrui",
+    "seatRole": "overcaller",
+    "contextKeys": [
+      "O:*"
+    ],
+    "hcp": {
+      "min": 15,
+      "max": 18
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "1NT 争叫（第二家）：15~18 点。",
+    "source": "新睿体系卡 · 争叫",
+    "tags": [
+      "争叫"
+    ],
+    "legacyP": "15~18",
+    "bid": "1N"
+  },
+  {
+    "id": "xinrui.47.1N.65",
+    "system": "xinrui",
+    "seatRole": "overcaller",
+    "contextKeys": [
+      "O:* P:P"
+    ],
+    "hcp": {
+      "min": 12,
+      "max": 15
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "1NT 争叫（第四家 / 平衡位置）：12~15 点。",
+    "source": "新睿体系卡 · 争叫",
+    "tags": [
+      "争叫"
+    ],
+    "legacyP": "12~15",
+    "bid": "1N"
+  },
+  {
+    "id": "xinrui.48.2N.66",
+    "system": "xinrui",
+    "seatRole": "overcaller",
+    "contextKeys": [
+      "O:* P:P"
+    ],
+    "hcp": {
+      "min": 19,
+      "max": 20
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "平衡位置 2NT：19~20 点。",
+    "source": "新睿体系卡 · 争叫",
+    "tags": [
+      "争叫"
+    ],
+    "legacyP": "19~20",
+    "bid": "2N"
+  },
+  {
+    "id": "xinrui.49.form.67",
+    "system": "xinrui",
+    "seatRole": "overcaller",
+    "contextKeys": [
+      "O:*"
+    ],
+    "hcp": null,
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": false,
+    "meaning": "跳叫：阻击叫。",
+    "source": "新睿体系卡 · 争叫",
+    "tags": [
+      "阻击"
+    ],
+    "legacyP": null,
+    "bidForm": {
+      "type": "jumpSuit"
+    }
+  },
+  {
+    "id": "xinrui.50.X.68",
+    "system": "xinrui",
+    "seatRole": "overcaller",
+    "contextKeys": [
+      "O:*"
+    ],
+    "hcp": {
+      "min": 12,
+      "max": 37
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "技术性加倍：≥12+ 点，其他花色大于三张。",
+    "source": "新睿体系卡 · 争叫",
+    "tags": [
+      "加倍"
+    ],
+    "legacyP": "12 以上",
+    "bid": "X"
+  },
+  {
+    "id": "xinrui.51.2C.69",
+    "system": "xinrui",
+    "seatRole": "overcaller",
+    "contextKeys": [
+      "O:1N"
+    ],
+    "hcp": null,
+    "shape": null,
+    "forcing": "none",
+    "alert": true,
+    "recommendable": false,
+    "meaning": "对方开叫 1NT 时的 2♣：表示双高花。",
+    "source": "新睿体系卡 · 对抗 1NT",
+    "tags": [
+      "约定",
+      "争叫"
+    ],
+    "legacyP": null,
+    "bid": "2C"
+  },
+  {
+    "id": "xinrui.52.4N.70",
+    "system": "xinrui",
+    "seatRole": "opener",
+    "contextKeys": [
+      "M:* P:*",
+      "M:* O:* P:*"
+    ],
+    "hcp": null,
+    "shape": null,
+    "forcing": "none",
+    "alert": true,
+    "recommendable": false,
+    "meaning": "黑木问叫：问 A 的个数，答叫 0/4、1、2、3。",
+    "source": "新睿体系卡 · 其他约定叫",
+    "tags": [
+      "满贯",
+      "约定"
+    ],
+    "legacyP": null,
+    "bid": "4N"
+  }
+]
