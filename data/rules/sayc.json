@@ -7,8 +7,8 @@
       ""
     ],
     "hcp": {
-      "min": 13,
-      "max": 22
+      "min": 12,
+      "max": 21
     },
     "shape": {
       "suitMin": {
@@ -18,12 +18,12 @@
     "forcing": "none",
     "alert": false,
     "recommendable": true,
-    "meaning": "三张以上所叫低花。低花 4-4 先开 1♦，3-3 先开 1♣。",
+    "meaning": "1♣ 三张以上，1♦ 四张以上；低花 4-4 先开 1♦，3-3 先开 1♣。",
     "source": "SAYC 通则（sayc.php）",
     "tags": [
       "开叫"
     ],
-    "legacyP": "13~22",
+    "legacyP": "12~21",
     "bid": "1C"
   },
   {
@@ -34,23 +34,23 @@
       ""
     ],
     "hcp": {
-      "min": 13,
-      "max": 22
+      "min": 12,
+      "max": 21
     },
     "shape": {
       "suitMin": {
-        "D": 3
+        "D": 4
       }
     },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
-    "meaning": "三张以上所叫低花。低花 4-4 先开 1♦，3-3 先开 1♣。",
+    "meaning": "1♣ 三张以上，1♦ 四张以上；低花 4-4 先开 1♦，3-3 先开 1♣。",
     "source": "SAYC 通则（sayc.php）",
     "tags": [
       "开叫"
     ],
-    "legacyP": "13~22",
+    "legacyP": "12~21",
     "bid": "1D"
   },
   {
@@ -61,8 +61,8 @@
       ""
     ],
     "hcp": {
-      "min": 13,
-      "max": 22
+      "min": 12,
+      "max": 21
     },
     "shape": {
       "suitMin": {
@@ -77,7 +77,7 @@
     "tags": [
       "开叫"
     ],
-    "legacyP": "13~22",
+    "legacyP": "12~21",
     "bid": "1H"
   },
   {
@@ -88,8 +88,8 @@
       ""
     ],
     "hcp": {
-      "min": 13,
-      "max": 22
+      "min": 12,
+      "max": 21
     },
     "shape": {
       "suitMin": {
@@ -104,7 +104,7 @@
     "tags": [
       "开叫"
     ],
-    "legacyP": "13~22",
+    "legacyP": "12~21",
     "bid": "1S"
   },
   {
@@ -124,7 +124,7 @@
     "forcing": "none",
     "alert": false,
     "recommendable": true,
-    "meaning": "均型（4-4-3-2 / 4-3-3-3 / 5-3-3-2），允许带五张高花或五张低花的半均型。",
+    "meaning": "均型（4-4-3-2 / 4-3-3-3 / 5-3-3-2），通常无五张高花。",
     "source": "SAYC 通则（sayc.php）",
     "tags": [
       "开叫"
@@ -165,21 +165,23 @@
       ""
     ],
     "hcp": {
-      "min": 25,
-      "max": 27
+      "min": 8,
+      "max": 12
     },
     "shape": {
-      "balanced": true
+      "anyMinorMin": 7
     },
     "forcing": "none",
-    "alert": false,
+    "alert": true,
     "recommendable": true,
-    "meaning": "均型。",
+    "meaning": "拼搏性 3NT：7~8 张坚固低花（AKQ 领头），旁门不超过 4 个大牌点。",
     "source": "SAYC 通则（sayc.php）",
     "tags": [
-      "开叫"
+      "开叫",
+      "阻击",
+      "赌博"
     ],
-    "legacyP": "25~27",
+    "legacyP": "8~12",
     "bid": "3N"
   },
   {
@@ -189,18 +191,21 @@
     "contextKeys": [
       ""
     ],
-    "hcp": null,
+    "hcp": {
+      "min": 22,
+      "max": 37
+    },
     "shape": null,
-    "forcing": "one_round",
+    "forcing": "game",
     "alert": false,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "强开叫、人工：22+ HCP 的均型，或非均型「差一墩成局」（5+ 高花 9 赢墩、5+ 低花 10 赢墩）。",
     "source": "SAYC 通则（sayc.php）",
     "tags": [
       "开叫",
-      "逼叫"
+      "进局"
     ],
-    "legacyP": null,
+    "legacyP": "22 以上",
     "bid": "2C"
   },
   {
@@ -237,7 +242,11 @@
       "min": 6,
       "max": 37
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "D": 4
+      }
+    },
     "forcing": "one_round",
     "alert": false,
     "recommendable": true,
@@ -260,7 +269,11 @@
       "min": 6,
       "max": 37
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "H": 4
+      }
+    },
     "forcing": "one_round",
     "alert": false,
     "recommendable": true,
@@ -283,7 +296,11 @@
       "min": 6,
       "max": 37
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "S": 4
+      }
+    },
     "forcing": "one_round",
     "alert": false,
     "recommendable": true,
@@ -304,16 +321,22 @@
     ],
     "hcp": {
       "min": 6,
-      "max": 9
+      "max": 10
     },
-    "shape": null,
+    "shape": {
+      "balanced": true,
+      "suitMax": {
+        "H": 3,
+        "S": 3
+      }
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
     "meaning": "均型，否认 4 张高花，通常否认 4 张梅花，不逼叫。",
     "source": "1♣ 开叫（sayc_1c.php）",
     "tags": [],
-    "legacyP": "6~9",
+    "legacyP": "6~10",
     "bid": "1N"
   },
   {
@@ -327,7 +350,15 @@
       "min": 6,
       "max": 9
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "C": 5
+      },
+      "suitMax": {
+        "H": 3,
+        "S": 3
+      }
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
@@ -348,7 +379,11 @@
       "min": 17,
       "max": 19
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "D": 5
+      }
+    },
     "forcing": "one_round",
     "alert": false,
     "recommendable": true,
@@ -371,7 +406,11 @@
       "min": 17,
       "max": 19
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "H": 5
+      }
+    },
     "forcing": "one_round",
     "alert": false,
     "recommendable": true,
@@ -394,7 +433,11 @@
       "min": 17,
       "max": 19
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "S": 5
+      }
+    },
     "forcing": "one_round",
     "alert": false,
     "recommendable": true,
@@ -417,7 +460,9 @@
       "min": 13,
       "max": 15
     },
-    "shape": null,
+    "shape": {
+      "balanced": true
+    },
     "forcing": "one_round",
     "alert": false,
     "recommendable": true,
@@ -440,7 +485,15 @@
       "min": 10,
       "max": 12
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "C": 5
+      },
+      "suitMax": {
+        "H": 3,
+        "S": 3
+      }
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
@@ -463,7 +516,9 @@
       "min": 16,
       "max": 17
     },
-    "shape": null,
+    "shape": {
+      "balanced": true
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
@@ -527,7 +582,11 @@
       "min": 6,
       "max": 37
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "H": 4
+      }
+    },
     "forcing": "one_round",
     "alert": false,
     "recommendable": true,
@@ -550,7 +609,11 @@
       "min": 6,
       "max": 37
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "S": 4
+      }
+    },
     "forcing": "one_round",
     "alert": false,
     "recommendable": true,
@@ -571,16 +634,21 @@
     ],
     "hcp": {
       "min": 6,
-      "max": 9
+      "max": 10
     },
-    "shape": null,
+    "shape": {
+      "suitMax": {
+        "H": 3,
+        "S": 3
+      }
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
     "meaning": "否认 4 张高花，通常否认 4 张方块；可以是带 5 张以上梅花的非均型，不逼叫。",
     "source": "1♦ 开叫（sayc_1d.php）",
     "tags": [],
-    "legacyP": "6~9",
+    "legacyP": "6~10",
     "bid": "1N"
   },
   {
@@ -591,19 +659,23 @@
       "P:1D"
     ],
     "hcp": {
-      "min": 10,
+      "min": 13,
       "max": 37
     },
-    "shape": null,
-    "forcing": "one_round",
+    "shape": {
+      "suitMin": {
+        "C": 5
+      }
+    },
+    "forcing": "game",
     "alert": false,
     "recommendable": true,
-    "meaning": "4 张以上梅花，逼叫。",
+    "meaning": "5 张以上梅花，二盖一逼局。",
     "source": "1♦ 开叫（sayc_1d.php）",
     "tags": [
-      "逼叫"
+      "进局"
     ],
-    "legacyP": "10 以上",
+    "legacyP": "13 以上",
     "bid": "2C"
   },
   {
@@ -617,7 +689,15 @@
       "min": 6,
       "max": 9
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "D": 4
+      },
+      "suitMax": {
+        "H": 3,
+        "S": 3
+      }
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
@@ -638,7 +718,11 @@
       "min": 17,
       "max": 19
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "H": 5
+      }
+    },
     "forcing": "one_round",
     "alert": false,
     "recommendable": true,
@@ -661,7 +745,11 @@
       "min": 17,
       "max": 19
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "S": 5
+      }
+    },
     "forcing": "one_round",
     "alert": false,
     "recommendable": true,
@@ -684,7 +772,9 @@
       "min": 13,
       "max": 15
     },
-    "shape": null,
+    "shape": {
+      "balanced": true
+    },
     "forcing": "one_round",
     "alert": false,
     "recommendable": true,
@@ -707,7 +797,11 @@
       "min": 17,
       "max": 19
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "C": 5
+      }
+    },
     "forcing": "one_round",
     "alert": false,
     "recommendable": true,
@@ -730,7 +824,15 @@
       "min": 10,
       "max": 12
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "D": 4
+      },
+      "suitMax": {
+        "H": 3,
+        "S": 3
+      }
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
@@ -753,7 +855,9 @@
       "min": 16,
       "max": 17
     },
-    "shape": null,
+    "shape": {
+      "balanced": true
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
@@ -817,7 +921,11 @@
       "min": 6,
       "max": 37
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "S": 4
+      }
+    },
     "forcing": "one_round",
     "alert": false,
     "recommendable": true,
@@ -838,18 +946,24 @@
     ],
     "hcp": {
       "min": 6,
-      "max": 10
+      "max": 14
     },
-    "shape": null,
-    "forcing": "none",
+    "shape": {
+      "suitMax": {
+        "H": 3,
+        "S": 3
+      }
+    },
+    "forcing": "one_round",
     "alert": false,
     "recommendable": true,
-    "meaning": "否认 3 张红心支持与 4 张黑桃；可以是带 5 张以上低花的非均型，不逼叫。",
+    "meaning": "半逼叫：6~12 点；13~14 点、红心不配时也先叫 1NT，下一轮再叫 2NT。否认 4 张红心支持与 4 张黑桃；可以是带 5 张以上低花的非均型。",
     "source": "1♥ 开叫（sayc_1h.php）",
     "tags": [
-      "示弱"
+      "示弱",
+      "逼叫"
     ],
-    "legacyP": "6~10",
+    "legacyP": "6~14",
     "bid": "1N"
   },
   {
@@ -860,19 +974,23 @@
       "P:1H"
     ],
     "hcp": {
-      "min": 11,
+      "min": 13,
       "max": 37
     },
-    "shape": null,
-    "forcing": "one_round",
+    "shape": {
+      "suitMin": {
+        "C": 5
+      }
+    },
+    "forcing": "game",
     "alert": false,
     "recommendable": true,
-    "meaning": "4 张以上所叫花色，逼叫。",
+    "meaning": "5 张以上所叫花色，二盖一逼局。",
     "source": "1♥ 开叫（sayc_1h.php）",
     "tags": [
-      "逼叫"
+      "进局"
     ],
-    "legacyP": "11 以上",
+    "legacyP": "13 以上",
     "bid": "2C"
   },
   {
@@ -883,19 +1001,23 @@
       "P:1H"
     ],
     "hcp": {
-      "min": 11,
+      "min": 13,
       "max": 37
     },
-    "shape": null,
-    "forcing": "one_round",
+    "shape": {
+      "suitMin": {
+        "D": 5
+      }
+    },
+    "forcing": "game",
     "alert": false,
     "recommendable": true,
-    "meaning": "4 张以上所叫花色，逼叫。",
+    "meaning": "5 张以上所叫花色，二盖一逼局。",
     "source": "1♥ 开叫（sayc_1h.php）",
     "tags": [
-      "逼叫"
+      "进局"
     ],
-    "legacyP": "11 以上",
+    "legacyP": "13 以上",
     "bid": "2D"
   },
   {
@@ -909,7 +1031,11 @@
       "min": 6,
       "max": 10
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "H": 3
+      }
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
@@ -930,14 +1056,18 @@
       "min": 17,
       "max": 19
     },
-    "shape": null,
-    "forcing": "one_round",
+    "shape": {
+      "suitMin": {
+        "S": 5
+      }
+    },
+    "forcing": "game",
     "alert": false,
     "recommendable": true,
     "meaning": "强跳叫（strong jump shift）：5 张以上黑桃，邀满贯。手册只写「邀满贯」未给点力区间，17~19 为通行量化。",
     "source": "1♥ 开叫（sayc_1h.php）",
     "tags": [
-      "逼叫",
+      "进局",
       "满贯"
     ],
     "legacyP": "17~19",
@@ -954,15 +1084,19 @@
       "min": 13,
       "max": 37
     },
-    "shape": null,
-    "forcing": "one_round",
+    "shape": {
+      "suitMin": {
+        "H": 4
+      }
+    },
+    "forcing": "game",
     "alert": true,
     "recommendable": true,
     "meaning": "杰克贝 2NT（Jacoby 2NT）：4 张以上红心支持的逼局加叫，请开叫方描述牌型。",
     "source": "1♥ 开叫（sayc_1h.php）",
     "tags": [
       "约定叫",
-      "逼叫"
+      "进局"
     ],
     "legacyP": "13 以上",
     "bid": "2N"
@@ -978,14 +1112,18 @@
       "min": 17,
       "max": 19
     },
-    "shape": null,
-    "forcing": "one_round",
+    "shape": {
+      "suitMin": {
+        "C": 5
+      }
+    },
+    "forcing": "game",
     "alert": false,
     "recommendable": true,
     "meaning": "强跳叫（strong jump shift）：5 张以上所叫花色，邀满贯。手册只写「邀满贯」，17~19 为通行量化。",
     "source": "1♥ 开叫（sayc_1h.php）",
     "tags": [
-      "逼叫",
+      "进局",
       "满贯"
     ],
     "legacyP": "17~19",
@@ -1002,14 +1140,18 @@
       "min": 17,
       "max": 19
     },
-    "shape": null,
-    "forcing": "one_round",
+    "shape": {
+      "suitMin": {
+        "D": 5
+      }
+    },
+    "forcing": "game",
     "alert": false,
     "recommendable": true,
     "meaning": "强跳叫（strong jump shift）：5 张以上所叫花色，邀满贯。手册只写「邀满贯」，17~19 为通行量化。",
     "source": "1♥ 开叫（sayc_1h.php）",
     "tags": [
-      "逼叫",
+      "进局",
       "满贯"
     ],
     "legacyP": "17~19",
@@ -1026,11 +1168,18 @@
       "min": 10,
       "max": 12
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "H": 3
+      },
+      "suitMax": {
+        "S": 3
+      }
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
-    "meaning": "限制性加叫：4 张红心，不逼叫。",
+    "meaning": "限制性加叫：3 张以上红心，否认 4 张黑桃，邀局、不逼叫。",
     "source": "1♥ 开叫（sayc_1h.php）",
     "tags": [
       "邀局"
@@ -1049,14 +1198,19 @@
       "min": 15,
       "max": 17
     },
-    "shape": null,
-    "forcing": "one_round",
+    "shape": {
+      "balanced": true,
+      "suitMax": {
+        "H": 2
+      }
+    },
+    "forcing": "game",
     "alert": false,
     "recommendable": true,
     "meaning": "均型、两张红心支持，通常否认 4 张黑桃，逼叫到局。",
     "source": "1♥ 开叫（sayc_1h.php）",
     "tags": [
-      "逼叫"
+      "进局"
     ],
     "legacyP": "15~17",
     "bid": "3N"
@@ -1072,11 +1226,15 @@
       "min": 0,
       "max": 9
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "H": 5
+      }
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
-    "meaning": "通常 5 张以上红心并带单缺，少于 10 个大牌点，不逼叫。",
+    "meaning": "阻击性加叫：5 张以上红心支持，少于 10 个大牌点，不逼叫。",
     "source": "1♥ 开叫（sayc_1h.php）",
     "tags": [
       "止叫",
@@ -1137,18 +1295,23 @@
     ],
     "hcp": {
       "min": 6,
-      "max": 10
+      "max": 14
     },
-    "shape": null,
-    "forcing": "none",
+    "shape": {
+      "suitMax": {
+        "S": 3
+      }
+    },
+    "forcing": "one_round",
     "alert": false,
     "recommendable": true,
-    "meaning": "否认 3 张黑桃支持；可以是非均型、带 5 张以上旁花，不逼叫。",
+    "meaning": "半逼叫：6~12 点；13~14 点、黑桃不配时也先叫 1NT，下一轮再叫 2NT。否认 4 张黑桃支持；可以是非均型、带 5 张以上旁花。",
     "source": "1♠ 开叫（sayc_1s.php）",
     "tags": [
-      "示弱"
+      "示弱",
+      "逼叫"
     ],
-    "legacyP": "6~10",
+    "legacyP": "6~14",
     "bid": "1N"
   },
   {
@@ -1159,19 +1322,23 @@
       "P:1S"
     ],
     "hcp": {
-      "min": 11,
+      "min": 13,
       "max": 37
     },
-    "shape": null,
-    "forcing": "one_round",
+    "shape": {
+      "suitMin": {
+        "C": 5
+      }
+    },
+    "forcing": "game",
     "alert": false,
     "recommendable": true,
-    "meaning": "4 张以上所叫花色，逼叫。",
+    "meaning": "5 张以上所叫花色，二盖一逼局。",
     "source": "1♠ 开叫（sayc_1s.php）",
     "tags": [
-      "逼叫"
+      "进局"
     ],
-    "legacyP": "11 以上",
+    "legacyP": "13 以上",
     "bid": "2C"
   },
   {
@@ -1182,19 +1349,23 @@
       "P:1S"
     ],
     "hcp": {
-      "min": 11,
+      "min": 13,
       "max": 37
     },
-    "shape": null,
-    "forcing": "one_round",
+    "shape": {
+      "suitMin": {
+        "D": 5
+      }
+    },
+    "forcing": "game",
     "alert": false,
     "recommendable": true,
-    "meaning": "4 张以上所叫花色，逼叫。",
+    "meaning": "5 张以上所叫花色，二盖一逼局。",
     "source": "1♠ 开叫（sayc_1s.php）",
     "tags": [
-      "逼叫"
+      "进局"
     ],
-    "legacyP": "11 以上",
+    "legacyP": "13 以上",
     "bid": "2D"
   },
   {
@@ -1205,19 +1376,23 @@
       "P:1S"
     ],
     "hcp": {
-      "min": 11,
+      "min": 13,
       "max": 37
     },
-    "shape": null,
-    "forcing": "one_round",
+    "shape": {
+      "suitMin": {
+        "H": 5
+      }
+    },
+    "forcing": "game",
     "alert": false,
     "recommendable": true,
-    "meaning": "4 张以上所叫花色，逼叫。",
+    "meaning": "5 张以上所叫花色，二盖一逼局。",
     "source": "1♠ 开叫（sayc_1s.php）",
     "tags": [
-      "逼叫"
+      "进局"
     ],
-    "legacyP": "11 以上",
+    "legacyP": "13 以上",
     "bid": "2H"
   },
   {
@@ -1231,7 +1406,11 @@
       "min": 6,
       "max": 10
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "S": 3
+      }
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
@@ -1252,15 +1431,19 @@
       "min": 13,
       "max": 37
     },
-    "shape": null,
-    "forcing": "one_round",
+    "shape": {
+      "suitMin": {
+        "S": 4
+      }
+    },
+    "forcing": "game",
     "alert": true,
     "recommendable": true,
     "meaning": "杰克贝 2NT（Jacoby 2NT）：4 张以上黑桃支持的逼局加叫，请开叫方描述牌型。",
     "source": "1♠ 开叫（sayc_1s.php）",
     "tags": [
       "约定叫",
-      "逼叫"
+      "进局"
     ],
     "legacyP": "13 以上",
     "bid": "2N"
@@ -1276,14 +1459,18 @@
       "min": 17,
       "max": 19
     },
-    "shape": null,
-    "forcing": "one_round",
+    "shape": {
+      "suitMin": {
+        "C": 5
+      }
+    },
+    "forcing": "game",
     "alert": false,
     "recommendable": true,
     "meaning": "强跳叫（strong jump shift）：5 张以上所叫花色，邀满贯。手册只写「邀满贯」，17~19 为通行量化。",
     "source": "1♠ 开叫（sayc_1s.php）",
     "tags": [
-      "逼叫",
+      "进局",
       "满贯"
     ],
     "legacyP": "17~19",
@@ -1300,14 +1487,18 @@
       "min": 17,
       "max": 19
     },
-    "shape": null,
-    "forcing": "one_round",
+    "shape": {
+      "suitMin": {
+        "D": 5
+      }
+    },
+    "forcing": "game",
     "alert": false,
     "recommendable": true,
     "meaning": "强跳叫（strong jump shift）：5 张以上所叫花色，邀满贯。手册只写「邀满贯」，17~19 为通行量化。",
     "source": "1♠ 开叫（sayc_1s.php）",
     "tags": [
-      "逼叫",
+      "进局",
       "满贯"
     ],
     "legacyP": "17~19",
@@ -1324,14 +1515,18 @@
       "min": 17,
       "max": 19
     },
-    "shape": null,
-    "forcing": "one_round",
+    "shape": {
+      "suitMin": {
+        "H": 5
+      }
+    },
+    "forcing": "game",
     "alert": false,
     "recommendable": true,
     "meaning": "强跳叫（strong jump shift）：5 张以上所叫花色，邀满贯。手册只写「邀满贯」，17~19 为通行量化。",
     "source": "1♠ 开叫（sayc_1s.php）",
     "tags": [
-      "逼叫",
+      "进局",
       "满贯"
     ],
     "legacyP": "17~19",
@@ -1348,11 +1543,15 @@
       "min": 10,
       "max": 12
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "S": 3
+      }
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
-    "meaning": "限制性加叫：4 张黑桃，不逼叫。",
+    "meaning": "限制性加叫：3 张以上黑桃，邀局、不逼叫。",
     "source": "1♠ 开叫（sayc_1s.php）",
     "tags": [
       "邀局"
@@ -1371,14 +1570,19 @@
       "min": 15,
       "max": 17
     },
-    "shape": null,
-    "forcing": "one_round",
+    "shape": {
+      "balanced": true,
+      "suitMax": {
+        "S": 2
+      }
+    },
+    "forcing": "game",
     "alert": false,
     "recommendable": true,
     "meaning": "均型、两张黑桃支持，通常否认 4 张红心，逼叫到局。",
     "source": "1♠ 开叫（sayc_1s.php）",
     "tags": [
-      "逼叫"
+      "进局"
     ],
     "legacyP": "15~17",
     "bid": "3N"
@@ -1394,11 +1598,15 @@
       "min": 0,
       "max": 9
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "S": 5
+      }
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
-    "meaning": "通常 5 张以上黑桃并带单缺，少于 10 个大牌点，不逼叫。",
+    "meaning": "阻击性加叫：5 张以上黑桃支持，少于 10 个大牌点，不逼叫。",
     "source": "1♠ 开叫（sayc_1s.php）",
     "tags": [
       "止叫",
@@ -1438,7 +1646,9 @@
       "min": 12,
       "max": 14
     },
-    "shape": null,
+    "shape": {
+      "balanced": true
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
@@ -1459,7 +1669,11 @@
       "min": 13,
       "max": 18
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "C": 4
+      }
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
@@ -1480,7 +1694,11 @@
       "min": 13,
       "max": 18
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "D": 4
+      }
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
@@ -1501,7 +1719,11 @@
       "min": 13,
       "max": 15
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "H": 6
+      }
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
@@ -1522,7 +1744,11 @@
       "min": 13,
       "max": 15
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "S": 4
+      }
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
@@ -1543,7 +1769,9 @@
       "min": 18,
       "max": 19
     },
-    "shape": null,
+    "shape": {
+      "balanced": true
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
@@ -1564,7 +1792,11 @@
       "min": 19,
       "max": 22
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "C": 4
+      }
+    },
     "forcing": "one_round",
     "alert": false,
     "recommendable": true,
@@ -1587,7 +1819,11 @@
       "min": 19,
       "max": 22
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "D": 4
+      }
+    },
     "forcing": "one_round",
     "alert": false,
     "recommendable": true,
@@ -1610,7 +1846,11 @@
       "min": 16,
       "max": 18
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "H": 6
+      }
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
@@ -1631,7 +1871,11 @@
       "min": 15,
       "max": 18
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "S": 4
+      }
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
@@ -1652,7 +1896,11 @@
       "min": 19,
       "max": 22
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "S": 4
+      }
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
@@ -1673,7 +1921,11 @@
       "min": 13,
       "max": 18
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "C": 4
+      }
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
@@ -1694,7 +1946,11 @@
       "min": 13,
       "max": 18
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "D": 4
+      }
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
@@ -1712,17 +1968,21 @@
       "M:1H P:1N"
     ],
     "hcp": {
-      "min": 13,
+      "min": 12,
       "max": 15
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "H": 5
+      }
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
-    "meaning": "6 张以上红心，不逼叫。",
+    "meaning": "低限再叫：5 张以上红心，不逼叫；半逼叫 1NT 后开叫人不得 Pass。",
     "source": "1♥ — 1NT 后再叫（sayc_1h.php）",
     "tags": [],
-    "legacyP": "13~15",
+    "legacyP": "12~15",
     "bid": "2H"
   },
   {
@@ -1736,7 +1996,11 @@
       "min": 16,
       "max": 37
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "S": 4
+      }
+    },
     "forcing": "one_round",
     "alert": false,
     "recommendable": true,
@@ -1759,7 +2023,9 @@
       "min": 18,
       "max": 19
     },
-    "shape": null,
+    "shape": {
+      "balanced": true
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
@@ -1780,7 +2046,11 @@
       "min": 19,
       "max": 22
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "C": 4
+      }
+    },
     "forcing": "one_round",
     "alert": false,
     "recommendable": true,
@@ -1803,7 +2073,11 @@
       "min": 19,
       "max": 22
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "D": 4
+      }
+    },
     "forcing": "one_round",
     "alert": false,
     "recommendable": true,
@@ -1826,7 +2100,11 @@
       "min": 16,
       "max": 18
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "H": 6
+      }
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
@@ -1848,7 +2126,11 @@
       "min": 13,
       "max": 15
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "H": 3
+      }
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
@@ -1870,7 +2152,11 @@
       "min": 16,
       "max": 18
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "H": 6
+      }
+    },
     "forcing": "one_round",
     "alert": false,
     "recommendable": true,
@@ -1894,7 +2180,9 @@
       "min": 12,
       "max": 14
     },
-    "shape": null,
+    "shape": {
+      "balanced": true
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
@@ -1916,7 +2204,9 @@
       "min": 18,
       "max": 19
     },
-    "shape": null,
+    "shape": {
+      "balanced": true
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
@@ -1938,7 +2228,11 @@
       "min": 13,
       "max": 15
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "C": 3
+      }
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
@@ -1960,7 +2254,11 @@
       "min": 16,
       "max": 37
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "D": 4
+      }
+    },
     "forcing": "one_round",
     "alert": false,
     "recommendable": true,
@@ -1984,7 +2282,11 @@
       "min": 16,
       "max": 37
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "S": 4
+      }
+    },
     "forcing": "one_round",
     "alert": false,
     "recommendable": true,
@@ -2003,15 +2305,22 @@
     "contextKeys": [
       "M:1H P:2H"
     ],
-    "hcp": null,
-    "shape": null,
+    "hcp": {
+      "min": 18,
+      "max": 19
+    },
+    "shape": {
+      "balanced": true
+    },
     "forcing": "none",
     "alert": false,
-    "recommendable": false,
-    "meaning": "自然叫，通常表示红心较弱的好均型牌。",
+    "recommendable": true,
+    "meaning": "自然邀局：18~19 点均型，红心配合一般。",
     "source": "1♥ — 2♥ 后再叫（sayc_1h.php）",
-    "tags": [],
-    "legacyP": null,
+    "tags": [
+      "邀局"
+    ],
+    "legacyP": "18~19",
     "bid": "2N"
   },
   {
@@ -2081,17 +2390,20 @@
     "contextKeys": [
       "M:1H P:2H"
     ],
-    "hcp": null,
+    "hcp": {
+      "min": 16,
+      "max": 18
+    },
     "shape": null,
     "forcing": "none",
     "alert": false,
-    "recommendable": false,
-    "meaning": "自然邀局。",
+    "recommendable": true,
+    "meaning": "自然邀局：16~18 点，红心配合良好（好套或六张）。",
     "source": "1♥ — 2♥ 后再叫（sayc_1h.php）",
     "tags": [
       "邀局"
     ],
-    "legacyP": null,
+    "legacyP": "16~18",
     "bid": "3H"
   },
   {
@@ -2101,17 +2413,20 @@
     "contextKeys": [
       "M:1H P:2H"
     ],
-    "hcp": null,
+    "hcp": {
+      "min": 19,
+      "max": 22
+    },
     "shape": null,
     "forcing": "none",
     "alert": false,
-    "recommendable": false,
-    "meaning": "止叫。",
+    "recommendable": true,
+    "meaning": "19 点以上直接进局。",
     "source": "1♥ — 2♥ 后再叫（sayc_1h.php）",
     "tags": [
       "止叫"
     ],
-    "legacyP": null,
+    "legacyP": "19~22",
     "bid": "4H"
   },
   {
@@ -2125,7 +2440,11 @@
       "min": 13,
       "max": 18
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "C": 4
+      }
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
@@ -2146,7 +2465,11 @@
       "min": 13,
       "max": 18
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "D": 4
+      }
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
@@ -2167,7 +2490,11 @@
       "min": 13,
       "max": 18
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "H": 4
+      }
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
@@ -2185,17 +2512,21 @@
       "M:1S P:1N"
     ],
     "hcp": {
-      "min": 13,
+      "min": 12,
       "max": 15
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "S": 5
+      }
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
-    "meaning": "6 张以上黑桃，不逼叫。",
+    "meaning": "低限再叫：5 张以上黑桃，不逼叫；半逼叫 1NT 后开叫人不得 Pass。",
     "source": "1♠ — 1NT 后再叫（sayc_1s.php）",
     "tags": [],
-    "legacyP": "13~15",
+    "legacyP": "12~15",
     "bid": "2S"
   },
   {
@@ -2209,7 +2540,9 @@
       "min": 18,
       "max": 19
     },
-    "shape": null,
+    "shape": {
+      "balanced": true
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
@@ -2230,7 +2563,11 @@
       "min": 19,
       "max": 22
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "C": 4
+      }
+    },
     "forcing": "one_round",
     "alert": false,
     "recommendable": true,
@@ -2253,7 +2590,11 @@
       "min": 19,
       "max": 22
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "D": 4
+      }
+    },
     "forcing": "one_round",
     "alert": false,
     "recommendable": true,
@@ -2276,7 +2617,11 @@
       "min": 19,
       "max": 22
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "H": 4
+      }
+    },
     "forcing": "one_round",
     "alert": false,
     "recommendable": true,
@@ -2299,7 +2644,11 @@
       "min": 16,
       "max": 18
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "S": 6
+      }
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
@@ -2322,7 +2671,9 @@
       "min": 12,
       "max": 14
     },
-    "shape": null,
+    "shape": {
+      "balanced": true
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
@@ -2345,7 +2696,9 @@
       "min": 18,
       "max": 19
     },
-    "shape": null,
+    "shape": {
+      "balanced": true
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
@@ -2368,7 +2721,11 @@
       "min": 13,
       "max": 15
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "S": 6
+      }
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
@@ -2391,7 +2748,11 @@
       "min": 16,
       "max": 18
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "S": 6
+      }
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
@@ -2408,15 +2769,22 @@
     "contextKeys": [
       "M:1S P:2S"
     ],
-    "hcp": null,
-    "shape": null,
+    "hcp": {
+      "min": 18,
+      "max": 19
+    },
+    "shape": {
+      "balanced": true
+    },
     "forcing": "none",
     "alert": false,
-    "recommendable": false,
-    "meaning": "自然叫，通常表示黑桃较弱的好均型牌。",
+    "recommendable": true,
+    "meaning": "自然邀局：18~19 点均型，黑桃配合一般。",
     "source": "1♠ — 2♠ 后再叫（sayc_1s.php）",
-    "tags": [],
-    "legacyP": null,
+    "tags": [
+      "邀局"
+    ],
+    "legacyP": "18~19",
     "bid": "2N"
   },
   {
@@ -2486,17 +2854,20 @@
     "contextKeys": [
       "M:1S P:2S"
     ],
-    "hcp": null,
+    "hcp": {
+      "min": 16,
+      "max": 18
+    },
     "shape": null,
     "forcing": "none",
     "alert": false,
-    "recommendable": false,
-    "meaning": "自然邀局。",
+    "recommendable": true,
+    "meaning": "自然邀局：16~18 点，黑桃配合良好（好套或六张）。",
     "source": "1♠ — 2♠ 后再叫（sayc_1s.php）",
     "tags": [
       "邀局"
     ],
-    "legacyP": null,
+    "legacyP": "16~18",
     "bid": "3S"
   },
   {
@@ -2506,17 +2877,20 @@
     "contextKeys": [
       "M:1S P:2S"
     ],
-    "hcp": null,
+    "hcp": {
+      "min": 19,
+      "max": 22
+    },
     "shape": null,
     "forcing": "none",
     "alert": false,
-    "recommendable": false,
-    "meaning": "止叫。",
+    "recommendable": true,
+    "meaning": "19 点以上直接进局。",
     "source": "1♠ — 2♠ 后再叫（sayc_1s.php）",
     "tags": [
       "止叫"
     ],
-    "legacyP": null,
+    "legacyP": "19~22",
     "bid": "4S"
   },
   {
@@ -2534,7 +2908,9 @@
       "min": 12,
       "max": 14
     },
-    "shape": null,
+    "shape": {
+      "balanced": true
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
@@ -2559,7 +2935,9 @@
       "min": 18,
       "max": 19
     },
-    "shape": null,
+    "shape": {
+      "balanced": true
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
@@ -2584,7 +2962,11 @@
       "min": 13,
       "max": 15
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "C": 5
+      }
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
@@ -2609,7 +2991,11 @@
       "min": 13,
       "max": 15
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "D": 5
+      }
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
@@ -2684,7 +3070,11 @@
       "min": 13,
       "max": 15
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "H": 4
+      }
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
@@ -2709,7 +3099,11 @@
       "min": 13,
       "max": 15
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "S": 4
+      }
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
@@ -2734,7 +3128,11 @@
       "min": 16,
       "max": 18
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "H": 4
+      }
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
@@ -2759,7 +3157,11 @@
       "min": 16,
       "max": 18
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "S": 4
+      }
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
@@ -2784,7 +3186,11 @@
       "min": 19,
       "max": 22
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "H": 4
+      }
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
@@ -2809,7 +3215,11 @@
       "min": 19,
       "max": 22
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "S": 4
+      }
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
@@ -2834,7 +3244,11 @@
       "min": 19,
       "max": 37
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "bid": 3
+      }
+    },
     "forcing": "one_round",
     "alert": false,
     "recommendable": true,
@@ -2863,7 +3277,11 @@
       "min": 13,
       "max": 18
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "bid": 4
+      }
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
@@ -2887,7 +3305,9 @@
       "min": 18,
       "max": 19
     },
-    "shape": null,
+    "shape": {
+      "balanced": true
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
@@ -2909,7 +3329,11 @@
       "min": 13,
       "max": 15
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "C": 6
+      }
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
@@ -2931,7 +3355,11 @@
       "min": 13,
       "max": 15
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "D": 6
+      }
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
@@ -2953,7 +3381,11 @@
       "min": 16,
       "max": 18
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "C": 6
+      }
+    },
     "forcing": "one_round",
     "alert": false,
     "recommendable": true,
@@ -2977,7 +3409,11 @@
       "min": 16,
       "max": 18
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "D": 6
+      }
+    },
     "forcing": "one_round",
     "alert": false,
     "recommendable": true,
@@ -3001,7 +3437,11 @@
       "min": 16,
       "max": 37
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "bid": 4
+      }
+    },
     "forcing": "one_round",
     "alert": false,
     "recommendable": true,
@@ -3026,7 +3466,15 @@
       "min": 13,
       "max": 15
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "D": 6
+      },
+      "suitMax": {
+        "H": 3,
+        "S": 3
+      }
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
@@ -3093,7 +3541,9 @@
       "min": 12,
       "max": 14
     },
-    "shape": null,
+    "shape": {
+      "balanced": true
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
@@ -3114,7 +3564,11 @@
       "min": 13,
       "max": 15
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "C": 3
+      }
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
@@ -3135,7 +3589,11 @@
       "min": 16,
       "max": 18
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "D": 6
+      }
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
@@ -3156,7 +3614,9 @@
       "min": 18,
       "max": 19
     },
-    "shape": null,
+    "shape": {
+      "balanced": true
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
@@ -3177,7 +3637,11 @@
       "min": 16,
       "max": 18
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "C": 4
+      }
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
@@ -3198,7 +3662,12 @@
       "min": 0,
       "max": 7
     },
-    "shape": null,
+    "shape": {
+      "suitMax": {
+        "H": 4,
+        "S": 4
+      }
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
@@ -3221,7 +3690,9 @@
       "min": 8,
       "max": 37
     },
-    "shape": null,
+    "shape": {
+      "major4": true
+    },
     "forcing": "none",
     "alert": true,
     "recommendable": true,
@@ -3289,7 +3760,9 @@
       "P:1N"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "anyMinorMin": 6
+    },
     "forcing": "none",
     "alert": true,
     "recommendable": false,
@@ -3313,7 +3786,9 @@
       "min": 8,
       "max": 9
     },
-    "shape": null,
+    "shape": {
+      "balanced": true
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
@@ -3336,7 +3811,11 @@
       "min": 7,
       "max": 8
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "C": 6
+      }
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
@@ -3359,7 +3838,11 @@
       "min": 7,
       "max": 8
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "D": 6
+      }
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
@@ -3378,7 +3861,10 @@
     "contextKeys": [
       "P:1N"
     ],
-    "hcp": null,
+    "hcp": {
+      "min": 10,
+      "max": 37
+    },
     "shape": {
       "suitMin": {
         "H": 6
@@ -3392,7 +3878,7 @@
     "tags": [
       "满贯"
     ],
-    "legacyP": "6 张以上 H",
+    "legacyP": "10 以上",
     "bid": "3H"
   },
   {
@@ -3402,7 +3888,10 @@
     "contextKeys": [
       "P:1N"
     ],
-    "hcp": null,
+    "hcp": {
+      "min": 10,
+      "max": 37
+    },
     "shape": {
       "suitMin": {
         "S": 6
@@ -3416,7 +3905,7 @@
     "tags": [
       "满贯"
     ],
-    "legacyP": "6 张以上 S",
+    "legacyP": "10 以上",
     "bid": "3S"
   },
   {
@@ -3428,18 +3917,20 @@
     ],
     "hcp": {
       "min": 10,
-      "max": 13
+      "max": 15
     },
-    "shape": null,
+    "shape": {
+      "balanced": true
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
-    "meaning": "自然叫，止叫。",
+    "meaning": "均型，自然叫，止叫。",
     "source": "1NT 开叫（1nt_15_17.php）",
     "tags": [
       "止叫"
     ],
-    "legacyP": "10~13",
+    "legacyP": "10~15",
     "bid": "3N"
   },
   {
@@ -3469,17 +3960,22 @@
     "contextKeys": [
       "P:1N"
     ],
-    "hcp": null,
-    "shape": null,
+    "hcp": {
+      "min": 16,
+      "max": 17
+    },
+    "shape": {
+      "balanced": true
+    },
     "forcing": "none",
     "alert": false,
-    "recommendable": false,
-    "meaning": "定量邀叫：邀请开叫方高限时叫 6NT。",
+    "recommendable": true,
+    "meaning": "定量邀叫：16~17 点均型，邀请开叫方高限时叫 6NT。",
     "source": "1NT 开叫（1nt_15_17.php）",
     "tags": [
       "邀局"
     ],
-    "legacyP": null,
+    "legacyP": "16~17",
     "bid": "4N"
   },
   {
@@ -3493,7 +3989,9 @@
       "min": 8,
       "max": 37
     },
-    "shape": null,
+    "shape": {
+      "major4": true
+    },
     "forcing": "none",
     "alert": true,
     "recommendable": true,
@@ -3603,17 +4101,22 @@
     "contextKeys": [
       "P:2N"
     ],
-    "hcp": null,
-    "shape": null,
+    "hcp": {
+      "min": 4,
+      "max": 5
+    },
+    "shape": {
+      "balanced": true
+    },
     "forcing": "none",
     "alert": false,
-    "recommendable": false,
-    "meaning": "定量邀叫：邀请开叫方高限时叫 6NT。",
+    "recommendable": true,
+    "meaning": "定量邀叫：4~5 点均型，邀请开叫方高限时叫 6NT。",
     "source": "2NT 开叫（20~21，sayc.php）",
     "tags": [
       "邀局"
     ],
-    "legacyP": null,
+    "legacyP": "4~5",
     "bid": "4N"
   },
   {
@@ -3624,12 +4127,14 @@
       "P:3N"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "shortage": "any"
+    },
     "forcing": "none",
     "alert": true,
-    "recommendable": false,
-    "meaning": "盖伯：问 A。",
-    "source": "3NT 开叫（25~27，sayc.php）",
+    "recommendable": true,
+    "meaning": "问单缺（拼搏 3NT 约定叫）。",
+    "source": "3NT 拼搏开叫（8~12，F:\\桥牌 教材）",
     "tags": [
       "约定叫"
     ],
@@ -3644,20 +4149,16 @@
       "P:3N"
     ],
     "hcp": null,
-    "shape": {
-      "suitMin": {
-        "H": 5
-      }
-    },
+    "shape": null,
     "forcing": "none",
-    "alert": true,
-    "recommendable": true,
-    "meaning": "杰克贝转移叫：五张以上红心，开叫方叫 4♥。",
-    "source": "3NT 开叫（25~27，sayc.php）",
+    "alert": false,
+    "recommendable": false,
+    "meaning": "要求开叫方改叫 4♦（pass or correct）。",
+    "source": "3NT 拼搏开叫（8~12，F:\\桥牌 教材）",
     "tags": [
-      "转移叫"
+      "止叫"
     ],
-    "legacyP": "5 张以上 H",
+    "legacyP": null,
     "bid": "4D"
   },
   {
@@ -3668,20 +4169,16 @@
       "P:3N"
     ],
     "hcp": null,
-    "shape": {
-      "suitMin": {
-        "S": 5
-      }
-    },
+    "shape": null,
     "forcing": "none",
-    "alert": true,
-    "recommendable": true,
-    "meaning": "杰克贝转移叫：五张以上黑桃，开叫方叫 4♠。",
-    "source": "3NT 开叫（25~27，sayc.php）",
+    "alert": false,
+    "recommendable": false,
+    "meaning": "自然止叫：长红心弱牌。",
+    "source": "3NT 拼搏开叫（8~12，F:\\桥牌 教材）",
     "tags": [
-      "转移叫"
+      "止叫"
     ],
-    "legacyP": "5 张以上 S",
+    "legacyP": null,
     "bid": "4H"
   },
   {
@@ -3719,14 +4216,18 @@
       "min": 8,
       "max": 37
     },
-    "shape": null,
-    "forcing": "one_round",
+    "shape": {
+      "suitMin": {
+        "H": 5
+      }
+    },
+    "forcing": "game",
     "alert": false,
     "recommendable": true,
     "meaning": "五张以上红心，自然、逼叫到局。",
     "source": "2♣ 强开叫（strong_2c.php）",
     "tags": [
-      "逼叫"
+      "进局"
     ],
     "legacyP": "8 以上",
     "bid": "2H"
@@ -3742,14 +4243,18 @@
       "min": 8,
       "max": 37
     },
-    "shape": null,
-    "forcing": "one_round",
+    "shape": {
+      "suitMin": {
+        "S": 5
+      }
+    },
+    "forcing": "game",
     "alert": false,
     "recommendable": true,
     "meaning": "五张以上黑桃，自然、逼叫到局。",
     "source": "2♣ 强开叫（strong_2c.php）",
     "tags": [
-      "逼叫"
+      "进局"
     ],
     "legacyP": "8 以上",
     "bid": "2S"
@@ -3765,14 +4270,16 @@
       "min": 8,
       "max": 37
     },
-    "shape": null,
-    "forcing": "one_round",
+    "shape": {
+      "balanced": true
+    },
+    "forcing": "game",
     "alert": false,
     "recommendable": true,
     "meaning": "均型，逼叫到局；此后无将体系（斯台曼、转移叫）全部启用。",
     "source": "2♣ 强开叫（strong_2c.php）",
     "tags": [
-      "逼叫"
+      "进局"
     ],
     "legacyP": "8 以上",
     "bid": "2N"
@@ -3788,14 +4295,18 @@
       "min": 8,
       "max": 37
     },
-    "shape": null,
-    "forcing": "one_round",
+    "shape": {
+      "suitMin": {
+        "C": 5
+      }
+    },
+    "forcing": "game",
     "alert": false,
     "recommendable": true,
     "meaning": "五张以上梅花，自然、逼叫到局。",
     "source": "2♣ 强开叫（strong_2c.php）",
     "tags": [
-      "逼叫"
+      "进局"
     ],
     "legacyP": "8 以上",
     "bid": "3C"
@@ -3811,14 +4322,18 @@
       "min": 8,
       "max": 37
     },
-    "shape": null,
-    "forcing": "one_round",
+    "shape": {
+      "suitMin": {
+        "D": 5
+      }
+    },
+    "forcing": "game",
     "alert": false,
     "recommendable": true,
     "meaning": "五张以上方块，自然、逼叫到局。",
     "source": "2♣ 强开叫（strong_2c.php）",
     "tags": [
-      "逼叫"
+      "进局"
     ],
     "legacyP": "8 以上",
     "bid": "3D"
@@ -3834,7 +4349,11 @@
       "min": 17,
       "max": 37
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "H": 5
+      }
+    },
     "forcing": "one_round",
     "alert": false,
     "recommendable": true,
@@ -3857,7 +4376,11 @@
       "min": 17,
       "max": 37
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "S": 5
+      }
+    },
     "forcing": "one_round",
     "alert": false,
     "recommendable": true,
@@ -3880,7 +4403,9 @@
       "min": 22,
       "max": 24
     },
-    "shape": null,
+    "shape": {
+      "balanced": true
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
@@ -3901,7 +4426,11 @@
       "min": 17,
       "max": 37
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "C": 5
+      }
+    },
     "forcing": "one_round",
     "alert": false,
     "recommendable": true,
@@ -3924,7 +4453,11 @@
       "min": 17,
       "max": 37
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "D": 5
+      }
+    },
     "forcing": "one_round",
     "alert": false,
     "recommendable": true,
@@ -3947,7 +4480,9 @@
       "min": 25,
       "max": 27
     },
-    "shape": null,
+    "shape": {
+      "balanced": true
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
@@ -3968,7 +4503,9 @@
       "min": 28,
       "max": 30
     },
-    "shape": null,
+    "shape": {
+      "balanced": true
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
@@ -3989,7 +4526,9 @@
       "min": 31,
       "max": 32
     },
-    "shape": null,
+    "shape": {
+      "balanced": true
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
@@ -4013,7 +4552,9 @@
       "min": 23,
       "max": 24
     },
-    "shape": null,
+    "shape": {
+      "balanced": true
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
@@ -4037,7 +4578,9 @@
       "min": 25,
       "max": 27
     },
-    "shape": null,
+    "shape": {
+      "balanced": true
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
@@ -4061,7 +4604,11 @@
       "min": 17,
       "max": 37
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "bid": 3
+      }
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
@@ -4087,7 +4634,11 @@
       "min": 17,
       "max": 37
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "bid": 5
+      }
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
@@ -4196,7 +4747,11 @@
       "min": 6,
       "max": 13
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "D": 4
+      }
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
@@ -4222,7 +4777,11 @@
       "min": 6,
       "max": 13
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "H": 4
+      }
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
@@ -4248,7 +4807,11 @@
       "min": 6,
       "max": 13
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "S": 4
+      }
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
@@ -4271,10 +4834,14 @@
       "P:2S"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "D": 5
+      }
+    },
     "forcing": "none",
     "alert": false,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "跳加叫：通常为弱阻击（至少 4 张支持）；持 5 张支持时不论牌力都可直接跳加叫。",
     "source": "弱二开叫（weak_two.php）",
     "tags": [
@@ -4293,10 +4860,14 @@
       "P:2S"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "H": 5
+      }
+    },
     "forcing": "none",
     "alert": false,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "跳加叫：通常为弱阻击（至少 4 张支持）；持 5 张支持时不论牌力都可直接跳加叫。",
     "source": "弱二开叫（weak_two.php）",
     "tags": [
@@ -4315,10 +4886,14 @@
       "P:2S"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "S": 5
+      }
+    },
     "forcing": "none",
     "alert": false,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "跳加叫：通常为弱阻击（至少 4 张支持）；持 5 张支持时不论牌力都可直接跳加叫。",
     "source": "弱二开叫（weak_two.php）",
     "tags": [
@@ -4361,10 +4936,14 @@
       "P:2S"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "partner": 3
+      }
+    },
     "forcing": "one_round",
     "alert": true,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "强人工逼叫：多用于持 3 张以上支持时。开叫方在三阶叫出有 A 或 K 的旁花；叫回原花色表示低限、无边花大牌。",
     "source": "弱二开叫（weak_two.php）",
     "tags": [
@@ -4771,22 +5350,25 @@
     "contextKeys": [
       ""
     ],
-    "hcp": null,
+    "hcp": {
+      "min": 5,
+      "max": 11
+    },
     "shape": {
       "suitMin": {
-        "bid": 7
+        "bid": 8
       }
     },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
-    "meaning": "七张以上所叫高花；无局约 7 个赢墩，有局约 8 个赢墩。",
+    "meaning": "八张以上所叫高花，阻击叫；无局约 7 个赢墩，有局约 8 个赢墩。",
     "source": "三阶 / 四阶开叫（sayc.php）",
     "tags": [
       "开叫",
       "阻击"
     ],
-    "legacyP": null,
+    "legacyP": "5~11",
     "bid": "4H"
   },
   {
@@ -4796,22 +5378,25 @@
     "contextKeys": [
       ""
     ],
-    "hcp": null,
+    "hcp": {
+      "min": 5,
+      "max": 11
+    },
     "shape": {
       "suitMin": {
-        "bid": 7
+        "bid": 8
       }
     },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
-    "meaning": "七张以上所叫高花；无局约 7 个赢墩，有局约 8 个赢墩。",
+    "meaning": "八张以上所叫高花，阻击叫；无局约 7 个赢墩，有局约 8 个赢墩。",
     "source": "三阶 / 四阶开叫（sayc.php）",
     "tags": [
       "开叫",
       "阻击"
     ],
-    "legacyP": null,
+    "legacyP": "5~11",
     "bid": "4S"
   },
   {
@@ -4819,17 +5404,22 @@
     "system": "sayc",
     "seatRole": "overcaller",
     "contextKeys": [
-      "O:*"
+      "O:*",
+      "O:* P:P"
     ],
     "hcp": {
       "min": 8,
       "max": 16
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "bid": 5
+      }
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
-    "meaning": "一阶花色争叫：4 张以上所叫花色。",
+    "meaning": "一阶花色争叫：5 张以上好套。",
     "source": "争叫 / 加倍（sayc.php）",
     "tags": [],
     "legacyP": "8~16",
@@ -4843,17 +5433,20 @@
     "system": "sayc",
     "seatRole": "overcaller",
     "contextKeys": [
-      "O:*"
+      "O:*",
+      "O:* P:P"
     ],
     "hcp": {
       "min": 15,
       "max": 18
     },
-    "shape": null,
+    "shape": {
+      "balanced": true
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
-    "meaning": "均型争叫。",
+    "meaning": "均型争叫，对方花色须有挡张。",
     "source": "争叫 / 加倍（sayc.php）",
     "tags": [],
     "legacyP": "15~18",
@@ -4864,13 +5457,18 @@
     "system": "sayc",
     "seatRole": "overcaller",
     "contextKeys": [
-      "O:*"
+      "O:*",
+      "O:* P:P"
     ],
     "hcp": {
       "min": 5,
       "max": 11
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "bid": 6
+      }
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
@@ -4889,19 +5487,23 @@
     "system": "sayc",
     "seatRole": "overcaller",
     "contextKeys": [
-      "O:*"
+      "O:*",
+      "O:* P:P"
     ],
-    "hcp": null,
+    "hcp": {
+      "min": 11,
+      "max": 37
+    },
     "shape": null,
     "forcing": "none",
     "alert": true,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "技术性加倍：要求同伴叫出未叫过的花色；或 17 点以上的强牌。",
     "source": "争叫 / 加倍（sayc.php）",
     "tags": [
       "约定叫"
     ],
-    "legacyP": null,
+    "legacyP": "11 以上",
     "bid": "X"
   },
   {
@@ -4974,10 +5576,15 @@
       "M:1N P:2C"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "suitMax": {
+        "H": 3,
+        "S": 3
+      }
+    },
     "forcing": "none",
     "alert": false,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "否认四张高花。",
     "source": "斯台曼答叫（stayman.php）",
     "tags": [],
@@ -4992,10 +5599,14 @@
       "M:1N P:2C"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "H": 4
+      }
+    },
     "forcing": "none",
     "alert": false,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "四张红心，可能还有四张黑桃。",
     "source": "斯台曼答叫（stayman.php）",
     "tags": [],
@@ -5010,10 +5621,17 @@
       "M:1N P:2C"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "S": 4
+      },
+      "suitMax": {
+        "H": 3
+      }
+    },
     "forcing": "none",
     "alert": false,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "四张黑桃，否认四张红心。",
     "source": "斯台曼答叫（stayman.php）",
     "tags": [],
@@ -5028,10 +5646,14 @@
       "P:1N M:2C P:2D"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "S": 4
+      }
+    },
     "forcing": "none",
     "alert": false,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "四张黑桃 + 五张红心，邀局，不逼叫。",
     "source": "斯台曼 — 2♦ 之后应叫方再叫（stayman.php）",
     "tags": [
@@ -5048,10 +5670,14 @@
       "P:1N M:2C P:2D"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "S": 5
+      }
+    },
     "forcing": "none",
     "alert": false,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "五张黑桃 + 四张红心，邀局，不逼叫。",
     "source": "斯台曼 — 2♦ 之后应叫方再叫（stayman.php）",
     "tags": [
@@ -5088,10 +5714,14 @@
       "P:1N M:2C P:2D"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "C": 5
+      }
+    },
     "forcing": "one_round",
     "alert": false,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "逼叫到局：5 张以上（通常 6 张）所叫低花，不保证四张高花。",
     "source": "斯台曼 — 2♦ 之后应叫方再叫（stayman.php）",
     "tags": [
@@ -5108,10 +5738,14 @@
       "P:1N M:2C P:2D"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "D": 5
+      }
+    },
     "forcing": "one_round",
     "alert": false,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "逼叫到局：5 张以上（通常 6 张）所叫低花，不保证四张高花。",
     "source": "斯台曼 — 2♦ 之后应叫方再叫（stayman.php）",
     "tags": [
@@ -5128,10 +5762,14 @@
       "P:1N M:2C P:2D"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "S": 4
+      }
+    },
     "forcing": "one_round",
     "alert": false,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "四张黑桃 + 五张红心，逼叫到局。",
     "source": "斯台曼 — 2♦ 之后应叫方再叫（stayman.php）",
     "tags": [
@@ -5148,10 +5786,14 @@
       "P:1N M:2C P:2D"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "S": 5
+      }
+    },
     "forcing": "one_round",
     "alert": false,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "五张黑桃 + 四张红心，逼叫到局。",
     "source": "斯台曼 — 2♦ 之后应叫方再叫（stayman.php）",
     "tags": [
@@ -5188,10 +5830,14 @@
       "P:1N M:2C P:2D"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "S": 4
+      }
+    },
     "forcing": "none",
     "alert": false,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "四张黑桃 + 六张红心，止叫。",
     "source": "斯台曼 — 2♦ 之后应叫方再叫（stayman.php）",
     "tags": [
@@ -5208,10 +5854,14 @@
       "P:1N M:2C P:2D"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "S": 6
+      }
+    },
     "forcing": "none",
     "alert": false,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "六张黑桃 + 四张红心，止叫。",
     "source": "斯台曼 — 2♦ 之后应叫方再叫（stayman.php）",
     "tags": [
@@ -5248,10 +5898,14 @@
       "P:1N M:2C P:2H"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "S": 5
+      }
+    },
     "forcing": "none",
     "alert": false,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "五张黑桃 + 四张红心，邀局，不逼叫。",
     "source": "斯台曼 — 2♥ 之后应叫方再叫（stayman.php）",
     "tags": [
@@ -5268,10 +5922,14 @@
       "P:1N M:2C P:2H"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "S": 4
+      }
+    },
     "forcing": "none",
     "alert": false,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "四张黑桃、红心不足四张，邀局。开叫方可 PASS、3♠ 止叫、4♠ 封局或 3NT。",
     "source": "斯台曼 — 2♥ 之后应叫方再叫（stayman.php）",
     "tags": [
@@ -5288,10 +5946,14 @@
       "P:1N M:2C P:2H"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "C": 5
+      }
+    },
     "forcing": "one_round",
     "alert": false,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "逼叫到局：5 张以上（通常 6 张）所叫低花，不保证四张高花。",
     "source": "斯台曼 — 2♥ 之后应叫方再叫（stayman.php）",
     "tags": [
@@ -5308,10 +5970,14 @@
       "P:1N M:2C P:2H"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "D": 5
+      }
+    },
     "forcing": "one_round",
     "alert": false,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "逼叫到局：5 张以上（通常 6 张）所叫低花，不保证四张高花。",
     "source": "斯台曼 — 2♥ 之后应叫方再叫（stayman.php）",
     "tags": [
@@ -5328,10 +5994,14 @@
       "P:1N M:2C P:2H"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "H": 4
+      }
+    },
     "forcing": "none",
     "alert": false,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "四张红心，邀局。",
     "source": "斯台曼 — 2♥ 之后应叫方再叫（stayman.php）",
     "tags": [
@@ -5348,10 +6018,14 @@
       "P:1N M:2C P:2H"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "S": 5
+      }
+    },
     "forcing": "one_round",
     "alert": false,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "五张以上黑桃 + 四张红心，逼叫到局。",
     "source": "斯台曼 — 2♥ 之后应叫方再叫（stayman.php）",
     "tags": [
@@ -5368,10 +6042,14 @@
       "P:1N M:2C P:2H"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "S": 4
+      }
+    },
     "forcing": "none",
     "alert": false,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "四张黑桃、红心不足四张；开叫方可 PASS 或持四张黑桃改 4♠。",
     "source": "斯台曼 — 2♥ 之后应叫方再叫（stayman.php）",
     "tags": [],
@@ -5446,10 +6124,14 @@
       "P:1N M:2C P:2S"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "C": 5
+      }
+    },
     "forcing": "one_round",
     "alert": false,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "逼叫到局：5 张以上（通常 6 张）所叫低花，不保证四张高花。",
     "source": "斯台曼 — 2♠ 之后应叫方再叫（stayman.php）",
     "tags": [
@@ -5466,10 +6148,14 @@
       "P:1N M:2C P:2S"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "D": 5
+      }
+    },
     "forcing": "one_round",
     "alert": false,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "逼叫到局：5 张以上（通常 6 张）所叫低花，不保证四张高花。",
     "source": "斯台曼 — 2♠ 之后应叫方再叫（stayman.php）",
     "tags": [
@@ -5486,10 +6172,14 @@
       "P:1N M:2C P:2S"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "S": 4
+      }
+    },
     "forcing": "one_round",
     "alert": false,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "四张黑桃 + 五张红心，逼叫到局。",
     "source": "斯台曼 — 2♠ 之后应叫方再叫（stayman.php）",
     "tags": [
@@ -5506,10 +6196,14 @@
       "P:1N M:2C P:2S"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "S": 4
+      }
+    },
     "forcing": "none",
     "alert": false,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "四张黑桃，邀局。",
     "source": "斯台曼 — 2♠ 之后应叫方再叫（stayman.php）",
     "tags": [
@@ -5526,10 +6220,14 @@
       "P:1N M:2C P:2S"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "H": 4
+      }
+    },
     "forcing": "none",
     "alert": false,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "四张红心，止叫。",
     "source": "斯台曼 — 2♠ 之后应叫方再叫（stayman.php）",
     "tags": [
@@ -5586,11 +6284,15 @@
       "M:1N P:2D"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "H": 2
+      }
+    },
     "forcing": "none",
     "alert": true,
-    "recommendable": false,
-    "meaning": "完成转移：应叫方为五张以上红心。",
+    "recommendable": true,
+    "meaning": "完成转移：接受红心定约，通常 2 张以上红心。",
     "source": "转移叫完成（jacoby_transfers.php）",
     "tags": [
       "转移叫"
@@ -5606,11 +6308,15 @@
       "M:1N P:2H"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "S": 2
+      }
+    },
     "forcing": "none",
     "alert": true,
-    "recommendable": false,
-    "meaning": "完成转移：应叫方为五张以上黑桃。",
+    "recommendable": true,
+    "meaning": "完成转移：接受黑桃定约，通常 2 张以上黑桃。",
     "source": "转移叫完成（jacoby_transfers.php）",
     "tags": [
       "转移叫"
@@ -5629,7 +6335,11 @@
       "min": 17,
       "max": 37
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "H": 4
+      }
+    },
     "forcing": "none",
     "alert": true,
     "recommendable": true,
@@ -5652,7 +6362,11 @@
       "min": 17,
       "max": 37
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "S": 4
+      }
+    },
     "forcing": "none",
     "alert": true,
     "recommendable": true,
@@ -5675,7 +6389,11 @@
       "min": 0,
       "max": 7
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "H": 5
+      }
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
@@ -5698,7 +6416,11 @@
       "min": 8,
       "max": 9
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "H": 5
+      }
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
@@ -5718,10 +6440,14 @@
       "P:1N M:2D P:2H"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "H": 5
+      }
+    },
     "forcing": "none",
     "alert": false,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "均型或半均型、五张红心，邀局。开叫方可 PASS、3♥ 止叫或 3NT。",
     "source": "1NT — 2♦ — 2♥ 之后应叫方再叫（jacoby_transfers.php）",
     "tags": [
@@ -5738,10 +6464,14 @@
       "P:1N M:2D P:2H"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "H": 5
+      }
+    },
     "forcing": "one_round",
     "alert": false,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "五张以上红心 + 4 张以上所叫低花，逼叫到局。",
     "source": "1NT — 2♦ — 2♥ 之后应叫方再叫（jacoby_transfers.php）",
     "tags": [
@@ -5758,10 +6488,14 @@
       "P:1N M:2D P:2H"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "H": 5
+      }
+    },
     "forcing": "one_round",
     "alert": false,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "五张以上红心 + 4 张以上所叫低花，逼叫到局。",
     "source": "1NT — 2♦ — 2♥ 之后应叫方再叫（jacoby_transfers.php）",
     "tags": [
@@ -5778,10 +6512,14 @@
       "P:1N M:2D P:2H"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "H": 6
+      }
+    },
     "forcing": "none",
     "alert": false,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "六张以上红心，邀局。开叫方可 PASS 或 4♥。",
     "source": "1NT — 2♦ — 2♥ 之后应叫方再叫（jacoby_transfers.php）",
     "tags": [
@@ -5798,10 +6536,12 @@
       "P:1N M:2D P:2H"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "shortage": "S"
+    },
     "forcing": "none",
     "alert": false,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "黑桃单缺、满贯兴趣（非原版约定，可选用）。",
     "source": "1NT — 2♦ — 2♥ 之后应叫方再叫（jacoby_transfers.php）",
     "tags": [
@@ -5818,10 +6558,15 @@
       "P:1N M:2D P:2H"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "balanced": true,
+      "suitMin": {
+        "H": 5
+      }
+    },
     "forcing": "none",
     "alert": false,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "均型（无单缺）、五张红心。开叫方可 PASS 或改 4♥。",
     "source": "1NT — 2♦ — 2♥ 之后应叫方再叫（jacoby_transfers.php）",
     "tags": [],
@@ -5836,10 +6581,14 @@
       "P:1N M:2D P:2H"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "H": 6
+      }
+    },
     "forcing": "none",
     "alert": false,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "六张以上红心，止叫。",
     "source": "1NT — 2♦ — 2♥ 之后应叫方再叫（jacoby_transfers.php）",
     "tags": [
@@ -5879,7 +6628,11 @@
       "min": 0,
       "max": 7
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "S": 5
+      }
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
@@ -5899,10 +6652,14 @@
       "P:1N M:2H P:2S"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "S": 5
+      }
+    },
     "forcing": "none",
     "alert": false,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "均型或半均型、五张黑桃，邀局。开叫方可 PASS、3♠ 止叫或 3NT。",
     "source": "1NT — 2♥ — 2♠ 之后应叫方再叫（jacoby_transfers.php）",
     "tags": [
@@ -5919,10 +6676,14 @@
       "P:1N M:2H P:2S"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "S": 5
+      }
+    },
     "forcing": "one_round",
     "alert": false,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "五张以上黑桃 + 4 张以上所叫低花，逼叫到局。",
     "source": "1NT — 2♥ — 2♠ 之后应叫方再叫（jacoby_transfers.php）",
     "tags": [
@@ -5939,10 +6700,14 @@
       "P:1N M:2H P:2S"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "S": 5
+      }
+    },
     "forcing": "one_round",
     "alert": false,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "五张以上黑桃 + 4 张以上所叫低花，逼叫到局。",
     "source": "1NT — 2♥ — 2♠ 之后应叫方再叫（jacoby_transfers.php）",
     "tags": [
@@ -5959,10 +6724,14 @@
       "P:1N M:2H P:2S"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "S": 5
+      }
+    },
     "forcing": "none",
     "alert": false,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "五张以上黑桃 + 五张以上红心，逼叫到局且满贯兴趣（强于直接 4♥）。",
     "source": "1NT — 2♥ — 2♠ 之后应叫方再叫（jacoby_transfers.php）",
     "tags": [
@@ -5979,10 +6748,14 @@
       "P:1N M:2H P:2S"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "S": 6
+      }
+    },
     "forcing": "none",
     "alert": false,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "六张以上黑桃，邀局。开叫方可 PASS 或 4♠。",
     "source": "1NT — 2♥ — 2♠ 之后应叫方再叫（jacoby_transfers.php）",
     "tags": [
@@ -5999,10 +6772,15 @@
       "P:1N M:2H P:2S"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "balanced": true,
+      "suitMin": {
+        "S": 5
+      }
+    },
     "forcing": "none",
     "alert": false,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "均型（无单缺）、五张黑桃。开叫方可 PASS 或改 4♠。",
     "source": "1NT — 2♥ — 2♠ 之后应叫方再叫（jacoby_transfers.php）",
     "tags": [],
@@ -6017,10 +6795,14 @@
       "P:1N M:2H P:2S"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "S": 5
+      }
+    },
     "forcing": "none",
     "alert": false,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "五张以上黑桃 + 五张以上红心，成局牌力；开叫方可 PASS 或改 4♠。",
     "source": "1NT — 2♥ — 2♠ 之后应叫方再叫（jacoby_transfers.php）",
     "tags": [],
@@ -6035,10 +6817,14 @@
       "P:1N M:2H P:2S"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "S": 6
+      }
+    },
     "forcing": "none",
     "alert": false,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "六张以上黑桃，止叫。",
     "source": "1NT — 2♥ — 2♠ 之后应叫方再叫（jacoby_transfers.php）",
     "tags": [
@@ -6066,5 +6852,632 @@
     ],
     "legacyP": null,
     "bid": "4N"
+  },
+  {
+    "id": "sayc.214.4D.274",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1N"
+    ],
+    "hcp": {
+      "min": 10,
+      "max": 37
+    },
+    "shape": {
+      "suitMin": {
+        "H": 6
+      }
+    },
+    "forcing": "none",
+    "alert": true,
+    "recommendable": true,
+    "meaning": "德克萨斯转移叫：六张以上红心，开叫方必须叫 4♥。",
+    "source": "1NT 开叫（1nt_15_17.php）",
+    "tags": [
+      "转移叫"
+    ],
+    "legacyP": "10 以上",
+    "bid": "4D"
+  },
+  {
+    "id": "sayc.215.4H.275",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1N"
+    ],
+    "hcp": {
+      "min": 10,
+      "max": 37
+    },
+    "shape": {
+      "suitMin": {
+        "S": 6
+      }
+    },
+    "forcing": "none",
+    "alert": true,
+    "recommendable": true,
+    "meaning": "德克萨斯转移叫：六张以上黑桃，开叫方必须叫 4♠。",
+    "source": "1NT 开叫（1nt_15_17.php）",
+    "tags": [
+      "转移叫"
+    ],
+    "legacyP": "10 以上",
+    "bid": "4H"
+  },
+  {
+    "id": "sayc.216.form.276",
+    "system": "sayc",
+    "seatRole": "overcaller",
+    "contextKeys": [
+      "O:*"
+    ],
+    "hcp": {
+      "min": 8,
+      "max": 16
+    },
+    "shape": {
+      "suitMin": {
+        "bid": 5
+      }
+    },
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "二阶花色争叫：5 张以上好套，8~16 点；套质差或点力不足时优先不叫。",
+    "source": "争叫 / 加倍（sayc.php）",
+    "tags": [],
+    "legacyP": "8~16",
+    "bidForm": {
+      "type": "newSuit",
+      "level": 2,
+      "excludeJump": true
+    }
+  },
+  {
+    "id": "sayc.217.6N.277",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      "M:1N P:4N"
+    ],
+    "hcp": {
+      "min": 17,
+      "max": 17
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "高限接受定量邀请，叫 6NT。",
+    "source": "无将定量邀请的接受（1NT/2NT 开叫）",
+    "tags": [
+      "满贯"
+    ],
+    "legacyP": "17~17",
+    "bid": "6N"
+  },
+  {
+    "id": "sayc.218.6N.278",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      "M:2N P:4N"
+    ],
+    "hcp": {
+      "min": 21,
+      "max": 21
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "高限接受定量邀请，叫 6NT。",
+    "source": "无将定量邀请的接受（1NT/2NT 开叫）",
+    "tags": [
+      "满贯"
+    ],
+    "legacyP": "21~21",
+    "bid": "6N"
+  },
+  {
+    "id": "sayc.219.4H.279",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1H M:2C P:2D",
+      "P:1H M:2C P:2H",
+      "P:1H M:2C P:2S",
+      "P:1H M:2C P:2N",
+      "P:1H M:2C P:3C",
+      "P:1H M:2C P:3H"
+    ],
+    "hcp": {
+      "min": 13,
+      "max": 37
+    },
+    "shape": {
+      "suitMin": {
+        "H": 3
+      }
+    },
+    "forcing": "game",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "3 张以上红心支持，进局。",
+    "source": "1♥ — 2♣/2♦ 后应叫方继续（二盖一逼局）",
+    "tags": [
+      "进局"
+    ],
+    "legacyP": "13 以上",
+    "bid": "4H"
+  },
+  {
+    "id": "sayc.220.3N.280",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1H M:2C P:2D",
+      "P:1H M:2C P:2H",
+      "P:1H M:2C P:2S",
+      "P:1H M:2C P:2N",
+      "P:1H M:2C P:3C",
+      "P:1H M:2C P:3H"
+    ],
+    "hcp": {
+      "min": 13,
+      "max": 37
+    },
+    "shape": null,
+    "forcing": "game",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "均型或半均型、红心不配，进局。",
+    "source": "1♥ — 2♣/2♦ 后应叫方继续（二盖一逼局）",
+    "tags": [
+      "进局"
+    ],
+    "legacyP": "13 以上",
+    "bid": "3N"
+  },
+  {
+    "id": "sayc.221.4H.281",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1H M:2D P:2H",
+      "P:1H M:2D P:2S",
+      "P:1H M:2D P:2N",
+      "P:1H M:2D P:3H"
+    ],
+    "hcp": {
+      "min": 13,
+      "max": 37
+    },
+    "shape": {
+      "suitMin": {
+        "H": 3
+      }
+    },
+    "forcing": "game",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "3 张以上红心支持，进局。",
+    "source": "1♥ — 2♣/2♦ 后应叫方继续（二盖一逼局）",
+    "tags": [
+      "进局"
+    ],
+    "legacyP": "13 以上",
+    "bid": "4H"
+  },
+  {
+    "id": "sayc.222.3N.282",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1H M:2D P:2H",
+      "P:1H M:2D P:2S",
+      "P:1H M:2D P:2N",
+      "P:1H M:2D P:3H"
+    ],
+    "hcp": {
+      "min": 13,
+      "max": 37
+    },
+    "shape": null,
+    "forcing": "game",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "均型或半均型、红心不配，进局。",
+    "source": "1♥ — 2♣/2♦ 后应叫方继续（二盖一逼局）",
+    "tags": [
+      "进局"
+    ],
+    "legacyP": "13 以上",
+    "bid": "3N"
+  },
+  {
+    "id": "sayc.223.4S.283",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1S M:2C P:2D",
+      "P:1S M:2C P:2H",
+      "P:1S M:2C P:2S",
+      "P:1S M:2C P:2N",
+      "P:1S M:2C P:3C",
+      "P:1S M:2C P:3S"
+    ],
+    "hcp": {
+      "min": 13,
+      "max": 37
+    },
+    "shape": {
+      "suitMin": {
+        "S": 3
+      }
+    },
+    "forcing": "game",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "3 张以上黑桃支持，进局。",
+    "source": "1♠ — 2♣/2♦/2♥ 后应叫方继续（二盖一逼局）",
+    "tags": [
+      "进局"
+    ],
+    "legacyP": "13 以上",
+    "bid": "4S"
+  },
+  {
+    "id": "sayc.224.3N.284",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1S M:2C P:2D",
+      "P:1S M:2C P:2H",
+      "P:1S M:2C P:2S",
+      "P:1S M:2C P:2N",
+      "P:1S M:2C P:3C",
+      "P:1S M:2C P:3S"
+    ],
+    "hcp": {
+      "min": 13,
+      "max": 37
+    },
+    "shape": null,
+    "forcing": "game",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "均型或半均型、黑桃不配，进局。",
+    "source": "1♠ — 2♣/2♦/2♥ 后应叫方继续（二盖一逼局）",
+    "tags": [
+      "进局"
+    ],
+    "legacyP": "13 以上",
+    "bid": "3N"
+  },
+  {
+    "id": "sayc.225.4S.285",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1S M:2D P:2H",
+      "P:1S M:2D P:2S",
+      "P:1S M:2D P:2N",
+      "P:1S M:2D P:3C",
+      "P:1S M:2D P:3S"
+    ],
+    "hcp": {
+      "min": 13,
+      "max": 37
+    },
+    "shape": {
+      "suitMin": {
+        "S": 3
+      }
+    },
+    "forcing": "game",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "3 张以上黑桃支持，进局。",
+    "source": "1♠ — 2♣/2♦/2♥ 后应叫方继续（二盖一逼局）",
+    "tags": [
+      "进局"
+    ],
+    "legacyP": "13 以上",
+    "bid": "4S"
+  },
+  {
+    "id": "sayc.226.3N.286",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1S M:2D P:2H",
+      "P:1S M:2D P:2S",
+      "P:1S M:2D P:2N",
+      "P:1S M:2D P:3C",
+      "P:1S M:2D P:3S"
+    ],
+    "hcp": {
+      "min": 13,
+      "max": 37
+    },
+    "shape": null,
+    "forcing": "game",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "均型或半均型、黑桃不配，进局。",
+    "source": "1♠ — 2♣/2♦/2♥ 后应叫方继续（二盖一逼局）",
+    "tags": [
+      "进局"
+    ],
+    "legacyP": "13 以上",
+    "bid": "3N"
+  },
+  {
+    "id": "sayc.227.4S.287",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1S M:2H P:2S",
+      "P:1S M:2H P:2N",
+      "P:1S M:2H P:3S"
+    ],
+    "hcp": {
+      "min": 13,
+      "max": 37
+    },
+    "shape": {
+      "suitMin": {
+        "S": 3
+      }
+    },
+    "forcing": "game",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "3 张以上黑桃支持，进局。",
+    "source": "1♠ — 2♣/2♦/2♥ 后应叫方继续（二盖一逼局）",
+    "tags": [
+      "进局"
+    ],
+    "legacyP": "13 以上",
+    "bid": "4S"
+  },
+  {
+    "id": "sayc.228.3N.288",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1S M:2H P:2S",
+      "P:1S M:2H P:2N",
+      "P:1S M:2H P:3S"
+    ],
+    "hcp": {
+      "min": 13,
+      "max": 37
+    },
+    "shape": null,
+    "forcing": "game",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "均型或半均型、黑桃不配，进局。",
+    "source": "1♠ — 2♣/2♦/2♥ 后应叫方继续（二盖一逼局）",
+    "tags": [
+      "进局"
+    ],
+    "legacyP": "13 以上",
+    "bid": "3N"
+  },
+  {
+    "id": "sayc.229.2N.289",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1H M:1N P:2C",
+      "P:1H M:1N P:2D",
+      "P:1H M:1N P:2H",
+      "P:1H M:1N P:2S"
+    ],
+    "hcp": {
+      "min": 13,
+      "max": 14
+    },
+    "shape": {
+      "balanced": true,
+      "suitMax": {
+        "H": 3
+      }
+    },
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "邀局：13~14 点均型，否认 4 张红心支持，邀请开叫方高限时进 3NT。",
+    "source": "1♥ — 1NT 后再叫（sayc_1h.php）",
+    "tags": [
+      "邀局"
+    ],
+    "legacyP": "13~14",
+    "bid": "2N"
+  },
+  {
+    "id": "sayc.230.3N.290",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1H M:1N P:2N"
+    ],
+    "hcp": {
+      "min": 13,
+      "max": 14
+    },
+    "shape": {
+      "balanced": true
+    },
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "进局：13~14 点，配合开叫方 18~19 点均型，直接 3NT。",
+    "source": "1♥ — 1NT 后再叫（sayc_1h.php）",
+    "tags": [],
+    "legacyP": "13~14",
+    "bid": "3N"
+  },
+  {
+    "id": "sayc.231.2N.291",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1S M:1N P:2C",
+      "P:1S M:1N P:2D",
+      "P:1S M:1N P:2H",
+      "P:1S M:1N P:2S"
+    ],
+    "hcp": {
+      "min": 13,
+      "max": 14
+    },
+    "shape": {
+      "balanced": true,
+      "suitMax": {
+        "S": 3
+      }
+    },
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "邀局：13~14 点均型，否认 4 张黑桃支持，邀请开叫方高限时进 3NT。",
+    "source": "1♠ — 1NT 后再叫（sayc_1s.php）",
+    "tags": [
+      "邀局"
+    ],
+    "legacyP": "13~14",
+    "bid": "2N"
+  },
+  {
+    "id": "sayc.232.3N.292",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1S M:1N P:2N"
+    ],
+    "hcp": {
+      "min": 13,
+      "max": 14
+    },
+    "shape": {
+      "balanced": true
+    },
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "进局：13~14 点，配合开叫方 18~19 点均型，直接 3NT。",
+    "source": "1♠ — 1NT 后再叫（sayc_1s.php）",
+    "tags": [],
+    "legacyP": "13~14",
+    "bid": "3N"
+  },
+  {
+    "id": "sayc.233.3N.293",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1H M:1N P:3H"
+    ],
+    "hcp": {
+      "min": 13,
+      "max": 14
+    },
+    "shape": {
+      "balanced": true,
+      "suitMax": {
+        "H": 2
+      }
+    },
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "进局：13~14 点均型，否认 3 张红心支持，开叫方 16~18 点长套时改叫 3NT。",
+    "source": "1♥ — 1NT 后再叫（sayc_1h.php）",
+    "tags": [],
+    "legacyP": "13~14",
+    "bid": "3N"
+  },
+  {
+    "id": "sayc.234.4H.294",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1H M:1N P:3H"
+    ],
+    "hcp": {
+      "min": 13,
+      "max": 14
+    },
+    "shape": {
+      "suitMin": {
+        "H": 3
+      }
+    },
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "进局：13~14 点，3 张以上红心支持，开叫方 16~18 点长套时加叫 4♥。",
+    "source": "1♥ — 1NT 后再叫（sayc_1h.php）",
+    "tags": [],
+    "legacyP": "13~14",
+    "bid": "4H"
+  },
+  {
+    "id": "sayc.235.3N.295",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1S M:1N P:3S"
+    ],
+    "hcp": {
+      "min": 13,
+      "max": 14
+    },
+    "shape": {
+      "balanced": true,
+      "suitMax": {
+        "S": 2
+      }
+    },
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "进局：13~14 点均型，否认 3 张黑桃支持，开叫方 16~18 点长套时改叫 3NT。",
+    "source": "1♠ — 1NT 后再叫（sayc_1s.php）",
+    "tags": [],
+    "legacyP": "13~14",
+    "bid": "3N"
+  },
+  {
+    "id": "sayc.236.4S.296",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1S M:1N P:3S"
+    ],
+    "hcp": {
+      "min": 13,
+      "max": 14
+    },
+    "shape": {
+      "suitMin": {
+        "S": 3
+      }
+    },
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "进局：13~14 点，3 张以上黑桃支持，开叫方 16~18 点长套时加叫 4♠。",
+    "source": "1♠ — 1NT 后再叫（sayc_1s.php）",
+    "tags": [],
+    "legacyP": "13~14",
+    "bid": "4S"
   }
 ]

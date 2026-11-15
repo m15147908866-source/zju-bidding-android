@@ -261,7 +261,11 @@
       "min": 6,
       "max": 37
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "D": 4
+      }
+    },
     "forcing": "one_round",
     "alert": false,
     "recommendable": true,
@@ -284,7 +288,11 @@
       "min": 6,
       "max": 37
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "H": 4
+      }
+    },
     "forcing": "one_round",
     "alert": false,
     "recommendable": true,
@@ -307,7 +315,11 @@
       "min": 6,
       "max": 37
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "S": 4
+      }
+    },
     "forcing": "one_round",
     "alert": false,
     "recommendable": true,
@@ -330,7 +342,11 @@
       "min": 6,
       "max": 37
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "H": 4
+      }
+    },
     "forcing": "one_round",
     "alert": false,
     "recommendable": true,
@@ -353,7 +369,11 @@
       "min": 6,
       "max": 37
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "S": 4
+      }
+    },
     "forcing": "one_round",
     "alert": false,
     "recommendable": true,
@@ -376,7 +396,11 @@
       "min": 6,
       "max": 37
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "S": 4
+      }
+    },
     "forcing": "one_round",
     "alert": false,
     "recommendable": true,
@@ -894,7 +918,11 @@
       "min": 11,
       "max": 12
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "H": 3
+      }
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
@@ -917,7 +945,11 @@
       "min": 11,
       "max": 12
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "S": 3
+      }
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
@@ -1002,7 +1034,11 @@
       "min": 13,
       "max": 37
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "C": 6
+      }
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
@@ -1025,7 +1061,11 @@
       "min": 13,
       "max": 37
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "D": 6
+      }
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
@@ -1048,7 +1088,11 @@
       "min": 13,
       "max": 37
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "H": 6
+      }
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
@@ -1071,7 +1115,11 @@
       "min": 13,
       "max": 37
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "S": 6
+      }
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
@@ -1156,7 +1204,11 @@
       "min": 10,
       "max": 37
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "C": 6
+      }
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
@@ -1179,7 +1231,11 @@
       "min": 10,
       "max": 37
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "D": 6
+      }
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
@@ -1202,7 +1258,11 @@
       "min": 5,
       "max": 9
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "H": 6
+      }
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
@@ -1225,7 +1285,11 @@
       "min": 5,
       "max": 9
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "S": 6
+      }
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,

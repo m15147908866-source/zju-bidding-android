@@ -1,10 +1,17 @@
 # ZJU 叫牌
 
-桥牌自然叫牌练习应用（Android 版）。收录三套叫牌体系，提供叫品含义查询、推荐叫品、手牌选牌、记牌器与 AI 叫牌分析。
+桥牌自然叫牌练习应用（Android + 网页版）。收录三套叫牌体系，提供叫品含义查询、推荐叫品、手牌选牌、记牌器与 AI 叫牌分析。
 
 ## 下载
 
-安装包见 [Releases](https://github.com/m15147908866-source/zju-bidding-android/releases)（`ZJU-bidding.apk`，Android 6.0 及以上）。仓库不再存放构建产物，每次发布由 CI 从 tag 构建。
+每次发布由 CI 从 tag 构建，安装包见 [Releases](https://github.com/m15147908866-source/zju-bidding-android/releases)：
+
+| 客户端 | 附件 | 说明 |
+|---|---|---|
+| Android | `ZJU-bidding.apk` | Android 6.0 (API 23) 及以上；支持 AI 分析 |
+| 网页版（PWA） | `ZJU-bidding-web-v<版本>.zip` | 解压后用 HTTP 静态服务打开；可添加到主屏幕、离线使用，不含 AI 分析 |
+
+仓库不再存放构建产物。
 
 ## 体系
 
@@ -72,6 +79,18 @@ bash android/build.sh
 - JDK 17+（脚本优先使用 `JAVA_HOME`）
 - Android SDK，含 `build-tools;36.0.0` 与 `platforms;android-34`，通过 `ANDROID_HOME` 指定
 - Python 3
+
+## 从源码打包网页版
+
+```bash
+node scripts/package-web.mjs
+```
+
+产物为 `dist/ZJU-bidding-web-v<VERSION>.zip`，内含 `index.html`、`core/`、`data/`、`icons/` 等运行文件。解压后用 HTTP 静态服务访问即可（Service Worker 不支持 `file://`）：
+
+```bash
+python -m http.server 8000
+```
 
 ## 参与开发
 

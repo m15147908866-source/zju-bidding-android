@@ -145,10 +145,12 @@ function validateRule(rule, sysKey, file) {
     const keys = Object.keys(rule.shape);
     if (!keys.length) err(`${at} shape 是空对象`);
     keys.forEach((k) => {
-      if (!['balanced', 'suitMin', 'suitMax', 'shortage'].includes(k)) err(`${at} shape.${k} 不是支持的字段`);
+      if (!['balanced', 'suitMin', 'suitMax', 'shortage', 'major4', 'anyMinorMin'].includes(k)) err(`${at} shape.${k} 不是支持的字段`);
+      if (k === 'major4' && typeof rule.shape[k] !== 'boolean') err(`${at} shape.major4 必须是布尔值`);
+      if (k === 'anyMinorMin' && !Number.isInteger(rule.shape[k])) err(`${at} shape.anyMinorMin 必须是整数`);
       if (k === 'suitMin' || k === 'suitMax') {
         Object.keys(rule.shape[k]).forEach((s) => {
-          if (!SUIT_KEYS.includes(s) && s !== 'bid') err(`${at} shape.${k} 花色非法：${s}`);
+          if (!SUIT_KEYS.includes(s) && s !== 'bid' && s !== 'partner') err(`${at} shape.${k} 花色非法：${s}`);
         });
       }
       if (k === 'shortage' && !['any', ...SUIT_KEYS].includes(rule.shape[k])) {

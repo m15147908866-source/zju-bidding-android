@@ -1,6 +1,8 @@
 /* ============================================================================
    SAYC（Standard American Yellow Card）叫牌规则数据集
-   唯一依据：https://www.bridgebum.com/sayc.php 及其 SAYC 系列子页
+   基础依据：https://www.bridgebum.com/sayc.php 及其 SAYC 系列子页；
+   本轮按 F:\桥牌 教材《SAYC》校准：一阶开叫 12–21、2/1 为 13+ 五张逼局、
+   3NT 为拼搏叫、1NT 应叫为半逼叫 6–12（13–14 均型经 1NT 后再叫 2NT）并否认高花支持等。
      sayc.php（总览：开叫 / 加倍 / 满贯 / 争叫 / 首攻 / 信号）
      sayc_1c.php · sayc_1d.php · sayc_1h.php · sayc_1s.php
      1nt_15_17.php · strong_2c.php · weak_two.php
@@ -27,16 +29,17 @@ function add(t, o, r, rb, b, p, pw, d, k, s, note) {
 
 /* ===== 00 总则（sayc.php 开篇） ===== */
 const S00 = 'SAYC 通则（sayc.php）';
-add('open', null, null, null, ['1C', '1D'], '13~22', null,
-  '三张以上所叫低花。低花 4-4 先开 1♦，3-3 先开 1♣。', ['开叫'], S00);
-add('open', null, null, null, ['1H', '1S'], '13~22', null,
+add('open', null, null, null, ['1C', '1D'], '12~21', null,
+  '1♣ 三张以上，1♦ 四张以上；低花 4-4 先开 1♦，3-3 先开 1♣。', ['开叫'], S00);
+add('open', null, null, null, ['1H', '1S'], '12~21', null,
   '五张以上所叫高花。5-5 或 6-6 两套等长时开较高花色。', ['开叫'], S00);
 add('open', null, null, null, '1NT', '15~17', null,
-  '均型（4-4-3-2 / 4-3-3-3 / 5-3-3-2），允许带五张高花或五张低花的半均型。', ['开叫'], S00);
+  '均型（4-4-3-2 / 4-3-3-3 / 5-3-3-2），通常无五张高花。', ['开叫'], S00);
 add('open', null, null, null, '2NT', '20~21', null, '均型。', ['开叫'], S00);
-add('open', null, null, null, '3NT', '25~27', null, '均型。', ['开叫'], S00);
-add('open', null, null, null, '2C', null, null,
-  '强开叫、人工：22+ HCP 的均型，或非均型「差一墩成局」（5+ 高花 9 赢墩、5+ 低花 10 赢墩）。', ['开叫', '逼叫'], S00);
+add('open', null, null, null, '3NT', '8~12', null,
+  '拼搏性 3NT：7~8 张坚固低花（AKQ 领头），旁门不超过 4 个大牌点。', ['开叫', '阻击', '赌博'], S00);
+add('open', null, null, null, '2C', '22 以上', null,
+  '强开叫、人工：22+ HCP 的均型，或非均型「差一墩成局」（5+ 高花 9 赢墩、5+ 低花 10 赢墩）。', ['开叫', '进局'], S00);
 
 /* ===== 01 一阶低花开叫与应叫 ===== */
 const S1C = '1♣ 开叫（sayc_1c.php）';
@@ -44,7 +47,7 @@ add('resp', '1C', null, null, 'PASS', '0~5', 'responder', '牌力不足，不叫
 add('resp', '1C', null, null, '1D', '6 以上', 'responder', '4 张以上方块，逼叫。', ['逼叫'], S1C);
 add('resp', '1C', null, null, ['1H', '1S'], '6 以上', 'responder',
   '4 张以上所叫高花，逼叫。两门高花 4-4 先叫 1♥，5-5 先叫 1♠。', ['逼叫'], S1C);
-add('resp', '1C', null, null, '1NT', '6~9', 'responder',
+add('resp', '1C', null, null, '1NT', '6~10', 'responder',
   '均型，否认 4 张高花，通常否认 4 张梅花，不逼叫。', [], S1C);
 add('resp', '1C', null, null, '2C', '6~9', 'responder',
   '单加叫：5 张以上梅花支持（手册规定加叫 1♣ 需五张），否认 4 张高花，不逼叫。', [], S1C);
@@ -62,9 +65,9 @@ const S1D = '1♦ 开叫（sayc_1d.php）';
 add('resp', '1D', null, null, 'PASS', '0~5', 'responder', '牌力不足，不叫。', ['止叫'], S1D);
 add('resp', '1D', null, null, ['1H', '1S'], '6 以上', 'responder',
   '4 张以上所叫高花，逼叫。两门高花 4-4 先叫 1♥，5-5 先叫 1♠。', ['逼叫'], S1D);
-add('resp', '1D', null, null, '1NT', '6~9', 'responder',
+add('resp', '1D', null, null, '1NT', '6~10', 'responder',
   '否认 4 张高花，通常否认 4 张方块；可以是带 5 张以上梅花的非均型，不逼叫。', [], S1D);
-add('resp', '1D', null, null, '2C', '10 以上', 'responder', '4 张以上梅花，逼叫。', ['逼叫'], S1D);
+add('resp', '1D', null, null, '2C', '13 以上', 'responder', '5 张以上梅花，二盖一逼局。', ['进局'], S1D);
 add('resp', '1D', null, null, '2D', '6~9', 'responder',
   '单加叫：4 张以上方块支持，否认 4 张高花，不逼叫。', [], S1D);
 add('resp', '1D', null, null, ['2H', '2S'], '17~19', 'responder',
@@ -84,45 +87,45 @@ const S1H = '1♥ 开叫（sayc_1h.php）';
 add('resp', '1H', null, null, 'PASS', '0~5', 'responder', '牌力不足，不叫。', ['止叫'], S1H);
 add('resp', '1H', null, null, '1S', '6 以上', 'responder',
   '4 张以上黑桃，逼叫。持 4 张黑桃配 3 张红心时优先叫 1♠，先找 4-4 配。', ['逼叫'], S1H);
-add('resp', '1H', null, null, '1NT', '6~10', 'responder',
-  '否认 3 张红心支持与 4 张黑桃；可以是带 5 张以上低花的非均型，不逼叫。', ['示弱'], S1H);
-add('resp', '1H', null, null, ['2C', '2D'], '11 以上', 'responder',
-  '4 张以上所叫花色，逼叫。', ['逼叫'], S1H);
+add('resp', '1H', null, null, '1NT', '6~14', 'responder',
+  '半逼叫：6~12 点；13~14 点、红心不配时也先叫 1NT，下一轮再叫 2NT。否认 4 张红心支持与 4 张黑桃；可以是带 5 张以上低花的非均型。', ['示弱', '逼叫'], S1H);
+add('resp', '1H', null, null, ['2C', '2D'], '13 以上', 'responder',
+  '5 张以上所叫花色，二盖一逼局。', ['进局'], S1H);
 add('resp', '1H', null, null, '2H', '6~10', 'responder',
   '单加叫：3 张以上红心支持（按牌型点计），通常否认 4 张黑桃（4-4 双高花除外），不逼叫。', [], S1H);
 add('resp', '1H', null, null, '2S', '17~19', 'responder',
-  '强跳叫（strong jump shift）：5 张以上黑桃，邀满贯。手册只写「邀满贯」未给点力区间，17~19 为通行量化。', ['逼叫', '满贯'], S1H);
+  '强跳叫（strong jump shift）：5 张以上黑桃，邀满贯。手册只写「邀满贯」未给点力区间，17~19 为通行量化。', ['进局', '满贯'], S1H);
 add('resp', '1H', null, null, '2NT', '13 以上', 'responder',
-  '杰克贝 2NT（Jacoby 2NT）：4 张以上红心支持的逼局加叫，请开叫方描述牌型。', ['约定叫', '逼叫'], S1H);
+  '杰克贝 2NT（Jacoby 2NT）：4 张以上红心支持的逼局加叫，请开叫方描述牌型。', ['约定叫', '进局'], S1H);
 add('resp', '1H', null, null, ['3C', '3D'], '17~19', 'responder',
-  '强跳叫（strong jump shift）：5 张以上所叫花色，邀满贯。手册只写「邀满贯」，17~19 为通行量化。', ['逼叫', '满贯'], S1H);
+  '强跳叫（strong jump shift）：5 张以上所叫花色，邀满贯。手册只写「邀满贯」，17~19 为通行量化。', ['进局', '满贯'], S1H);
 add('resp', '1H', null, null, '3H', '10~12', 'responder',
-  '限制性加叫：4 张红心，不逼叫。', ['邀局'], S1H);
+  '限制性加叫：3 张以上红心，否认 4 张黑桃，邀局、不逼叫。', ['邀局'], S1H);
 add('resp', '1H', null, null, '3NT', '15~17', 'responder',
-  '均型、两张红心支持，通常否认 4 张黑桃，逼叫到局。', ['逼叫'], S1H);
+  '均型、两张红心支持，通常否认 4 张黑桃，逼叫到局。', ['进局'], S1H);
 add('resp', '1H', null, null, '4H', '9 以下', 'responder',
-  '通常 5 张以上红心并带单缺，少于 10 个大牌点，不逼叫。', ['止叫', '阻击'], S1H);
+  '阻击性加叫：5 张以上红心支持，少于 10 个大牌点，不逼叫。', ['止叫', '阻击'], S1H);
 add('resp', '1H', null, null, '4NT', null, 'responder', '黑木问 A。', ['满贯'], S1H);
 
 /* ===== 03 1♠ 开叫与应叫 ===== */
 const S1S = '1♠ 开叫（sayc_1s.php）';
 add('resp', '1S', null, null, 'PASS', '0~5', 'responder', '牌力不足，不叫。', ['止叫'], S1S);
-add('resp', '1S', null, null, '1NT', '6~10', 'responder',
-  '否认 3 张黑桃支持；可以是非均型、带 5 张以上旁花，不逼叫。', ['示弱'], S1S);
-add('resp', '1S', null, null, ['2C', '2D', '2H'], '11 以上', 'responder',
-  '4 张以上所叫花色，逼叫。', ['逼叫'], S1S);
+add('resp', '1S', null, null, '1NT', '6~14', 'responder',
+  '半逼叫：6~12 点；13~14 点、黑桃不配时也先叫 1NT，下一轮再叫 2NT。否认 4 张黑桃支持；可以是非均型、带 5 张以上旁花。', ['示弱', '逼叫'], S1S);
+add('resp', '1S', null, null, ['2C', '2D', '2H'], '13 以上', 'responder',
+  '5 张以上所叫花色，二盖一逼局。', ['进局'], S1S);
 add('resp', '1S', null, null, '2S', '6~10', 'responder',
   '单加叫：3 张以上黑桃支持（按牌型点计），不逼叫。', [], S1S);
 add('resp', '1S', null, null, '2NT', '13 以上', 'responder',
-  '杰克贝 2NT（Jacoby 2NT）：4 张以上黑桃支持的逼局加叫，请开叫方描述牌型。', ['约定叫', '逼叫'], S1S);
+  '杰克贝 2NT（Jacoby 2NT）：4 张以上黑桃支持的逼局加叫，请开叫方描述牌型。', ['约定叫', '进局'], S1S);
 add('resp', '1S', null, null, ['3C', '3D', '3H'], '17~19', 'responder',
-  '强跳叫（strong jump shift）：5 张以上所叫花色，邀满贯。手册只写「邀满贯」，17~19 为通行量化。', ['逼叫', '满贯'], S1S);
+  '强跳叫（strong jump shift）：5 张以上所叫花色，邀满贯。手册只写「邀满贯」，17~19 为通行量化。', ['进局', '满贯'], S1S);
 add('resp', '1S', null, null, '3S', '10~12', 'responder',
-  '限制性加叫：4 张黑桃，不逼叫。', ['邀局'], S1S);
+  '限制性加叫：3 张以上黑桃，邀局、不逼叫。', ['邀局'], S1S);
 add('resp', '1S', null, null, '3NT', '15~17', 'responder',
-  '均型、两张黑桃支持，通常否认 4 张红心，逼叫到局。', ['逼叫'], S1S);
+  '均型、两张黑桃支持，通常否认 4 张红心，逼叫到局。', ['进局'], S1S);
 add('resp', '1S', null, null, '4S', '9 以下', 'responder',
-  '通常 5 张以上黑桃并带单缺，少于 10 个大牌点，不逼叫。', ['止叫', '阻击'], S1S);
+  '阻击性加叫：5 张以上黑桃支持，少于 10 个大牌点，不逼叫。', ['止叫', '阻击'], S1S);
 add('resp', '1S', null, null, '4NT', null, 'responder', '黑木问 A。', ['满贯'], S1S);
 
 /* ===== 04 一阶高花开叫后的开叫方再叫 ===== */
@@ -140,7 +143,9 @@ add('opener', '1H', '1S', null, '4S', '19~22', 'opener', '4 张支持，不逼�
 
 const S1HNT = '1♥ — 1NT 后再叫（sayc_1h.php）';
 add('opener', '1H', '1NT', null, ['2C', '2D'], '13~18', 'opener', '4 张以上所叫花色，不逼叫。', [], S1HNT);
-add('opener', '1H', '1NT', null, '2H', '13~15', 'opener', '6 张以上红心，不逼叫。', [], S1HNT);
+add('opener', '1H', '1NT', null, '2H', '12~15', 'opener',
+  '低限再叫：5 张以上红心，不逼叫；半逼叫 1NT 后开叫人不得 Pass。', [], S1HNT);
+
 add('opener', '1H', '1NT', null, '2S', '16 以上', 'opener', '逆叫：4 张以上黑桃，逼叫。', ['逼叫'], S1HNT);
 add('opener', '1H', '1NT', null, '2NT', '18~19', 'opener', '均型，不逼叫。', [], S1HNT);
 add('opener', '1H', '1NT', null, ['3C', '3D'], '19~22', 'opener', '4 张以上所叫花色，逼叫到局。', ['逼叫'], S1HNT);
@@ -159,16 +164,20 @@ add('opener', '1H', ['2C', '2D'], null, ['2D', '2S'], '16 以上', 'opener',
   '逆叫：4 张以上所叫花色，逼叫。', ['逼叫'], S1H2M);
 
 const S1H2H = '1♥ — 2♥ 后再叫（sayc_1h.php）';
-add('opener', '1H', '2H', null, '2NT', null, 'opener',
-  '自然叫，通常表示红心较弱的好均型牌。', [], S1H2H);
+add('opener', '1H', '2H', null, '2NT', '18~19', 'opener',
+  '自然邀局：18~19 点均型，红心配合一般。', ['邀局'], S1H2H);
 add('opener', '1H', '2H', null, ['3C', '3D', '3S'], null, 'opener',
   '三阶新花色为红心邀局试探；应叫方按牌力与配合选择 3♥ 或 4♥。', ['邀局'], S1H2H);
-add('opener', '1H', '2H', null, '3H', null, 'opener', '自然邀局。', ['邀局'], S1H2H);
-add('opener', '1H', '2H', null, '4H', null, 'opener', '止叫。', ['止叫'], S1H2H);
+add('opener', '1H', '2H', null, '3H', '16~18', 'opener',
+  '自然邀局：16~18 点，红心配合良好（好套或六张）。', ['邀局'], S1H2H);
+add('opener', '1H', '2H', null, '4H', '19~22', 'opener',
+  '19 点以上直接进局。', ['止叫'], S1H2H);
 
 const S1SR = '1♠ — 1NT 后再叫（sayc_1s.php）';
 add('opener', '1S', '1NT', null, ['2C', '2D', '2H'], '13~18', 'opener', '4 张以上所叫花色，不逼叫。', [], S1SR);
-add('opener', '1S', '1NT', null, '2S', '13~15', 'opener', '6 张以上黑桃，不逼叫。', [], S1SR);
+add('opener', '1S', '1NT', null, '2S', '12~15', 'opener',
+  '低限再叫：5 张以上黑桃，不逼叫；半逼叫 1NT 后开叫人不得 Pass。', [], S1SR);
+
 add('opener', '1S', '1NT', null, '2NT', '18~19', 'opener', '均型，不逼叫。', [], S1SR);
 add('opener', '1S', '1NT', null, ['3C', '3D', '3H'], '19~22', 'opener', '4 张以上所叫花色，逼叫到局。', ['逼叫'], S1SR);
 add('opener', '1S', '1NT', null, '3S', '16~18', 'opener', '6 张以上黑桃，不逼叫。', [], S1SR);
@@ -180,12 +189,14 @@ add('opener', '1S', ['2C', '2D', '2H'], null, '2S', '13~15', 'opener', '6 张以
 add('opener', '1S', ['2C', '2D', '2H'], null, '3S', '16~18', 'opener', '6 张以上黑桃，不逼叫。', [], S1S2M);
 
 const S1S2S = '1♠ — 2♠ 后再叫（sayc_1s.php）';
-add('opener', '1S', '2S', null, '2NT', null, 'opener',
-  '自然叫，通常表示黑桃较弱的好均型牌。', [], S1S2S);
+add('opener', '1S', '2S', null, '2NT', '18~19', 'opener',
+  '自然邀局：18~19 点均型，黑桃配合一般。', ['邀局'], S1S2S);
 add('opener', '1S', '2S', null, ['3C', '3D', '3H'], null, 'opener',
   '三阶新花色为黑桃邀局试探；应叫方按牌力与配合选择 3♠ 或 4♠。', ['邀局'], S1S2S);
-add('opener', '1S', '2S', null, '3S', null, 'opener', '自然邀局。', ['邀局'], S1S2S);
-add('opener', '1S', '2S', null, '4S', null, 'opener', '止叫。', ['止叫'], S1S2S);
+add('opener', '1S', '2S', null, '3S', '16~18', 'opener',
+  '自然邀局：16~18 点，黑桃配合良好（好套或六张）。', ['邀局'], S1S2S);
+add('opener', '1S', '2S', null, '4S', '19~22', 'opener',
+  '19 点以上直接进局。', ['止叫'], S1S2S);
 
 /* ===== 05 一阶低花开叫后的开叫方再叫 ===== */
 const S1CR = '1♣/1♦ — 一阶应叫后再叫（sayc_1c.php / sayc_1d.php）';
@@ -238,15 +249,15 @@ add('resp', '1NT', null, null, '2NT', '8~9', 'responder',
   '均型邀局，通常否认四张高花（持 4-3-3-3 除外）。', ['邀局'], S1NT);
 add('resp', '1NT', null, null, ['3C', '3D'], '7~8', 'responder',
   '六张以上所叫低花，邀叫 3NT。', ['邀局'], S1NT);
-add('resp', '1NT', null, null, '3H', '6 张以上 H', 'responder',
+add('resp', '1NT', null, null, '3H', '10 以上', 'responder',
   '六张以上红心，满贯兴趣。', ['满贯'], S1NT);
-add('resp', '1NT', null, null, '3S', '6 张以上 S', 'responder',
+add('resp', '1NT', null, null, '3S', '10 以上', 'responder',
   '六张以上黑桃，满贯兴趣。', ['满贯'], S1NT);
-add('resp', '1NT', null, null, '3NT', '10~13', 'responder', '自然叫，止叫。', ['止叫'], S1NT);
+add('resp', '1NT', null, null, '3NT', '10~15', 'responder', '均型，自然叫，止叫。', ['止叫'], S1NT);
 add('resp', '1NT', null, null, '4C', null, 'responder',
   '盖伯（Gerber）：问 A。', ['约定叫'], S1NT);
-add('resp', '1NT', null, null, '4NT', null, 'responder',
-  '定量邀叫：邀请开叫方高限时叫 6NT。', ['邀局'], S1NT);
+add('resp', '1NT', null, null, '4NT', '16~17', 'responder',
+  '定量邀叫：16~17 点均型，邀请开叫方高限时叫 6NT。', ['邀局'], S1NT);
 
 /* ===== 07 2NT / 3NT 开叫与应叫 ===== */
 const S2NT = '2NT 开叫（20~21，sayc.php）';
@@ -258,30 +269,31 @@ add('resp', '2NT', null, null, '3H', '5 张以上 S', 'responder',
   '杰克贝转移叫：五张以上黑桃，开叫方叫 3♠。', ['转移叫'], S2NT);
 add('resp', '2NT', null, null, '3NT', '3~8', 'responder', '止叫。', ['止叫'], S2NT);
 add('resp', '2NT', null, null, '4C', null, 'responder', '盖伯：问 A。', ['约定叫'], S2NT);
-add('resp', '2NT', null, null, '4NT', null, 'responder',
-  '定量邀叫：邀请开叫方高限时叫 6NT。', ['邀局'], S2NT);
+add('resp', '2NT', null, null, '4NT', '4~5', 'responder',
+  '定量邀叫：4~5 点均型，邀请开叫方高限时叫 6NT。', ['邀局'], S2NT);
 
-const S3NT = '3NT 开叫（25~27，sayc.php）';
-add('resp', '3NT', null, null, '4C', null, 'responder', '盖伯：问 A。', ['约定叫'], S3NT);
-add('resp', '3NT', null, null, '4D', '5 张以上 H', 'responder',
-  '杰克贝转移叫：五张以上红心，开叫方叫 4♥。', ['转移叫'], S3NT);
-add('resp', '3NT', null, null, '4H', '5 张以上 S', 'responder',
-  '杰克贝转移叫：五张以上黑桃，开叫方叫 4♠。', ['转移叫'], S3NT);
+const S3NT = '3NT 拼搏开叫（8~12，F:\\桥牌 教材）';
+add('resp', '3NT', null, null, '4C', null, 'responder',
+  '问单缺（拼搏 3NT 约定叫）。', ['约定叫'], S3NT);
+add('resp', '3NT', null, null, '4D', null, 'responder',
+  '要求开叫方改叫 4♦（pass or correct）。', ['止叫'], S3NT);
+add('resp', '3NT', null, null, '4H', null, 'responder',
+  '自然止叫：长红心弱牌。', ['止叫'], S3NT);
 
 /* ===== 08 2♣ 强开叫与应叫 ===== */
 const S2C = '2♣ 强开叫（strong_2c.php）';
 add('resp', '2C', null, null, '2D', '0~7', 'responder',
   '人工「等待叫」（negative / waiting）：通常示弱；偶有 8 点以上但无合适叫品（如 4-4-4-1）。', ['示弱', '约定叫'], S2C);
 add('resp', '2C', null, null, '2H', '8 以上', 'responder',
-  '五张以上红心，自然、逼叫到局。', ['逼叫'], S2C);
+  '五张以上红心，自然、逼叫到局。', ['进局'], S2C);
 add('resp', '2C', null, null, '2S', '8 以上', 'responder',
-  '五张以上黑桃，自然、逼叫到局。', ['逼叫'], S2C);
+  '五张以上黑桃，自然、逼叫到局。', ['进局'], S2C);
 add('resp', '2C', null, null, '2NT', '8 以上', 'responder',
-  '均型，逼叫到局；此后无将体系（斯台曼、转移叫）全部启用。', ['逼叫'], S2C);
+  '均型，逼叫到局；此后无将体系（斯台曼、转移叫）全部启用。', ['进局'], S2C);
 add('resp', '2C', null, null, '3C', '8 以上', 'responder',
-  '五张以上梅花，自然、逼叫到局。', ['逼叫'], S2C);
+  '五张以上梅花，自然、逼叫到局。', ['进局'], S2C);
 add('resp', '2C', null, null, '3D', '8 以上', 'responder',
-  '五张以上方块，自然、逼叫到局。', ['逼叫'], S2C);
+  '五张以上方块，自然、逼叫到局。', ['进局'], S2C);
 
 const S2CR = '2♣ — 2♦ 等待叫后开叫方再叫（strong_2c.php）';
 add('opener', '2C', '2D', null, '2H', '17 以上', 'opener', '五张以上红心，自然、逼叫一轮。', ['逼叫'], S2CR);
@@ -330,19 +342,20 @@ add('open', null, null, null, ['3C', '3D', '3H', '3S'], '5~11', null,
   '七张所叫花色，阻击叫。', ['开叫', '阻击'], S34);
 add('open', null, null, null, ['4C', '4D'], '5~11', null,
   '八张所叫花色，阻击叫。', ['开叫', '阻击'], S34);
-add('open', null, null, null, ['4H', '4S'], null, null,
-  '七张以上所叫高花；无局约 7 个赢墩，有局约 8 个赢墩。', ['开叫', '阻击'], S34);
+add('open', null, null, null, ['4H', '4S'], '5~11', null,
+  '八张以上所叫高花，阻击叫；无局约 7 个赢墩，有局约 8 个赢墩。', ['开叫', '阻击'], S34);
 
 /* ===== 11 满贯约定叫：答叫统一由 ANSWER_RULES 按「问叫触发」处理 ===== */
 
 /* ===== 12 争叫与加倍 ===== */
 const SOV = '争叫 / 加倍（sayc.php）';
 add('def', null, null, null, { type: 'newSuit', level: 1 }, '8~16', 'overcaller',
-  '一阶花色争叫：4 张以上所叫花色。', [], SOV);
-add('def', null, null, null, '1NT', '15~18', 'overcaller', '均型争叫。', [], SOV);
+  '一阶花色争叫：5 张以上好套。', [], SOV);
+add('def', null, null, null, '1NT', '15~18', 'overcaller',
+  '均型争叫，对方花色须有挡张。', [], SOV);
 add('def', null, null, null, { type: 'jumpSuit' }, '5~11', 'overcaller',
   '弱跳争叫：6 张所叫花色，阻击。', ['阻击'], SOV);
-add('def', null, null, null, 'X', null, 'overcaller',
+add('def', null, null, null, 'X', '11 以上', 'overcaller',
   '技术性加倍：要求同伴叫出未叫过的花色；或 17 点以上的强牌。', ['约定叫'], SOV);
 add('def', null, null, null, { type: 'cue' }, null, 'overcaller',
   '扣叫对方花色：迈克尔斯（Michaels），表示 5-5 以上的两套牌。', ['约定叫'], SOV);
@@ -394,8 +407,8 @@ add('responder', '1NT', '2C', ['2S'], '4NT', null, 'responder', '定量邀叫，
 
 /* ===== 14 转移叫完成与后续 ===== */
 const STRF = '转移叫完成（jacoby_transfers.php）';
-add('opener', '1NT', '2D', null, '2H', null, 'opener', '完成转移：应叫方为五张以上红心。', ['转移叫'], STRF);
-add('opener', '1NT', '2H', null, '2S', null, 'opener', '完成转移：应叫方为五张以上黑桃。', ['转移叫'], STRF);
+add('opener', '1NT', '2D', null, '2H', null, 'opener', '完成转移：接受红心定约，通常 2 张以上红心。', ['转移叫'], STRF);
+add('opener', '1NT', '2H', null, '2S', null, 'opener', '完成转移：接受黑桃定约，通常 2 张以上黑桃。', ['转移叫'], STRF);
 add('opener', '1NT', '2D', null, '3H', '17 以上', 'opener',
   '超级接受：四张红心支持 + 17 点，直接跳叫 3♥。', ['转移叫'], STRF);
 add('opener', '1NT', '2H', null, '3S', '17 以上', 'opener',
@@ -437,6 +450,51 @@ add('responder', '1NT', '2H', ['2S'], '4S', null, 'responder', '六张以上黑�
 add('responder', '1NT', '2H', ['2S'], '4NT', null, 'responder',
   '定量邀叫，邀请黑桃或无将满贯；开叫方可改 5♠。', ['邀局'], STRFS);
 
+/* ===== 14b 1NT 的德克萨斯转移（追加在末尾，保持既有规则序号稳定） ===== */
+add('resp', '1NT', null, null, '4D', '10 以上', 'responder',
+  '德克萨斯转移叫：六张以上红心，开叫方必须叫 4♥。', ['转移叫'], S1NT);
+add('resp', '1NT', null, null, '4H', '10 以上', 'responder',
+  '德克萨斯转移叫：六张以上黑桃，开叫方必须叫 4♠。', ['转移叫'], S1NT);
+
+/* ===== 14c 二阶花色争叫（追加在末尾，保持既有规则序号稳定） ===== */
+add('def', null, null, null, { type: 'newSuit', level: 2, excludeJump: true }, '8~16', 'overcaller',
+  '二阶花色争叫：5 张以上好套，8~16 点；套质差或点力不足时优先不叫。', [], SOV);
+
+/* ===== 14d 定量 4NT 的接受（追加在末尾） ===== */
+const SNTQ = '无将定量邀请的接受（1NT/2NT 开叫）';
+add('opener', '1NT', '4NT', null, '6NT', '17~17', 'opener',
+  '高限接受定量邀请，叫 6NT。', ['满贯'], SNTQ);
+add('opener', '2NT', '4NT', null, '6NT', '21~21', 'opener',
+  '高限接受定量邀请，叫 6NT。', ['满贯'], SNTQ);
+
+/* ===== 14e 二盖一逼局后应叫方的继续（追加在末尾） =====
+   2/1 已建立逼局，开叫方的任何再叫都不阻止应叫方继续；
+   应叫方按「是否有三张支持」在 4 阶高花与 3NT 之间选择。 */
+const S21H = '1♥ — 2♣/2♦ 后应叫方继续（二盖一逼局）';
+add('responder', '1H', '2C', ['2D', '2H', '2S', '2NT', '3C', '3H'], '4H', '13 以上', 'responder',
+  '3 张以上红心支持，进局。', ['进局'], S21H);
+add('responder', '1H', '2C', ['2D', '2H', '2S', '2NT', '3C', '3H'], '3NT', '13 以上', 'responder',
+  '均型或半均型、红心不配，进局。', ['进局'], S21H);
+add('responder', '1H', '2D', ['2H', '2S', '2NT', '3H'], '4H', '13 以上', 'responder',
+  '3 张以上红心支持，进局。', ['进局'], S21H);
+add('responder', '1H', '2D', ['2H', '2S', '2NT', '3H'], '3NT', '13 以上', 'responder',
+  '均型或半均型、红心不配，进局。', ['进局'], S21H);
+
+const S21S = '1♠ — 2♣/2♦/2♥ 后应叫方继续（二盖一逼局）';
+add('responder', '1S', '2C', ['2D', '2H', '2S', '2NT', '3C', '3S'], '4S', '13 以上', 'responder',
+  '3 张以上黑桃支持，进局。', ['进局'], S21S);
+add('responder', '1S', '2C', ['2D', '2H', '2S', '2NT', '3C', '3S'], '3NT', '13 以上', 'responder',
+  '均型或半均型、黑桃不配，进局。', ['进局'], S21S);
+add('responder', '1S', '2D', ['2H', '2S', '2NT', '3C', '3S'], '4S', '13 以上', 'responder',
+  '3 张以上黑桃支持，进局。', ['进局'], S21S);
+add('responder', '1S', '2D', ['2H', '2S', '2NT', '3C', '3S'], '3NT', '13 以上', 'responder',
+  '均型或半均型、黑桃不配，进局。', ['进局'], S21S);
+add('responder', '1S', '2H', ['2S', '2NT', '3S'], '4S', '13 以上', 'responder',
+  '3 张以上黑桃支持，进局。', ['进局'], S21S);
+add('responder', '1S', '2H', ['2S', '2NT', '3S'], '3NT', '13 以上', 'responder',
+  '均型或半均型、黑桃不配，进局。', ['进局'], S21S);
+
+
 /* ===== 15 黑木 / 盖伯 答叫（按「最后叫品是问叫」触发） ===== */
 const ANSWERS_SAYC = {
   blackwood: {
@@ -464,6 +522,24 @@ const ANSWERS_SAYC = {
     '5NT': [{ p: null, d: '答 3 个 K。', s: '盖伯 5♣ 问 K（gerber.php）', k: ['满贯'] }]
   }
 };
+/* 半逼叫 1NT 后续：13~14 均型经 1NT 后再叫 2NT（补齐 1M 应叫缺口） */
+add('responder', '1H', '1NT', ['2C', '2D', '2H', '2S'], '2NT', '13~14', 'responder',
+  '邀局：13~14 点均型，否认 4 张红心支持，邀请开叫方高限时进 3NT。', ['邀局'], S1HNT);
+add('responder', '1H', '1NT', ['2NT'], '3NT', '13~14', 'responder',
+  '进局：13~14 点，配合开叫方 18~19 点均型，直接 3NT。', [], S1HNT);
+add('responder', '1S', '1NT', ['2C', '2D', '2H', '2S'], '2NT', '13~14', 'responder',
+  '邀局：13~14 点均型，否认 4 张黑桃支持，邀请开叫方高限时进 3NT。', ['邀局'], S1SR);
+add('responder', '1S', '1NT', ['2NT'], '3NT', '13~14', 'responder',
+  '进局：13~14 点，配合开叫方 18~19 点均型，直接 3NT。', [], S1SR);
+add('responder', '1H', '1NT', ['3H'], '3NT', '13~14', 'responder',
+  '进局：13~14 点均型，否认 3 张红心支持，开叫方 16~18 点长套时改叫 3NT。', [], S1HNT);
+add('responder', '1H', '1NT', ['3H'], '4H', '13~14', 'responder',
+  '进局：13~14 点，3 张以上红心支持，开叫方 16~18 点长套时加叫 4♥。', [], S1HNT);
+add('responder', '1S', '1NT', ['3S'], '3NT', '13~14', 'responder',
+  '进局：13~14 点均型，否认 3 张黑桃支持，开叫方 16~18 点长套时改叫 3NT。', [], S1SR);
+add('responder', '1S', '1NT', ['3S'], '4S', '13~14', 'responder',
+  '进局：13~14 点，3 张以上黑桃支持，开叫方 16~18 点长套时加叫 4♠。', [], S1SR);
+
 const NOTES_SAYC = [
   { t: 'resp', o: ['1C', '1D', '1H', '1S'], r: null, s: 'SAYC 通则',
     cond: { respBid: ['2D', '2H', '2S', '3C', '3D', '3H'] },
@@ -492,7 +568,7 @@ const NOTES_SAYC = [
   { t: 'opener', o: ['2D', '2H', '2S'], r: '2NT', s: '弱二 — 2NT 之后（weak_two.php）',
     text: '开叫方在三阶叫出有 A 或 K 的旁花；叫回原花色表示低限、无旁花大牌。' },
   { t: 'resp', o: '3NT', r: null, s: '3NT 开叫后（sayc.php）',
-    text: '3NT 为 25~27 均型；应叫方 4♣ 盖伯问 A，4♦/4♥ 为转移叫。' }
+    text: '拼搏性 3NT：7~8 张坚固低花、旁门不超过 4 个大牌点。应叫方通常 PASS，或改叫 4 阶低花；4♣ 可问单缺。' }
 ];
 
 /* ---------------------------------------------------------------------------

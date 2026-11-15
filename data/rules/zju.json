@@ -688,10 +688,12 @@
       "P:1D"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "balanced": true
+    },
     "forcing": "none",
     "alert": false,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "均型。1♣—1NT 为 8~10P（6~7P 均型先叫 1♦）；1♦—1NT 表示均型。",
     "source": "浙大体系 · 1♣/1♦ 应叫",
     "tags": [],
@@ -710,7 +712,11 @@
       "min": 11,
       "max": 37
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "bid": 5
+      }
+    },
     "forcing": "one_round",
     "alert": false,
     "recommendable": true,
@@ -736,7 +742,11 @@
       "min": 0,
       "max": 5
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "bid": 5
+      }
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
@@ -762,7 +772,13 @@
       "min": 11,
       "max": 12
     },
-    "shape": null,
+    "shape": {
+      "balanced": true,
+      "suitMax": {
+        "H": 3,
+        "S": 3
+      }
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
@@ -786,7 +802,13 @@
       "min": 13,
       "max": 15
     },
-    "shape": null,
+    "shape": {
+      "balanced": true,
+      "suitMax": {
+        "H": 3,
+        "S": 3
+      }
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
@@ -807,7 +829,11 @@
       "min": 6,
       "max": 10
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "H": 6
+      }
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
@@ -830,7 +856,11 @@
       "min": 6,
       "max": 10
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "S": 6
+      }
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
@@ -876,7 +906,11 @@
       "min": 12,
       "max": 37
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "C": 5
+      }
+    },
     "forcing": "one_round",
     "alert": false,
     "recommendable": true,
@@ -963,10 +997,14 @@
       "P:1D"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "bid": 5
+      }
+    },
     "forcing": "none",
     "alert": true,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "双跳新花：爆裂叫，5 张支持，满贯倾向。",
     "source": "浙大体系 · 1♣/1♦ 应叫",
     "tags": [
@@ -1068,7 +1106,9 @@
       "min": 12,
       "max": 14
     },
-    "shape": null,
+    "shape": {
+      "balanced": true
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
@@ -1148,7 +1188,11 @@
       "min": 12,
       "max": 14
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "bid": 4
+      }
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
@@ -1175,7 +1219,11 @@
       "min": 15,
       "max": 17
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "bid": 4
+      }
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
@@ -1204,7 +1252,12 @@
       "min": 18,
       "max": 19
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "bid": 4
+      },
+      "balanced": true
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
@@ -1292,7 +1345,9 @@
       "min": 18,
       "max": 20
     },
-    "shape": null,
+    "shape": {
+      "balanced": true
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
@@ -1452,7 +1507,9 @@
       "min": 12,
       "max": 14
     },
-    "shape": null,
+    "shape": {
+      "balanced": true
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
@@ -1624,7 +1681,11 @@
       "min": 12,
       "max": 15
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "D": 5
+      }
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
@@ -1680,10 +1741,12 @@
       "M:1D P:2C"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "balanced": true
+    },
     "forcing": "none",
     "alert": false,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "均型，等待叫。",
     "source": "浙大体系 · 1♣/1♦ 开叫方再叫",
     "tags": [],
@@ -1698,10 +1761,14 @@
       "M:1D P:2C"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "C": 3
+      }
+    },
     "forcing": "none",
     "alert": false,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "3 张梅花支持，非均型。",
     "source": "浙大体系 · 1♣/1♦ 开叫方再叫",
     "tags": [],
@@ -1719,7 +1786,11 @@
       "min": 15,
       "max": 37
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "D": 6
+      }
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
@@ -1841,10 +1912,14 @@
       "M:1D P:2D"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "H": 4
+      }
+    },
     "forcing": "none",
     "alert": false,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "非均型，保证 4 张，优先从低叫。",
     "source": "浙大体系 · 1♣/1♦ 开叫方再叫",
     "tags": [],
@@ -1860,10 +1935,14 @@
       "M:1D P:2D"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "S": 4
+      }
+    },
     "forcing": "none",
     "alert": false,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "非均型，保证 4 张，优先从低叫。",
     "source": "浙大体系 · 1♣/1♦ 开叫方再叫",
     "tags": [],
@@ -1882,7 +1961,9 @@
       "min": 12,
       "max": 14
     },
-    "shape": null,
+    "shape": {
+      "balanced": true
+    },
     "forcing": "one_round",
     "alert": false,
     "recommendable": true,
@@ -1906,7 +1987,11 @@
       "min": 12,
       "max": 13
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "bid": 4
+      }
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
@@ -2290,7 +2375,11 @@
       "min": 6,
       "max": 37
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "S": 4
+      }
+    },
     "forcing": "one_round",
     "alert": false,
     "recommendable": true,
@@ -2338,7 +2427,11 @@
       "min": 12,
       "max": 37
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "C": 5
+      }
+    },
     "forcing": "one_round",
     "alert": false,
     "recommendable": true,
@@ -2362,7 +2455,11 @@
       "min": 12,
       "max": 37
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "D": 5
+      }
+    },
     "forcing": "one_round",
     "alert": false,
     "recommendable": true,
@@ -2386,7 +2483,11 @@
       "min": 12,
       "max": 37
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "H": 5
+      }
+    },
     "forcing": "one_round",
     "alert": false,
     "recommendable": true,
@@ -2410,7 +2511,11 @@
       "min": 12,
       "max": 37
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "S": 5
+      }
+    },
     "forcing": "one_round",
     "alert": false,
     "recommendable": true,
@@ -2434,7 +2539,11 @@
       "min": 8,
       "max": 10
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "bid": 4
+      }
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
@@ -2458,7 +2567,9 @@
       "min": 12,
       "max": 37
     },
-    "shape": null,
+    "shape": {
+      "balanced": true
+    },
     "forcing": "one_round",
     "alert": false,
     "recommendable": true,
@@ -2532,7 +2643,9 @@
       "min": 0,
       "max": 15
     },
-    "shape": null,
+    "shape": {
+      "balanced": true
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
@@ -2556,7 +2669,11 @@
       "min": 0,
       "max": 5
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "bid": 4
+      }
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
@@ -2582,7 +2699,12 @@
       "min": 10,
       "max": 13
     },
-    "shape": null,
+    "shape": {
+      "shortage": "any",
+      "suitMin": {
+        "bid": 4
+      }
+    },
     "forcing": "none",
     "alert": true,
     "recommendable": true,
@@ -2654,7 +2776,11 @@
       "min": 0,
       "max": 5
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "bid": 4
+      }
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
@@ -2680,7 +2806,9 @@
       "min": 13,
       "max": 15
     },
-    "shape": null,
+    "shape": {
+      "shortage": "any"
+    },
     "forcing": "none",
     "alert": true,
     "recommendable": true,
@@ -2754,7 +2882,11 @@
       "min": 12,
       "max": 17
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "bid": 3
+      }
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
@@ -2800,7 +2932,9 @@
       "min": 12,
       "max": 14
     },
-    "shape": null,
+    "shape": {
+      "balanced": true
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
@@ -2967,7 +3101,11 @@
       "min": 18,
       "max": 37
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "bid": 5
+      }
+    },
     "forcing": "one_round",
     "alert": false,
     "recommendable": true,
@@ -3043,10 +3181,14 @@
       "M:1S P:2H"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "bid": 6
+      }
+    },
     "forcing": "none",
     "alert": false,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "再叫原花：低限不保证 6 张，或 6 张非低限。",
     "source": "浙大体系 · 1♥/1♠ 开叫方再叫",
     "tags": [],
@@ -3100,7 +3242,9 @@
       "min": 18,
       "max": 20
     },
-    "shape": null,
+    "shape": {
+      "balanced": true
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
@@ -3156,10 +3300,14 @@
       "M:1S P:2S"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "bid": 4
+      }
+    },
     "forcing": "none",
     "alert": false,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "加叫应叫人花色：4 张支持；3 张支持时要保证 14P 以上。",
     "source": "浙大体系 · 1♥/1♠ 开叫方再叫",
     "tags": [],
@@ -3187,10 +3335,14 @@
       "M:1S P:2S"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "bid": 4
+      }
+    },
     "forcing": "none",
     "alert": true,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "跳叫新花：爆裂叫，4 张支持，一般有额外实力，满贯兴趣。",
     "source": "浙大体系 · 1♥/1♠ 开叫方再叫",
     "tags": [
@@ -3217,10 +3369,14 @@
       "M:1S P:2S"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "bid": 6
+      }
+    },
     "forcing": "none",
     "alert": false,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "跳叫原花：至少 6 张，质量非常好。",
     "source": "浙大体系 · 1♥/1♠ 开叫方再叫",
     "tags": [],
@@ -3247,7 +3403,9 @@
       "min": 18,
       "max": 20
     },
-    "shape": null,
+    "shape": {
+      "balanced": true
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
@@ -3335,10 +3493,14 @@
       "M:1S P:2N"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "bid": 4
+      }
+    },
     "forcing": "none",
     "alert": false,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "3 阶新花：所叫花色 4 张以上。",
     "source": "浙大体系 · 1♥/1♠ 开叫方再叫",
     "tags": [],
@@ -3464,7 +3626,11 @@
       "min": 8,
       "max": 37
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "D": 4
+      }
+    },
     "forcing": "none",
     "alert": true,
     "recommendable": true,
@@ -3484,10 +3650,14 @@
       "P:1N"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "H": 5
+      }
+    },
     "forcing": "none",
     "alert": true,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "高级杰克贝转移叫：5 张以上红心。",
     "source": "浙大体系 · 1NT 应叫",
     "tags": [
@@ -3504,10 +3674,14 @@
       "P:1N"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "S": 5
+      }
+    },
     "forcing": "none",
     "alert": true,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "高级杰克贝转移叫：5 张以上黑桃。",
     "source": "浙大体系 · 1NT 应叫",
     "tags": [
@@ -3729,7 +3903,9 @@
       "min": 15,
       "max": 17
     },
-    "shape": null,
+    "shape": {
+      "balanced": true
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
@@ -3789,10 +3965,15 @@
       "M:1N P:2C"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "suitMax": {
+        "H": 3,
+        "S": 3
+      }
+    },
     "forcing": "none",
     "alert": false,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "无 4 张高花。",
     "source": "浙大体系 · 1NT — 斯台曼答叫",
     "tags": [],
@@ -3807,10 +3988,15 @@
       "M:1N P:2C"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "H": 4,
+        "S": 4
+      }
+    },
     "forcing": "none",
     "alert": false,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "4 张红心，不排除 4 张黑桃。",
     "source": "浙大体系 · 1NT — 斯台曼答叫",
     "tags": [],
@@ -3825,10 +4011,15 @@
       "M:1N P:2C"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "S": 4,
+        "H": 4
+      }
+    },
     "forcing": "none",
     "alert": false,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "4 张黑桃，无 4 张红心。",
     "source": "浙大体系 · 1NT — 斯台曼答叫",
     "tags": [],
@@ -3846,7 +4037,11 @@
       "min": 0,
       "max": 7
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "D": 5
+      }
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
@@ -3909,7 +4104,9 @@
       "min": 8,
       "max": 9
     },
-    "shape": null,
+    "shape": {
+      "balanced": true
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
@@ -4164,10 +4361,14 @@
       "P:1N M:2C P:2H"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "S": 5
+      }
+    },
     "forcing": "none",
     "alert": false,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "红心支持；要求开叫人接力 2NT，后续 3♣/3♦ 保证 4 张、3♠ 保证 5 张，满贯兴趣。",
     "source": "浙大体系 · 1NT — 2♣ — 2♥ 之后",
     "tags": [
@@ -4187,7 +4388,12 @@
       "min": 8,
       "max": 9
     },
-    "shape": null,
+    "shape": {
+      "balanced": true,
+      "suitMin": {
+        "S": 4
+      }
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
@@ -4250,7 +4456,11 @@
       "min": 8,
       "max": 9
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "H": 4
+      }
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
@@ -4270,10 +4480,14 @@
       "P:1N M:2C P:2H"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "S": 4
+      }
+    },
     "forcing": "none",
     "alert": false,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "有 4 张黑桃，开叫人可 PASS 或改 4♠。",
     "source": "浙大体系 · 1NT — 2♣ — 2♥ 之后",
     "tags": [],
@@ -4288,10 +4502,14 @@
       "P:1N M:2C P:2H"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "S": 4
+      }
+    },
     "forcing": "none",
     "alert": true,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "4 张以上支持，爆裂叫。",
     "source": "浙大体系 · 1NT — 2♣ — 2♥ 之后",
     "tags": [
@@ -4308,10 +4526,14 @@
       "P:1N M:2C P:2H"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "C": 4
+      }
+    },
     "forcing": "none",
     "alert": true,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "4 张以上支持，爆裂叫。",
     "source": "浙大体系 · 1NT — 2♣ — 2♥ 之后",
     "tags": [
@@ -4328,10 +4550,14 @@
       "P:1N M:2C P:2H"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "D": 4
+      }
+    },
     "forcing": "none",
     "alert": true,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "4 张以上支持，爆裂叫。",
     "source": "浙大体系 · 1NT — 2♣ — 2♥ 之后",
     "tags": [
@@ -4466,7 +4692,12 @@
       "min": 8,
       "max": 9
     },
-    "shape": null,
+    "shape": {
+      "balanced": true,
+      "suitMin": {
+        "H": 4
+      }
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
@@ -4549,7 +4780,11 @@
       "min": 8,
       "max": 9
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "S": 4
+      }
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
@@ -4569,10 +4804,14 @@
       "P:1N M:2C P:2S"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "H": 4
+      }
+    },
     "forcing": "none",
     "alert": false,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "有 4 张红心，封局。",
     "source": "浙大体系 · 1NT — 2♣ — 2♠ 之后",
     "tags": [
@@ -4589,10 +4828,14 @@
       "P:1N M:2C P:2S"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "C": 4
+      }
+    },
     "forcing": "none",
     "alert": true,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "4 张以上支持，爆裂叫。",
     "source": "浙大体系 · 1NT — 2♣ — 2♠ 之后",
     "tags": [
@@ -4609,10 +4852,14 @@
       "P:1N M:2C P:2S"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "D": 4
+      }
+    },
     "forcing": "none",
     "alert": true,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "4 张以上支持，爆裂叫。",
     "source": "浙大体系 · 1NT — 2♣ — 2♠ 之后",
     "tags": [
@@ -4629,10 +4876,14 @@
       "P:1N M:2C P:2S"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "H": 4
+      }
+    },
     "forcing": "none",
     "alert": true,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "4 张以上支持，爆裂叫。",
     "source": "浙大体系 · 1NT — 2♣ — 2♠ 之后",
     "tags": [
@@ -4741,10 +4992,14 @@
       "M:1N P:2D"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "H": 3
+      }
+    },
     "forcing": "none",
     "alert": true,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "2~3 张红心，任何强度，接受转移。",
     "source": "浙大体系 · 1NT — 转移叫答叫与后续",
     "tags": [
@@ -4761,10 +5016,14 @@
       "M:1N P:2D"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "H": 4
+      }
+    },
     "forcing": "none",
     "alert": true,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "4 张以上红心，高限，4-3-3-3 或方块双张。",
     "source": "浙大体系 · 1NT — 转移叫答叫与后续",
     "tags": [
@@ -4781,10 +5040,14 @@
       "M:1N P:2D"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "H": 4
+      }
+    },
     "forcing": "none",
     "alert": true,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "所叫花色双张，4 张以上红心，高限。",
     "source": "浙大体系 · 1NT — 转移叫答叫与后续",
     "tags": [
@@ -4801,10 +5064,14 @@
       "M:1N P:2D"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "H": 4
+      }
+    },
     "forcing": "none",
     "alert": true,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "所叫花色双张，4 张以上红心，高限。",
     "source": "浙大体系 · 1NT — 转移叫答叫与后续",
     "tags": [
@@ -4821,10 +5088,14 @@
       "M:1N P:2D"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "H": 4
+      }
+    },
     "forcing": "none",
     "alert": true,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "4 张以上红心，非高限。",
     "source": "浙大体系 · 1NT — 转移叫答叫与后续",
     "tags": [
@@ -4841,10 +5112,14 @@
       "M:1N P:2H"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "S": 3
+      }
+    },
     "forcing": "none",
     "alert": true,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "2~3 张黑桃，任何强度，接受转移。",
     "source": "浙大体系 · 1NT — 转移叫答叫与后续",
     "tags": [
@@ -4861,10 +5136,14 @@
       "M:1N P:2H"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "S": 4
+      }
+    },
     "forcing": "none",
     "alert": true,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "4 张以上黑桃，高限，4-3-3-3 或红心双张。",
     "source": "浙大体系 · 1NT — 转移叫答叫与后续",
     "tags": [
@@ -4881,10 +5160,14 @@
       "M:1N P:2H"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "S": 4
+      }
+    },
     "forcing": "none",
     "alert": true,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "所叫花色双张，4 张以上黑桃，高限。",
     "source": "浙大体系 · 1NT — 转移叫答叫与后续",
     "tags": [
@@ -4901,10 +5184,14 @@
       "M:1N P:2H"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "S": 4
+      }
+    },
     "forcing": "none",
     "alert": true,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "所叫花色双张，4 张以上黑桃，高限。",
     "source": "浙大体系 · 1NT — 转移叫答叫与后续",
     "tags": [
@@ -4921,10 +5208,14 @@
       "M:1N P:2H"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "S": 4
+      }
+    },
     "forcing": "none",
     "alert": true,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "4 张以上黑桃，非高限。",
     "source": "浙大体系 · 1NT — 转移叫答叫与后续",
     "tags": [
@@ -4961,10 +5252,14 @@
       "P:1N M:2D P:2H"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "H": 5
+      }
+    },
     "forcing": "none",
     "alert": false,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "仅 5 张红心，进局邀请。",
     "source": "浙大体系 · 1NT — 2♦ — 2♥ 之后",
     "tags": [
@@ -4981,10 +5276,14 @@
       "P:1N M:2D P:2H"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "C": 4
+      }
+    },
     "forcing": "one_round",
     "alert": false,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "保证 4 张、一般 5 张，进局逼叫，不排除满贯兴趣。",
     "source": "浙大体系 · 1NT — 2♦ — 2♥ 之后",
     "tags": [
@@ -5001,10 +5300,14 @@
       "P:1N M:2D P:2H"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "D": 4
+      }
+    },
     "forcing": "one_round",
     "alert": false,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "保证 4 张、一般 5 张，进局逼叫，不排除满贯兴趣。",
     "source": "浙大体系 · 1NT — 2♦ — 2♥ 之后",
     "tags": [
@@ -5021,10 +5324,14 @@
       "P:1N M:2D P:2H"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "H": 5
+      }
+    },
     "forcing": "none",
     "alert": false,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "6 张或很好 5 张红心，进局邀请。",
     "source": "浙大体系 · 1NT — 2♦ — 2♥ 之后",
     "tags": [
@@ -5044,7 +5351,11 @@
       "min": 10,
       "max": 37
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "H": 5
+      }
+    },
     "forcing": "one_round",
     "alert": false,
     "recommendable": true,
@@ -5064,10 +5375,14 @@
       "P:1N M:2D P:2H"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "H": 6
+      }
+    },
     "forcing": "none",
     "alert": true,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "爆裂叫，较好 6 张红心，满贯邀请。",
     "source": "浙大体系 · 1NT — 2♦ — 2♥ 之后",
     "tags": [
@@ -5084,10 +5399,14 @@
       "P:1N M:2D P:2H"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "H": 6
+      }
+    },
     "forcing": "none",
     "alert": true,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "爆裂叫，较好 6 张红心，满贯邀请。",
     "source": "浙大体系 · 1NT — 2♦ — 2♥ 之后",
     "tags": [
@@ -5104,10 +5423,14 @@
       "P:1N M:2D P:2H"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "H": 6
+      }
+    },
     "forcing": "none",
     "alert": true,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "爆裂叫，较好 6 张红心，满贯邀请。",
     "source": "浙大体系 · 1NT — 2♦ — 2♥ 之后",
     "tags": [
@@ -5124,10 +5447,14 @@
       "P:1N M:2D P:2H"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "H": 6
+      }
+    },
     "forcing": "none",
     "alert": false,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "较好 6 张红心，温和满贯兴趣。",
     "source": "浙大体系 · 1NT — 2♦ — 2♥ 之后",
     "tags": [
@@ -5187,7 +5514,11 @@
       "min": 0,
       "max": 7
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "S": 5
+      }
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
@@ -5207,10 +5538,14 @@
       "P:1N M:2H P:2S"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "S": 5
+      }
+    },
     "forcing": "none",
     "alert": false,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "仅 5 张黑桃，进局邀请。",
     "source": "浙大体系 · 1NT — 2♥ — 2♠ 之后",
     "tags": [
@@ -5227,10 +5562,14 @@
       "P:1N M:2H P:2S"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "C": 4
+      }
+    },
     "forcing": "one_round",
     "alert": false,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "保证 4 张、一般 5 张，进局逼叫，不排除满贯兴趣。",
     "source": "浙大体系 · 1NT — 2♥ — 2♠ 之后",
     "tags": [
@@ -5247,10 +5586,14 @@
       "P:1N M:2H P:2S"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "D": 4
+      }
+    },
     "forcing": "one_round",
     "alert": false,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "保证 4 张、一般 5 张，进局逼叫，不排除满贯兴趣。",
     "source": "浙大体系 · 1NT — 2♥ — 2♠ 之后",
     "tags": [
@@ -5287,10 +5630,14 @@
       "P:1N M:2H P:2S"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "S": 5
+      }
+    },
     "forcing": "none",
     "alert": false,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "6 张或很好 5 张黑桃，进局邀请。",
     "source": "浙大体系 · 1NT — 2♥ — 2♠ 之后",
     "tags": [
@@ -5310,7 +5657,11 @@
       "min": 10,
       "max": 37
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "S": 5
+      }
+    },
     "forcing": "one_round",
     "alert": false,
     "recommendable": true,
@@ -5330,10 +5681,14 @@
       "P:1N M:2H P:2S"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "S": 6
+      }
+    },
     "forcing": "none",
     "alert": true,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "爆裂叫，较好 6 张黑桃，满贯邀请。",
     "source": "浙大体系 · 1NT — 2♥ — 2♠ 之后",
     "tags": [
@@ -5350,10 +5705,14 @@
       "P:1N M:2H P:2S"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "S": 6
+      }
+    },
     "forcing": "none",
     "alert": true,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "爆裂叫，较好 6 张黑桃，满贯邀请。",
     "source": "浙大体系 · 1NT — 2♥ — 2♠ 之后",
     "tags": [
@@ -5370,10 +5729,14 @@
       "P:1N M:2H P:2S"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "S": 6
+      }
+    },
     "forcing": "none",
     "alert": true,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "爆裂叫，较好 6 张黑桃，满贯邀请。",
     "source": "浙大体系 · 1NT — 2♥ — 2♠ 之后",
     "tags": [
@@ -5390,10 +5753,14 @@
       "P:1N M:2H P:2S"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "S": 6
+      }
+    },
     "forcing": "none",
     "alert": false,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "较好 6 张黑桃，温和满贯兴趣。",
     "source": "浙大体系 · 1NT — 2♥ — 2♠ 之后",
     "tags": [
@@ -5506,10 +5873,12 @@
       "M:1N P:2S"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "shortage": "any"
+    },
     "forcing": "none",
     "alert": false,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "所叫高花单缺，双低 5-4，进局逼叫，不排除满贯兴趣。",
     "source": "浙大体系 · 1NT — 低花斯台曼与低花转移",
     "tags": [],
@@ -5524,10 +5893,12 @@
       "M:1N P:2S"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "shortage": "any"
+    },
     "forcing": "none",
     "alert": false,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "所叫高花单缺，双低 5-4，进局逼叫，不排除满贯兴趣。",
     "source": "浙大体系 · 1NT — 低花斯台曼与低花转移",
     "tags": [],
@@ -5686,10 +6057,15 @@
       "M:1N P:3D"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "suitMax": {
+        "H": 4,
+        "S": 4
+      }
+    },
     "forcing": "none",
     "alert": false,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "无 5 张高花。",
     "source": "浙大体系 · 1NT — 低花斯台曼与低花转移",
     "tags": [],
@@ -5704,10 +6080,14 @@
       "M:1N P:3H"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "S": 3
+      }
+    },
     "forcing": "none",
     "alert": false,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "保证 3 张黑桃，红心不强，低花缺少配合，邀请。",
     "source": "浙大体系 · 1NT — 低花斯台曼与低花转移",
     "tags": [
@@ -5742,10 +6122,14 @@
       "M:1N P:3H"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "S": 4
+      }
+    },
     "forcing": "none",
     "alert": false,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "4 张黑桃，封局。",
     "source": "浙大体系 · 1NT — 低花斯台曼与低花转移",
     "tags": [
@@ -5762,10 +6146,14 @@
       "M:1N P:3H"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "C": 4
+      }
+    },
     "forcing": "none",
     "alert": false,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "至少 4 张支持，高限。",
     "source": "浙大体系 · 1NT — 低花斯台曼与低花转移",
     "tags": [],
@@ -5780,10 +6168,14 @@
       "M:1N P:3H"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "D": 4
+      }
+    },
     "forcing": "none",
     "alert": false,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "至少 4 张支持，高限。",
     "source": "浙大体系 · 1NT — 低花斯台曼与低花转移",
     "tags": [],
@@ -5798,10 +6190,14 @@
       "M:1N P:3H"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "C": 4
+      }
+    },
     "forcing": "none",
     "alert": false,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "至少 4 张支持，低限，止叫。",
     "source": "浙大体系 · 1NT — 低花斯台曼与低花转移",
     "tags": [
@@ -5818,10 +6214,14 @@
       "M:1N P:3H"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "D": 4
+      }
+    },
     "forcing": "none",
     "alert": false,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "至少 4 张支持，低限，止叫。",
     "source": "浙大体系 · 1NT — 低花斯台曼与低花转移",
     "tags": [
@@ -5856,10 +6256,14 @@
       "M:1N P:3S"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "H": 4
+      }
+    },
     "forcing": "none",
     "alert": false,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "4 张红心，封局。",
     "source": "浙大体系 · 1NT — 低花斯台曼与低花转移",
     "tags": [
@@ -5949,7 +6353,9 @@
       "min": 8,
       "max": 37
     },
-    "shape": null,
+    "shape": {
+      "balanced": true
+    },
     "forcing": "one_round",
     "alert": false,
     "recommendable": true,
@@ -5972,7 +6378,11 @@
       "min": 8,
       "max": 37
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "C": 6
+      }
+    },
     "forcing": "one_round",
     "alert": false,
     "recommendable": true,
@@ -5995,7 +6405,11 @@
       "min": 8,
       "max": 37
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "D": 6
+      }
+    },
     "forcing": "one_round",
     "alert": false,
     "recommendable": true,
@@ -6079,10 +6493,12 @@
       "M:2C P:2D"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "balanced": true
+    },
     "forcing": "none",
     "alert": false,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "接力示弱，0~3P 或均型牌等待叫。",
     "source": "浙大体系 · 2♣ — 2♦ 之后开叫方再叫",
     "tags": [],
@@ -6100,7 +6516,9 @@
       "min": 24,
       "max": 25
     },
-    "shape": null,
+    "shape": {
+      "balanced": true
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
@@ -6121,7 +6539,9 @@
       "min": 26,
       "max": 27
     },
-    "shape": null,
+    "shape": {
+      "balanced": true
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
@@ -6330,7 +6750,9 @@
       "min": 22,
       "max": 23
     },
-    "shape": null,
+    "shape": {
+      "balanced": true
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
@@ -6418,10 +6840,14 @@
       "M:2C P:3D"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "bid": 3
+      }
+    },
     "forcing": "none",
     "alert": false,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "加叫同伴花色：3 张以上支持。",
     "source": "浙大体系 · 2♣ — 正应叫之后",
     "tags": [],
@@ -6441,10 +6867,14 @@
       "M:2C P:3D"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "bid": 5
+      }
+    },
     "forcing": "none",
     "alert": false,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "叫新花色：5 张以上，自然。",
     "source": "浙大体系 · 2♣ — 正应叫之后",
     "tags": [],
@@ -6642,10 +7072,12 @@
       "M:2D P:2N"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "shortage": "any"
+    },
     "forcing": "none",
     "alert": false,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "所叫花色单缺，5-4-3-1 或 6-4-2-1，黑桃 4 张。",
     "source": "浙大体系 · 2♦ 双高阻击",
     "tags": [],
@@ -6660,10 +7092,12 @@
       "M:2D P:2N"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "shortage": "any"
+    },
     "forcing": "none",
     "alert": false,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "所叫花色单缺，5-4-3-1 或 6-4-2-1，黑桃 4 张。",
     "source": "浙大体系 · 2♦ 双高阻击",
     "tags": [],
@@ -6678,10 +7112,12 @@
       "M:2D P:2N"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "balanced": true
+    },
     "forcing": "none",
     "alert": false,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "5-4-2-2，红心 5 张，低限均型。",
     "source": "浙大体系 · 2♦ 双高阻击",
     "tags": [],
@@ -6714,10 +7150,12 @@
       "M:2D P:2N"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "balanced": true
+    },
     "forcing": "none",
     "alert": false,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "5-4-2-2，高限均型。",
     "source": "浙大体系 · 2♦ 双高阻击",
     "tags": [],
@@ -6733,10 +7171,14 @@
       "P:2S"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "bid": 6
+      }
+    },
     "forcing": "one_round",
     "alert": false,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "新花色：保证 6 张较好套，逼叫一轮。",
     "source": "浙大体系 · 2♥/2♠ 弱二",
     "tags": [
@@ -7052,10 +7494,14 @@
       "P:2N"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "H": 5
+      }
+    },
     "forcing": "none",
     "alert": true,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "杰克贝转移叫：5 张以上红心。",
     "source": "浙大体系 · 2NT 应叫",
     "tags": [
@@ -7072,10 +7518,14 @@
       "P:2N"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "S": 5
+      }
+    },
     "forcing": "none",
     "alert": true,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "杰克贝转移叫：5 张以上黑桃。",
     "source": "浙大体系 · 2NT 应叫",
     "tags": [
@@ -7233,10 +7683,15 @@
       "M:2N P:3C"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "suitMax": {
+        "H": 4,
+        "S": 4
+      }
+    },
     "forcing": "none",
     "alert": false,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "无 5 张高花，有 4 张高花。",
     "source": "浙大体系 · 2NT 应叫",
     "tags": [],
@@ -7251,10 +7706,14 @@
       "M:2N P:3C"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "H": 5
+      }
+    },
     "forcing": "none",
     "alert": false,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "5 张红心。",
     "source": "浙大体系 · 2NT 应叫",
     "tags": [],
@@ -7269,10 +7728,14 @@
       "M:2N P:3C"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "S": 5
+      }
+    },
     "forcing": "none",
     "alert": false,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "5 张黑桃。",
     "source": "浙大体系 · 2NT 应叫",
     "tags": [],
@@ -7287,10 +7750,15 @@
       "M:2N P:3C"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "suitMax": {
+        "H": 3,
+        "S": 3
+      }
+    },
     "forcing": "none",
     "alert": false,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "无 4 张高花。",
     "source": "浙大体系 · 2NT 应叫",
     "tags": [],
@@ -7386,10 +7854,14 @@
       "P:3C"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "S": 3
+      }
+    },
     "forcing": "none",
     "alert": false,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "有 3 张黑桃。",
     "source": "浙大体系 · 阻击开叫应叫",
     "tags": [],
@@ -7404,10 +7876,14 @@
       "P:3C"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "H": 3
+      }
+    },
     "forcing": "none",
     "alert": false,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "有 3 张红心。",
     "source": "浙大体系 · 阻击开叫应叫",
     "tags": [],
@@ -7829,10 +8305,12 @@
       "M:3N P:4D"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "shortage": "any"
+    },
     "forcing": "none",
     "alert": false,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "所叫花色单缺。",
     "source": "浙大体系 · 赌博性 3NT 应叫",
     "tags": [],
@@ -7847,10 +8325,12 @@
       "M:3N P:4D"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "shortage": "any"
+    },
     "forcing": "none",
     "alert": false,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "所叫花色单缺。",
     "source": "浙大体系 · 赌博性 3NT 应叫",
     "tags": [],
@@ -7883,10 +8363,12 @@
       "M:3N P:4D"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "shortage": "D"
+    },
     "forcing": "none",
     "alert": false,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "方块单缺。",
     "source": "浙大体系 · 赌博性 3NT 应叫",
     "tags": [],
@@ -7901,10 +8383,12 @@
       "M:3N P:4D"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "shortage": "C"
+    },
     "forcing": "none",
     "alert": false,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "梅花单缺。",
     "source": "浙大体系 · 赌博性 3NT 应叫",
     "tags": [],
@@ -8592,7 +9076,11 @@
       "min": 7,
       "max": 9
     },
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "partner": 3
+      }
+    },
     "forcing": "none",
     "alert": false,
     "recommendable": true,
@@ -8652,10 +9140,14 @@
       "M:* O:* P:*"
     ],
     "hcp": null,
-    "shape": null,
+    "shape": {
+      "suitMin": {
+        "bid": 3
+      }
+    },
     "forcing": "none",
     "alert": true,
-    "recommendable": false,
+    "recommendable": true,
     "meaning": "支持性加倍 / 再加倍：同伴争叫花色有大牌，直到 2♥（表示 3 张支持，如 1♣—1♠—2♥—X）。",
     "source": "浙大体系 · 技术性加倍之后",
     "tags": [

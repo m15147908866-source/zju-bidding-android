@@ -63,6 +63,7 @@ node scripts/build-data.mjs             # 重新打包 data/bridge-data.js
 node --test core/*.test.js              # 核心纯函数单测
 node scripts/smoke-engine.mjs           # 适配层冒烟：结算、合法集、语境、推荐、体系卡
 node scripts/check-assets.mjs           # 资源引用：index/sw/manifest/build.sh/原生桥一致性
+node scripts/package-web.mjs             # 网页版 zip 打包
 node scripts/set-version.mjs --check    # 版本一致性
 ```
 
@@ -104,7 +105,7 @@ git tag -a v4.3.0 -m "v4.3.0"
 git push origin v4.3.0
 ```
 
-推 tag 会触发 `.github/workflows/release.yml`：校验 tag 与 `VERSION` 一致 → 构建 APK → 用 `CHANGELOG.md` 对应段落生成发布说明 → 创建 GitHub Release 并把 `ZJU-bidding.apk` 作为附件上传。
+推 tag 会触发 `.github/workflows/release.yml`：校验 tag 与 `VERSION` 一致 → 构建 APK 与网页版 zip → 用 `CHANGELOG.md` 对应段落生成发布说明 → 创建 GitHub Release 并把 `ZJU-bidding.apk`、`ZJU-bidding-web-v<版本>.zip` 作为附件上传。
 
 **APK 不入库**，只作为 Release 附件分发。仓库里出现 `*.apk` 视为误提交。
 

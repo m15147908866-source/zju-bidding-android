@@ -253,7 +253,9 @@ test('推荐契约：候选合法、约束齐全、按分数降序且不重复',
         assert.ok(!seen.has(it.bid), `${key} 同一叫品被推荐多次：${it.bid}`);
         seen.add(it.bid);
         assert.ok(it.rule && it.rule.id, `${key} 候选缺少规则来源`);
-        assert.ok(it.rule.hcp || it.rule.shape, `${key} ${it.rule.id} 没有任何硬约束却进入推荐`);
+        // 合成 PASS 是判断层兜底，不来自规则库，允许没有点数/牌型约束
+        assert.ok(it.rule.synthetic === true || it.rule.hcp || it.rule.shape,
+          `${key} ${it.rule.id} 没有任何硬约束却进入推荐`);
         assert.notEqual(it.rule.recommendable, false, `${key} ${it.rule.id} 不可推荐`);
         assert.ok(it.score <= lastScore, `${key} 推荐未按分数降序`);
         lastScore = it.score;
