@@ -1,0 +1,46 @@
+name: 叫牌数据纠错
+description: 某个叫品的含义、推荐或合法性判断有误
+labels: [data]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        请务必写清**体系**和**完整叫牌序列**，否则无法定位规则。
+  - type: dropdown
+    id: system
+    attributes:
+      label: 体系
+      options:
+        - SAYC
+        - 浙大自然
+        - 新睿桥牌
+    validations:
+      required: true
+  - type: input
+    id: sequence
+    attributes:
+      label: 叫牌序列
+      description: 从第一家开叫写起，用 `-` 分隔
+      placeholder: 1H - P - 1S - P - 2C
+    validations:
+      required: true
+  - type: textarea
+    id: hand
+    attributes:
+      label: 相关手牌（如有）
+      placeholder: S AK5 H KQJ76 D 32 C Q54
+    validations:
+      required: false
+  - type: textarea
+    id: current
+    attributes:
+      label: 当前显示的内容
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: 应显示的内容
+      description: 附上依据（教材、体系文档、约定卡等）
+    validations:
+      required: true

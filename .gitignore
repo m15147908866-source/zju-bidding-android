@@ -1,0 +1,22 @@
+# 构建产物
+build/
+dist/
+android/build/
+android/assets/
+*.apk
+*.idsig
+
+# 签名材料
+.keystore/
+*.jks
+*.keystore
+
+# 依赖与编辑器
+node_modules/
+.vscode/
+.idea/
+
+# 系统
+.DS_Store
+Thumbs.db
+desktop.ini

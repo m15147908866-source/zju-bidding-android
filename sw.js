@@ -1,5 +1,5 @@
 /* ZJU 叫牌 —— 离线缓存 */
-const CACHE = 'zju-bid-v1';
+const CACHE = 'zju-bid-v4.3.0';
 const ASSETS = [
   './', './index.html', './app.js', './engine.js',
   './data.js', './data-zju.js', './data-xinrui.js',

@@ -1,0 +1,16 @@
+# CODEOWNERS：谁必须批准哪些路径的改动
+# 规则：最后一个匹配的模式优先；同一行多个 owner 表示任一批准即可。
+# 注意：被指定的账号必须对仓库有显式 write 权限，否则不会触发评审请求。
+
+# 兜底
+*                       @m15147908866-source @geyadawang-boop
+
+# 发布链路：构建脚本、工作流、版本号，改错会直接影响发版
+/.github/               @m15147908866-source
+/android/build.sh       @m15147908866-source
+/VERSION                @m15147908866-source
+/scripts/               @m15147908866-source
+
+# 叫牌引擎与体系数据：影响所有推荐结果，需要熟悉规则的维护者确认
+/engine.js              @m15147908866-source
+/data*.js               @m15147908866-source

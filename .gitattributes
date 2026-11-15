@@ -1,0 +1,8 @@
+# 默认按文本处理，仓库内统一 LF
+* text=auto
+
+# shell 脚本必须是 LF，否则在 Linux / CI 上无法执行
+*.sh text eol=lf
+
+# Windows 批处理保持 CRLF
+*.bat text eol=crlf

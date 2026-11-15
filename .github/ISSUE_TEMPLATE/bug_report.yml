@@ -1,0 +1,56 @@
+name: Bug 反馈
+description: 页面显示、叫牌推荐、APK 安装等问题
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        请尽量提供可复现的信息。涉及某个具体牌局时，请把叫牌序列写出来。
+  - type: dropdown
+    id: platform
+    attributes:
+      label: 运行方式
+      options:
+        - Android APK
+        - 浏览器 / PWA
+        - 两者都有
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: 版本
+      description: 应用内显示的版本号，或 Release 页的 tag（如 v4.3.0）
+      placeholder: v4.3.0
+    validations:
+      required: true
+  - type: input
+    id: env
+    attributes:
+      label: 设备与系统
+      placeholder: Pixel 6 / Android 14；或 Chrome 126 / Windows 11
+    validations:
+      required: false
+  - type: textarea
+    id: steps
+    attributes:
+      label: 复现步骤
+      placeholder: |
+        1. 选择「浙大自然」体系
+        2. 输入手牌 ...
+        3. 点击「推荐」
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: 期望结果
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: 实际结果
+      description: 有截图可以直接拖进来
+    validations:
+      required: true
