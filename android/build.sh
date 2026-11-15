@@ -1,30 +1,77 @@
 #!/usr/bin/env bash
-# SAYC 叫牌 —— APK 构建脚本（不依赖 Gradle，直接用 SDK 工具链）
-set -e
+# ZJU 叫牌 —— APK 构建脚本（不依赖 Gradle，直接用 SDK 工具链）
+#
+# 用法：bash android/build.sh
+#
+# 可用环境变量覆盖（CI 与本地共用同一套逻辑）：
+#   ANDROID_HOME / ANDROID_SDK_ROOT   Android SDK 根目录
+#   BUILD_TOOLS                       build-tools 版本，默认 36.0.0
+#   ANDROID_PLATFORM                  platforms 目录名，默认 android-34
+#   OUT_APK                           产物路径，默认 dist/ZJU-bidding.apk
+#   KEYSTORE / KEYSTORE_PASS          签名密钥；不提供则使用 .keystore/ 下的临时调试密钥
+#   KEY_ALIAS / KEY_PASS              别名与密钥口令，默认取 KEYSTORE_PASS
+set -euo pipefail
 
-# JDK（路径含空格，PATH 用 Git Bash 的 /c/ 形式）
-export JAVA_HOME="C:/Program Files/Microsoft/jdk-25.0.3.9-hotspot"
-export PATH="/c/Program Files/Microsoft/jdk-25.0.3.9-hotspot/bin:$PATH"
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+APP="$ROOT/android"
 
-SDK="D:/WorkBuddy/.workbuddy/android/sdk"
-BT="$SDK/build-tools/36.0.0"
-PLATFORM="$SDK/platforms/android-34/android.jar"
-APP="D:/WorkBuddy/output/bridge-bidding/android"
-SRC="D:/WorkBuddy/output/bridge-bidding"
+SDK="${ANDROID_HOME:-${ANDROID_SDK_ROOT:-D:/WorkBuddy/.workbuddy/android/sdk}}"
+BT="$SDK/build-tools/${BUILD_TOOLS:-36.0.0}"
+PLATFORM="$SDK/platforms/${ANDROID_PLATFORM:-android-34}/android.jar"
+OUT_APK="${OUT_APK:-$ROOT/dist/ZJU-bidding.apk}"
+
+# Windows 下工具带 .bat，类 Unix 下是不带后缀的脚本
+case "$(uname -s)" in
+  MINGW* | MSYS* | CYGWIN*) BAT=".bat" ;;
+  *) BAT="" ;;
+esac
+
+# Windows 下可执行文件带 .exe，类 Unix 下不带
+if [ -f "$BT/aapt2.exe" ]; then AAPT2="$BT/aapt2.exe"; else AAPT2="$BT/aapt2"; fi
+if [ -f "$BT/zipalign.exe" ]; then ZIPALIGN="$BT/zipalign.exe"; else ZIPALIGN="$BT/zipalign"; fi
+
+# JDK：优先用环境里的 JAVA_HOME，否则回退到本机既有安装
+if [ -z "${JAVA_HOME:-}" ] && [ -d "C:/Program Files/Microsoft/jdk-25.0.3.9-hotspot" ]; then
+  export JAVA_HOME="C:/Program Files/Microsoft/jdk-25.0.3.9-hotspot"
+fi
+if [ -n "${JAVA_HOME:-}" ]; then
+  export PATH="$JAVA_HOME/bin:$PATH"
+fi
+
+# Python 只用于把 classes.dex 写进 APK
+PYTHON="${PYTHON:-}"
+if [ -z "$PYTHON" ]; then
+  for candidate in python3 python py; do
+    if command -v "$candidate" >/dev/null 2>&1; then
+      PYTHON="$candidate"
+      break
+    fi
+  done
+fi
+if [ -z "$PYTHON" ]; then
+  echo "缺少 Python，无法把 classes.dex 写入 APK" >&2
+  exit 1
+fi
+
+if [ ! -f "$PLATFORM" ]; then
+  echo "找不到 Android 平台：$PLATFORM" >&2
+  echo "请检查 ANDROID_HOME 与 ANDROID_PLATFORM" >&2
+  exit 1
+fi
 
 cd "$APP"
 rm -rf build assets
 mkdir -p build/gen build/classes build/dex assets
 
 echo "==> 1/7 复制网页资源"
-cp "$SRC/index.html" "$SRC"/app.js "$SRC"/engine.js "$SRC"/data*.js assets/
+cp "$ROOT/index.html" "$ROOT"/app.js "$ROOT"/engine.js "$ROOT"/data*.js assets/
 ls -la assets/
 
 echo "==> 2/7 编译资源"
-"$BT/aapt2.exe" compile --dir res -o build/res.zip
+"$AAPT2" compile --dir res -o build/res.zip
 
 echo "==> 3/7 链接资源与 assets"
-"$BT/aapt2.exe" link \
+"$AAPT2" link \
   -o build/base.apk \
   -I "$PLATFORM" \
   --manifest AndroidManifest.xml \
@@ -44,7 +91,7 @@ javac -encoding UTF-8 -nowarn -Xlint:-options \
   java/com/feng/sayc/MainActivity.java
 
 echo "==> 5/7 转 dex"
-"$BT/d8.bat" --lib "$PLATFORM" --min-api 23 --release \
+"$BT/d8$BAT" --lib "$PLATFORM" --min-api 23 --release \
   --output build/dex \
   build/classes/com/feng/sayc/*.class
 
@@ -58,20 +105,36 @@ print('  classes.dex 已写入', os.path.getsize('build/dex/classes.dex'), 'byte
 PY
 
 echo "==> 7/7 对齐与签名"
-"$BT/zipalign.exe" -f -p 4 build/app-unsigned.apk build/app-aligned.apk
+"$ZIPALIGN" -f -p 4 build/app-unsigned.apk build/app-aligned.apk
 
-if [ ! -f keystore.jks ]; then
-  keytool -genkeypair -keystore keystore.jks -alias sayc \
-    -keyalg RSA -keysize 2048 -validity 10000 \
-    -storepass sayc2026 -keypass sayc2026 \
-    -dname "CN=SAYC Bidding, OU=Personal, O=Personal, L=Beijing, ST=Beijing, C=CN" 2>/dev/null
+if [ -n "${KEYSTORE:-}" ] && [ -f "$KEYSTORE" ]; then
+  KS="$KEYSTORE"
+  KS_PASS="${KEYSTORE_PASS:?提供 KEYSTORE 时必须同时提供 KEYSTORE_PASS}"
+  ALIAS="${KEY_ALIAS:-zju}"
+  KEY_PASS="${KEY_PASS:-$KS_PASS}"
+  echo "    使用发布密钥签名"
+else
+  # 放在仓库根的 .keystore/ 下并已被忽略：多次本地构建签名保持一致
+  KS="$ROOT/.keystore/debug.keystore"
+  KS_PASS="zju-debug"
+  mkdir -p "$ROOT/.keystore"
+  ALIAS="zju"
+  KEY_PASS="$KS_PASS"
+  echo "    未提供 KEYSTORE，使用临时调试密钥（签名与历史版本不同）"
+  if [ ! -f "$KS" ]; then
+    keytool -genkeypair -keystore "$KS" -alias "$ALIAS" \
+      -keyalg RSA -keysize 2048 -validity 10000 \
+      -storepass "$KS_PASS" -keypass "$KEY_PASS" \
+      -dname "CN=ZJU Bidding, OU=Personal, O=Personal, L=Hangzhou, ST=Zhejiang, C=CN" 2>/dev/null
+  fi
 fi
 
-"$BT/apksigner.bat" sign \
-  --ks keystore.jks --ks-pass pass:sayc2026 --key-pass pass:sayc2026 \
-  --out "$SRC/ZJU-bidding.apk" \
+mkdir -p "$(dirname "$OUT_APK")"
+"$BT/apksigner$BAT" sign \
+  --ks "$KS" --ks-pass "pass:$KS_PASS" --ks-key-alias "$ALIAS" --key-pass "pass:$KEY_PASS" \
+  --out "$OUT_APK" \
   build/app-aligned.apk
 
-"$BT/apksigner.bat" verify --print-certs "$SRC/ZJU-bidding.apk" | head -4
-ls -lh "$SRC/ZJU-bidding.apk"
-echo "==> 完成"
+"$BT/apksigner$BAT" verify --print-certs "$OUT_APK" | head -5
+ls -lh "$OUT_APK"
+echo "==> 完成：$OUT_APK"
