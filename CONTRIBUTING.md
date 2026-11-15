@@ -27,6 +27,7 @@ OUT_APK=dist/ZJU-bidding.apk bash android/build.sh
 | `data/` | 叫牌体系数据 | `data/zju-1nt-response` |
 | `chore/` | 工程配置、依赖、构建 | `chore/ci-setup` |
 | `docs/` | 文档 | `docs/readme-build` |
+| `hotfix/` | 线上紧急修复，事后补齐流程 | `hotfix/install-crash` |
 
 ## 3. 提交信息
 
@@ -63,13 +64,19 @@ node scripts/set-version.mjs --check    # 版本一致性
 
 ## 6. Pull Request
 
-1. 推送分支，按模板开 PR，标题与主提交保持同一风格
+1. 推送分支，按模板开 PR，标题与主提交保持同一风格（CI 会校验标题格式）
 2. 填写 PR 模板里的自查项；`Closes #<issue>` 关联对应 issue
-3. 等 CI 两个任务都变绿：**静态检查**、**构建 APK**
+3. 等 CI 两个任务都变绿：**静态检查**、**构建 APK**，汇总检查名为 `ci-success`
 4. 评审通过后由维护者 **Squash and merge**，合并后的提交信息用 PR 标题，并删除分支
 5. 用户可见的改动，在合并前把 `CHANGELOG.md` 的 `[Unreleased]` 段补上
 
-评审关注点：叫牌数据是否符合所声明的体系、引擎规则改动是否会让既有序列行为漂移、是否引入新的全局状态。
+PR 规模：有效 diff 控制在 400 行以内，超过就拆。数据文件的批量改动单独开 PR，便于回溯。
+
+评审节奏：首次响应 1 个工作日内。评审关注点：叫牌数据是否符合所声明的体系、引擎规则改动是否会让既有序列行为漂移、是否引入新的全局状态。
+
+### 紧急修复通道
+
+线上有严重问题时允许先修复后补流程：开 `hotfix/<问题>` 分支 → 走同一个 PR（可先合并）→ 事后 24 小时内补齐 issue、CHANGELOG 与回归说明。不要用 `--no-verify` 或直接推 `main` 绕过。
 
 ## 7. 发布
 
@@ -117,5 +124,29 @@ base64 -w0 release.jks > release.jks.b64
 
 ### 一次性仓库设置
 
-- Settings → Branches：为 `main` 加保护规则，要求 PR、要求 `静态检查` 与 `构建 APK` 通过、禁止 force push
-- Settings → Actions → General：确认允许运行工作流
+需要仓库管理员权限，配完用命令核对一遍。
+
+```bash
+# 1) main 保护：必需 PR、必需 ci-success、禁强推与删除
+gh api -X POST repos/m15147908866-source/zju-bidding-android/rulesets \
+  --input .github/ruleset-main.json
+
+# 2) 核对规则已生效
+gh api repos/m15147908866-source/zju-bidding-android/rulesets \
+  --jq '.[] | {name, enforcement}'
+```
+
+界面上还要确认三处：
+
+- Settings → General → Pull Requests：只勾 **Squash and merge**，并勾选合并后自动删除分支
+- Settings → Actions → General：Workflow permissions 选 **Read repository contents**，不让默认 token 带写权限
+- Settings → Code security：开启 **Secret scanning**、**Push protection**、**Dependabot alerts**
+
+单人维护阶段 ruleset 里的批准人数是 `0`：仍然强制走 PR 与 CI，但不要求别人批准，避免作者无法批准自己的 PR 而导致无法合并。有第二位评审人后，把 `required_approving_review_count` 改成 `1`，并把 `require_code_owner_review` 打开。
+
+完整清单见规范包 `09_落地检查表.md`：阶段 0–1 已完成，阶段 2 里的 commitlint / pre-commit 暂不引入——仓库没有 Node 依赖，PR 标题校验已用 `pr-title.yml` 覆盖，不额外增加本地钩子。
+
+## 8. 行为与安全
+
+- 参与讨论与提交请遵守 [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md)
+- 安全问题的报告渠道与响应时限见 [SECURITY.md](SECURITY.md)，不要开公开 issue

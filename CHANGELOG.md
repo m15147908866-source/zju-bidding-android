@@ -8,8 +8,12 @@
 
 - 版本号改为以 `VERSION` 文件为唯一来源，由 `scripts/set-version.mjs` 同步到 Android 清单与离线缓存名
 - CI：PR 与 `main` 推送时执行 JS 语法检查、清单校验、版本一致性校验，并构建 APK 作为检查产物
+- CI 汇总为单一必需检查 `ci-success`，PR 标题按 Conventional Commits 校验
 - 发布工作流：推送 `v*` tag 自动构建签名 APK 并创建 GitHub Release
 - PR、Bug、功能建议、叫牌数据纠错四类模板
+- `main` 分支保护规则（`.github/ruleset-main.json`）、CODEOWNERS、Dependabot（仅跟进 Actions）
+- `SECURITY.md`、`CODE_OF_CONDUCT.md`、`.editorconfig`
+- `LICENSE`（MIT）
 
 ### Changed
 

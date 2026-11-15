@@ -63,3 +63,22 @@ jobs:
           name: ZJU-bidding-apk
           path: ${{ runner.temp }}/ZJU-bidding.apk
           retention-days: 7
+
+  # 汇总成唯一必需检查：ruleset 里只要求 ci-success，新增子任务时不用改保护规则。
+  ci-success:
+    name: ci-success
+    needs: [static-checks, build-apk]
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - name: 汇总结果
+        env:
+          STATIC: ${{ needs.static-checks.result }}
+          BUILD: ${{ needs.build-apk.result }}
+        run: |
+          echo "静态检查：$STATIC"
+          echo "构建 APK：$BUILD"
+          if [ "$STATIC" != "success" ] || [ "$BUILD" != "success" ]; then
+            echo "::error::CI 未全部通过"
+            exit 1
+          fi

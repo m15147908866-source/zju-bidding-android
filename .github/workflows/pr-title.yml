@@ -1,0 +1,29 @@
+# PR 标题校验。默认用 Squash 合并，PR 标题会成为 main 上的提交信息，必须规范。
+# 仓库没有 Node 依赖，所以直接按 Conventional Commits 做正则校验，不引入 commitlint。
+name: PR Title
+
+on:
+  pull_request:
+    types: [opened, edited, synchronize, reopened]
+
+permissions:
+  contents: read
+
+jobs:
+  lint-title:
+    name: 校验 PR 标题
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: 检查是否符合 Conventional Commits
+        env:
+          PR_TITLE: ${{ github.event.pull_request.title }}
+        run: |
+          if printf '%s' "$PR_TITLE" | grep -Eq '^(feat|fix|data|refactor|chore|docs|test|perf|ci|build|revert)(\([a-z0-9._/-]+\))?!?: .+'; then
+            echo "标题合规：$PR_TITLE"
+            exit 0
+          fi
+          echo "::error::PR 标题不符合 Conventional Commits：$PR_TITLE"
+          echo "示例：fix(engine): 修正 1NT 应叫后 2C 的合法性判断"
+          echo "允许的 type：feat fix data refactor chore docs test perf ci build revert"
+          exit 1

@@ -1,0 +1,18 @@
+version: 2
+updates:
+  # 本项目没有包管理器的语言依赖，只需要跟进 CI 里用到的 action，
+  # 避免第三方 action 长期停留在旧版本。
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+      timezone: "Asia/Shanghai"
+    open-pull-requests-limit: 3
+    labels: ["deps", "ci"]
+    commit-message:
+      prefix: "ci(deps)"
+    groups:
+      actions:
+        patterns: ["*"]
