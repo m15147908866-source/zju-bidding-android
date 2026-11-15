@@ -75,7 +75,7 @@ node scripts/set-version.mjs --check    # 版本一致性
 
 1. 推送分支，按模板开 PR，标题与主提交保持同一风格（CI 会校验标题格式）
 2. 填写 PR 模板里的自查项；`Closes #<issue>` 关联对应 issue
-3. 等 CI 两个任务都变绿：**静态检查**、**构建 APK**，汇总检查名为 `ci-success`
+3. 等 CI 三个任务都变绿：**静态检查**、**规则与测试**、**构建 APK**，汇总检查名为 `ci-success`
 4. 评审通过后由维护者 **Squash and merge**，合并后的提交信息用 PR 标题，并删除分支
 5. 用户可见的改动，在合并前把 `CHANGELOG.md` 的 `[Unreleased]` 段补上
 
