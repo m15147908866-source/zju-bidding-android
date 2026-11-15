@@ -26,10 +26,28 @@ jobs:
 
       - name: JS 语法检查
         run: |
-          for f in ./*.js; do
+          for f in ./*.js ./core/*.js ./data/*.js ./scripts/*.mjs; do
             echo "检查 $f"
             node --check "$f"
           done
+
+      - name: 规则数据校验
+        run: node scripts/validate-rules.mjs
+
+      - name: 生成物与仓库一致（迁移 / 打包可重复）
+        run: |
+          node scripts/migrate-legacy.mjs
+          node scripts/build-data.mjs
+          git diff --exit-code data/
+
+      - name: 单元测试
+        run: node --test core/*.test.js
+
+      - name: 引擎适配层冒烟
+        run: node scripts/smoke-engine.mjs
+
+      - name: 资源与引用一致性
+        run: node scripts/check-assets.mjs
 
       - name: manifest.json 校验
         run: node -e "JSON.parse(require('node:fs').readFileSync('manifest.json','utf8'))"

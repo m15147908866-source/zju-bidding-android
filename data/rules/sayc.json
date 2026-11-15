@@ -1,0 +1,6070 @@
+[
+  {
+    "id": "sayc.0.1C.0",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      ""
+    ],
+    "hcp": {
+      "min": 13,
+      "max": 22
+    },
+    "shape": {
+      "suitMin": {
+        "C": 3
+      }
+    },
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "三张以上所叫低花。低花 4-4 先开 1♦，3-3 先开 1♣。",
+    "source": "SAYC 通则（sayc.php）",
+    "tags": [
+      "开叫"
+    ],
+    "legacyP": "13~22",
+    "bid": "1C"
+  },
+  {
+    "id": "sayc.0.1D.1",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      ""
+    ],
+    "hcp": {
+      "min": 13,
+      "max": 22
+    },
+    "shape": {
+      "suitMin": {
+        "D": 3
+      }
+    },
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "三张以上所叫低花。低花 4-4 先开 1♦，3-3 先开 1♣。",
+    "source": "SAYC 通则（sayc.php）",
+    "tags": [
+      "开叫"
+    ],
+    "legacyP": "13~22",
+    "bid": "1D"
+  },
+  {
+    "id": "sayc.1.1H.2",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      ""
+    ],
+    "hcp": {
+      "min": 13,
+      "max": 22
+    },
+    "shape": {
+      "suitMin": {
+        "H": 5
+      }
+    },
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "五张以上所叫高花。5-5 或 6-6 两套等长时开较高花色。",
+    "source": "SAYC 通则（sayc.php）",
+    "tags": [
+      "开叫"
+    ],
+    "legacyP": "13~22",
+    "bid": "1H"
+  },
+  {
+    "id": "sayc.1.1S.3",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      ""
+    ],
+    "hcp": {
+      "min": 13,
+      "max": 22
+    },
+    "shape": {
+      "suitMin": {
+        "S": 5
+      }
+    },
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "五张以上所叫高花。5-5 或 6-6 两套等长时开较高花色。",
+    "source": "SAYC 通则（sayc.php）",
+    "tags": [
+      "开叫"
+    ],
+    "legacyP": "13~22",
+    "bid": "1S"
+  },
+  {
+    "id": "sayc.2.1N.4",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      ""
+    ],
+    "hcp": {
+      "min": 15,
+      "max": 17
+    },
+    "shape": {
+      "balanced": true
+    },
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "均型（4-4-3-2 / 4-3-3-3 / 5-3-3-2），允许带五张高花或五张低花的半均型。",
+    "source": "SAYC 通则（sayc.php）",
+    "tags": [
+      "开叫"
+    ],
+    "legacyP": "15~17",
+    "bid": "1N"
+  },
+  {
+    "id": "sayc.3.2N.5",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      ""
+    ],
+    "hcp": {
+      "min": 20,
+      "max": 21
+    },
+    "shape": {
+      "balanced": true
+    },
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "均型。",
+    "source": "SAYC 通则（sayc.php）",
+    "tags": [
+      "开叫"
+    ],
+    "legacyP": "20~21",
+    "bid": "2N"
+  },
+  {
+    "id": "sayc.4.3N.6",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      ""
+    ],
+    "hcp": {
+      "min": 25,
+      "max": 27
+    },
+    "shape": {
+      "balanced": true
+    },
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "均型。",
+    "source": "SAYC 通则（sayc.php）",
+    "tags": [
+      "开叫"
+    ],
+    "legacyP": "25~27",
+    "bid": "3N"
+  },
+  {
+    "id": "sayc.5.2C.7",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      ""
+    ],
+    "hcp": null,
+    "shape": null,
+    "forcing": "one_round",
+    "alert": false,
+    "recommendable": false,
+    "meaning": "强开叫、人工：22+ HCP 的均型，或非均型「差一墩成局」（5+ 高花 9 赢墩、5+ 低花 10 赢墩）。",
+    "source": "SAYC 通则（sayc.php）",
+    "tags": [
+      "开叫",
+      "逼叫"
+    ],
+    "legacyP": null,
+    "bid": "2C"
+  },
+  {
+    "id": "sayc.6.P.8",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1C"
+    ],
+    "hcp": {
+      "min": 0,
+      "max": 5
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "牌力不足，不叫。",
+    "source": "1♣ 开叫（sayc_1c.php）",
+    "tags": [
+      "止叫"
+    ],
+    "legacyP": "0~5",
+    "bid": "P"
+  },
+  {
+    "id": "sayc.7.1D.9",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1C"
+    ],
+    "hcp": {
+      "min": 6,
+      "max": 37
+    },
+    "shape": null,
+    "forcing": "one_round",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "4 张以上方块，逼叫。",
+    "source": "1♣ 开叫（sayc_1c.php）",
+    "tags": [
+      "逼叫"
+    ],
+    "legacyP": "6 以上",
+    "bid": "1D"
+  },
+  {
+    "id": "sayc.8.1H.10",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1C"
+    ],
+    "hcp": {
+      "min": 6,
+      "max": 37
+    },
+    "shape": null,
+    "forcing": "one_round",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "4 张以上所叫高花，逼叫。两门高花 4-4 先叫 1♥，5-5 先叫 1♠。",
+    "source": "1♣ 开叫（sayc_1c.php）",
+    "tags": [
+      "逼叫"
+    ],
+    "legacyP": "6 以上",
+    "bid": "1H"
+  },
+  {
+    "id": "sayc.8.1S.11",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1C"
+    ],
+    "hcp": {
+      "min": 6,
+      "max": 37
+    },
+    "shape": null,
+    "forcing": "one_round",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "4 张以上所叫高花，逼叫。两门高花 4-4 先叫 1♥，5-5 先叫 1♠。",
+    "source": "1♣ 开叫（sayc_1c.php）",
+    "tags": [
+      "逼叫"
+    ],
+    "legacyP": "6 以上",
+    "bid": "1S"
+  },
+  {
+    "id": "sayc.9.1N.12",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1C"
+    ],
+    "hcp": {
+      "min": 6,
+      "max": 9
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "均型，否认 4 张高花，通常否认 4 张梅花，不逼叫。",
+    "source": "1♣ 开叫（sayc_1c.php）",
+    "tags": [],
+    "legacyP": "6~9",
+    "bid": "1N"
+  },
+  {
+    "id": "sayc.10.2C.13",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1C"
+    ],
+    "hcp": {
+      "min": 6,
+      "max": 9
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "单加叫：5 张以上梅花支持（手册规定加叫 1♣ 需五张），否认 4 张高花，不逼叫。",
+    "source": "1♣ 开叫（sayc_1c.php）",
+    "tags": [],
+    "legacyP": "6~9",
+    "bid": "2C"
+  },
+  {
+    "id": "sayc.11.2D.14",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1C"
+    ],
+    "hcp": {
+      "min": 17,
+      "max": 19
+    },
+    "shape": null,
+    "forcing": "one_round",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "强跳叫新花色：5 张以上所叫花色，逼叫到局。",
+    "source": "1♣ 开叫（sayc_1c.php）",
+    "tags": [
+      "逼叫"
+    ],
+    "legacyP": "17~19",
+    "bid": "2D"
+  },
+  {
+    "id": "sayc.11.2H.15",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1C"
+    ],
+    "hcp": {
+      "min": 17,
+      "max": 19
+    },
+    "shape": null,
+    "forcing": "one_round",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "强跳叫新花色：5 张以上所叫花色，逼叫到局。",
+    "source": "1♣ 开叫（sayc_1c.php）",
+    "tags": [
+      "逼叫"
+    ],
+    "legacyP": "17~19",
+    "bid": "2H"
+  },
+  {
+    "id": "sayc.11.2S.16",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1C"
+    ],
+    "hcp": {
+      "min": 17,
+      "max": 19
+    },
+    "shape": null,
+    "forcing": "one_round",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "强跳叫新花色：5 张以上所叫花色，逼叫到局。",
+    "source": "1♣ 开叫（sayc_1c.php）",
+    "tags": [
+      "逼叫"
+    ],
+    "legacyP": "17~19",
+    "bid": "2S"
+  },
+  {
+    "id": "sayc.12.2N.17",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1C"
+    ],
+    "hcp": {
+      "min": 13,
+      "max": 15
+    },
+    "shape": null,
+    "forcing": "one_round",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "均型，通常否认 4 张高花（持 4-3-3-3 除外），逼叫到局。",
+    "source": "1♣ 开叫（sayc_1c.php）",
+    "tags": [
+      "逼叫"
+    ],
+    "legacyP": "13~15",
+    "bid": "2N"
+  },
+  {
+    "id": "sayc.13.3C.18",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1C"
+    ],
+    "hcp": {
+      "min": 10,
+      "max": 12
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "限制性加叫：5 张以上梅花支持，否认 4 张高花，不逼叫。",
+    "source": "1♣ 开叫（sayc_1c.php）",
+    "tags": [
+      "邀局"
+    ],
+    "legacyP": "10~12",
+    "bid": "3C"
+  },
+  {
+    "id": "sayc.14.3N.19",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1C"
+    ],
+    "hcp": {
+      "min": 16,
+      "max": 17
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "均型，通常否认 4 张高花（持 4-3-3-3 除外）。",
+    "source": "1♣ 开叫（sayc_1c.php）",
+    "tags": [],
+    "legacyP": "16~17",
+    "bid": "3N"
+  },
+  {
+    "id": "sayc.15.4N.20",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1C"
+    ],
+    "hcp": null,
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": false,
+    "meaning": "黑木问 A。",
+    "source": "1♣ 开叫（sayc_1c.php）",
+    "tags": [
+      "满贯"
+    ],
+    "legacyP": null,
+    "bid": "4N"
+  },
+  {
+    "id": "sayc.16.P.21",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1D"
+    ],
+    "hcp": {
+      "min": 0,
+      "max": 5
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "牌力不足，不叫。",
+    "source": "1♦ 开叫（sayc_1d.php）",
+    "tags": [
+      "止叫"
+    ],
+    "legacyP": "0~5",
+    "bid": "P"
+  },
+  {
+    "id": "sayc.17.1H.22",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1D"
+    ],
+    "hcp": {
+      "min": 6,
+      "max": 37
+    },
+    "shape": null,
+    "forcing": "one_round",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "4 张以上所叫高花，逼叫。两门高花 4-4 先叫 1♥，5-5 先叫 1♠。",
+    "source": "1♦ 开叫（sayc_1d.php）",
+    "tags": [
+      "逼叫"
+    ],
+    "legacyP": "6 以上",
+    "bid": "1H"
+  },
+  {
+    "id": "sayc.17.1S.23",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1D"
+    ],
+    "hcp": {
+      "min": 6,
+      "max": 37
+    },
+    "shape": null,
+    "forcing": "one_round",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "4 张以上所叫高花，逼叫。两门高花 4-4 先叫 1♥，5-5 先叫 1♠。",
+    "source": "1♦ 开叫（sayc_1d.php）",
+    "tags": [
+      "逼叫"
+    ],
+    "legacyP": "6 以上",
+    "bid": "1S"
+  },
+  {
+    "id": "sayc.18.1N.24",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1D"
+    ],
+    "hcp": {
+      "min": 6,
+      "max": 9
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "否认 4 张高花，通常否认 4 张方块；可以是带 5 张以上梅花的非均型，不逼叫。",
+    "source": "1♦ 开叫（sayc_1d.php）",
+    "tags": [],
+    "legacyP": "6~9",
+    "bid": "1N"
+  },
+  {
+    "id": "sayc.19.2C.25",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1D"
+    ],
+    "hcp": {
+      "min": 10,
+      "max": 37
+    },
+    "shape": null,
+    "forcing": "one_round",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "4 张以上梅花，逼叫。",
+    "source": "1♦ 开叫（sayc_1d.php）",
+    "tags": [
+      "逼叫"
+    ],
+    "legacyP": "10 以上",
+    "bid": "2C"
+  },
+  {
+    "id": "sayc.20.2D.26",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1D"
+    ],
+    "hcp": {
+      "min": 6,
+      "max": 9
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "单加叫：4 张以上方块支持，否认 4 张高花，不逼叫。",
+    "source": "1♦ 开叫（sayc_1d.php）",
+    "tags": [],
+    "legacyP": "6~9",
+    "bid": "2D"
+  },
+  {
+    "id": "sayc.21.2H.27",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1D"
+    ],
+    "hcp": {
+      "min": 17,
+      "max": 19
+    },
+    "shape": null,
+    "forcing": "one_round",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "强跳叫新花色：5 张以上所叫花色，逼叫到局。",
+    "source": "1♦ 开叫（sayc_1d.php）",
+    "tags": [
+      "逼叫"
+    ],
+    "legacyP": "17~19",
+    "bid": "2H"
+  },
+  {
+    "id": "sayc.21.2S.28",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1D"
+    ],
+    "hcp": {
+      "min": 17,
+      "max": 19
+    },
+    "shape": null,
+    "forcing": "one_round",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "强跳叫新花色：5 张以上所叫花色，逼叫到局。",
+    "source": "1♦ 开叫（sayc_1d.php）",
+    "tags": [
+      "逼叫"
+    ],
+    "legacyP": "17~19",
+    "bid": "2S"
+  },
+  {
+    "id": "sayc.22.2N.29",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1D"
+    ],
+    "hcp": {
+      "min": 13,
+      "max": 15
+    },
+    "shape": null,
+    "forcing": "one_round",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "均型，通常否认 4 张高花（持 4-3-3-3 除外），逼叫到局。",
+    "source": "1♦ 开叫（sayc_1d.php）",
+    "tags": [
+      "逼叫"
+    ],
+    "legacyP": "13~15",
+    "bid": "2N"
+  },
+  {
+    "id": "sayc.23.3C.30",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1D"
+    ],
+    "hcp": {
+      "min": 17,
+      "max": 19
+    },
+    "shape": null,
+    "forcing": "one_round",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "强跳叫新花色：5 张以上梅花，逼叫到局。",
+    "source": "1♦ 开叫（sayc_1d.php）",
+    "tags": [
+      "逼叫"
+    ],
+    "legacyP": "17~19",
+    "bid": "3C"
+  },
+  {
+    "id": "sayc.24.3D.31",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1D"
+    ],
+    "hcp": {
+      "min": 10,
+      "max": 12
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "限制性加叫：4 张以上方块支持，否认 4 张高花，不逼叫。",
+    "source": "1♦ 开叫（sayc_1d.php）",
+    "tags": [
+      "邀局"
+    ],
+    "legacyP": "10~12",
+    "bid": "3D"
+  },
+  {
+    "id": "sayc.25.3N.32",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1D"
+    ],
+    "hcp": {
+      "min": 16,
+      "max": 17
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "均型，通常否认 4 张高花（持 4-3-3-3 除外）。",
+    "source": "1♦ 开叫（sayc_1d.php）",
+    "tags": [],
+    "legacyP": "16~17",
+    "bid": "3N"
+  },
+  {
+    "id": "sayc.26.4N.33",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1D"
+    ],
+    "hcp": null,
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": false,
+    "meaning": "黑木问 A。",
+    "source": "1♦ 开叫（sayc_1d.php）",
+    "tags": [
+      "满贯"
+    ],
+    "legacyP": null,
+    "bid": "4N"
+  },
+  {
+    "id": "sayc.27.P.34",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1H"
+    ],
+    "hcp": {
+      "min": 0,
+      "max": 5
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "牌力不足，不叫。",
+    "source": "1♥ 开叫（sayc_1h.php）",
+    "tags": [
+      "止叫"
+    ],
+    "legacyP": "0~5",
+    "bid": "P"
+  },
+  {
+    "id": "sayc.28.1S.35",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1H"
+    ],
+    "hcp": {
+      "min": 6,
+      "max": 37
+    },
+    "shape": null,
+    "forcing": "one_round",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "4 张以上黑桃，逼叫。持 4 张黑桃配 3 张红心时优先叫 1♠，先找 4-4 配。",
+    "source": "1♥ 开叫（sayc_1h.php）",
+    "tags": [
+      "逼叫"
+    ],
+    "legacyP": "6 以上",
+    "bid": "1S"
+  },
+  {
+    "id": "sayc.29.1N.36",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1H"
+    ],
+    "hcp": {
+      "min": 6,
+      "max": 10
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "否认 3 张红心支持与 4 张黑桃；可以是带 5 张以上低花的非均型，不逼叫。",
+    "source": "1♥ 开叫（sayc_1h.php）",
+    "tags": [
+      "示弱"
+    ],
+    "legacyP": "6~10",
+    "bid": "1N"
+  },
+  {
+    "id": "sayc.30.2C.37",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1H"
+    ],
+    "hcp": {
+      "min": 11,
+      "max": 37
+    },
+    "shape": null,
+    "forcing": "one_round",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "4 张以上所叫花色，逼叫。",
+    "source": "1♥ 开叫（sayc_1h.php）",
+    "tags": [
+      "逼叫"
+    ],
+    "legacyP": "11 以上",
+    "bid": "2C"
+  },
+  {
+    "id": "sayc.30.2D.38",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1H"
+    ],
+    "hcp": {
+      "min": 11,
+      "max": 37
+    },
+    "shape": null,
+    "forcing": "one_round",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "4 张以上所叫花色，逼叫。",
+    "source": "1♥ 开叫（sayc_1h.php）",
+    "tags": [
+      "逼叫"
+    ],
+    "legacyP": "11 以上",
+    "bid": "2D"
+  },
+  {
+    "id": "sayc.31.2H.39",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1H"
+    ],
+    "hcp": {
+      "min": 6,
+      "max": 10
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "单加叫：3 张以上红心支持（按牌型点计），通常否认 4 张黑桃（4-4 双高花除外），不逼叫。",
+    "source": "1♥ 开叫（sayc_1h.php）",
+    "tags": [],
+    "legacyP": "6~10",
+    "bid": "2H"
+  },
+  {
+    "id": "sayc.32.2S.40",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1H"
+    ],
+    "hcp": {
+      "min": 17,
+      "max": 19
+    },
+    "shape": null,
+    "forcing": "one_round",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "强跳叫（strong jump shift）：5 张以上黑桃，邀满贯。手册只写「邀满贯」未给点力区间，17~19 为通行量化。",
+    "source": "1♥ 开叫（sayc_1h.php）",
+    "tags": [
+      "逼叫",
+      "满贯"
+    ],
+    "legacyP": "17~19",
+    "bid": "2S"
+  },
+  {
+    "id": "sayc.33.2N.41",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1H"
+    ],
+    "hcp": {
+      "min": 13,
+      "max": 37
+    },
+    "shape": null,
+    "forcing": "one_round",
+    "alert": true,
+    "recommendable": true,
+    "meaning": "杰克贝 2NT（Jacoby 2NT）：4 张以上红心支持的逼局加叫，请开叫方描述牌型。",
+    "source": "1♥ 开叫（sayc_1h.php）",
+    "tags": [
+      "约定叫",
+      "逼叫"
+    ],
+    "legacyP": "13 以上",
+    "bid": "2N"
+  },
+  {
+    "id": "sayc.34.3C.42",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1H"
+    ],
+    "hcp": {
+      "min": 17,
+      "max": 19
+    },
+    "shape": null,
+    "forcing": "one_round",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "强跳叫（strong jump shift）：5 张以上所叫花色，邀满贯。手册只写「邀满贯」，17~19 为通行量化。",
+    "source": "1♥ 开叫（sayc_1h.php）",
+    "tags": [
+      "逼叫",
+      "满贯"
+    ],
+    "legacyP": "17~19",
+    "bid": "3C"
+  },
+  {
+    "id": "sayc.34.3D.43",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1H"
+    ],
+    "hcp": {
+      "min": 17,
+      "max": 19
+    },
+    "shape": null,
+    "forcing": "one_round",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "强跳叫（strong jump shift）：5 张以上所叫花色，邀满贯。手册只写「邀满贯」，17~19 为通行量化。",
+    "source": "1♥ 开叫（sayc_1h.php）",
+    "tags": [
+      "逼叫",
+      "满贯"
+    ],
+    "legacyP": "17~19",
+    "bid": "3D"
+  },
+  {
+    "id": "sayc.35.3H.44",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1H"
+    ],
+    "hcp": {
+      "min": 10,
+      "max": 12
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "限制性加叫：4 张红心，不逼叫。",
+    "source": "1♥ 开叫（sayc_1h.php）",
+    "tags": [
+      "邀局"
+    ],
+    "legacyP": "10~12",
+    "bid": "3H"
+  },
+  {
+    "id": "sayc.36.3N.45",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1H"
+    ],
+    "hcp": {
+      "min": 15,
+      "max": 17
+    },
+    "shape": null,
+    "forcing": "one_round",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "均型、两张红心支持，通常否认 4 张黑桃，逼叫到局。",
+    "source": "1♥ 开叫（sayc_1h.php）",
+    "tags": [
+      "逼叫"
+    ],
+    "legacyP": "15~17",
+    "bid": "3N"
+  },
+  {
+    "id": "sayc.37.4H.46",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1H"
+    ],
+    "hcp": {
+      "min": 0,
+      "max": 9
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "通常 5 张以上红心并带单缺，少于 10 个大牌点，不逼叫。",
+    "source": "1♥ 开叫（sayc_1h.php）",
+    "tags": [
+      "止叫",
+      "阻击"
+    ],
+    "legacyP": "9 以下",
+    "bid": "4H"
+  },
+  {
+    "id": "sayc.38.4N.47",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1H"
+    ],
+    "hcp": null,
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": false,
+    "meaning": "黑木问 A。",
+    "source": "1♥ 开叫（sayc_1h.php）",
+    "tags": [
+      "满贯"
+    ],
+    "legacyP": null,
+    "bid": "4N"
+  },
+  {
+    "id": "sayc.39.P.48",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1S"
+    ],
+    "hcp": {
+      "min": 0,
+      "max": 5
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "牌力不足，不叫。",
+    "source": "1♠ 开叫（sayc_1s.php）",
+    "tags": [
+      "止叫"
+    ],
+    "legacyP": "0~5",
+    "bid": "P"
+  },
+  {
+    "id": "sayc.40.1N.49",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1S"
+    ],
+    "hcp": {
+      "min": 6,
+      "max": 10
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "否认 3 张黑桃支持；可以是非均型、带 5 张以上旁花，不逼叫。",
+    "source": "1♠ 开叫（sayc_1s.php）",
+    "tags": [
+      "示弱"
+    ],
+    "legacyP": "6~10",
+    "bid": "1N"
+  },
+  {
+    "id": "sayc.41.2C.50",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1S"
+    ],
+    "hcp": {
+      "min": 11,
+      "max": 37
+    },
+    "shape": null,
+    "forcing": "one_round",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "4 张以上所叫花色，逼叫。",
+    "source": "1♠ 开叫（sayc_1s.php）",
+    "tags": [
+      "逼叫"
+    ],
+    "legacyP": "11 以上",
+    "bid": "2C"
+  },
+  {
+    "id": "sayc.41.2D.51",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1S"
+    ],
+    "hcp": {
+      "min": 11,
+      "max": 37
+    },
+    "shape": null,
+    "forcing": "one_round",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "4 张以上所叫花色，逼叫。",
+    "source": "1♠ 开叫（sayc_1s.php）",
+    "tags": [
+      "逼叫"
+    ],
+    "legacyP": "11 以上",
+    "bid": "2D"
+  },
+  {
+    "id": "sayc.41.2H.52",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1S"
+    ],
+    "hcp": {
+      "min": 11,
+      "max": 37
+    },
+    "shape": null,
+    "forcing": "one_round",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "4 张以上所叫花色，逼叫。",
+    "source": "1♠ 开叫（sayc_1s.php）",
+    "tags": [
+      "逼叫"
+    ],
+    "legacyP": "11 以上",
+    "bid": "2H"
+  },
+  {
+    "id": "sayc.42.2S.53",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1S"
+    ],
+    "hcp": {
+      "min": 6,
+      "max": 10
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "单加叫：3 张以上黑桃支持（按牌型点计），不逼叫。",
+    "source": "1♠ 开叫（sayc_1s.php）",
+    "tags": [],
+    "legacyP": "6~10",
+    "bid": "2S"
+  },
+  {
+    "id": "sayc.43.2N.54",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1S"
+    ],
+    "hcp": {
+      "min": 13,
+      "max": 37
+    },
+    "shape": null,
+    "forcing": "one_round",
+    "alert": true,
+    "recommendable": true,
+    "meaning": "杰克贝 2NT（Jacoby 2NT）：4 张以上黑桃支持的逼局加叫，请开叫方描述牌型。",
+    "source": "1♠ 开叫（sayc_1s.php）",
+    "tags": [
+      "约定叫",
+      "逼叫"
+    ],
+    "legacyP": "13 以上",
+    "bid": "2N"
+  },
+  {
+    "id": "sayc.44.3C.55",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1S"
+    ],
+    "hcp": {
+      "min": 17,
+      "max": 19
+    },
+    "shape": null,
+    "forcing": "one_round",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "强跳叫（strong jump shift）：5 张以上所叫花色，邀满贯。手册只写「邀满贯」，17~19 为通行量化。",
+    "source": "1♠ 开叫（sayc_1s.php）",
+    "tags": [
+      "逼叫",
+      "满贯"
+    ],
+    "legacyP": "17~19",
+    "bid": "3C"
+  },
+  {
+    "id": "sayc.44.3D.56",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1S"
+    ],
+    "hcp": {
+      "min": 17,
+      "max": 19
+    },
+    "shape": null,
+    "forcing": "one_round",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "强跳叫（strong jump shift）：5 张以上所叫花色，邀满贯。手册只写「邀满贯」，17~19 为通行量化。",
+    "source": "1♠ 开叫（sayc_1s.php）",
+    "tags": [
+      "逼叫",
+      "满贯"
+    ],
+    "legacyP": "17~19",
+    "bid": "3D"
+  },
+  {
+    "id": "sayc.44.3H.57",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1S"
+    ],
+    "hcp": {
+      "min": 17,
+      "max": 19
+    },
+    "shape": null,
+    "forcing": "one_round",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "强跳叫（strong jump shift）：5 张以上所叫花色，邀满贯。手册只写「邀满贯」，17~19 为通行量化。",
+    "source": "1♠ 开叫（sayc_1s.php）",
+    "tags": [
+      "逼叫",
+      "满贯"
+    ],
+    "legacyP": "17~19",
+    "bid": "3H"
+  },
+  {
+    "id": "sayc.45.3S.58",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1S"
+    ],
+    "hcp": {
+      "min": 10,
+      "max": 12
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "限制性加叫：4 张黑桃，不逼叫。",
+    "source": "1♠ 开叫（sayc_1s.php）",
+    "tags": [
+      "邀局"
+    ],
+    "legacyP": "10~12",
+    "bid": "3S"
+  },
+  {
+    "id": "sayc.46.3N.59",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1S"
+    ],
+    "hcp": {
+      "min": 15,
+      "max": 17
+    },
+    "shape": null,
+    "forcing": "one_round",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "均型、两张黑桃支持，通常否认 4 张红心，逼叫到局。",
+    "source": "1♠ 开叫（sayc_1s.php）",
+    "tags": [
+      "逼叫"
+    ],
+    "legacyP": "15~17",
+    "bid": "3N"
+  },
+  {
+    "id": "sayc.47.4S.60",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1S"
+    ],
+    "hcp": {
+      "min": 0,
+      "max": 9
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "通常 5 张以上黑桃并带单缺，少于 10 个大牌点，不逼叫。",
+    "source": "1♠ 开叫（sayc_1s.php）",
+    "tags": [
+      "止叫",
+      "阻击"
+    ],
+    "legacyP": "9 以下",
+    "bid": "4S"
+  },
+  {
+    "id": "sayc.48.4N.61",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1S"
+    ],
+    "hcp": null,
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": false,
+    "meaning": "黑木问 A。",
+    "source": "1♠ 开叫（sayc_1s.php）",
+    "tags": [
+      "满贯"
+    ],
+    "legacyP": null,
+    "bid": "4N"
+  },
+  {
+    "id": "sayc.49.1N.62",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      "M:1H P:1S"
+    ],
+    "hcp": {
+      "min": 12,
+      "max": 14
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "均型，不逼叫。",
+    "source": "1♥ — 1♠ 后再叫（sayc_1h.php）",
+    "tags": [],
+    "legacyP": "12~14",
+    "bid": "1N"
+  },
+  {
+    "id": "sayc.50.2C.63",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      "M:1H P:1S"
+    ],
+    "hcp": {
+      "min": 13,
+      "max": 18
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "4 张以上所叫花色，不逼叫。",
+    "source": "1♥ — 1♠ 后再叫（sayc_1h.php）",
+    "tags": [],
+    "legacyP": "13~18",
+    "bid": "2C"
+  },
+  {
+    "id": "sayc.50.2D.64",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      "M:1H P:1S"
+    ],
+    "hcp": {
+      "min": 13,
+      "max": 18
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "4 张以上所叫花色，不逼叫。",
+    "source": "1♥ — 1♠ 后再叫（sayc_1h.php）",
+    "tags": [],
+    "legacyP": "13~18",
+    "bid": "2D"
+  },
+  {
+    "id": "sayc.51.2H.65",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      "M:1H P:1S"
+    ],
+    "hcp": {
+      "min": 13,
+      "max": 15
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "6 张以上红心，不逼叫。",
+    "source": "1♥ — 1♠ 后再叫（sayc_1h.php）",
+    "tags": [],
+    "legacyP": "13~15",
+    "bid": "2H"
+  },
+  {
+    "id": "sayc.52.2S.66",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      "M:1H P:1S"
+    ],
+    "hcp": {
+      "min": 13,
+      "max": 15
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "4 张支持同伴黑桃，不逼叫。",
+    "source": "1♥ — 1♠ 后再叫（sayc_1h.php）",
+    "tags": [],
+    "legacyP": "13~15",
+    "bid": "2S"
+  },
+  {
+    "id": "sayc.53.2N.67",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      "M:1H P:1S"
+    ],
+    "hcp": {
+      "min": 18,
+      "max": 19
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "均型，不逼叫。",
+    "source": "1♥ — 1♠ 后再叫（sayc_1h.php）",
+    "tags": [],
+    "legacyP": "18~19",
+    "bid": "2N"
+  },
+  {
+    "id": "sayc.54.3C.68",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      "M:1H P:1S"
+    ],
+    "hcp": {
+      "min": 19,
+      "max": 22
+    },
+    "shape": null,
+    "forcing": "one_round",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "4 张以上所叫花色，逼叫到局；牌型别扭时（如 1-6-3-3）三张也可。",
+    "source": "1♥ — 1♠ 后再叫（sayc_1h.php）",
+    "tags": [
+      "逼叫"
+    ],
+    "legacyP": "19~22",
+    "bid": "3C"
+  },
+  {
+    "id": "sayc.54.3D.69",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      "M:1H P:1S"
+    ],
+    "hcp": {
+      "min": 19,
+      "max": 22
+    },
+    "shape": null,
+    "forcing": "one_round",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "4 张以上所叫花色，逼叫到局；牌型别扭时（如 1-6-3-3）三张也可。",
+    "source": "1♥ — 1♠ 后再叫（sayc_1h.php）",
+    "tags": [
+      "逼叫"
+    ],
+    "legacyP": "19~22",
+    "bid": "3D"
+  },
+  {
+    "id": "sayc.55.3H.70",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      "M:1H P:1S"
+    ],
+    "hcp": {
+      "min": 16,
+      "max": 18
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "6 张以上红心，不逼叫。",
+    "source": "1♥ — 1♠ 后再叫（sayc_1h.php）",
+    "tags": [],
+    "legacyP": "16~18",
+    "bid": "3H"
+  },
+  {
+    "id": "sayc.56.3S.71",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      "M:1H P:1S"
+    ],
+    "hcp": {
+      "min": 15,
+      "max": 18
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "4 张支持，不逼叫。",
+    "source": "1♥ — 1♠ 后再叫（sayc_1h.php）",
+    "tags": [],
+    "legacyP": "15~18",
+    "bid": "3S"
+  },
+  {
+    "id": "sayc.57.4S.72",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      "M:1H P:1S"
+    ],
+    "hcp": {
+      "min": 19,
+      "max": 22
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "4 张支持，不逼叫。",
+    "source": "1♥ — 1♠ 后再叫（sayc_1h.php）",
+    "tags": [],
+    "legacyP": "19~22",
+    "bid": "4S"
+  },
+  {
+    "id": "sayc.58.2C.73",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      "M:1H P:1N"
+    ],
+    "hcp": {
+      "min": 13,
+      "max": 18
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "4 张以上所叫花色，不逼叫。",
+    "source": "1♥ — 1NT 后再叫（sayc_1h.php）",
+    "tags": [],
+    "legacyP": "13~18",
+    "bid": "2C"
+  },
+  {
+    "id": "sayc.58.2D.74",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      "M:1H P:1N"
+    ],
+    "hcp": {
+      "min": 13,
+      "max": 18
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "4 张以上所叫花色，不逼叫。",
+    "source": "1♥ — 1NT 后再叫（sayc_1h.php）",
+    "tags": [],
+    "legacyP": "13~18",
+    "bid": "2D"
+  },
+  {
+    "id": "sayc.59.2H.75",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      "M:1H P:1N"
+    ],
+    "hcp": {
+      "min": 13,
+      "max": 15
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "6 张以上红心，不逼叫。",
+    "source": "1♥ — 1NT 后再叫（sayc_1h.php）",
+    "tags": [],
+    "legacyP": "13~15",
+    "bid": "2H"
+  },
+  {
+    "id": "sayc.60.2S.76",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      "M:1H P:1N"
+    ],
+    "hcp": {
+      "min": 16,
+      "max": 37
+    },
+    "shape": null,
+    "forcing": "one_round",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "逆叫：4 张以上黑桃，逼叫。",
+    "source": "1♥ — 1NT 后再叫（sayc_1h.php）",
+    "tags": [
+      "逼叫"
+    ],
+    "legacyP": "16 以上",
+    "bid": "2S"
+  },
+  {
+    "id": "sayc.61.2N.77",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      "M:1H P:1N"
+    ],
+    "hcp": {
+      "min": 18,
+      "max": 19
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "均型，不逼叫。",
+    "source": "1♥ — 1NT 后再叫（sayc_1h.php）",
+    "tags": [],
+    "legacyP": "18~19",
+    "bid": "2N"
+  },
+  {
+    "id": "sayc.62.3C.78",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      "M:1H P:1N"
+    ],
+    "hcp": {
+      "min": 19,
+      "max": 22
+    },
+    "shape": null,
+    "forcing": "one_round",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "4 张以上所叫花色，逼叫到局。",
+    "source": "1♥ — 1NT 后再叫（sayc_1h.php）",
+    "tags": [
+      "逼叫"
+    ],
+    "legacyP": "19~22",
+    "bid": "3C"
+  },
+  {
+    "id": "sayc.62.3D.79",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      "M:1H P:1N"
+    ],
+    "hcp": {
+      "min": 19,
+      "max": 22
+    },
+    "shape": null,
+    "forcing": "one_round",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "4 张以上所叫花色，逼叫到局。",
+    "source": "1♥ — 1NT 后再叫（sayc_1h.php）",
+    "tags": [
+      "逼叫"
+    ],
+    "legacyP": "19~22",
+    "bid": "3D"
+  },
+  {
+    "id": "sayc.63.3H.80",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      "M:1H P:1N"
+    ],
+    "hcp": {
+      "min": 16,
+      "max": 18
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "6 张以上红心，不逼叫。",
+    "source": "1♥ — 1NT 后再叫（sayc_1h.php）",
+    "tags": [],
+    "legacyP": "16~18",
+    "bid": "3H"
+  },
+  {
+    "id": "sayc.64.2H.81",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      "M:1H P:2C",
+      "M:1H P:2D"
+    ],
+    "hcp": {
+      "min": 13,
+      "max": 15
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "加叫开叫花色到 2 阶：3 张以上支持，不逼叫。",
+    "source": "1♥ — 2♣/2♦ 后再叫（sayc_1h.php）",
+    "tags": [],
+    "legacyP": "13~15",
+    "bid": "2H"
+  },
+  {
+    "id": "sayc.65.3H.82",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      "M:1H P:2C",
+      "M:1H P:2D"
+    ],
+    "hcp": {
+      "min": 16,
+      "max": 18
+    },
+    "shape": null,
+    "forcing": "one_round",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "跳加叫开叫花色：6 张以上红心，逼叫到局。",
+    "source": "1♥ — 2♣/2♦ 后再叫（sayc_1h.php）",
+    "tags": [
+      "逼叫"
+    ],
+    "legacyP": "16~18",
+    "bid": "3H"
+  },
+  {
+    "id": "sayc.66.2N.83",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      "M:1H P:2C",
+      "M:1H P:2D"
+    ],
+    "hcp": {
+      "min": 12,
+      "max": 14
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "均型，不逼叫。",
+    "source": "1♥ — 2♣/2♦ 后再叫（sayc_1h.php）",
+    "tags": [],
+    "legacyP": "12~14",
+    "bid": "2N"
+  },
+  {
+    "id": "sayc.67.3N.84",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      "M:1H P:2C",
+      "M:1H P:2D"
+    ],
+    "hcp": {
+      "min": 18,
+      "max": 19
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "均型，不逼叫。",
+    "source": "1♥ — 2♣/2♦ 后再叫（sayc_1h.php）",
+    "tags": [],
+    "legacyP": "18~19",
+    "bid": "3N"
+  },
+  {
+    "id": "sayc.68.3C.85",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      "M:1H P:2C",
+      "M:1H P:2D"
+    ],
+    "hcp": {
+      "min": 13,
+      "max": 15
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "加叫同伴梅花：3 张以上支持，不逼叫（仅 1♥—2♣ 后）。",
+    "source": "1♥ — 2♣/2♦ 后再叫（sayc_1h.php）",
+    "tags": [],
+    "legacyP": "13~15",
+    "bid": "3C"
+  },
+  {
+    "id": "sayc.69.2D.86",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      "M:1H P:2C",
+      "M:1H P:2D"
+    ],
+    "hcp": {
+      "min": 16,
+      "max": 37
+    },
+    "shape": null,
+    "forcing": "one_round",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "逆叫：4 张以上所叫花色，逼叫。",
+    "source": "1♥ — 2♣/2♦ 后再叫（sayc_1h.php）",
+    "tags": [
+      "逼叫"
+    ],
+    "legacyP": "16 以上",
+    "bid": "2D"
+  },
+  {
+    "id": "sayc.69.2S.87",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      "M:1H P:2C",
+      "M:1H P:2D"
+    ],
+    "hcp": {
+      "min": 16,
+      "max": 37
+    },
+    "shape": null,
+    "forcing": "one_round",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "逆叫：4 张以上所叫花色，逼叫。",
+    "source": "1♥ — 2♣/2♦ 后再叫（sayc_1h.php）",
+    "tags": [
+      "逼叫"
+    ],
+    "legacyP": "16 以上",
+    "bid": "2S"
+  },
+  {
+    "id": "sayc.70.2N.88",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      "M:1H P:2H"
+    ],
+    "hcp": null,
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": false,
+    "meaning": "自然叫，通常表示红心较弱的好均型牌。",
+    "source": "1♥ — 2♥ 后再叫（sayc_1h.php）",
+    "tags": [],
+    "legacyP": null,
+    "bid": "2N"
+  },
+  {
+    "id": "sayc.71.3C.89",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      "M:1H P:2H"
+    ],
+    "hcp": null,
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": false,
+    "meaning": "三阶新花色为红心邀局试探；应叫方按牌力与配合选择 3♥ 或 4♥。",
+    "source": "1♥ — 2♥ 后再叫（sayc_1h.php）",
+    "tags": [
+      "邀局"
+    ],
+    "legacyP": null,
+    "bid": "3C"
+  },
+  {
+    "id": "sayc.71.3D.90",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      "M:1H P:2H"
+    ],
+    "hcp": null,
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": false,
+    "meaning": "三阶新花色为红心邀局试探；应叫方按牌力与配合选择 3♥ 或 4♥。",
+    "source": "1♥ — 2♥ 后再叫（sayc_1h.php）",
+    "tags": [
+      "邀局"
+    ],
+    "legacyP": null,
+    "bid": "3D"
+  },
+  {
+    "id": "sayc.71.3S.91",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      "M:1H P:2H"
+    ],
+    "hcp": null,
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": false,
+    "meaning": "三阶新花色为红心邀局试探；应叫方按牌力与配合选择 3♥ 或 4♥。",
+    "source": "1♥ — 2♥ 后再叫（sayc_1h.php）",
+    "tags": [
+      "邀局"
+    ],
+    "legacyP": null,
+    "bid": "3S"
+  },
+  {
+    "id": "sayc.72.3H.92",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      "M:1H P:2H"
+    ],
+    "hcp": null,
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": false,
+    "meaning": "自然邀局。",
+    "source": "1♥ — 2♥ 后再叫（sayc_1h.php）",
+    "tags": [
+      "邀局"
+    ],
+    "legacyP": null,
+    "bid": "3H"
+  },
+  {
+    "id": "sayc.73.4H.93",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      "M:1H P:2H"
+    ],
+    "hcp": null,
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": false,
+    "meaning": "止叫。",
+    "source": "1♥ — 2♥ 后再叫（sayc_1h.php）",
+    "tags": [
+      "止叫"
+    ],
+    "legacyP": null,
+    "bid": "4H"
+  },
+  {
+    "id": "sayc.74.2C.94",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      "M:1S P:1N"
+    ],
+    "hcp": {
+      "min": 13,
+      "max": 18
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "4 张以上所叫花色，不逼叫。",
+    "source": "1♠ — 1NT 后再叫（sayc_1s.php）",
+    "tags": [],
+    "legacyP": "13~18",
+    "bid": "2C"
+  },
+  {
+    "id": "sayc.74.2D.95",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      "M:1S P:1N"
+    ],
+    "hcp": {
+      "min": 13,
+      "max": 18
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "4 张以上所叫花色，不逼叫。",
+    "source": "1♠ — 1NT 后再叫（sayc_1s.php）",
+    "tags": [],
+    "legacyP": "13~18",
+    "bid": "2D"
+  },
+  {
+    "id": "sayc.74.2H.96",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      "M:1S P:1N"
+    ],
+    "hcp": {
+      "min": 13,
+      "max": 18
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "4 张以上所叫花色，不逼叫。",
+    "source": "1♠ — 1NT 后再叫（sayc_1s.php）",
+    "tags": [],
+    "legacyP": "13~18",
+    "bid": "2H"
+  },
+  {
+    "id": "sayc.75.2S.97",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      "M:1S P:1N"
+    ],
+    "hcp": {
+      "min": 13,
+      "max": 15
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "6 张以上黑桃，不逼叫。",
+    "source": "1♠ — 1NT 后再叫（sayc_1s.php）",
+    "tags": [],
+    "legacyP": "13~15",
+    "bid": "2S"
+  },
+  {
+    "id": "sayc.76.2N.98",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      "M:1S P:1N"
+    ],
+    "hcp": {
+      "min": 18,
+      "max": 19
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "均型，不逼叫。",
+    "source": "1♠ — 1NT 后再叫（sayc_1s.php）",
+    "tags": [],
+    "legacyP": "18~19",
+    "bid": "2N"
+  },
+  {
+    "id": "sayc.77.3C.99",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      "M:1S P:1N"
+    ],
+    "hcp": {
+      "min": 19,
+      "max": 22
+    },
+    "shape": null,
+    "forcing": "one_round",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "4 张以上所叫花色，逼叫到局。",
+    "source": "1♠ — 1NT 后再叫（sayc_1s.php）",
+    "tags": [
+      "逼叫"
+    ],
+    "legacyP": "19~22",
+    "bid": "3C"
+  },
+  {
+    "id": "sayc.77.3D.100",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      "M:1S P:1N"
+    ],
+    "hcp": {
+      "min": 19,
+      "max": 22
+    },
+    "shape": null,
+    "forcing": "one_round",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "4 张以上所叫花色，逼叫到局。",
+    "source": "1♠ — 1NT 后再叫（sayc_1s.php）",
+    "tags": [
+      "逼叫"
+    ],
+    "legacyP": "19~22",
+    "bid": "3D"
+  },
+  {
+    "id": "sayc.77.3H.101",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      "M:1S P:1N"
+    ],
+    "hcp": {
+      "min": 19,
+      "max": 22
+    },
+    "shape": null,
+    "forcing": "one_round",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "4 张以上所叫花色，逼叫到局。",
+    "source": "1♠ — 1NT 后再叫（sayc_1s.php）",
+    "tags": [
+      "逼叫"
+    ],
+    "legacyP": "19~22",
+    "bid": "3H"
+  },
+  {
+    "id": "sayc.78.3S.102",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      "M:1S P:1N"
+    ],
+    "hcp": {
+      "min": 16,
+      "max": 18
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "6 张以上黑桃，不逼叫。",
+    "source": "1♠ — 1NT 后再叫（sayc_1s.php）",
+    "tags": [],
+    "legacyP": "16~18",
+    "bid": "3S"
+  },
+  {
+    "id": "sayc.79.2N.103",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      "M:1S P:2C",
+      "M:1S P:2D",
+      "M:1S P:2H"
+    ],
+    "hcp": {
+      "min": 12,
+      "max": 14
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "均型，不逼叫。",
+    "source": "1♠ — 2♣/2♦/2♥ 后再叫（sayc_1s.php）",
+    "tags": [],
+    "legacyP": "12~14",
+    "bid": "2N"
+  },
+  {
+    "id": "sayc.80.3N.104",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      "M:1S P:2C",
+      "M:1S P:2D",
+      "M:1S P:2H"
+    ],
+    "hcp": {
+      "min": 18,
+      "max": 19
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "均型，不逼叫。",
+    "source": "1♠ — 2♣/2♦/2♥ 后再叫（sayc_1s.php）",
+    "tags": [],
+    "legacyP": "18~19",
+    "bid": "3N"
+  },
+  {
+    "id": "sayc.81.2S.105",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      "M:1S P:2C",
+      "M:1S P:2D",
+      "M:1S P:2H"
+    ],
+    "hcp": {
+      "min": 13,
+      "max": 15
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "6 张以上黑桃，不逼叫。",
+    "source": "1♠ — 2♣/2♦/2♥ 后再叫（sayc_1s.php）",
+    "tags": [],
+    "legacyP": "13~15",
+    "bid": "2S"
+  },
+  {
+    "id": "sayc.82.3S.106",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      "M:1S P:2C",
+      "M:1S P:2D",
+      "M:1S P:2H"
+    ],
+    "hcp": {
+      "min": 16,
+      "max": 18
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "6 张以上黑桃，不逼叫。",
+    "source": "1♠ — 2♣/2♦/2♥ 后再叫（sayc_1s.php）",
+    "tags": [],
+    "legacyP": "16~18",
+    "bid": "3S"
+  },
+  {
+    "id": "sayc.83.2N.107",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      "M:1S P:2S"
+    ],
+    "hcp": null,
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": false,
+    "meaning": "自然叫，通常表示黑桃较弱的好均型牌。",
+    "source": "1♠ — 2♠ 后再叫（sayc_1s.php）",
+    "tags": [],
+    "legacyP": null,
+    "bid": "2N"
+  },
+  {
+    "id": "sayc.84.3C.108",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      "M:1S P:2S"
+    ],
+    "hcp": null,
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": false,
+    "meaning": "三阶新花色为黑桃邀局试探；应叫方按牌力与配合选择 3♠ 或 4♠。",
+    "source": "1♠ — 2♠ 后再叫（sayc_1s.php）",
+    "tags": [
+      "邀局"
+    ],
+    "legacyP": null,
+    "bid": "3C"
+  },
+  {
+    "id": "sayc.84.3D.109",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      "M:1S P:2S"
+    ],
+    "hcp": null,
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": false,
+    "meaning": "三阶新花色为黑桃邀局试探；应叫方按牌力与配合选择 3♠ 或 4♠。",
+    "source": "1♠ — 2♠ 后再叫（sayc_1s.php）",
+    "tags": [
+      "邀局"
+    ],
+    "legacyP": null,
+    "bid": "3D"
+  },
+  {
+    "id": "sayc.84.3H.110",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      "M:1S P:2S"
+    ],
+    "hcp": null,
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": false,
+    "meaning": "三阶新花色为黑桃邀局试探；应叫方按牌力与配合选择 3♠ 或 4♠。",
+    "source": "1♠ — 2♠ 后再叫（sayc_1s.php）",
+    "tags": [
+      "邀局"
+    ],
+    "legacyP": null,
+    "bid": "3H"
+  },
+  {
+    "id": "sayc.85.3S.111",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      "M:1S P:2S"
+    ],
+    "hcp": null,
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": false,
+    "meaning": "自然邀局。",
+    "source": "1♠ — 2♠ 后再叫（sayc_1s.php）",
+    "tags": [
+      "邀局"
+    ],
+    "legacyP": null,
+    "bid": "3S"
+  },
+  {
+    "id": "sayc.86.4S.112",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      "M:1S P:2S"
+    ],
+    "hcp": null,
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": false,
+    "meaning": "止叫。",
+    "source": "1♠ — 2♠ 后再叫（sayc_1s.php）",
+    "tags": [
+      "止叫"
+    ],
+    "legacyP": null,
+    "bid": "4S"
+  },
+  {
+    "id": "sayc.87.1N.113",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      "M:1C P:1D",
+      "M:1C P:1H",
+      "M:1C P:1S",
+      "M:1D P:1H",
+      "M:1D P:1S"
+    ],
+    "hcp": {
+      "min": 12,
+      "max": 14
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "均型，不逼叫。",
+    "source": "1♣/1♦ — 一阶应叫后再叫（sayc_1c.php / sayc_1d.php）",
+    "tags": [],
+    "legacyP": "12~14",
+    "bid": "1N"
+  },
+  {
+    "id": "sayc.88.2N.114",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      "M:1C P:1D",
+      "M:1C P:1H",
+      "M:1C P:1S",
+      "M:1D P:1H",
+      "M:1D P:1S"
+    ],
+    "hcp": {
+      "min": 18,
+      "max": 19
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "均型，不逼叫。",
+    "source": "1♣/1♦ — 一阶应叫后再叫（sayc_1c.php / sayc_1d.php）",
+    "tags": [],
+    "legacyP": "18~19",
+    "bid": "2N"
+  },
+  {
+    "id": "sayc.89.2C.115",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      "M:1C P:1D",
+      "M:1C P:1H",
+      "M:1C P:1S",
+      "M:1D P:1H",
+      "M:1D P:1S"
+    ],
+    "hcp": {
+      "min": 13,
+      "max": 15
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "再叫开叫低花：6 张以上（1♣—1♠ 后 5 张也可），不逼叫。",
+    "source": "1♣/1♦ — 一阶应叫后再叫（sayc_1c.php / sayc_1d.php）",
+    "tags": [],
+    "legacyP": "13~15",
+    "bid": "2C"
+  },
+  {
+    "id": "sayc.89.2D.116",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      "M:1C P:1D",
+      "M:1C P:1H",
+      "M:1C P:1S",
+      "M:1D P:1H",
+      "M:1D P:1S"
+    ],
+    "hcp": {
+      "min": 13,
+      "max": 15
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "再叫开叫低花：6 张以上（1♣—1♠ 后 5 张也可），不逼叫。",
+    "source": "1♣/1♦ — 一阶应叫后再叫（sayc_1c.php / sayc_1d.php）",
+    "tags": [],
+    "legacyP": "13~15",
+    "bid": "2D"
+  },
+  {
+    "id": "sayc.90.3C.117",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      "M:1C P:1D",
+      "M:1C P:1H",
+      "M:1C P:1S",
+      "M:1D P:1H",
+      "M:1D P:1S"
+    ],
+    "hcp": {
+      "min": 16,
+      "max": 18
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "6 张以上，不逼叫。",
+    "source": "1♣/1♦ — 一阶应叫后再叫（sayc_1c.php / sayc_1d.php）",
+    "tags": [],
+    "legacyP": "16~18",
+    "bid": "3C"
+  },
+  {
+    "id": "sayc.90.3D.118",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      "M:1C P:1D",
+      "M:1C P:1H",
+      "M:1C P:1S",
+      "M:1D P:1H",
+      "M:1D P:1S"
+    ],
+    "hcp": {
+      "min": 16,
+      "max": 18
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "6 张以上，不逼叫。",
+    "source": "1♣/1♦ — 一阶应叫后再叫（sayc_1c.php / sayc_1d.php）",
+    "tags": [],
+    "legacyP": "16~18",
+    "bid": "3D"
+  },
+  {
+    "id": "sayc.91.2H.119",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      "M:1C P:1D",
+      "M:1C P:1H",
+      "M:1C P:1S",
+      "M:1D P:1H",
+      "M:1D P:1S"
+    ],
+    "hcp": {
+      "min": 13,
+      "max": 15
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "对同伴高花的单加叫：4 张以上支持，不逼叫。",
+    "source": "1♣/1♦ — 一阶应叫后再叫（sayc_1c.php / sayc_1d.php）",
+    "tags": [],
+    "legacyP": "13~15",
+    "bid": "2H"
+  },
+  {
+    "id": "sayc.91.2S.120",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      "M:1C P:1D",
+      "M:1C P:1H",
+      "M:1C P:1S",
+      "M:1D P:1H",
+      "M:1D P:1S"
+    ],
+    "hcp": {
+      "min": 13,
+      "max": 15
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "对同伴高花的单加叫：4 张以上支持，不逼叫。",
+    "source": "1♣/1♦ — 一阶应叫后再叫（sayc_1c.php / sayc_1d.php）",
+    "tags": [],
+    "legacyP": "13~15",
+    "bid": "2S"
+  },
+  {
+    "id": "sayc.92.3H.121",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      "M:1C P:1D",
+      "M:1C P:1H",
+      "M:1C P:1S",
+      "M:1D P:1H",
+      "M:1D P:1S"
+    ],
+    "hcp": {
+      "min": 16,
+      "max": 18
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "对同伴高花的双加叫：4 张以上支持，不逼叫。",
+    "source": "1♣/1♦ — 一阶应叫后再叫（sayc_1c.php / sayc_1d.php）",
+    "tags": [],
+    "legacyP": "16~18",
+    "bid": "3H"
+  },
+  {
+    "id": "sayc.92.3S.122",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      "M:1C P:1D",
+      "M:1C P:1H",
+      "M:1C P:1S",
+      "M:1D P:1H",
+      "M:1D P:1S"
+    ],
+    "hcp": {
+      "min": 16,
+      "max": 18
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "对同伴高花的双加叫：4 张以上支持，不逼叫。",
+    "source": "1♣/1♦ — 一阶应叫后再叫（sayc_1c.php / sayc_1d.php）",
+    "tags": [],
+    "legacyP": "16~18",
+    "bid": "3S"
+  },
+  {
+    "id": "sayc.93.4H.123",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      "M:1C P:1D",
+      "M:1C P:1H",
+      "M:1C P:1S",
+      "M:1D P:1H",
+      "M:1D P:1S"
+    ],
+    "hcp": {
+      "min": 19,
+      "max": 22
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "对同伴高花直接加叫到局：4 张以上支持，不逼叫。",
+    "source": "1♣/1♦ — 一阶应叫后再叫（sayc_1c.php / sayc_1d.php）",
+    "tags": [],
+    "legacyP": "19~22",
+    "bid": "4H"
+  },
+  {
+    "id": "sayc.93.4S.124",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      "M:1C P:1D",
+      "M:1C P:1H",
+      "M:1C P:1S",
+      "M:1D P:1H",
+      "M:1D P:1S"
+    ],
+    "hcp": {
+      "min": 19,
+      "max": 22
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "对同伴高花直接加叫到局：4 张以上支持，不逼叫。",
+    "source": "1♣/1♦ — 一阶应叫后再叫（sayc_1c.php / sayc_1d.php）",
+    "tags": [],
+    "legacyP": "19~22",
+    "bid": "4S"
+  },
+  {
+    "id": "sayc.94.form.125",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      "M:1C P:1D",
+      "M:1C P:1H",
+      "M:1C P:1S",
+      "M:1D P:1H",
+      "M:1D P:1S"
+    ],
+    "hcp": {
+      "min": 19,
+      "max": 37
+    },
+    "shape": null,
+    "forcing": "one_round",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "跳叫新花色：4 张以上（牌型别扭时三张也可），逼叫到局。",
+    "source": "1♣/1♦ — 一阶应叫后再叫（sayc_1c.php / sayc_1d.php）",
+    "tags": [
+      "逼叫"
+    ],
+    "legacyP": "19 以上",
+    "bidForm": {
+      "type": "jumpNewSuit"
+    }
+  },
+  {
+    "id": "sayc.95.form.126",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      "M:1C P:1D",
+      "M:1C P:1H",
+      "M:1C P:1S",
+      "M:1D P:1H",
+      "M:1D P:1S"
+    ],
+    "hcp": {
+      "min": 13,
+      "max": 18
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "最便宜水平叫新花色：4 张以上，不逼叫。越过开叫花色两阶以上的新花色为逆叫，需 16 点以上且逼叫。",
+    "source": "1♣/1♦ — 一阶应叫后再叫（sayc_1c.php / sayc_1d.php）",
+    "tags": [],
+    "legacyP": "13~18",
+    "bidForm": {
+      "type": "newSuit"
+    }
+  },
+  {
+    "id": "sayc.96.2N.127",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      "M:1C P:1N",
+      "M:1D P:1N"
+    ],
+    "hcp": {
+      "min": 18,
+      "max": 19
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "均型，不逼叫。",
+    "source": "1♣/1♦ — 1NT 后再叫（sayc_1c.php / sayc_1d.php）",
+    "tags": [],
+    "legacyP": "18~19",
+    "bid": "2N"
+  },
+  {
+    "id": "sayc.97.2C.128",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      "M:1C P:1N",
+      "M:1D P:1N"
+    ],
+    "hcp": {
+      "min": 13,
+      "max": 15
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "6 张以上开叫花色，不逼叫。",
+    "source": "1♣/1♦ — 1NT 后再叫（sayc_1c.php / sayc_1d.php）",
+    "tags": [],
+    "legacyP": "13~15",
+    "bid": "2C"
+  },
+  {
+    "id": "sayc.97.2D.129",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      "M:1C P:1N",
+      "M:1D P:1N"
+    ],
+    "hcp": {
+      "min": 13,
+      "max": 15
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "6 张以上开叫花色，不逼叫。",
+    "source": "1♣/1♦ — 1NT 后再叫（sayc_1c.php / sayc_1d.php）",
+    "tags": [],
+    "legacyP": "13~15",
+    "bid": "2D"
+  },
+  {
+    "id": "sayc.98.3C.130",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      "M:1C P:1N",
+      "M:1D P:1N"
+    ],
+    "hcp": {
+      "min": 16,
+      "max": 18
+    },
+    "shape": null,
+    "forcing": "one_round",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "6 张以上开叫花色，逼叫。",
+    "source": "1♣/1♦ — 1NT 后再叫（sayc_1c.php / sayc_1d.php）",
+    "tags": [
+      "逼叫"
+    ],
+    "legacyP": "16~18",
+    "bid": "3C"
+  },
+  {
+    "id": "sayc.98.3D.131",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      "M:1C P:1N",
+      "M:1D P:1N"
+    ],
+    "hcp": {
+      "min": 16,
+      "max": 18
+    },
+    "shape": null,
+    "forcing": "one_round",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "6 张以上开叫花色，逼叫。",
+    "source": "1♣/1♦ — 1NT 后再叫（sayc_1c.php / sayc_1d.php）",
+    "tags": [
+      "逼叫"
+    ],
+    "legacyP": "16~18",
+    "bid": "3D"
+  },
+  {
+    "id": "sayc.99.form.132",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      "M:1C P:1N",
+      "M:1D P:1N"
+    ],
+    "hcp": {
+      "min": 16,
+      "max": 37
+    },
+    "shape": null,
+    "forcing": "one_round",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "逆叫：4 张以上新花色，逼叫。",
+    "source": "1♣/1♦ — 1NT 后再叫（sayc_1c.php / sayc_1d.php）",
+    "tags": [
+      "逼叫"
+    ],
+    "legacyP": "16 以上",
+    "bidForm": {
+      "type": "newSuit"
+    }
+  },
+  {
+    "id": "sayc.100.2D.133",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      "M:1D P:2C"
+    ],
+    "hcp": {
+      "min": 13,
+      "max": 15
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "6 张以上方块；若持 4 张高花而牌力不足以逆叫，5 张也可，不逼叫。",
+    "source": "1♦ — 2♣ 后再叫（sayc_1d.php）",
+    "tags": [],
+    "legacyP": "13~15",
+    "bid": "2D"
+  },
+  {
+    "id": "sayc.101.2H.134",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      "M:1D P:2C"
+    ],
+    "hcp": {
+      "min": 16,
+      "max": 37
+    },
+    "shape": null,
+    "forcing": "one_round",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "逆叫：4 张以上，逼叫。",
+    "source": "1♦ — 2♣ 后再叫（sayc_1d.php）",
+    "tags": [
+      "逼叫"
+    ],
+    "legacyP": "16 以上",
+    "bid": "2H"
+  },
+  {
+    "id": "sayc.101.2S.135",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      "M:1D P:2C"
+    ],
+    "hcp": {
+      "min": 16,
+      "max": 37
+    },
+    "shape": null,
+    "forcing": "one_round",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "逆叫：4 张以上，逼叫。",
+    "source": "1♦ — 2♣ 后再叫（sayc_1d.php）",
+    "tags": [
+      "逼叫"
+    ],
+    "legacyP": "16 以上",
+    "bid": "2S"
+  },
+  {
+    "id": "sayc.102.2N.136",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      "M:1D P:2C"
+    ],
+    "hcp": {
+      "min": 12,
+      "max": 14
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "均型，不逼叫。",
+    "source": "1♦ — 2♣ 后再叫（sayc_1d.php）",
+    "tags": [],
+    "legacyP": "12~14",
+    "bid": "2N"
+  },
+  {
+    "id": "sayc.103.3C.137",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      "M:1D P:2C"
+    ],
+    "hcp": {
+      "min": 13,
+      "max": 15
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "3 张以上梅花支持，不逼叫。",
+    "source": "1♦ — 2♣ 后再叫（sayc_1d.php）",
+    "tags": [],
+    "legacyP": "13~15",
+    "bid": "3C"
+  },
+  {
+    "id": "sayc.104.3D.138",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      "M:1D P:2C"
+    ],
+    "hcp": {
+      "min": 16,
+      "max": 18
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "6 张以上方块，不逼叫。",
+    "source": "1♦ — 2♣ 后再叫（sayc_1d.php）",
+    "tags": [],
+    "legacyP": "16~18",
+    "bid": "3D"
+  },
+  {
+    "id": "sayc.105.3N.139",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      "M:1D P:2C"
+    ],
+    "hcp": {
+      "min": 18,
+      "max": 19
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "均型，不逼叫。",
+    "source": "1♦ — 2♣ 后再叫（sayc_1d.php）",
+    "tags": [],
+    "legacyP": "18~19",
+    "bid": "3N"
+  },
+  {
+    "id": "sayc.106.4C.140",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      "M:1D P:2C"
+    ],
+    "hcp": {
+      "min": 16,
+      "max": 18
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "4 张以上梅花支持，不逼叫。",
+    "source": "1♦ — 2♣ 后再叫（sayc_1d.php）",
+    "tags": [],
+    "legacyP": "16~18",
+    "bid": "4C"
+  },
+  {
+    "id": "sayc.107.P.141",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1N"
+    ],
+    "hcp": {
+      "min": 0,
+      "max": 7
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "无五张高花、无六张低花，不叫。",
+    "source": "1NT 开叫（1nt_15_17.php）",
+    "tags": [
+      "止叫"
+    ],
+    "legacyP": "0~7",
+    "bid": "P"
+  },
+  {
+    "id": "sayc.108.2C.142",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1N"
+    ],
+    "hcp": {
+      "min": 8,
+      "max": 37
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": true,
+    "recommendable": true,
+    "meaning": "斯台曼：至少一门四张高花，通常排除 4-3-3-3 牌型。",
+    "source": "1NT 开叫（1nt_15_17.php）",
+    "tags": [
+      "约定叫"
+    ],
+    "legacyP": "8 以上",
+    "bid": "2C"
+  },
+  {
+    "id": "sayc.109.2D.143",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1N"
+    ],
+    "hcp": null,
+    "shape": {
+      "suitMin": {
+        "H": 5
+      }
+    },
+    "forcing": "none",
+    "alert": true,
+    "recommendable": true,
+    "meaning": "杰克贝转移叫：五张以上红心，开叫方必须叫 2♥。",
+    "source": "1NT 开叫（1nt_15_17.php）",
+    "tags": [
+      "转移叫"
+    ],
+    "legacyP": "5 张以上 H",
+    "bid": "2D"
+  },
+  {
+    "id": "sayc.110.2H.144",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1N"
+    ],
+    "hcp": null,
+    "shape": {
+      "suitMin": {
+        "S": 5
+      }
+    },
+    "forcing": "none",
+    "alert": true,
+    "recommendable": true,
+    "meaning": "杰克贝转移叫：五张以上黑桃，开叫方必须叫 2♠。",
+    "source": "1NT 开叫（1nt_15_17.php）",
+    "tags": [
+      "转移叫"
+    ],
+    "legacyP": "5 张以上 S",
+    "bid": "2H"
+  },
+  {
+    "id": "sayc.111.2S.145",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1N"
+    ],
+    "hcp": null,
+    "shape": null,
+    "forcing": "none",
+    "alert": true,
+    "recommendable": false,
+    "meaning": "人工叫品：弱牌、六张以上低花。开叫方必须叫 3♣，应叫方 PASS 或改叫 3♦。",
+    "source": "1NT 开叫（1nt_15_17.php）",
+    "tags": [
+      "转移叫"
+    ],
+    "legacyP": "6 张以上低花",
+    "bid": "2S",
+    "needsReview": true
+  },
+  {
+    "id": "sayc.112.2N.146",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1N"
+    ],
+    "hcp": {
+      "min": 8,
+      "max": 9
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "均型邀局，通常否认四张高花（持 4-3-3-3 除外）。",
+    "source": "1NT 开叫（1nt_15_17.php）",
+    "tags": [
+      "邀局"
+    ],
+    "legacyP": "8~9",
+    "bid": "2N"
+  },
+  {
+    "id": "sayc.113.3C.147",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1N"
+    ],
+    "hcp": {
+      "min": 7,
+      "max": 8
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "六张以上所叫低花，邀叫 3NT。",
+    "source": "1NT 开叫（1nt_15_17.php）",
+    "tags": [
+      "邀局"
+    ],
+    "legacyP": "7~8",
+    "bid": "3C"
+  },
+  {
+    "id": "sayc.113.3D.148",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1N"
+    ],
+    "hcp": {
+      "min": 7,
+      "max": 8
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "六张以上所叫低花，邀叫 3NT。",
+    "source": "1NT 开叫（1nt_15_17.php）",
+    "tags": [
+      "邀局"
+    ],
+    "legacyP": "7~8",
+    "bid": "3D"
+  },
+  {
+    "id": "sayc.114.3H.149",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1N"
+    ],
+    "hcp": null,
+    "shape": {
+      "suitMin": {
+        "H": 6
+      }
+    },
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "六张以上红心，满贯兴趣。",
+    "source": "1NT 开叫（1nt_15_17.php）",
+    "tags": [
+      "满贯"
+    ],
+    "legacyP": "6 张以上 H",
+    "bid": "3H"
+  },
+  {
+    "id": "sayc.115.3S.150",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1N"
+    ],
+    "hcp": null,
+    "shape": {
+      "suitMin": {
+        "S": 6
+      }
+    },
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "六张以上黑桃，满贯兴趣。",
+    "source": "1NT 开叫（1nt_15_17.php）",
+    "tags": [
+      "满贯"
+    ],
+    "legacyP": "6 张以上 S",
+    "bid": "3S"
+  },
+  {
+    "id": "sayc.116.3N.151",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1N"
+    ],
+    "hcp": {
+      "min": 10,
+      "max": 13
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "自然叫，止叫。",
+    "source": "1NT 开叫（1nt_15_17.php）",
+    "tags": [
+      "止叫"
+    ],
+    "legacyP": "10~13",
+    "bid": "3N"
+  },
+  {
+    "id": "sayc.117.4C.152",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1N"
+    ],
+    "hcp": null,
+    "shape": null,
+    "forcing": "none",
+    "alert": true,
+    "recommendable": false,
+    "meaning": "盖伯（Gerber）：问 A。",
+    "source": "1NT 开叫（1nt_15_17.php）",
+    "tags": [
+      "约定叫"
+    ],
+    "legacyP": null,
+    "bid": "4C"
+  },
+  {
+    "id": "sayc.118.4N.153",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1N"
+    ],
+    "hcp": null,
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": false,
+    "meaning": "定量邀叫：邀请开叫方高限时叫 6NT。",
+    "source": "1NT 开叫（1nt_15_17.php）",
+    "tags": [
+      "邀局"
+    ],
+    "legacyP": null,
+    "bid": "4N"
+  },
+  {
+    "id": "sayc.119.3C.154",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:2N"
+    ],
+    "hcp": {
+      "min": 8,
+      "max": 37
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": true,
+    "recommendable": true,
+    "meaning": "斯台曼：至少一门四张高花。",
+    "source": "2NT 开叫（20~21，sayc.php）",
+    "tags": [
+      "约定叫"
+    ],
+    "legacyP": "8 以上",
+    "bid": "3C"
+  },
+  {
+    "id": "sayc.120.3D.155",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:2N"
+    ],
+    "hcp": null,
+    "shape": {
+      "suitMin": {
+        "H": 5
+      }
+    },
+    "forcing": "none",
+    "alert": true,
+    "recommendable": true,
+    "meaning": "杰克贝转移叫：五张以上红心，开叫方叫 3♥。",
+    "source": "2NT 开叫（20~21，sayc.php）",
+    "tags": [
+      "转移叫"
+    ],
+    "legacyP": "5 张以上 H",
+    "bid": "3D"
+  },
+  {
+    "id": "sayc.121.3H.156",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:2N"
+    ],
+    "hcp": null,
+    "shape": {
+      "suitMin": {
+        "S": 5
+      }
+    },
+    "forcing": "none",
+    "alert": true,
+    "recommendable": true,
+    "meaning": "杰克贝转移叫：五张以上黑桃，开叫方叫 3♠。",
+    "source": "2NT 开叫（20~21，sayc.php）",
+    "tags": [
+      "转移叫"
+    ],
+    "legacyP": "5 张以上 S",
+    "bid": "3H"
+  },
+  {
+    "id": "sayc.122.3N.157",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:2N"
+    ],
+    "hcp": {
+      "min": 3,
+      "max": 8
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "止叫。",
+    "source": "2NT 开叫（20~21，sayc.php）",
+    "tags": [
+      "止叫"
+    ],
+    "legacyP": "3~8",
+    "bid": "3N"
+  },
+  {
+    "id": "sayc.123.4C.158",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:2N"
+    ],
+    "hcp": null,
+    "shape": null,
+    "forcing": "none",
+    "alert": true,
+    "recommendable": false,
+    "meaning": "盖伯：问 A。",
+    "source": "2NT 开叫（20~21，sayc.php）",
+    "tags": [
+      "约定叫"
+    ],
+    "legacyP": null,
+    "bid": "4C"
+  },
+  {
+    "id": "sayc.124.4N.159",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:2N"
+    ],
+    "hcp": null,
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": false,
+    "meaning": "定量邀叫：邀请开叫方高限时叫 6NT。",
+    "source": "2NT 开叫（20~21，sayc.php）",
+    "tags": [
+      "邀局"
+    ],
+    "legacyP": null,
+    "bid": "4N"
+  },
+  {
+    "id": "sayc.125.4C.160",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:3N"
+    ],
+    "hcp": null,
+    "shape": null,
+    "forcing": "none",
+    "alert": true,
+    "recommendable": false,
+    "meaning": "盖伯：问 A。",
+    "source": "3NT 开叫（25~27，sayc.php）",
+    "tags": [
+      "约定叫"
+    ],
+    "legacyP": null,
+    "bid": "4C"
+  },
+  {
+    "id": "sayc.126.4D.161",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:3N"
+    ],
+    "hcp": null,
+    "shape": {
+      "suitMin": {
+        "H": 5
+      }
+    },
+    "forcing": "none",
+    "alert": true,
+    "recommendable": true,
+    "meaning": "杰克贝转移叫：五张以上红心，开叫方叫 4♥。",
+    "source": "3NT 开叫（25~27，sayc.php）",
+    "tags": [
+      "转移叫"
+    ],
+    "legacyP": "5 张以上 H",
+    "bid": "4D"
+  },
+  {
+    "id": "sayc.127.4H.162",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:3N"
+    ],
+    "hcp": null,
+    "shape": {
+      "suitMin": {
+        "S": 5
+      }
+    },
+    "forcing": "none",
+    "alert": true,
+    "recommendable": true,
+    "meaning": "杰克贝转移叫：五张以上黑桃，开叫方叫 4♠。",
+    "source": "3NT 开叫（25~27，sayc.php）",
+    "tags": [
+      "转移叫"
+    ],
+    "legacyP": "5 张以上 S",
+    "bid": "4H"
+  },
+  {
+    "id": "sayc.128.2D.163",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:2C"
+    ],
+    "hcp": {
+      "min": 0,
+      "max": 7
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": true,
+    "recommendable": true,
+    "meaning": "人工「等待叫」（negative / waiting）：通常示弱；偶有 8 点以上但无合适叫品（如 4-4-4-1）。",
+    "source": "2♣ 强开叫（strong_2c.php）",
+    "tags": [
+      "示弱",
+      "约定叫"
+    ],
+    "legacyP": "0~7",
+    "bid": "2D"
+  },
+  {
+    "id": "sayc.129.2H.164",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:2C"
+    ],
+    "hcp": {
+      "min": 8,
+      "max": 37
+    },
+    "shape": null,
+    "forcing": "one_round",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "五张以上红心，自然、逼叫到局。",
+    "source": "2♣ 强开叫（strong_2c.php）",
+    "tags": [
+      "逼叫"
+    ],
+    "legacyP": "8 以上",
+    "bid": "2H"
+  },
+  {
+    "id": "sayc.130.2S.165",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:2C"
+    ],
+    "hcp": {
+      "min": 8,
+      "max": 37
+    },
+    "shape": null,
+    "forcing": "one_round",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "五张以上黑桃，自然、逼叫到局。",
+    "source": "2♣ 强开叫（strong_2c.php）",
+    "tags": [
+      "逼叫"
+    ],
+    "legacyP": "8 以上",
+    "bid": "2S"
+  },
+  {
+    "id": "sayc.131.2N.166",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:2C"
+    ],
+    "hcp": {
+      "min": 8,
+      "max": 37
+    },
+    "shape": null,
+    "forcing": "one_round",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "均型，逼叫到局；此后无将体系（斯台曼、转移叫）全部启用。",
+    "source": "2♣ 强开叫（strong_2c.php）",
+    "tags": [
+      "逼叫"
+    ],
+    "legacyP": "8 以上",
+    "bid": "2N"
+  },
+  {
+    "id": "sayc.132.3C.167",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:2C"
+    ],
+    "hcp": {
+      "min": 8,
+      "max": 37
+    },
+    "shape": null,
+    "forcing": "one_round",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "五张以上梅花，自然、逼叫到局。",
+    "source": "2♣ 强开叫（strong_2c.php）",
+    "tags": [
+      "逼叫"
+    ],
+    "legacyP": "8 以上",
+    "bid": "3C"
+  },
+  {
+    "id": "sayc.133.3D.168",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:2C"
+    ],
+    "hcp": {
+      "min": 8,
+      "max": 37
+    },
+    "shape": null,
+    "forcing": "one_round",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "五张以上方块，自然、逼叫到局。",
+    "source": "2♣ 强开叫（strong_2c.php）",
+    "tags": [
+      "逼叫"
+    ],
+    "legacyP": "8 以上",
+    "bid": "3D"
+  },
+  {
+    "id": "sayc.134.2H.169",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      "M:2C P:2D"
+    ],
+    "hcp": {
+      "min": 17,
+      "max": 37
+    },
+    "shape": null,
+    "forcing": "one_round",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "五张以上红心，自然、逼叫一轮。",
+    "source": "2♣ — 2♦ 等待叫后开叫方再叫（strong_2c.php）",
+    "tags": [
+      "逼叫"
+    ],
+    "legacyP": "17 以上",
+    "bid": "2H"
+  },
+  {
+    "id": "sayc.135.2S.170",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      "M:2C P:2D"
+    ],
+    "hcp": {
+      "min": 17,
+      "max": 37
+    },
+    "shape": null,
+    "forcing": "one_round",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "五张以上黑桃，自然、逼叫一轮。",
+    "source": "2♣ — 2♦ 等待叫后开叫方再叫（strong_2c.php）",
+    "tags": [
+      "逼叫"
+    ],
+    "legacyP": "17 以上",
+    "bid": "2S"
+  },
+  {
+    "id": "sayc.136.2N.171",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      "M:2C P:2D"
+    ],
+    "hcp": {
+      "min": 22,
+      "max": 24
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "均型；无将叫品不逼叫。",
+    "source": "2♣ — 2♦ 等待叫后开叫方再叫（strong_2c.php）",
+    "tags": [],
+    "legacyP": "22~24",
+    "bid": "2N"
+  },
+  {
+    "id": "sayc.137.3C.172",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      "M:2C P:2D"
+    ],
+    "hcp": {
+      "min": 17,
+      "max": 37
+    },
+    "shape": null,
+    "forcing": "one_round",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "五张以上梅花，自然、逼叫一轮。",
+    "source": "2♣ — 2♦ 等待叫后开叫方再叫（strong_2c.php）",
+    "tags": [
+      "逼叫"
+    ],
+    "legacyP": "17 以上",
+    "bid": "3C"
+  },
+  {
+    "id": "sayc.138.3D.173",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      "M:2C P:2D"
+    ],
+    "hcp": {
+      "min": 17,
+      "max": 37
+    },
+    "shape": null,
+    "forcing": "one_round",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "五张以上方块，自然、逼叫一轮。",
+    "source": "2♣ — 2♦ 等待叫后开叫方再叫（strong_2c.php）",
+    "tags": [
+      "逼叫"
+    ],
+    "legacyP": "17 以上",
+    "bid": "3D"
+  },
+  {
+    "id": "sayc.139.3N.174",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      "M:2C P:2D"
+    ],
+    "hcp": {
+      "min": 25,
+      "max": 27
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "均型；无将叫品不逼叫。",
+    "source": "2♣ — 2♦ 等待叫后开叫方再叫（strong_2c.php）",
+    "tags": [],
+    "legacyP": "25~27",
+    "bid": "3N"
+  },
+  {
+    "id": "sayc.140.4N.175",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      "M:2C P:2D"
+    ],
+    "hcp": {
+      "min": 28,
+      "max": 30
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "均型；无将叫品不逼叫。",
+    "source": "2♣ — 2♦ 等待叫后开叫方再叫（strong_2c.php）",
+    "tags": [],
+    "legacyP": "28~30",
+    "bid": "4N"
+  },
+  {
+    "id": "sayc.141.5N.176",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      "M:2C P:2D"
+    ],
+    "hcp": {
+      "min": 31,
+      "max": 32
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "均型；无将叫品不逼叫。",
+    "source": "2♣ — 2♦ 等待叫后开叫方再叫（strong_2c.php）",
+    "tags": [],
+    "legacyP": "31~32",
+    "bid": "5N"
+  },
+  {
+    "id": "sayc.143.2N.177",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      "M:2C P:2H",
+      "M:2C P:2S",
+      "M:2C P:3C",
+      "M:2C P:3D"
+    ],
+    "hcp": {
+      "min": 23,
+      "max": 24
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "均型。",
+    "source": "2♣ — 正应叫后开叫方再叫（strong_2c.php）",
+    "tags": [],
+    "legacyP": "23~24",
+    "bid": "2N"
+  },
+  {
+    "id": "sayc.144.3N.178",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      "M:2C P:2H",
+      "M:2C P:2S",
+      "M:2C P:3C",
+      "M:2C P:3D"
+    ],
+    "hcp": {
+      "min": 25,
+      "max": 27
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "在 3♣/3♦ 之后为 23~24 均型；在 2♥/2♠ 之后（跳叫 3NT）为 25~27 均型。",
+    "source": "2♣ — 正应叫后开叫方再叫（strong_2c.php）",
+    "tags": [],
+    "legacyP": "25~27",
+    "bid": "3N"
+  },
+  {
+    "id": "sayc.145.form.179",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      "M:2C P:2H",
+      "M:2C P:2S",
+      "M:2C P:3C",
+      "M:2C P:3D"
+    ],
+    "hcp": {
+      "min": 17,
+      "max": 37
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "加叫同伴花色：3 张以上支持，自然。",
+    "source": "2♣ — 正应叫后开叫方再叫（strong_2c.php）",
+    "tags": [],
+    "legacyP": "17 以上",
+    "bidForm": {
+      "type": "raise"
+    }
+  },
+  {
+    "id": "sayc.146.form.180",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      "M:2C P:2H",
+      "M:2C P:2S",
+      "M:2C P:3C",
+      "M:2C P:3D"
+    ],
+    "hcp": {
+      "min": 17,
+      "max": 37
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "叫新花色：5 张以上，自然。",
+    "source": "2♣ — 正应叫后开叫方再叫（strong_2c.php）",
+    "tags": [],
+    "legacyP": "17 以上",
+    "bidForm": {
+      "type": "newSuit"
+    }
+  },
+  {
+    "id": "sayc.147.2D.181",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      ""
+    ],
+    "hcp": {
+      "min": 5,
+      "max": 11
+    },
+    "shape": {
+      "suitMin": {
+        "bid": 6
+      }
+    },
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "六张所叫花色，牌力集中在该套；通常不另带四张高花。",
+    "source": "弱二开叫（weak_two.php）",
+    "tags": [
+      "开叫",
+      "阻击"
+    ],
+    "legacyP": "5~11",
+    "bid": "2D"
+  },
+  {
+    "id": "sayc.147.2H.182",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      ""
+    ],
+    "hcp": {
+      "min": 5,
+      "max": 11
+    },
+    "shape": {
+      "suitMin": {
+        "bid": 6
+      }
+    },
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "六张所叫花色，牌力集中在该套；通常不另带四张高花。",
+    "source": "弱二开叫（weak_two.php）",
+    "tags": [
+      "开叫",
+      "阻击"
+    ],
+    "legacyP": "5~11",
+    "bid": "2H"
+  },
+  {
+    "id": "sayc.147.2S.183",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      ""
+    ],
+    "hcp": {
+      "min": 5,
+      "max": 11
+    },
+    "shape": {
+      "suitMin": {
+        "bid": 6
+      }
+    },
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "六张所叫花色，牌力集中在该套；通常不另带四张高花。",
+    "source": "弱二开叫（weak_two.php）",
+    "tags": [
+      "开叫",
+      "阻击"
+    ],
+    "legacyP": "5~11",
+    "bid": "2S"
+  },
+  {
+    "id": "sayc.148.3D.184",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:2D",
+      "P:2H",
+      "P:2S"
+    ],
+    "hcp": {
+      "min": 6,
+      "max": 13
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "单加叫（RONF, Raise Only Non Forcing）：3~4 张支持，阻击、完全不逼叫。",
+    "source": "弱二开叫（weak_two.php）",
+    "tags": [
+      "阻击",
+      "止叫"
+    ],
+    "legacyP": "6~13",
+    "bid": "3D"
+  },
+  {
+    "id": "sayc.148.3H.185",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:2D",
+      "P:2H",
+      "P:2S"
+    ],
+    "hcp": {
+      "min": 6,
+      "max": 13
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "单加叫（RONF, Raise Only Non Forcing）：3~4 张支持，阻击、完全不逼叫。",
+    "source": "弱二开叫（weak_two.php）",
+    "tags": [
+      "阻击",
+      "止叫"
+    ],
+    "legacyP": "6~13",
+    "bid": "3H"
+  },
+  {
+    "id": "sayc.148.3S.186",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:2D",
+      "P:2H",
+      "P:2S"
+    ],
+    "hcp": {
+      "min": 6,
+      "max": 13
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "单加叫（RONF, Raise Only Non Forcing）：3~4 张支持，阻击、完全不逼叫。",
+    "source": "弱二开叫（weak_two.php）",
+    "tags": [
+      "阻击",
+      "止叫"
+    ],
+    "legacyP": "6~13",
+    "bid": "3S"
+  },
+  {
+    "id": "sayc.149.4D.187",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:2D",
+      "P:2H",
+      "P:2S"
+    ],
+    "hcp": null,
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": false,
+    "meaning": "跳加叫：通常为弱阻击（至少 4 张支持）；持 5 张支持时不论牌力都可直接跳加叫。",
+    "source": "弱二开叫（weak_two.php）",
+    "tags": [
+      "阻击"
+    ],
+    "legacyP": null,
+    "bid": "4D"
+  },
+  {
+    "id": "sayc.149.4H.188",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:2D",
+      "P:2H",
+      "P:2S"
+    ],
+    "hcp": null,
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": false,
+    "meaning": "跳加叫：通常为弱阻击（至少 4 张支持）；持 5 张支持时不论牌力都可直接跳加叫。",
+    "source": "弱二开叫（weak_two.php）",
+    "tags": [
+      "阻击"
+    ],
+    "legacyP": null,
+    "bid": "4H"
+  },
+  {
+    "id": "sayc.149.4S.189",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:2D",
+      "P:2H",
+      "P:2S"
+    ],
+    "hcp": null,
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": false,
+    "meaning": "跳加叫：通常为弱阻击（至少 4 张支持）；持 5 张支持时不论牌力都可直接跳加叫。",
+    "source": "弱二开叫（weak_two.php）",
+    "tags": [
+      "阻击"
+    ],
+    "legacyP": null,
+    "bid": "4S"
+  },
+  {
+    "id": "sayc.150.form.190",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:2D",
+      "P:2H",
+      "P:2S"
+    ],
+    "hcp": null,
+    "shape": null,
+    "forcing": "one_round",
+    "alert": false,
+    "recommendable": false,
+    "meaning": "新花色：自然、逼叫一轮，通常 5 张以上且不支持同伴花色。",
+    "source": "弱二开叫（weak_two.php）",
+    "tags": [
+      "逼叫"
+    ],
+    "legacyP": null,
+    "bidForm": {
+      "type": "newSuit"
+    }
+  },
+  {
+    "id": "sayc.151.2N.191",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:2D",
+      "P:2H",
+      "P:2S"
+    ],
+    "hcp": null,
+    "shape": null,
+    "forcing": "one_round",
+    "alert": true,
+    "recommendable": false,
+    "meaning": "强人工逼叫：多用于持 3 张以上支持时。开叫方在三阶叫出有 A 或 K 的旁花；叫回原花色表示低限、无边花大牌。",
+    "source": "弱二开叫（weak_two.php）",
+    "tags": [
+      "约定叫",
+      "逼叫"
+    ],
+    "legacyP": null,
+    "bid": "2N"
+  },
+  {
+    "id": "sayc.152.3C.192",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      "M:2D P:2N"
+    ],
+    "hcp": null,
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": false,
+    "meaning": "三阶叫出有 A 或 K 的旁花（示特征）。",
+    "source": "弱二 — 2NT 之后开叫方答叫（weak_two.php）",
+    "tags": [],
+    "legacyP": null,
+    "bid": "3C"
+  },
+  {
+    "id": "sayc.152.3H.193",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      "M:2D P:2N"
+    ],
+    "hcp": null,
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": false,
+    "meaning": "三阶叫出有 A 或 K 的旁花（示特征）。",
+    "source": "弱二 — 2NT 之后开叫方答叫（weak_two.php）",
+    "tags": [],
+    "legacyP": null,
+    "bid": "3H"
+  },
+  {
+    "id": "sayc.152.3S.194",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      "M:2D P:2N"
+    ],
+    "hcp": null,
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": false,
+    "meaning": "三阶叫出有 A 或 K 的旁花（示特征）。",
+    "source": "弱二 — 2NT 之后开叫方答叫（weak_two.php）",
+    "tags": [],
+    "legacyP": null,
+    "bid": "3S"
+  },
+  {
+    "id": "sayc.152.3C.195",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      "M:2H P:2N"
+    ],
+    "hcp": null,
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": false,
+    "meaning": "三阶叫出有 A 或 K 的旁花（示特征）。",
+    "source": "弱二 — 2NT 之后开叫方答叫（weak_two.php）",
+    "tags": [],
+    "legacyP": null,
+    "bid": "3C"
+  },
+  {
+    "id": "sayc.152.3D.196",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      "M:2H P:2N"
+    ],
+    "hcp": null,
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": false,
+    "meaning": "三阶叫出有 A 或 K 的旁花（示特征）。",
+    "source": "弱二 — 2NT 之后开叫方答叫（weak_two.php）",
+    "tags": [],
+    "legacyP": null,
+    "bid": "3D"
+  },
+  {
+    "id": "sayc.152.3S.197",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      "M:2H P:2N"
+    ],
+    "hcp": null,
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": false,
+    "meaning": "三阶叫出有 A 或 K 的旁花（示特征）。",
+    "source": "弱二 — 2NT 之后开叫方答叫（weak_two.php）",
+    "tags": [],
+    "legacyP": null,
+    "bid": "3S"
+  },
+  {
+    "id": "sayc.152.3C.198",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      "M:2S P:2N"
+    ],
+    "hcp": null,
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": false,
+    "meaning": "三阶叫出有 A 或 K 的旁花（示特征）。",
+    "source": "弱二 — 2NT 之后开叫方答叫（weak_two.php）",
+    "tags": [],
+    "legacyP": null,
+    "bid": "3C"
+  },
+  {
+    "id": "sayc.152.3D.199",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      "M:2S P:2N"
+    ],
+    "hcp": null,
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": false,
+    "meaning": "三阶叫出有 A 或 K 的旁花（示特征）。",
+    "source": "弱二 — 2NT 之后开叫方答叫（weak_two.php）",
+    "tags": [],
+    "legacyP": null,
+    "bid": "3D"
+  },
+  {
+    "id": "sayc.152.3H.200",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      "M:2S P:2N"
+    ],
+    "hcp": null,
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": false,
+    "meaning": "三阶叫出有 A 或 K 的旁花（示特征）。",
+    "source": "弱二 — 2NT 之后开叫方答叫（weak_two.php）",
+    "tags": [],
+    "legacyP": null,
+    "bid": "3H"
+  },
+  {
+    "id": "sayc.153.3D.201",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      "M:2D P:2N"
+    ],
+    "hcp": null,
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": false,
+    "meaning": "叫回原开叫花色：低限牌、无旁花特征。",
+    "source": "弱二 — 2NT 之后开叫方答叫（weak_two.php）",
+    "tags": [
+      "示弱"
+    ],
+    "legacyP": null,
+    "bid": "3D"
+  },
+  {
+    "id": "sayc.153.3H.202",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      "M:2H P:2N"
+    ],
+    "hcp": null,
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": false,
+    "meaning": "叫回原开叫花色：低限牌、无旁花特征。",
+    "source": "弱二 — 2NT 之后开叫方答叫（weak_two.php）",
+    "tags": [
+      "示弱"
+    ],
+    "legacyP": null,
+    "bid": "3H"
+  },
+  {
+    "id": "sayc.153.3S.203",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      "M:2S P:2N"
+    ],
+    "hcp": null,
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": false,
+    "meaning": "叫回原开叫花色：低限牌、无旁花特征。",
+    "source": "弱二 — 2NT 之后开叫方答叫（weak_two.php）",
+    "tags": [
+      "示弱"
+    ],
+    "legacyP": null,
+    "bid": "3S"
+  },
+  {
+    "id": "sayc.154.3C.204",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      ""
+    ],
+    "hcp": {
+      "min": 5,
+      "max": 11
+    },
+    "shape": {
+      "suitMin": {
+        "bid": 7
+      }
+    },
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "七张所叫花色，阻击叫。",
+    "source": "三阶 / 四阶开叫（sayc.php）",
+    "tags": [
+      "开叫",
+      "阻击"
+    ],
+    "legacyP": "5~11",
+    "bid": "3C"
+  },
+  {
+    "id": "sayc.154.3D.205",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      ""
+    ],
+    "hcp": {
+      "min": 5,
+      "max": 11
+    },
+    "shape": {
+      "suitMin": {
+        "bid": 7
+      }
+    },
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "七张所叫花色，阻击叫。",
+    "source": "三阶 / 四阶开叫（sayc.php）",
+    "tags": [
+      "开叫",
+      "阻击"
+    ],
+    "legacyP": "5~11",
+    "bid": "3D"
+  },
+  {
+    "id": "sayc.154.3H.206",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      ""
+    ],
+    "hcp": {
+      "min": 5,
+      "max": 11
+    },
+    "shape": {
+      "suitMin": {
+        "bid": 7
+      }
+    },
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "七张所叫花色，阻击叫。",
+    "source": "三阶 / 四阶开叫（sayc.php）",
+    "tags": [
+      "开叫",
+      "阻击"
+    ],
+    "legacyP": "5~11",
+    "bid": "3H"
+  },
+  {
+    "id": "sayc.154.3S.207",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      ""
+    ],
+    "hcp": {
+      "min": 5,
+      "max": 11
+    },
+    "shape": {
+      "suitMin": {
+        "bid": 7
+      }
+    },
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "七张所叫花色，阻击叫。",
+    "source": "三阶 / 四阶开叫（sayc.php）",
+    "tags": [
+      "开叫",
+      "阻击"
+    ],
+    "legacyP": "5~11",
+    "bid": "3S"
+  },
+  {
+    "id": "sayc.155.4C.208",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      ""
+    ],
+    "hcp": {
+      "min": 5,
+      "max": 11
+    },
+    "shape": {
+      "suitMin": {
+        "bid": 8
+      }
+    },
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "八张所叫花色，阻击叫。",
+    "source": "三阶 / 四阶开叫（sayc.php）",
+    "tags": [
+      "开叫",
+      "阻击"
+    ],
+    "legacyP": "5~11",
+    "bid": "4C"
+  },
+  {
+    "id": "sayc.155.4D.209",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      ""
+    ],
+    "hcp": {
+      "min": 5,
+      "max": 11
+    },
+    "shape": {
+      "suitMin": {
+        "bid": 8
+      }
+    },
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "八张所叫花色，阻击叫。",
+    "source": "三阶 / 四阶开叫（sayc.php）",
+    "tags": [
+      "开叫",
+      "阻击"
+    ],
+    "legacyP": "5~11",
+    "bid": "4D"
+  },
+  {
+    "id": "sayc.156.4H.210",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      ""
+    ],
+    "hcp": null,
+    "shape": {
+      "suitMin": {
+        "bid": 7
+      }
+    },
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "七张以上所叫高花；无局约 7 个赢墩，有局约 8 个赢墩。",
+    "source": "三阶 / 四阶开叫（sayc.php）",
+    "tags": [
+      "开叫",
+      "阻击"
+    ],
+    "legacyP": null,
+    "bid": "4H"
+  },
+  {
+    "id": "sayc.156.4S.211",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      ""
+    ],
+    "hcp": null,
+    "shape": {
+      "suitMin": {
+        "bid": 7
+      }
+    },
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "七张以上所叫高花；无局约 7 个赢墩，有局约 8 个赢墩。",
+    "source": "三阶 / 四阶开叫（sayc.php）",
+    "tags": [
+      "开叫",
+      "阻击"
+    ],
+    "legacyP": null,
+    "bid": "4S"
+  },
+  {
+    "id": "sayc.157.form.212",
+    "system": "sayc",
+    "seatRole": "overcaller",
+    "contextKeys": [
+      "O:*"
+    ],
+    "hcp": {
+      "min": 8,
+      "max": 16
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "一阶花色争叫：4 张以上所叫花色。",
+    "source": "争叫 / 加倍（sayc.php）",
+    "tags": [],
+    "legacyP": "8~16",
+    "bidForm": {
+      "type": "newSuit",
+      "level": 1
+    }
+  },
+  {
+    "id": "sayc.158.1N.213",
+    "system": "sayc",
+    "seatRole": "overcaller",
+    "contextKeys": [
+      "O:*"
+    ],
+    "hcp": {
+      "min": 15,
+      "max": 18
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "均型争叫。",
+    "source": "争叫 / 加倍（sayc.php）",
+    "tags": [],
+    "legacyP": "15~18",
+    "bid": "1N"
+  },
+  {
+    "id": "sayc.159.form.214",
+    "system": "sayc",
+    "seatRole": "overcaller",
+    "contextKeys": [
+      "O:*"
+    ],
+    "hcp": {
+      "min": 5,
+      "max": 11
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "弱跳争叫：6 张所叫花色，阻击。",
+    "source": "争叫 / 加倍（sayc.php）",
+    "tags": [
+      "阻击"
+    ],
+    "legacyP": "5~11",
+    "bidForm": {
+      "type": "jumpSuit"
+    }
+  },
+  {
+    "id": "sayc.160.X.215",
+    "system": "sayc",
+    "seatRole": "overcaller",
+    "contextKeys": [
+      "O:*"
+    ],
+    "hcp": null,
+    "shape": null,
+    "forcing": "none",
+    "alert": true,
+    "recommendable": false,
+    "meaning": "技术性加倍：要求同伴叫出未叫过的花色；或 17 点以上的强牌。",
+    "source": "争叫 / 加倍（sayc.php）",
+    "tags": [
+      "约定叫"
+    ],
+    "legacyP": null,
+    "bid": "X"
+  },
+  {
+    "id": "sayc.161.form.216",
+    "system": "sayc",
+    "seatRole": "overcaller",
+    "contextKeys": [
+      "O:*"
+    ],
+    "hcp": null,
+    "shape": null,
+    "forcing": "none",
+    "alert": true,
+    "recommendable": false,
+    "meaning": "扣叫对方花色：迈克尔斯（Michaels），表示 5-5 以上的两套牌。",
+    "source": "争叫 / 加倍（sayc.php）",
+    "tags": [
+      "约定叫"
+    ],
+    "legacyP": null,
+    "bidForm": {
+      "type": "cue"
+    }
+  },
+  {
+    "id": "sayc.162.2N.217",
+    "system": "sayc",
+    "seatRole": "overcaller",
+    "contextKeys": [
+      "O:*"
+    ],
+    "hcp": null,
+    "shape": null,
+    "forcing": "none",
+    "alert": true,
+    "recommendable": false,
+    "meaning": "不寻常 2NT（Unusual 2NT）：5-5 以上的两门较低未叫花色。",
+    "source": "争叫 / 加倍（sayc.php）",
+    "tags": [
+      "约定叫"
+    ],
+    "legacyP": null,
+    "bid": "2N"
+  },
+  {
+    "id": "sayc.163.XX.218",
+    "system": "sayc",
+    "seatRole": "overcaller",
+    "contextKeys": [
+      "O:* M:* O:X P:P"
+    ],
+    "hcp": null,
+    "shape": null,
+    "forcing": "none",
+    "alert": true,
+    "recommendable": false,
+    "meaning": "SOS 再加倍：对方惩罚性加倍后，要求同伴改叫。",
+    "source": "争叫 / 加倍（sayc.php）",
+    "tags": [
+      "约定叫"
+    ],
+    "legacyP": null,
+    "bid": "XX"
+  },
+  {
+    "id": "sayc.164.2D.219",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      "M:1N P:2C"
+    ],
+    "hcp": null,
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": false,
+    "meaning": "否认四张高花。",
+    "source": "斯台曼答叫（stayman.php）",
+    "tags": [],
+    "legacyP": null,
+    "bid": "2D"
+  },
+  {
+    "id": "sayc.165.2H.220",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      "M:1N P:2C"
+    ],
+    "hcp": null,
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": false,
+    "meaning": "四张红心，可能还有四张黑桃。",
+    "source": "斯台曼答叫（stayman.php）",
+    "tags": [],
+    "legacyP": null,
+    "bid": "2H"
+  },
+  {
+    "id": "sayc.166.2S.221",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      "M:1N P:2C"
+    ],
+    "hcp": null,
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": false,
+    "meaning": "四张黑桃，否认四张红心。",
+    "source": "斯台曼答叫（stayman.php）",
+    "tags": [],
+    "legacyP": null,
+    "bid": "2S"
+  },
+  {
+    "id": "sayc.167.2H.222",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1N M:2C P:2D"
+    ],
+    "hcp": null,
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": false,
+    "meaning": "四张黑桃 + 五张红心，邀局，不逼叫。",
+    "source": "斯台曼 — 2♦ 之后应叫方再叫（stayman.php）",
+    "tags": [
+      "邀局"
+    ],
+    "legacyP": null,
+    "bid": "2H"
+  },
+  {
+    "id": "sayc.168.2S.223",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1N M:2C P:2D"
+    ],
+    "hcp": null,
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": false,
+    "meaning": "五张黑桃 + 四张红心，邀局，不逼叫。",
+    "source": "斯台曼 — 2♦ 之后应叫方再叫（stayman.php）",
+    "tags": [
+      "邀局"
+    ],
+    "legacyP": null,
+    "bid": "2S"
+  },
+  {
+    "id": "sayc.169.2N.224",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1N M:2C P:2D"
+    ],
+    "hcp": null,
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": false,
+    "meaning": "邀局。",
+    "source": "斯台曼 — 2♦ 之后应叫方再叫（stayman.php）",
+    "tags": [
+      "邀局"
+    ],
+    "legacyP": null,
+    "bid": "2N"
+  },
+  {
+    "id": "sayc.170.3C.225",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1N M:2C P:2D"
+    ],
+    "hcp": null,
+    "shape": null,
+    "forcing": "one_round",
+    "alert": false,
+    "recommendable": false,
+    "meaning": "逼叫到局：5 张以上（通常 6 张）所叫低花，不保证四张高花。",
+    "source": "斯台曼 — 2♦ 之后应叫方再叫（stayman.php）",
+    "tags": [
+      "逼叫"
+    ],
+    "legacyP": null,
+    "bid": "3C"
+  },
+  {
+    "id": "sayc.170.3D.226",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1N M:2C P:2D"
+    ],
+    "hcp": null,
+    "shape": null,
+    "forcing": "one_round",
+    "alert": false,
+    "recommendable": false,
+    "meaning": "逼叫到局：5 张以上（通常 6 张）所叫低花，不保证四张高花。",
+    "source": "斯台曼 — 2♦ 之后应叫方再叫（stayman.php）",
+    "tags": [
+      "逼叫"
+    ],
+    "legacyP": null,
+    "bid": "3D"
+  },
+  {
+    "id": "sayc.171.3H.227",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1N M:2C P:2D"
+    ],
+    "hcp": null,
+    "shape": null,
+    "forcing": "one_round",
+    "alert": false,
+    "recommendable": false,
+    "meaning": "四张黑桃 + 五张红心，逼叫到局。",
+    "source": "斯台曼 — 2♦ 之后应叫方再叫（stayman.php）",
+    "tags": [
+      "逼叫"
+    ],
+    "legacyP": null,
+    "bid": "3H"
+  },
+  {
+    "id": "sayc.172.3S.228",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1N M:2C P:2D"
+    ],
+    "hcp": null,
+    "shape": null,
+    "forcing": "one_round",
+    "alert": false,
+    "recommendable": false,
+    "meaning": "五张黑桃 + 四张红心，逼叫到局。",
+    "source": "斯台曼 — 2♦ 之后应叫方再叫（stayman.php）",
+    "tags": [
+      "逼叫"
+    ],
+    "legacyP": null,
+    "bid": "3S"
+  },
+  {
+    "id": "sayc.173.3N.229",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1N M:2C P:2D"
+    ],
+    "hcp": null,
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": false,
+    "meaning": "止叫。",
+    "source": "斯台曼 — 2♦ 之后应叫方再叫（stayman.php）",
+    "tags": [
+      "止叫"
+    ],
+    "legacyP": null,
+    "bid": "3N"
+  },
+  {
+    "id": "sayc.174.4H.230",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1N M:2C P:2D"
+    ],
+    "hcp": null,
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": false,
+    "meaning": "四张黑桃 + 六张红心，止叫。",
+    "source": "斯台曼 — 2♦ 之后应叫方再叫（stayman.php）",
+    "tags": [
+      "止叫"
+    ],
+    "legacyP": null,
+    "bid": "4H"
+  },
+  {
+    "id": "sayc.175.4S.231",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1N M:2C P:2D"
+    ],
+    "hcp": null,
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": false,
+    "meaning": "六张黑桃 + 四张红心，止叫。",
+    "source": "斯台曼 — 2♦ 之后应叫方再叫（stayman.php）",
+    "tags": [
+      "止叫"
+    ],
+    "legacyP": null,
+    "bid": "4S"
+  },
+  {
+    "id": "sayc.176.4N.232",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1N M:2C P:2D"
+    ],
+    "hcp": null,
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": false,
+    "meaning": "定量邀叫，邀请 6NT。",
+    "source": "斯台曼 — 2♦ 之后应叫方再叫（stayman.php）",
+    "tags": [
+      "邀局"
+    ],
+    "legacyP": null,
+    "bid": "4N"
+  },
+  {
+    "id": "sayc.177.2S.233",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1N M:2C P:2H"
+    ],
+    "hcp": null,
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": false,
+    "meaning": "五张黑桃 + 四张红心，邀局，不逼叫。",
+    "source": "斯台曼 — 2♥ 之后应叫方再叫（stayman.php）",
+    "tags": [
+      "邀局"
+    ],
+    "legacyP": null,
+    "bid": "2S"
+  },
+  {
+    "id": "sayc.178.2N.234",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1N M:2C P:2H"
+    ],
+    "hcp": null,
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": false,
+    "meaning": "四张黑桃、红心不足四张，邀局。开叫方可 PASS、3♠ 止叫、4♠ 封局或 3NT。",
+    "source": "斯台曼 — 2♥ 之后应叫方再叫（stayman.php）",
+    "tags": [
+      "邀局"
+    ],
+    "legacyP": null,
+    "bid": "2N"
+  },
+  {
+    "id": "sayc.179.3C.235",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1N M:2C P:2H"
+    ],
+    "hcp": null,
+    "shape": null,
+    "forcing": "one_round",
+    "alert": false,
+    "recommendable": false,
+    "meaning": "逼叫到局：5 张以上（通常 6 张）所叫低花，不保证四张高花。",
+    "source": "斯台曼 — 2♥ 之后应叫方再叫（stayman.php）",
+    "tags": [
+      "逼叫"
+    ],
+    "legacyP": null,
+    "bid": "3C"
+  },
+  {
+    "id": "sayc.179.3D.236",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1N M:2C P:2H"
+    ],
+    "hcp": null,
+    "shape": null,
+    "forcing": "one_round",
+    "alert": false,
+    "recommendable": false,
+    "meaning": "逼叫到局：5 张以上（通常 6 张）所叫低花，不保证四张高花。",
+    "source": "斯台曼 — 2♥ 之后应叫方再叫（stayman.php）",
+    "tags": [
+      "逼叫"
+    ],
+    "legacyP": null,
+    "bid": "3D"
+  },
+  {
+    "id": "sayc.180.3H.237",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1N M:2C P:2H"
+    ],
+    "hcp": null,
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": false,
+    "meaning": "四张红心，邀局。",
+    "source": "斯台曼 — 2♥ 之后应叫方再叫（stayman.php）",
+    "tags": [
+      "邀局"
+    ],
+    "legacyP": null,
+    "bid": "3H"
+  },
+  {
+    "id": "sayc.181.3S.238",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1N M:2C P:2H"
+    ],
+    "hcp": null,
+    "shape": null,
+    "forcing": "one_round",
+    "alert": false,
+    "recommendable": false,
+    "meaning": "五张以上黑桃 + 四张红心，逼叫到局。",
+    "source": "斯台曼 — 2♥ 之后应叫方再叫（stayman.php）",
+    "tags": [
+      "逼叫"
+    ],
+    "legacyP": null,
+    "bid": "3S"
+  },
+  {
+    "id": "sayc.182.3N.239",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1N M:2C P:2H"
+    ],
+    "hcp": null,
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": false,
+    "meaning": "四张黑桃、红心不足四张；开叫方可 PASS 或持四张黑桃改 4♠。",
+    "source": "斯台曼 — 2♥ 之后应叫方再叫（stayman.php）",
+    "tags": [],
+    "legacyP": null,
+    "bid": "3N"
+  },
+  {
+    "id": "sayc.183.4H.240",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1N M:2C P:2H"
+    ],
+    "hcp": null,
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": false,
+    "meaning": "止叫。",
+    "source": "斯台曼 — 2♥ 之后应叫方再叫（stayman.php）",
+    "tags": [
+      "止叫"
+    ],
+    "legacyP": null,
+    "bid": "4H"
+  },
+  {
+    "id": "sayc.184.4N.241",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1N M:2C P:2H"
+    ],
+    "hcp": null,
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": false,
+    "meaning": "定量邀叫，邀请 6NT。",
+    "source": "斯台曼 — 2♥ 之后应叫方再叫（stayman.php）",
+    "tags": [
+      "邀局"
+    ],
+    "legacyP": null,
+    "bid": "4N"
+  },
+  {
+    "id": "sayc.185.2N.242",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1N M:2C P:2S"
+    ],
+    "hcp": null,
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": false,
+    "meaning": "邀局。",
+    "source": "斯台曼 — 2♠ 之后应叫方再叫（stayman.php）",
+    "tags": [
+      "邀局"
+    ],
+    "legacyP": null,
+    "bid": "2N"
+  },
+  {
+    "id": "sayc.186.3C.243",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1N M:2C P:2S"
+    ],
+    "hcp": null,
+    "shape": null,
+    "forcing": "one_round",
+    "alert": false,
+    "recommendable": false,
+    "meaning": "逼叫到局：5 张以上（通常 6 张）所叫低花，不保证四张高花。",
+    "source": "斯台曼 — 2♠ 之后应叫方再叫（stayman.php）",
+    "tags": [
+      "逼叫"
+    ],
+    "legacyP": null,
+    "bid": "3C"
+  },
+  {
+    "id": "sayc.186.3D.244",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1N M:2C P:2S"
+    ],
+    "hcp": null,
+    "shape": null,
+    "forcing": "one_round",
+    "alert": false,
+    "recommendable": false,
+    "meaning": "逼叫到局：5 张以上（通常 6 张）所叫低花，不保证四张高花。",
+    "source": "斯台曼 — 2♠ 之后应叫方再叫（stayman.php）",
+    "tags": [
+      "逼叫"
+    ],
+    "legacyP": null,
+    "bid": "3D"
+  },
+  {
+    "id": "sayc.187.3H.245",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1N M:2C P:2S"
+    ],
+    "hcp": null,
+    "shape": null,
+    "forcing": "one_round",
+    "alert": false,
+    "recommendable": false,
+    "meaning": "四张黑桃 + 五张红心，逼叫到局。",
+    "source": "斯台曼 — 2♠ 之后应叫方再叫（stayman.php）",
+    "tags": [
+      "逼叫"
+    ],
+    "legacyP": null,
+    "bid": "3H"
+  },
+  {
+    "id": "sayc.188.3S.246",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1N M:2C P:2S"
+    ],
+    "hcp": null,
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": false,
+    "meaning": "四张黑桃，邀局。",
+    "source": "斯台曼 — 2♠ 之后应叫方再叫（stayman.php）",
+    "tags": [
+      "邀局"
+    ],
+    "legacyP": null,
+    "bid": "3S"
+  },
+  {
+    "id": "sayc.189.3N.247",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1N M:2C P:2S"
+    ],
+    "hcp": null,
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": false,
+    "meaning": "四张红心，止叫。",
+    "source": "斯台曼 — 2♠ 之后应叫方再叫（stayman.php）",
+    "tags": [
+      "止叫"
+    ],
+    "legacyP": null,
+    "bid": "3N"
+  },
+  {
+    "id": "sayc.190.4S.248",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1N M:2C P:2S"
+    ],
+    "hcp": null,
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": false,
+    "meaning": "止叫。",
+    "source": "斯台曼 — 2♠ 之后应叫方再叫（stayman.php）",
+    "tags": [
+      "止叫"
+    ],
+    "legacyP": null,
+    "bid": "4S"
+  },
+  {
+    "id": "sayc.191.4N.249",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1N M:2C P:2S"
+    ],
+    "hcp": null,
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": false,
+    "meaning": "定量邀叫，邀请 6NT。",
+    "source": "斯台曼 — 2♠ 之后应叫方再叫（stayman.php）",
+    "tags": [
+      "邀局"
+    ],
+    "legacyP": null,
+    "bid": "4N"
+  },
+  {
+    "id": "sayc.192.2H.250",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      "M:1N P:2D"
+    ],
+    "hcp": null,
+    "shape": null,
+    "forcing": "none",
+    "alert": true,
+    "recommendable": false,
+    "meaning": "完成转移：应叫方为五张以上红心。",
+    "source": "转移叫完成（jacoby_transfers.php）",
+    "tags": [
+      "转移叫"
+    ],
+    "legacyP": null,
+    "bid": "2H"
+  },
+  {
+    "id": "sayc.193.2S.251",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      "M:1N P:2H"
+    ],
+    "hcp": null,
+    "shape": null,
+    "forcing": "none",
+    "alert": true,
+    "recommendable": false,
+    "meaning": "完成转移：应叫方为五张以上黑桃。",
+    "source": "转移叫完成（jacoby_transfers.php）",
+    "tags": [
+      "转移叫"
+    ],
+    "legacyP": null,
+    "bid": "2S"
+  },
+  {
+    "id": "sayc.194.3H.252",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      "M:1N P:2D"
+    ],
+    "hcp": {
+      "min": 17,
+      "max": 37
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": true,
+    "recommendable": true,
+    "meaning": "超级接受：四张红心支持 + 17 点，直接跳叫 3♥。",
+    "source": "转移叫完成（jacoby_transfers.php）",
+    "tags": [
+      "转移叫"
+    ],
+    "legacyP": "17 以上",
+    "bid": "3H"
+  },
+  {
+    "id": "sayc.195.3S.253",
+    "system": "sayc",
+    "seatRole": "opener",
+    "contextKeys": [
+      "M:1N P:2H"
+    ],
+    "hcp": {
+      "min": 17,
+      "max": 37
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": true,
+    "recommendable": true,
+    "meaning": "超级接受：四张黑桃支持 + 17 点，直接跳叫 3♠。",
+    "source": "转移叫完成（jacoby_transfers.php）",
+    "tags": [
+      "转移叫"
+    ],
+    "legacyP": "17 以上",
+    "bid": "3S"
+  },
+  {
+    "id": "sayc.196.P.254",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1N M:2D P:2H"
+    ],
+    "hcp": {
+      "min": 0,
+      "max": 7
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "弱牌，五张以上红心。",
+    "source": "1NT — 2♦ — 2♥ 之后应叫方再叫（jacoby_transfers.php）",
+    "tags": [
+      "止叫"
+    ],
+    "legacyP": "0~7",
+    "bid": "P"
+  },
+  {
+    "id": "sayc.197.2S.255",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1N M:2D P:2H"
+    ],
+    "hcp": {
+      "min": 8,
+      "max": 9
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "五张红心 + 五张黑桃，邀局，不逼叫。",
+    "source": "1NT — 2♦ — 2♥ 之后应叫方再叫（jacoby_transfers.php）",
+    "tags": [
+      "邀局"
+    ],
+    "legacyP": "8~9",
+    "bid": "2S"
+  },
+  {
+    "id": "sayc.198.2N.256",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1N M:2D P:2H"
+    ],
+    "hcp": null,
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": false,
+    "meaning": "均型或半均型、五张红心，邀局。开叫方可 PASS、3♥ 止叫或 3NT。",
+    "source": "1NT — 2♦ — 2♥ 之后应叫方再叫（jacoby_transfers.php）",
+    "tags": [
+      "邀局"
+    ],
+    "legacyP": null,
+    "bid": "2N"
+  },
+  {
+    "id": "sayc.199.3C.257",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1N M:2D P:2H"
+    ],
+    "hcp": null,
+    "shape": null,
+    "forcing": "one_round",
+    "alert": false,
+    "recommendable": false,
+    "meaning": "五张以上红心 + 4 张以上所叫低花，逼叫到局。",
+    "source": "1NT — 2♦ — 2♥ 之后应叫方再叫（jacoby_transfers.php）",
+    "tags": [
+      "逼叫"
+    ],
+    "legacyP": null,
+    "bid": "3C"
+  },
+  {
+    "id": "sayc.199.3D.258",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1N M:2D P:2H"
+    ],
+    "hcp": null,
+    "shape": null,
+    "forcing": "one_round",
+    "alert": false,
+    "recommendable": false,
+    "meaning": "五张以上红心 + 4 张以上所叫低花，逼叫到局。",
+    "source": "1NT — 2♦ — 2♥ 之后应叫方再叫（jacoby_transfers.php）",
+    "tags": [
+      "逼叫"
+    ],
+    "legacyP": null,
+    "bid": "3D"
+  },
+  {
+    "id": "sayc.200.3H.259",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1N M:2D P:2H"
+    ],
+    "hcp": null,
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": false,
+    "meaning": "六张以上红心，邀局。开叫方可 PASS 或 4♥。",
+    "source": "1NT — 2♦ — 2♥ 之后应叫方再叫（jacoby_transfers.php）",
+    "tags": [
+      "邀局"
+    ],
+    "legacyP": null,
+    "bid": "3H"
+  },
+  {
+    "id": "sayc.201.3S.260",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1N M:2D P:2H"
+    ],
+    "hcp": null,
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": false,
+    "meaning": "黑桃单缺、满贯兴趣（非原版约定，可选用）。",
+    "source": "1NT — 2♦ — 2♥ 之后应叫方再叫（jacoby_transfers.php）",
+    "tags": [
+      "满贯"
+    ],
+    "legacyP": null,
+    "bid": "3S"
+  },
+  {
+    "id": "sayc.202.3N.261",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1N M:2D P:2H"
+    ],
+    "hcp": null,
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": false,
+    "meaning": "均型（无单缺）、五张红心。开叫方可 PASS 或改 4♥。",
+    "source": "1NT — 2♦ — 2♥ 之后应叫方再叫（jacoby_transfers.php）",
+    "tags": [],
+    "legacyP": null,
+    "bid": "3N"
+  },
+  {
+    "id": "sayc.203.4H.262",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1N M:2D P:2H"
+    ],
+    "hcp": null,
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": false,
+    "meaning": "六张以上红心，止叫。",
+    "source": "1NT — 2♦ — 2♥ 之后应叫方再叫（jacoby_transfers.php）",
+    "tags": [
+      "止叫"
+    ],
+    "legacyP": null,
+    "bid": "4H"
+  },
+  {
+    "id": "sayc.204.4N.263",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1N M:2D P:2H"
+    ],
+    "hcp": null,
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": false,
+    "meaning": "定量邀叫，邀请红心或无将满贯；开叫方可改 5♥。",
+    "source": "1NT — 2♦ — 2♥ 之后应叫方再叫（jacoby_transfers.php）",
+    "tags": [
+      "邀局"
+    ],
+    "legacyP": null,
+    "bid": "4N"
+  },
+  {
+    "id": "sayc.205.P.264",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1N M:2H P:2S"
+    ],
+    "hcp": {
+      "min": 0,
+      "max": 7
+    },
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "弱牌，五张以上黑桃。",
+    "source": "1NT — 2♥ — 2♠ 之后应叫方再叫（jacoby_transfers.php）",
+    "tags": [
+      "止叫"
+    ],
+    "legacyP": "0~7",
+    "bid": "P"
+  },
+  {
+    "id": "sayc.206.2N.265",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1N M:2H P:2S"
+    ],
+    "hcp": null,
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": false,
+    "meaning": "均型或半均型、五张黑桃，邀局。开叫方可 PASS、3♠ 止叫或 3NT。",
+    "source": "1NT — 2♥ — 2♠ 之后应叫方再叫（jacoby_transfers.php）",
+    "tags": [
+      "邀局"
+    ],
+    "legacyP": null,
+    "bid": "2N"
+  },
+  {
+    "id": "sayc.207.3C.266",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1N M:2H P:2S"
+    ],
+    "hcp": null,
+    "shape": null,
+    "forcing": "one_round",
+    "alert": false,
+    "recommendable": false,
+    "meaning": "五张以上黑桃 + 4 张以上所叫低花，逼叫到局。",
+    "source": "1NT — 2♥ — 2♠ 之后应叫方再叫（jacoby_transfers.php）",
+    "tags": [
+      "逼叫"
+    ],
+    "legacyP": null,
+    "bid": "3C"
+  },
+  {
+    "id": "sayc.207.3D.267",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1N M:2H P:2S"
+    ],
+    "hcp": null,
+    "shape": null,
+    "forcing": "one_round",
+    "alert": false,
+    "recommendable": false,
+    "meaning": "五张以上黑桃 + 4 张以上所叫低花，逼叫到局。",
+    "source": "1NT — 2♥ — 2♠ 之后应叫方再叫（jacoby_transfers.php）",
+    "tags": [
+      "逼叫"
+    ],
+    "legacyP": null,
+    "bid": "3D"
+  },
+  {
+    "id": "sayc.208.3H.268",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1N M:2H P:2S"
+    ],
+    "hcp": null,
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": false,
+    "meaning": "五张以上黑桃 + 五张以上红心，逼叫到局且满贯兴趣（强于直接 4♥）。",
+    "source": "1NT — 2♥ — 2♠ 之后应叫方再叫（jacoby_transfers.php）",
+    "tags": [
+      "满贯"
+    ],
+    "legacyP": null,
+    "bid": "3H"
+  },
+  {
+    "id": "sayc.209.3S.269",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1N M:2H P:2S"
+    ],
+    "hcp": null,
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": false,
+    "meaning": "六张以上黑桃，邀局。开叫方可 PASS 或 4♠。",
+    "source": "1NT — 2♥ — 2♠ 之后应叫方再叫（jacoby_transfers.php）",
+    "tags": [
+      "邀局"
+    ],
+    "legacyP": null,
+    "bid": "3S"
+  },
+  {
+    "id": "sayc.210.3N.270",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1N M:2H P:2S"
+    ],
+    "hcp": null,
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": false,
+    "meaning": "均型（无单缺）、五张黑桃。开叫方可 PASS 或改 4♠。",
+    "source": "1NT — 2♥ — 2♠ 之后应叫方再叫（jacoby_transfers.php）",
+    "tags": [],
+    "legacyP": null,
+    "bid": "3N"
+  },
+  {
+    "id": "sayc.211.4H.271",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1N M:2H P:2S"
+    ],
+    "hcp": null,
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": false,
+    "meaning": "五张以上黑桃 + 五张以上红心，成局牌力；开叫方可 PASS 或改 4♠。",
+    "source": "1NT — 2♥ — 2♠ 之后应叫方再叫（jacoby_transfers.php）",
+    "tags": [],
+    "legacyP": null,
+    "bid": "4H"
+  },
+  {
+    "id": "sayc.212.4S.272",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1N M:2H P:2S"
+    ],
+    "hcp": null,
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": false,
+    "meaning": "六张以上黑桃，止叫。",
+    "source": "1NT — 2♥ — 2♠ 之后应叫方再叫（jacoby_transfers.php）",
+    "tags": [
+      "止叫"
+    ],
+    "legacyP": null,
+    "bid": "4S"
+  },
+  {
+    "id": "sayc.213.4N.273",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1N M:2H P:2S"
+    ],
+    "hcp": null,
+    "shape": null,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": false,
+    "meaning": "定量邀叫，邀请黑桃或无将满贯；开叫方可改 5♠。",
+    "source": "1NT — 2♥ — 2♠ 之后应叫方再叫（jacoby_transfers.php）",
+    "tags": [
+      "邀局"
+    ],
+    "legacyP": null,
+    "bid": "4N"
+  }
+]

@@ -1,75 +1,96 @@
 /* ============================================================================
-   桥牌自然叫牌 · 叫牌引擎
-   合法性规则 = 桥牌通用叫牌规则（叫品须高于当前叫品；加倍/再加倍视上家动作）
-   叫品含义 = 严格取自 data.js（PDF 唯一依据），无匹配即如实标注「未收录」
-   ========================================================================== */
+   engine.js — UI 适配层（唯一职责：把 core 纯函数接到 app.js 的旧接口上）
 
+   分层：
+     core/*.js        纯函数：叫品、叫牌过程、语境、规则匹配、推荐、手牌
+     data/bridge-data.js  打包好的规则数据（window.BridgeData）
+     engine.js        本文件：状态、存储、存档读档、旧编码适配、展示字段
+     app.js           渲染与交互
+
+   编码约定：
+     内部（core / 数据文件）用 P / X / XX / 1C..7N；
+     界面与存档继续用 PASS / X / XX / 1C..7NT。
+     转换只发生在这一层，数据表与 UI 都不返工。
+   ========================================================================== */
+const BC = BridgeCore;
+
+/* app.js 与旧引擎共用的选择器 */
 const $ = (s, el) => (el || document).querySelector(s);
 const $$ = (s, el) => Array.from((el || document).querySelectorAll(s));
 
-const PTR = { N: 'S', S: 'N', E: 'W', W: 'E' };
-const NEXT = { N: 'E', E: 'S', S: 'W', W: 'N' };
+const C = BC;
+const SEATS = C.SEATS;
+const SEAT_CN = C.SEAT_CN;
+const PTR = C.PTR;
+const NEXT = C.NEXT;
+const SUIT_SYM = C.SUIT_SYM;
 
-/* ---------------- 叫品工具 ---------------- */
-const ORDER_IDX = { C: 0, D: 1, H: 2, S: 3, NT: 4 };
-
-function isContract(b) { return /^[1-7](C|D|H|S|NT)$/.test(b); }
-function bidVal(b) {
-  const m = /^([1-7])(C|D|H|S|NT)$/.exec(b);
-  return m ? (+m[1] - 1) * 5 + ORDER_IDX[m[2]] + 1 : 0;
+/* ---------------- 叫品工具（对外仍是旧编码） ---------------- */
+function isContract(b) { return !!C.isBid(b); }
+function bidVal(b) { return C.bidValue(b); }
+function bidLevel(b) { return C.levelOf(b); }
+/** 返回 'C'|'D'|'H'|'S'|'NT' —— 旧 UI 用 'NT' 而不是 'N' */
+function bidStrain(b) {
+  const st = C.strainOf(b);
+  return st === 'N' ? 'NT' : st;
 }
-function bidStrain(b) { const m = /^[1-7](C|D|H|S|NT)$/.exec(b); return m ? m[1] : null; }
-function bidLevel(b) { const m = /^([1-7])(C|D|H|S|NT)$/.exec(b); return m ? +m[1] : 0; }
 function bidLabel(b) {
-  if (b === 'PASS') return 'Pass';
-  if (b === 'X') return '×';
-  if (b === 'XX') return '××';
-  const s = bidStrain(b);
-  return b.replace(s, '') + (s === 'NT' ? 'NT' : ({ C: '♣', D: '♦', H: '♥', S: '♠' })[s]);
+  const n = C.normalizeCall(b);
+  if (!n) return String(b);
+  if (n === 'P') return 'Pass';
+  if (n === 'X') return '×';
+  if (n === 'XX') return '××';
+  const st = n[1];
+  return n[0] + (st === 'N' ? 'NT' : SUIT_SYM[st]);
 }
-const SUIT_SYM = { C: '♣', D: '♦', H: '♥', S: '♠' };
 function bidHtml(b) {
-  if (!isContract(b)) return bidLabel(b);
-  const s = bidStrain(b);
-  const sym = s === 'NT'
+  const n = C.normalizeCall(b);
+  if (!n || !C.isBid(n)) return bidLabel(b);
+  const st = n[1];
+  const sym = st === 'N'
     ? '<span class="bl-nt">NT</span>'
-    : '<span class="bl-su">' + SUIT_SYM[s] + '</span>';
-  return '<span class="bl"><span class="bl-lv">' + bidLevel(b) + '</span>' + sym + '</span>';
+    : '<span class="bl-su">' + SUIT_SYM[st] + '</span>';
+  return '<span class="bl"><span class="bl-lv">' + n[0] + '</span>' + sym + '</span>';
 }
-let ALL_BIDS = null;
 function allBids() {
-  if (!ALL_BIDS) {
-    ALL_BIDS = [];
-    for (let lv = 1; lv <= 7; lv++) for (const st of STRAINS) ALL_BIDS.push(lv + st);
-  }
-  return ALL_BIDS;
+  const out = [];
+  for (let lv = 1; lv <= 7; lv++) for (const st of C.STRAINS) out.push(lv + st);
+  return out;
 }
 
 /* ---------------- 体系注册表 ---------------- */
-/* 各数据文件把 { key, name, rules, notes, convs, ... } 注册进来，
-   切换体系时只替换这三个指针，引擎逻辑不变。 */
 const SYSTEMS = {};
-let RULES = [];
-let CTX_NOTES = [];
+let $sys = null;      // 当前体系元数据
+let $store = null;    // 当前体系的索引 { system, byRole }
 let CONVENTIONS = [];
-let ANSWERS = {};
 
-function registerSystem(sys) { SYSTEMS[sys.key] = sys; }
 function useSystem(key) {
   const sys = SYSTEMS[key] || SYSTEMS[Object.keys(SYSTEMS)[0]];
   if (!sys) return false;
-  RULES = sys.rules;
-  CTX_NOTES = sys.notes;
+  $sys = sys;
+  $store = sys.store;
   CONVENTIONS = sys.convs;
-  ANSWERS = sys.answers || {};
   state.system = sys.key;
   return true;
 }
 
+/* 数据在 data/bridge-data.js 里一次性打包；这里只做索引，不做桥牌判断 */
+(function initSystems() {
+  const data = (typeof BridgeData !== 'undefined') ? BridgeData : null;
+  if (!data) {
+    console.error('缺少 data/bridge-data.js：请先运行 node scripts/build-data.mjs');
+    return;
+  }
+  data.systems.forEach((sys) => {
+    sys.convs = sys.conventions || [];
+    sys.store = BC.createStore ? BC.createStore(sys) : null;
+    SYSTEMS[sys.key] = sys;
+  });
+})();
+
 /* ---------------- 状态 ---------------- */
 let state = {
   boards: [],       // 只保留当前这一局
-  cur: 0,
   sel: null,        // 待确认叫品
   hideIllegal: true,
   system: 'sayc',   // 当前体系
@@ -87,8 +108,7 @@ function newBoard(dealer) {
 }
 function board() { return state.boards[0]; }
 
-/* Android 壳提供 window.AndroidStore（SharedPreferences 桥接），
-   file:// 下的 localStorage 不可靠，故优先用它；浏览器环境自动回落。 */
+/* Android 壳提供 window.AndroidStore（SharedPreferences 桥接）；浏览器回落 localStorage */
 const STORE = (function () {
   if (typeof window !== 'undefined' && window.AndroidStore) {
     return {
@@ -124,10 +144,9 @@ function load() {
     const d = JSON.parse(raw);
     if (!d.board) return false;
     state.boards = [d.board];
-    state.cur = 0;
     state.hideIllegal = d.hideIllegal !== false;
     state.system = d.system || 'sayc';
-    state.mySeat = ['N','E','S','W'].includes(d.mySeat) ? d.mySeat : (d.mySide === 'EW' ? 'E' : 'N');
+    state.mySeat = SEATS.includes(d.mySeat) ? d.mySeat : (d.mySide === 'EW' ? 'E' : 'N');
     if (d.hand && typeof d.hand.hcp === 'number') state.hand = d.hand;
     if (Array.isArray(d.tracker)) state.tracker = d.tracker;
     if (d.ai && typeof d.ai === 'object') {
@@ -139,338 +158,178 @@ function load() {
   } catch (e) { return false; }
 }
 
-/* ---------------- 轮次 ---------------- */
-function seatToAct(bd) {
-  const n = bd.auction.length;
-  let s = bd.dealer;
-  for (let i = 0; i < n; i++) s = NEXT[s];
-  return s;
+/* ---------------- 叫牌过程 ---------------- */
+/** 存档 → 核心 Auction。读存档用 lenient：历史数据不合法时不至于整页崩掉 */
+function bdAuction(bd) {
+  return BC.Auction.fromEntries((bd && bd.dealer) || 'N', (bd && bd.auction) || []);
 }
-
-/* ---------------- 合法叫品 ---------------- */
-function lastContractCall(bd) {
-  for (let i = bd.auction.length - 1; i >= 0; i--) {
-    const c = bd.auction[i];
-    if (isContract(c.bid)) return c;
-  }
-  return null;
-}
-function lastActionCall(bd) {
-  for (let i = bd.auction.length - 1; i >= 0; i--) {
-    if (bd.auction[i].bid !== 'PASS') return bd.auction[i];
-  }
-  return null;
-}
-
+function seatToAct(bd) { return bdAuction(bd).position; }
 function legalSet(bd, seat) {
-  const set = new Set(['PASS']);
-  const lc = lastContractCall(bd);
-  const min = lc ? bidVal(lc.bid) : 0;
-  for (const b of allBids()) if (bidVal(b) > min) set.add(b);
+  return new Set(bdAuction(bd).legalCalls().map(C.toLegacy));
+}
+function checkOver(bd) { return bdAuction(bd).complete; }
 
-  const la = lastActionCall(bd);
-  if (la) {
-    const byOpp = la.seat !== seat && la.seat !== PTR[seat];
-    if (isContract(la.bid) && byOpp) set.add('X');
-    if (la.bid === 'X' && byOpp) set.add('XX');
-  }
-  return set;
+/** 定约信息：庄家取「最终叫品阵营中最先叫出该花色的人」（Laws 2017 Definitions） */
+function contractInfo(bd) {
+  const ct = bdAuction(bd).contract;
+  if (!ct) return { passed: true };
+  return {
+    bid: C.toLegacy(ct.bid),
+    level: ct.level,
+    strain: ct.strain,
+    seat: ct.declarer,
+    by: ct.declarer,
+    doubled: ct.doubled,
+    dbl: ct.doubled === 2 ? 'XX' : ct.doubled === 1 ? 'X' : '',
+    passed: false
+  };
 }
 
-/* ---------------- 叫品形态判定 ---------------- */
-function calledStrains(bd, upto) {
-  const s = new Set();
-  bd.auction.slice(0, upto).forEach(c => {
-    const st = bidStrain(c.bid);
-    if (st) s.add(st);
-  });
-  return s;
-}
-function prevCallOf(bd, seat, upto) {
-  for (let i = upto - 1; i >= 0; i--) {
-    if (bd.auction[i].seat === seat) return bd.auction[i];
+/* ---------------- 规则展示字段（旧 UI 只认 s / p / d / k） ---------------- */
+
+/** 点数文案：优先用迁移时保留的原文，其次由 hcp 区间生成 */
+function ptsOf(rule) {
+  if (rule.legacyP) return rule.legacyP;
+  if (rule.hcp) {
+    const lo = rule.hcp.min, hi = rule.hcp.max;
+    if (lo === 0 && hi < 37) return hi + ' 以下';
+    if (hi >= 37 && lo > 0) return lo + ' 以上';
+    return lo + '~' + hi;
   }
   return null;
 }
 
-function minLevelFor(st, bd, upto) {
-  const lc = lastContractCall({ auction: bd.auction.slice(0, upto) });
-  const need = lc ? bidVal(lc.bid) + 1 : 1;
-  for (let L = 1; L <= 7; L++) if (bidVal(L + st) >= need) return L;
-  return 7;
+function viewRule(r) {
+  return {
+    id: r.id,
+    s: r.source,
+    p: ptsOf(r),
+    pw: null,
+    d: r.meaning,
+    k: r.tags || [],
+    hcp: r.hcp || null,
+    shape: r.shape || null,
+    bid: r.bid || null,
+    form: r.bidForm ? r.bidForm.type : null,
+    contextKeys: r.contextKeys || [],
+    alert: r.alert === true,
+    forcing: r.forcing || null,
+    recommendable: r.recommendable !== false
+  };
 }
 
-function formMatch(spec, bid, bd, seat, upto) {
-  if (!spec || !spec.type) return false;
-  if (!isContract(bid)) return false;
-  const st = bidStrain(bid);
-  const lv = bidLevel(bid);
-  const seen = calledStrains(bd, upto);
-  const prior = bd.auction.slice(0, upto);
-  const oppStrains = new Set();
-  prior.forEach(c => {
-    const s2 = bidStrain(c.bid);
-    if (s2 && c.seat !== seat && c.seat !== PTR[seat]) oppStrains.add(s2);
-  });
-
-  // 开叫花色、同伴花色、本花色的最低可用阶
-  const openCall = prior.find(c => isContract(c.bid));
-  const openSt = openCall ? bidStrain(openCall.bid) : null;
-  let mateSt = null;
-  prior.forEach(c => {
-    const s2 = bidStrain(c.bid);
-    if (s2 && c.seat === PTR[seat]) mateSt = s2;
-  });
-  const minLv = minLevelFor(st, bd, upto);
-
-  if (spec.level && lv !== spec.level) return false;
-
-  switch (spec.type) {
-    case 'newSuit':
-      return !seen.has(st) && st !== 'NT';
-
-    case 'jumpNewSuit':
-      return !seen.has(st) && st !== 'NT' && lv > minLv;
-
-    /* 加叫类：以「同伴花色」为锚，按比最低可用阶高出几阶区分 */
-    case 'raise':
-      return st === mateSt && (spec.level ? true : lv === minLv);
-    case 'jumpRaise':
-      return st === mateSt && lv === minLv + 1;
-    case 'doubleRaise':
-      return st === mateSt && lv === minLv + 2;
-    case 'tripleRaise':
-      return st === mateSt && lv === minLv + 3;
-    case 'gameRaise':
-      return st === mateSt && lv === 4;
-    case 'inviteRaise':
-      return st !== mateSt && st !== openSt && st !== 'NT' && lv === minLv + 1;
-
-    /* 再叫 / 跳再叫开叫花色 */
-    case 'rebidOwn':
-      return st === openSt && lv === minLv;
-    case 'jumpRebidOwn':
-      return st === openSt && lv === minLv + 1;
-    case 'doubleJumpOwn':
-      return st === openSt && lv === minLv + 2;
-    case 'gameOwn':
-      return st === openSt && lv === 4;
-
-    /* 新花色的特殊跳法 */
-    case 'splinter':
-      return st !== mateSt && st !== openSt && st !== 'NT' && !seen.has(st) && lv === minLv + 2;
-    case 'exclusion':
-      return st !== mateSt && st !== openSt && st !== 'NT' && !seen.has(st) && lv === minLv + 3;
-    case 'reverse':
-      return !seen.has(st) && st !== 'NT' && lv === 2 &&
-        openSt && ORDER_IDX[st] > ORDER_IDX[openSt] &&
-        (!mateSt || ORDER_IDX[st] > ORDER_IDX[mateSt]);
-
-    case 'cue':
-      return oppStrains.has(st);
-
-    case 'jumpSuit': {
-      const lc = lastContractCall({ auction: prior });
-      const need = lc ? bidVal(lc.bid) + 1 : 1;
-      let base = 7;
-      for (let L = 1; L <= 7; L++) if (bidVal(L + st) >= need) { base = L; break; }
-      return lv > base;
-    }
-  }
-  return false;
+function viewAnswer(row) {
+  return {
+    s: row.source,
+    p: row.hcp ? (row.hcp.min + '~' + row.hcp.max) : null,
+    d: row.meaning,
+    k: row.tags || [],
+    answer: true
+  };
 }
 
-/* ---------------- 语境识别 ---------------- */
+/* ---------------- 查询 ---------------- */
 function analyze(bd, seat) {
-  const calls = bd.auction.filter(c => c.bid !== 'PASS');
-  if (!calls.length) return { type: 'open', contested: false };
-
-  const openCall = calls[0];
-  const opener = openCall.seat;
-  const mate = PTR[opener];
-  const onOpenSide = (seat === opener || seat === mate);
-
-  // 是否有对手插叫
-  const contested = calls.some(c => c.seat !== opener && c.seat !== mate);
-
-  if (!onOpenSide) {
-    return { type: 'def', openSeat: opener, open: openCall.bid, contested: true, oppOpen: openCall.bid };
-  }
-  if (seat === opener) {
-    const respCall = calls.find(c => c.seat === mate);
-    return { type: 'opener', open: openCall.bid, resp: respCall ? respCall.bid : null, contested };
-  }
-  const myCalls = calls.filter(c => c.seat === seat);
-  if (!myCalls.length) return { type: 'resp', open: openCall.bid, contested };
-  const openerRebids = calls.filter(c => c.seat === opener).slice(1).map(c => c.bid);
-  return { type: 'responder', open: openCall.bid, resp: myCalls[0].bid, rb: openerRebids, contested };
-}
-
-/* ---------------- 约定问叫的答叫识别 ---------------- */
-function lastContractBefore(bd, idx) {
-  for (let i = idx - 1; i >= 0; i--) if (isContract(bd.auction[i].bid)) return bd.auction[i];
-  return null;
-}
-
-function detectAsk(bd, seat) {
-  const la = lastActionCall(bd);
-  if (!la || la.seat !== PTR[seat]) return null;      // 必须是同伴发出的问叫
-  const idx = bd.auction.lastIndexOf(la);
-  const ctx = analyze(bd, seat);
-  const ntOpening = ['1NT', '2NT', '3NT'].includes(ctx.open);
-
-  if (la.bid === '4NT') {
-    // 定量邀叫：无将开叫之后，或紧接在一个无将叫品之后
-    const before = lastContractBefore(bd, idx);
-    if (ntOpening) return null;
-    if (before && bidStrain(before.bid) === 'NT') return null;
-    return 'blackwood';
-  }
-  if (la.bid === '4C') {
-    // 盖伯：无将开叫后应叫方的 4♣
-    if (ntOpening) return 'gerber';
-    return null;
-  }
-  if (la.bid === '5NT') {
-    const hasBW = bd.auction.some(c => c.bid === '4NT');
-    return hasBW ? 'blackwoodK' : null;
-  }
-  if (la.bid === '5C') {
-    const hasGB = bd.auction.some(c => c.bid === '4C');
-    return hasGB ? 'gerberK' : null;
-  }
-  return null;
-}
-
-/* ---------------- 规则匹配 ---------------- */
-function specMatch(spec, val, bd, seat, upto) {
-  if (spec == null) return true;
-  if (typeof spec === 'string') return spec === val;
-  if (Array.isArray(spec)) return spec.includes(val);
-  if (typeof spec === 'object' && spec.type) return formMatch(spec, val, bd, seat, upto);
-  return false;
+  return BC.analyze(bdAuction(bd), seat);
 }
 
 function lookupRules(bd, seat, bid) {
-  const ctx = analyze(bd, seat);
-  const upto = bd.auction.length;
-  const isContractBidNow = isContract(bid);
+  const a = bdAuction(bd);
+  const nb = C.normalizeCall(bid);
+  const ctx = BC.analyze(a, seat);
+  const out = { ctx: ctx, rules: [], notes: [], found: false };
 
-  // 约定问叫的答叫优先：如 4NT 黑木之后叫 5♣ 是报 A，而不是自然叫
-  const ask = detectAsk(bd, seat);
-  if (ask && ANSWERS[ask] && ANSWERS[ask][bid]) {
-    return {
-      ctx: { type: 'answer', askType: ask, open: ctx.open, contested: ctx.contested },
-      rules: ANSWERS[ask][bid],
-      notes: [], found: true
-    };
+  if (!nb || !$store) return out;
+
+  const ans = BC.findAnswer($store, a, seat, nb);
+  if (ans) {
+    out.ctx = Object.assign({}, ctx, { type: 'answer', askType: ans.askType });
+    out.rules = ans.rows.map(viewAnswer);
+    out.found = out.rules.length > 0;
+    return out;
   }
 
-  const hits = RULES.filter(r => {
-    if (r.t !== ctx.type) return false;
-    if (ctx.type === 'open') { /* no extra cond */ }
-    if (ctx.type === 'resp') {
-      if (r.o != null && !specMatch(r.o, ctx.open, bd, seat, upto)) return false;
-    }
-    if (ctx.type === 'opener') {
-      if (r.o != null && !specMatch(r.o, ctx.open, bd, seat, upto)) return false;
-      if (r.r != null && !specMatch(r.r, ctx.resp, bd, seat, upto)) return false;
-    }
-    if (ctx.type === 'responder') {
-      if (r.o != null && !specMatch(r.o, ctx.open, bd, seat, upto)) return false;
-      if (r.r != null && !specMatch(r.r, ctx.resp, bd, seat, upto)) return false;
-      if (r.rb != null) {
-        const ok = Array.isArray(r.rb)
-          ? ctx.rb.some(x => r.rb.includes(x))
-          : ctx.rb.includes(r.rb);
-        if (!ok) return false;
-      }
-    }
-    if (ctx.type === 'def') {
-      if (r.o != null && !specMatch(r.o, ctx.oppOpen, bd, seat, upto)) return false;
-    }
-    // 叫品匹配
-    if (typeof r.b === 'object' && !Array.isArray(r.b) && r.b && r.b.type) {
-      return isContractBidNow && formMatch(r.b, bid, bd, seat, upto);
-    }
-    return specMatch(r.b, bid, bd, seat, upto);
-  });
-
-  // 语境附加说明
-  const respBidNow = ctx.type === 'resp' ? bid : ctx.resp;
-  const notes = CTX_NOTES.filter(n => {
-    if (n.t !== ctx.type) return false;
-    if (n.o != null && !specMatch(n.o, ctx.open, bd, seat, upto)) return false;
-    // 开叫方语境下，r 用来限定「同伴应叫的是什么」
-    if (n.r === '__newSuit__') {
-      const seen = calledStrains(bd, upto);
-      const st = bidStrain(ctx.resp || '');
-      if (!st || seen.has(st) || st === 'NT') return false;
-      return true;
-    }
-    if (n.r != null) {
-      if (!specMatch(n.r, ctx.resp, bd, seat, upto)) return false;
-    }
-    // 应叫语境下，cond.respBid 用来限定「应叫方叫的是什么」
-    if (n.cond && n.cond.respBid) {
-      if (!respBidNow || !n.cond.respBid.includes(respBidNow)) return false;
-    }
-    // cond.contested：仅在敌方插叫后出现
-    if (n.cond && n.cond.contested && !ctx.contested) return false;
-    // 说明若限定了叫品，仅在叫该叫品时出现
-    if (n.b != null && !specMatch(n.b, bid, bd, seat, upto)) return false;
-    return true;
-  });
-
-  return { ctx, rules: hits, notes, found: hits.length > 0 };
+  const hit = BC.findRules($store, a, seat, nb);
+  out.rules = hit.rules.map(viewRule);
+  out.found = out.rules.length > 0;
+  out.notes = BC.findNotes($store, a, seat, nb).map((n) => ({ s: n.source, text: n.text }));
+  return out;
 }
 
-/* ---------------- 约定叫兜底（4NT / 4C / 5NT） ---------------- */
 function conventionFallback(bd, seat, bid) {
-  const ctx = analyze(bd, seat);
-  const openingNT = ['1NT', '2NT', '3NT'].includes(ctx.open);
-  const find = q => CONVENTIONS.find(c => (c.q || '').indexOf(q) === 0) || null;
-  if (bid === '4NT' && !openingNT) return find('4NT');   // 黑木：有将定约问 A
-  if (bid === '4C' && openingNT) return find('4♣');      // 盖伯：无将定约问 A
-  if (bid === '5NT') return find('5NT');                 // 大满贯逼叫
-  return null;
+  const nb = C.normalizeCall(bid);
+  if (!nb || !$store) return null;
+  const cv = BC.findConventionFallback($store, bdAuction(bd), seat, nb);
+  if (!cv) return null;
+  return { s: cv.title, q: cv.ask, a: cv.meaning, rows: cv.rows, note: cv.note, bid: cv.bid };
 }
 
-/* ---------------- 局结束 ---------------- */
-function checkOver(bd) {
-  const a = bd.auction;
-  if (a.length < 4) return false;
-  const hasBid = a.some(c => isContract(c.bid));
-  if (!hasBid) return a.length >= 4 && a.slice(-4).every(c => c.bid === 'PASS');
-  const n = a.length;
-  return a[n - 1].bid === 'PASS' && a[n - 2].bid === 'PASS' && a[n - 3].bid === 'PASS';
-}
-
-function contractInfo(bd) {
-  const a = bd.auction;
-  let ci = -1;
-  for (let i = a.length - 1; i >= 0; i--) if (isContract(a[i].bid)) { ci = i; break; }
-  if (ci < 0) return { passed: true };
-  const call = a[ci];
-  let dbl = '';
-  if (ci + 1 < a.length && a[ci + 1].bid === 'X') dbl = 'X';
-  if (ci + 2 < a.length && a[ci + 2].bid === 'XX') dbl = 'XX';
-  const openerSide = [call.seat, PTR[call.seat]];
-  const declarerSide = openerSide.includes(a.find(c => isContract(c.bid)).seat) ? '开叫方' : '';
-  return { bid: call.bid, seat: call.seat, dbl, passed: false, by: call.seat };
-}
-
-/* ---------------- 记录快照 ---------------- */
-function snapshotFor(bd, seat, bid) {
+/** 选中叫品时的完整快照，便于回看历史叫品（存档里也会带） */
+function snapshotFor(bd, seat, bid, legalAt) {
   const res = lookupRules(bd, seat, bid);
   const conv = res.found ? null : conventionFallback(bd, seat, bid);
   return {
-    seat, bid,
-    ctx: res.ctx,
-    rules: res.rules.map(r => ({ s: r.s, p: r.p, pw: r.pw, d: r.d, k: r.k })),
-    notes: res.notes.map(n => ({ s: n.s, text: n.text })),
-    conv: conv ? conv.s : null,
-    found: res.found,
-    legalAt: bd.auction.length
+    seat: seat, bid: bid, ctx: res.ctx, rules: res.rules,
+    notes: res.notes, conv: conv, found: res.found, legalAt: legalAt || null
   };
 }
+
+/* ---------------- 推荐 ---------------- */
+/**
+ * 候选必须来自「当前语境 + 点力/牌型满足 + 可推荐」的规则；
+ * 界面只负责显示，不再自己解析点数文案（旧版 P0-4 的根因就在界面里重复实现规则判断）。
+ */
+function recommendFor(bd, seat) {
+  if (!$store) return [];
+  const hand = state.hand || { hcp: 0, S: 0, H: 0, D: 0, C: 0 };
+  const res = BC.recommend($store, bdAuction(bd), seat, hand);
+  return res.candidates.map((c) => ({
+    bid: C.toLegacy(c.bid),
+    score: c.score,
+    matchedBy: c.matchedBy,
+    pts: ptsOf(c.rule),
+    why: c.rule.meaning,
+    src: c.rule.source,
+    tags: c.rule.tags || [],
+    rule: viewRule(c.rule)
+  }));
+}
+
+/* ---------------- 给 AI 的体系卡 ---------------- */
+const ROLE_CN = { opener: '开叫方', responder: '应叫方', overcaller: '争叫方', advancer: '争叫方同伴' };
+
+/** 语境键 → 人能读的文字：M:1S O:2H → 我方 1♠ / 对手 2♥ */
+function contextText(key) {
+  if (!key) return '开叫';
+  return key.split(' ').map((t) => {
+    const rel = t[0] === 'M' ? '我方 ' : t[0] === 'P' ? '同伴 ' : '对手 ';
+    return rel + bidLabel(t.slice(2));
+  }).join(' → ');
+}
+
+function ruleLine(r) {
+  const bid = r.bid ? bidLabel(r.bid) : ('形态:' + (r.bidForm ? r.bidForm.type : '?'));
+  const pts = ptsOf(r);
+  return '[' + (ROLE_CN[r.seatRole] || r.seatRole) + '] ' +
+    (r.contextKeys || []).map(contextText).join(' ／ ') +
+    ' → ' + bid + (pts ? '（' + pts + '）' : '') + '：' + r.meaning;
+}
+
+function systemCard() {
+  if (!$sys) return '';
+  const lines = [];
+  lines.push('体系：' + $sys.name + '（' + ($sys.full || '') + '）');
+  if ($sys.blurb) lines.push($sys.blurb);
+  ($sys.notes || []).forEach((n) => {
+    lines.push('【说明】' + (n.contextKeys || []).map(contextText).join(' ／ ') + '：' + n.text);
+  });
+  ($sys.rules || []).forEach((r) => lines.push(ruleLine(r)));
+  ($sys.conventions || []).forEach((c) => {
+    lines.push('【约定叫】' + c.title + '：' + c.meaning + '；答叫 ' +
+      (c.rows || []).map((x) => x[0] + '=' + x[1]).join('，') + (c.note ? '；' + c.note : ''));
+  });
+  return lines.join('\n');
+}
+
+/* ---------------- 初始化 ---------------- */
+useSystem('sayc');

@@ -20,19 +20,42 @@
 ├── VERSION                  # 版本号唯一来源
 ├── index.html               # 主页面（单文件应用入口）
 ├── app.js                   # 前端逻辑（叫牌交互 / 推荐 / AI 分析）
-├── engine.js                # 叫牌引擎（语境识别 / 规则匹配 / 合法性）
-├── data.js                  # SAYC 体系规则
-├── data-zju.js              # 浙大自然体系规则
-├── data-xinrui.js           # 新睿桥牌体系规则
+├── engine.js                # UI 适配层（旧接口 → core，负责存档与展示字段）
+├── core/                    # 纯函数层：叫品 / 叫牌过程 / 语境 / 规则 / 推荐 / 手牌
+│   ├── calls.js             # 叫品编码、大小比较、合法阶数
+│   ├── auction.js           # 叫牌过程、合法叫品、定约与庄家（Laws 2017）
+│   ├── context.js           # contextKey 语境键、角色识别、问叫识别
+│   ├── rules.js             # 规则索引、语境匹配、唯一性优先级
+│   ├── hand.js              # 手牌点数 / 牌型约束
+│   └── recommend.js         # 按「语境 + 点力 + 牌型」推荐
+├── data/
+│   ├── bridge-data.js       # 由 scripts/build-data.mjs 生成的规则包
+│   ├── systems.json         # 体系元数据、说明、约定叫、答叫
+│   └── rules/*.json         # 迁移后的结构化规则
+├── legacy/                  # 旧版扁平规则（仅迁移脚本使用，不再随应用发布）
+├── scripts/                 # 迁移、校验、打包、版本同步、冒烟测试
 ├── manifest.json / sw.js    # PWA 清单与离线缓存
 ├── icons/                   # 应用图标
-├── scripts/                 # 版本同步等仓库脚本
 └── android/                 # Android 壳工程
     ├── AndroidManifest.xml
     ├── build.sh             # 构建脚本（不依赖 Gradle）
     ├── java/.../MainActivity.java
     └── res/                 # 图标与样式资源
 ```
+
+## 规则数据的工作流
+
+规则不是手写进应用，而是「迁移 → 校验 → 打包」三步生成，任何一步失败 CI 都会拦下：
+
+```bash
+node scripts/migrate-legacy.mjs   # legacy/*.js → data/rules/*.json + data/systems.json
+node scripts/validate-rules.mjs   # 结构 / 语境可达性 / 同叫品唯一性
+node scripts/build-data.mjs       # 打包成 data/bridge-data.js
+node --test core/*.test.js        # 纯函数单测
+node scripts/smoke-engine.mjs     # 适配层冒烟（结算、语境、推荐、体系卡）
+```
+
+修改规则时请改 `data/rules/*.json` 或迁移脚本里的覆盖项，并保留 `source` / `tags` 以便回指原始体系卡。
 
 ## 从源码构建 APK
 

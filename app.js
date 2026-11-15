@@ -8,7 +8,8 @@ const DISPLAY_STRAINS = ['NT', 'S', 'H', 'D', 'C'];
 
 const TAG_CLASS = {
   '逼叫': 't-forcing', '止叫': 't-stop', '邀局': 't-invite', '阻击': 't-preempt',
-  '满贯': 't-slam', '约定叫': 't-conv', '转移叫': 't-conv', '爆裂叫': 't-conv',
+  '满贯': 't-slam', '约定叫': 't-conv', '约定': 't-conv',
+  '转移叫': 't-conv', '转移': 't-conv', '爆裂叫': 't-conv',
   '示弱': 't-weak', '试探': 't-probe', '赌博': 't-conv', '缺载': 't-missing',
   '开叫': 't-open', '原文疑误': 't-warn'
 };
@@ -32,7 +33,7 @@ function ctxLabel(ctx, seat) {
   if (ctx.type === 'open') return who + ' · 开叫（无人叫牌）';
   if (ctx.type === 'resp') return who + ' · 对 ' + bidLabel(ctx.open) + ' 的应叫';
   if (ctx.type === 'opener') {
-    const ask = { '1NT': ['2C', '2D', '2H', '2S'], '2NT': ['3C', '3D', '3H'], '3NT': ['4D', '4H'], '2D': ['2NT'], '2H': ['2NT'], '2S': ['2NT'], '3C': ['2NT'], '3D': ['2NT'], '3H': ['2NT'], '3S': ['2NT'] };
+    const ask = { '1N': ['2C', '2D', '2H', '2S'], '2N': ['3C', '3D', '3H'], '3N': ['4D', '4H'], '2D': ['2N'], '2H': ['2N'], '2S': ['2N'], '3C': ['2N'], '3D': ['2N'], '3H': ['2N'], '3S': ['2N'] };
     const isAsk = ctx.resp && ask[ctx.open] && ask[ctx.open].includes(ctx.resp);
     return who + ' · 开叫 ' + bidLabel(ctx.open) + (ctx.resp ? ' — ' + bidLabel(ctx.resp) : '') +
       (isAsk ? ' 之后的答叫' : ' 之后再叫');
@@ -41,7 +42,6 @@ function ctxLabel(ctx, seat) {
     return who + ' · ' + bidLabel(ctx.open) + (ctx.resp ? ' — ' + bidLabel(ctx.resp) : '') + ' 之后应叫方再叫';
   }
   if (ctx.type === 'def') return who + ' · 对方 ' + bidLabel(ctx.oppOpen) + ' 开叫后的争叫';
-  if (ctx.type === 'answer') return who + ' · 约定问叫的答叫';
   if (ctx.type === 'answer') {
     const nm = { blackwood: '黑木 4NT', blackwoodK: '黑木 5NT 问 K', gerber: '盖伯 4♣', gerberK: '盖伯 5♣ 问 K' };
     return who + ' · 对 ' + (nm[ctx.askType] || '约定问叫') + ' 的答叫';
@@ -155,6 +155,7 @@ function buildMeaningHtml(bid, res, seat, conv, opts) {
       h += '<div class="m-rule-top">';
       h += '<span class="m-pts">' + (r.p ? ptsText(r.p) : '点力不限') + '</span>';
       if (r.pw) h += '<span class="m-pw">' + (r.pw === 'opener' ? '开叫方' : r.pw === 'responder' ? '应叫方' : '争叫方') + '</span>';
+      if (r.alert) h += '<span class="tag t-alert" title="人为约定叫，按规则应向对手提示">提示</span>';
       (r.k || []).forEach(k => {
         h += '<span class="tag ' + (TAG_CLASS[k] || 't-misc') + '">' + k + '</span>';
       });
@@ -212,7 +213,7 @@ function paintBubble(bd) {
     const sn = bd.snap[state.inspect];
     if (sn) {
       anchor = document.querySelector('[data-call="' + state.inspect + '"]');
-      const conv = sn.conv ? CONVENTIONS.find(c => c.s === sn.conv) || null : null;
+      const conv = sn.conv || null;   // 快照里已存了完整的约定叫视图
       html = buildMeaningHtml(sn.bid, sn, sn.seat, conv,
         { bubble: true, inspect: true, idx: state.inspect });
     }
@@ -318,7 +319,6 @@ function bidBtn(bid, legal, bd, seat, extra) {
   if (bid === 'PASS') cls.push('passbtn');
   if (state.sel === bid) cls.push('sel');
   if (!ok) cls.push('off');
-  if (ok && state.hideIllegal === false) { /* keep visible */ }
   if (ok) {
     const r = lookupRules(bd, seat, bid);
     if (!r.found && !conventionFallback(bd, seat, bid)) cls.push('nodata');
@@ -368,10 +368,10 @@ function nextBoard() {
   const prev = board();
   const dealer = prev ? prev.dealer : 'N';
   state.boards = [newBoard(dealer)];
-  state.cur = 0;
+  state.tracker = [];      // 记牌器按「局」计，新一局清零
   state.sel = null;
   state.inspect = null;
-  save(); render();
+  save(); render(); paintTracker();
 }
 
 /* ---------------- 汇总 ---------------- */
@@ -412,7 +412,7 @@ function renderSummary(bd) {
             esc(ru.d) + '</div>';
         });
       } else if (it.conv) {
-        h += '<div class="si-rule"><span class="si-pts">约定</span>' + esc(it.conv) + '</div>';
+        h += '<div class="si-rule"><span class="si-pts">约定</span>' + esc(it.conv.a || it.conv.s || '') + '</div>';
       } else if (it.notes.length) {
         /* 含义已由下方原则性说明给出，不再重复报缺 */
       } else if (it.bid === 'PASS') {
@@ -440,6 +440,26 @@ function renderSummary(bd) {
 }
 
 /* ---------------- 键盘 ---------------- */
+/* 关闭最上层浮层；返回是否真的关掉了一层（Android 返回键与 Esc 共用） */
+function closeTopLayer() {
+  const aip = $('#aip');
+  if (aip && aip.classList.contains('on')) { closeCfg(); return true; }
+  const picker = $('#picker');
+  if (picker && picker.classList.contains('on')) { closePicker(); return true; }
+  const sum = $('#summary');
+  if (sum && sum.classList.contains('on')) { sum.classList.remove('on'); return true; }
+  const bub = $('#bubble');
+  if ((bub && !bub.hidden) || state.sel || state.inspect != null) {
+    state.sel = null;
+    state.inspect = null;
+    render();
+    return true;
+  }
+  return false;
+}
+/* Android 壳的返回键回调：关掉浮层返回 true，否则交回原生退出 */
+window.__androidBack = closeTopLayer;
+
 function bindKeys() {
   let lvl = '';
   let lvlAt = 0;
@@ -458,7 +478,7 @@ function bindKeys() {
     const k = e.key.toUpperCase();
 
     if (k === 'ESCAPE') {
-      if (state.sel || state.inspect != null) { state.sel = null; state.inspect = null; render(); }
+      closeTopLayer();
       return;
     }
     if (k === 'P') { onBid('PASS'); return; }
@@ -629,39 +649,9 @@ function syncAIHandToHand() {
   syncHandInputs();
 }
 
-/* 体系约定卡：首次用某个 Key 时发给 AI */
+/* 体系约定卡：首次用某个 Key 时发给 AI（由 engine.js 从规则数据生成） */
 function buildSystemCard() {
-  const sys = SYSTEMS[state.system];
-  const groups = [
-    ['开叫', 'open'], ['应叫', 'resp'], ['开叫方再叫', 'opener'],
-    ['应叫方再叫', 'responder'], ['防守叫牌', 'def'], ['问叫答叫', 'answer']
-  ];
-  let s = '【' + sys.name + ' 体系约定卡｜' + sys.full + '】\n';
-  s += '以下为本体系的全部叫牌约定，请以此作为分析依据；若某序列未列入，请明确说明「体系未收录」，不要自行编造。\n\n';
-
-  groups.forEach(([label, type]) => {
-    const rows = sys.rules.filter(r => r.t === type);
-    if (!rows.length) return;
-    s += '— ' + label + ' —\n';
-    rows.forEach(r => {
-      const bids = [].concat(r.b).map(b => (typeof b === 'string' ? b : '〔按叫品形态〕')).join(' / ');
-      const pts = r.p ? '（' + r.p + '点）' : '';
-      s += bids + pts + '：' + r.d + '\n';
-    });
-    s += '\n';
-  });
-
-  if (sys.convs && sys.convs.length) {
-    s += '— 约定叫速查 —\n';
-    sys.convs.forEach(c => {
-      s += c.s + '：' + c.a;
-      if (c.rows && c.rows.length) {
-        s += '（' + c.rows.map(x => x[0] + ' = ' + x[1]).join('；') + '）';
-      }
-      s += '\n';
-    });
-  }
-  return s;
+  return systemCard();
 }
 
 function buildAIContext() {
@@ -831,7 +821,98 @@ function syncAISub() {
   if (bs) bs.textContent = on ? Math.floor(conv.messages.filter(m => m.role !== 'system').length / 2) + ' 轮' : '';
 }
 
+let AI_BUSY = false;
+
+/* ---------------- 网络出口 ----------------
+   APK 里的页面来自虚拟 https 源，fetch 第三方接口会被 CORS 拦住，
+   因此壳里提供了一个原生 HttpURLConnection 桥；网页版没有 AndroidHttp，继续用 fetch。 */
+const NATIVE_WAIT = Object.create(null);
+let NATIVE_SEQ = 0;
+
+window.__nativeHttpDone = function (id, raw) {
+  const done = NATIVE_WAIT[id];
+  if (!done) return;
+  delete NATIVE_WAIT[id];
+  done(raw);
+};
+
+function postJSON(url, headers, body, signal) {
+  if (window.AndroidHttp && window.AndroidHttp.postJsonAsync) {
+    return new Promise((resolve, reject) => {
+      const id = 'r' + (++NATIVE_SEQ);
+      let settled = false;
+      let timer = null;
+
+      // 无论成功、超时还是取消，都只结算一次，且清掉桥上的等待项
+      const finish = (fn, arg) => {
+        if (settled) return;
+        settled = true;
+        if (timer) clearTimeout(timer);
+        delete NATIVE_WAIT[id];
+        fn(arg);
+      };
+      const abortErr = () => {
+        const e = new Error('已取消');
+        e.name = 'AbortError';
+        return e;
+      };
+
+      timer = setTimeout(() => {
+        finish(reject, new Error('请求超时（90 秒），请检查网络或接口地址。'));
+      }, 95000);
+
+      NATIVE_WAIT[id] = (raw) => {
+        try { finish(resolve, JSON.parse(raw)); }
+        catch (e) { finish(reject, new Error('原生接口返回无法解析')); }
+      };
+
+      if (signal) {
+        if (signal.aborted) { finish(reject, abortErr()); return; }
+        signal.addEventListener('abort', () => finish(reject, abortErr()), { once: true });
+      }
+
+      try {
+        window.AndroidHttp.postJsonAsync(id, url, JSON.stringify(headers), body);
+      } catch (e) {
+        finish(reject, new Error('原生网络桥不可用：' + ((e && e.message) || e)));
+      }
+    });
+  }
+  return fetch(url, { method: 'POST', headers, body, signal }).then((r) =>
+    r.text().then((t) => ({ ok: r.ok, status: r.status, body: t })));
+}
+
+async function requestChat(cfg, messages, signal) {
+  const headers = { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + cfg.key };
+  const body = JSON.stringify({
+    model: cfg.model || 'gpt-4o-mini',
+    temperature: 0.3,
+    messages
+  });
+  const out = await postJSON(cfg.url, headers, body, signal);
+  if (!out.ok) {
+    const TIP = {
+      400: '请求格式错误',
+      401: 'API Key 无效或已被撤销',
+      402: '账户余额不足，需要先充值',
+      422: '请求参数有误',
+      429: '请求太快被限流，稍后再试',
+      500: '服务端故障',
+      503: '服务端繁忙'
+    };
+    const tip = TIP[out.status] ? TIP[out.status] + '　' : '';
+    const detail = String(out.body || out.error || '').slice(0, 140);
+    throw new Error((out.status ? 'HTTP ' + out.status + '　' : '') + tip + detail);
+  }
+  try {
+    return JSON.parse(out.body);
+  } catch (e) {
+    throw new Error('接口返回不是 JSON：' + String(out.body || '(空)').slice(0, 140));
+  }
+}
+
 async function runAI() {
+  if (AI_BUSY) return;
   const cfg = state.ai || {};
   const bad = aiGuard();
   if (bad) {
@@ -870,31 +951,14 @@ async function runAI() {
   renderChat();
   save();
 
+  AI_BUSY = true;
+  const runBtn = $('#aiRun');
+  if (runBtn) { runBtn.disabled = true; runBtn.textContent = '分析中…'; }
+  const ctrl = (typeof AbortController !== 'undefined') ? new AbortController() : null;
+  const timer = ctrl ? setTimeout(() => ctrl.abort(), 90000) : null;
+
   try {
-    const r = await fetch(cfg.url, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + cfg.key },
-      body: JSON.stringify({
-        model: cfg.model || 'gpt-4o-mini',
-        temperature: 0.3,
-        messages: conv.messages
-      })
-    });
-    if (!r.ok) {
-      const t = await r.text();
-      const TIP = {
-        400: '请求格式错误',
-        401: 'API Key 无效或已被撤销',
-        402: '账户余额不足，需要先充值',
-        422: '请求参数有误',
-        429: '请求太快被限流，稍后再试',
-        500: '服务端故障',
-        503: '服务端繁忙'
-      };
-      const tip = TIP[r.status] ? TIP[r.status] + '　' : '';
-      throw new Error('HTTP ' + r.status + '　' + tip + t.slice(0, 140));
-    }
-    const data = await r.json();
+    const data = await requestChat(cfg, conv.messages, ctrl ? ctrl.signal : undefined);
     const txt = data && data.choices && data.choices[0] &&
       data.choices[0].message && data.choices[0].message.content;
     if (!txt) throw new Error('返回格式不是标准 chat/completions');
@@ -908,9 +972,17 @@ async function runAI() {
   } catch (e) {
     // 回滚这次提问，避免下次重复发送
     conv.messages.pop();
-    conv.ui = [{ r: 'err', t: '请求失败：' + e.message }];
+    const msg = (e && (e.name === 'AbortError' || /超时/.test(e.message || '')))
+      ? '请求超时（90 秒），请检查网络或接口地址。'
+      : e.message;
+    conv.ui = [{ r: 'err', t: '请求失败：' + msg }];
     renderChat();
     save();
+  } finally {
+    if (timer) clearTimeout(timer);
+    AI_BUSY = false;
+    if (runBtn) { runBtn.disabled = false; runBtn.textContent = '分析当前局面'; }
+    syncAISub();
   }
 }
 
@@ -944,25 +1016,6 @@ function copyAIContext() {
 
 /* ---------------- 手牌与推荐 ---------------- */
 
-/* 解析规则里的点力字段，返回 [lo, hi]；无法解析返回 null（视为不限） */
-function parseHcpRange(p) {
-  if (!p) return null;
-  const t = String(p).replace(/\s/g, '');
-  let m = /^好?(\d+)[~\-－至]差?(\d+)$/.exec(t);
-  if (m) return [+m[1], +m[2]];
-  m = /^(\d+)[~\-－](\d+)$/.exec(t);
-  if (m) return [+m[1], +m[2]];
-  m = /^(\d+)以上$/.exec(t);
-  if (m) return [+m[1], 37];
-  m = /^(\d+)以下$/.exec(t);
-  if (m) return [0, +m[1]];
-  m = /^(\d+)左右$/.exec(t);
-  if (m) return [Math.max(0, +m[1] - 2), +m[1] + 2];
-  m = /^(\d+)$/.exec(t);
-  if (m) return [+m[1], +m[1]];
-  return null;
-}
-
 function handShape(h) {
   const arr = [h.S, h.H, h.D, h.C];
   const sorted = arr.slice().sort((a, b) => b - a);
@@ -970,116 +1023,6 @@ function handShape(h) {
               (sorted[0] === 4 && sorted[1] === 4 && sorted[2] === 3 && sorted[3] === 2) ||
               (sorted[0] === 4 && sorted[1] === 3 && sorted[2] === 3 && sorted[3] === 3);
   return { sorted, bal, text: sorted.join('-') };
-}
-
-/* 从规则描述里提取「N 张以上 X」的牌型要求（兼容中文数字） */
-const SHAPE_RE = /([一二三四五六七八九十]+|\d+)\s*张(?:以上)?\s*(红心|黑桃|方块|梅花|高花|低花|所叫花色|所叫高花|所叫低花)?/;
-const CN_NUM = { '一': 1, '二': 2, '三': 3, '四': 4, '五': 5, '六': 6, '七': 7, '八': 8, '九': 9, '十': 10 };
-
-function cnNum(t) {
-  if (/^\d+$/.test(t)) return +t;
-  if (t === '十') return 10;
-  if (t.length === 2 && t[0] === '十') return 10 + (CN_NUM[t[1]] || 0);
-  if (t.length === 2 && t[1] === '十') return (CN_NUM[t[0]] || 0) * 10;
-  return CN_NUM[t] || null;
-}
-
-function shapeNeed(desc, bid) {
-  const m = SHAPE_RE.exec(desc || '');
-  if (!m) return null;
-  const n = cnNum(m[1]);
-  if (!n) return null;
-  let who = m[2] || null;
-  if (!who) return null;
-  let st = null;
-  if (who === '红心') st = 'H';
-  else if (who === '黑桃') st = 'S';
-  else if (who === '方块') st = 'D';
-  else if (who === '梅花') st = 'C';
-  else if (who === '所叫花色' || who === '所叫高花' || who === '所叫低花') {
-    const bs = bidStrain(bid);
-    if (!bs || bs === 'NT') return null;
-    if (who === '所叫高花' && bs !== 'H' && bs !== 'S') return null;
-    if (who === '所叫低花' && bs !== 'D' && bs !== 'C') return null;
-    st = bs;
-  } else if (who === '高花') return { kind: 'hi', n };
-  else if (who === '低花') return { kind: 'lo', n };
-  return st ? { kind: 'suit', st, n } : null;
-}
-
-function shapeOk(need, hand, bid) {
-  if (!need) return null;             // 无可解析的牌型要求
-  if (need.kind === 'suit') return hand[need.st] >= need.n;
-  if (need.kind === 'hi') return Math.max(hand.S, hand.H) >= need.n;
-  if (need.kind === 'lo') return Math.max(hand.D, hand.C) >= need.n;
-  return null;
-}
-
-/* 点力字段缺失时，从描述里找一个下限（如「22+ HCP」「17 点以上」） */
-function descFloor(d) {
-  const m1 = /(\d+)\s*\+\s*HCP/i.exec(d || '');
-  const m2 = /(\d+)\s*点以上/.exec(d || '');
-  const v = m1 ? +m1[1] : (m2 ? +m2[1] : null);
-  return v;
-}
-
-/* 规则这一条是否适合当前手牌 */
-function ruleFits(rule, hand, bid) {
-  const rng = parseHcpRange(rule.p);
-  if (rng && (hand.hcp < rng[0] || hand.hcp > rng[1])) return null;
-
-  // 点力字段为空、但描述里写死了下限时，留 6 点余地给「赢墩型」强牌
-  if (!rng) {
-    const floor = descFloor(rule.d);
-    if (floor && floor >= 16 && hand.hcp < floor - 6) return null;
-  }
-
-  const sh = handShape(hand);
-  if (/非均型/.test(rule.d) && sh.bal) return null;
-  if (/均型/.test(rule.d) && !/非均型/.test(rule.d) && !sh.bal) return null;
-
-  const need = shapeNeed(rule.d, bid);
-  const okShape = shapeOk(need, hand, bid);
-  if (okShape === false) return null;
-
-  let score = 0;
-  if (rng) score += Math.max(0, 12 - (rng[1] - rng[0]));   // 区间越窄越具体
-  if (okShape === true) score += 6;
-  return { score, rng, shape: okShape === true };
-}
-
-function recommendFor(bd, seat) {
-  const hand = state.hand;
-  const legal = legalSet(bd, seat);
-  const seen = new Set();
-  const out = [];
-
-  legal.forEach(bid => {
-    const res = lookupRules(bd, seat, bid);
-    (res.rules || []).forEach(rule => {
-      const fit = ruleFits(rule, hand, bid);
-      if (!fit) return;
-      const key = bid + '|' + (rule.p || '') + '|' + rule.d.slice(0, 18);
-      if (seen.has(key)) return;
-      seen.add(key);
-      out.push({
-        bid, rule, score: fit.score,
-        pts: rule.p || '',
-        why: rule.d,
-        src: rule.s,
-        tags: rule.k || []
-      });
-    });
-  });
-
-  out.sort((a, b) => {
-    if (b.score !== a.score) return b.score - a.score;
-    const va = isContract(a.bid) ? bidVal(a.bid) : 0;
-    const vb = isContract(b.bid) ? bidVal(b.bid) : 0;
-    return va - vb;
-  });
-
-  return out;
 }
 
 function bidFace(bid) {
@@ -1196,11 +1139,12 @@ function switchSystem(key) {
     useSystem(key);
     const dealer = board() ? board().dealer : 'N';
     state.boards = [newBoard(dealer)];
+    state.tracker = [];    // 新体系 + 新一局，记牌器从零开始
     state.sel = null;
     state.inspect = null;
     state.aiConv = null;   // 体系变了，旧对话作废
   }
-  save(); renderBrand(); render(); renderChat(); renderPicker(); closePicker();
+  save(); renderBrand(); render(); paintTracker(); renderChat(); renderPicker(); closePicker();
 }
 
 function init() {
