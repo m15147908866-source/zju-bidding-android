@@ -14,19 +14,26 @@ jobs:
     env:
       KEYSTORE_B64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
-      - uses: actions/setup-java@v4
+      - uses: actions/setup-java@v5
         with:
           distribution: temurin
           java-version: '17'
 
-      # runner 自带 Android SDK 与 sdkmanager，不再用 setup-android（它会尝试安装已下线的 tools 包）
+      # runner 自带 Android SDK，但 sdkmanager 不一定在 PATH 上，这里显式定位。
+      # 不用 setup-android：它会尝试安装已从 SDK 仓库下线的 tools 包。
       - name: 安装构建所需 SDK 组件
         run: |
-          sdkmanager --version
-          yes | sdkmanager --licenses > /dev/null
-          sdkmanager "platforms;android-34" "build-tools;36.0.0"
+          SDK="${ANDROID_HOME:-${ANDROID_SDK_ROOT:-/usr/local/lib/android/sdk}}"
+          if command -v sdkmanager > /dev/null 2>&1; then
+            SDKMANAGER="$(command -v sdkmanager)"
+          else
+            SDKMANAGER="$(ls -1d "$SDK"/cmdline-tools/*/bin/sdkmanager | head -1)"
+          fi
+          echo "使用 $SDKMANAGER"
+          yes | "$SDKMANAGER" --licenses > /dev/null || true
+          "$SDKMANAGER" "platforms;android-34" "build-tools;36.0.0"
 
       - name: 校验 tag 与 VERSION 一致
         run: |
