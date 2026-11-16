@@ -339,6 +339,8 @@
       var rules = R.findRules(store, auction, seat, bid).rules;
       rules.forEach(function (rule) {
         if (rule.recommendable === false) return;
+        // 通则兜底（generic）只用于解释，不参与推荐：三档强度不足以决定具体叫品
+        if (rule.generic === true) return;
 
         var strain = C.strainOf(bid);
         var takeout = bid === 'X' && /技术性/.test(rule.meaning || '');

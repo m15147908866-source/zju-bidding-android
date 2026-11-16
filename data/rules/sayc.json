@@ -7479,5 +7479,990 @@
     "tags": [],
     "legacyP": "13~14",
     "bid": "4S"
+  },
+  {
+    "id": "sayc.negdbl.0",
+    "system": "sayc",
+    "seatRole": "responder",
+    "contextKeys": [
+      "P:1C O:1D",
+      "P:1C O:1H",
+      "P:1C O:1S",
+      "P:1C O:2C",
+      "P:1C O:2D",
+      "P:1C O:2H",
+      "P:1C O:2S",
+      "P:1D O:1H",
+      "P:1D O:1S",
+      "P:1D O:2C",
+      "P:1D O:2D",
+      "P:1D O:2H",
+      "P:1D O:2S",
+      "P:1H O:1S",
+      "P:1H O:2C",
+      "P:1H O:2D",
+      "P:1H O:2H",
+      "P:1H O:2S",
+      "P:1S O:2C",
+      "P:1S O:2D",
+      "P:1S O:2H",
+      "P:1S O:2S"
+    ],
+    "hcp": {
+      "min": 6,
+      "max": 37
+    },
+    "forcing": "none",
+    "alert": true,
+    "recommendable": false,
+    "meaning": "负加倍（不是惩罚）：同伴开叫、上家争叫后的加倍，承诺 6 点以上，且在未叫过的花色里至少有一门 4 张。1♣—1♦ 后通常表示 4-4 双高花；1♥—1♠ 后表示 4-4 双低花；1♥—2♦ 后表示 4 张黑桃（或 5 张黑桃但只有 6~9 点）。SAYC 用到 2♠ 为止：对方 3 阶以上争叫，加倍是惩罚。",
+    "source": "负加倍（negative_double.php）",
+    "tags": [
+      "约定叫"
+    ],
+    "legacyP": "6 以上",
+    "bid": "X"
+  },
+  {
+    "id": "sayc.adv.raise",
+    "system": "sayc",
+    "seatRole": "advancer",
+    "contextKeys": [
+      "O:* P:1C",
+      "O:* P:1D",
+      "O:* P:1H",
+      "O:* P:1S",
+      "O:* P:2C",
+      "O:* P:2D",
+      "O:* P:2H",
+      "O:* P:2S"
+    ],
+    "hcp": {
+      "min": 6,
+      "max": 10
+    },
+    "shape": {
+      "suitMin": {
+        "partner": 3
+      }
+    },
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "加叫同伴的争叫：3 张以上支持，不逼叫。",
+    "source": "ACBL SAYC 手册 · 争叫后的应叫",
+    "tags": [
+      "加叫"
+    ],
+    "legacyP": "6~10",
+    "bidForm": {
+      "type": "raise"
+    }
+  },
+  {
+    "id": "sayc.adv.jumpRaise",
+    "system": "sayc",
+    "seatRole": "advancer",
+    "contextKeys": [
+      "O:* P:1C",
+      "O:* P:1D",
+      "O:* P:1H",
+      "O:* P:1S",
+      "O:* P:2C",
+      "O:* P:2D",
+      "O:* P:2H",
+      "O:* P:2S"
+    ],
+    "hcp": {
+      "min": 10,
+      "max": 12
+    },
+    "shape": {
+      "suitMin": {
+        "partner": 4
+      }
+    },
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "跳加叫同伴的争叫：4 张以上支持，邀局。",
+    "source": "ACBL SAYC 手册 · 争叫后的应叫",
+    "tags": [
+      "邀局"
+    ],
+    "legacyP": "10~12",
+    "bidForm": {
+      "type": "jumpRaise"
+    }
+  },
+  {
+    "id": "sayc.adv.1nt",
+    "system": "sayc",
+    "seatRole": "advancer",
+    "contextKeys": [
+      "O:* P:1C",
+      "O:* P:1D",
+      "O:* P:1H",
+      "O:* P:1S",
+      "O:* P:2C",
+      "O:* P:2D",
+      "O:* P:2H",
+      "O:* P:2S"
+    ],
+    "hcp": {
+      "min": 8,
+      "max": 11
+    },
+    "shape": {
+      "balanced": true
+    },
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "均型，敌方花色有挡张，不逼叫。",
+    "source": "ACBL SAYC 手册 · 争叫后的应叫",
+    "tags": [],
+    "legacyP": "8~11",
+    "bid": "1N"
+  },
+  {
+    "id": "sayc.adv.2nt",
+    "system": "sayc",
+    "seatRole": "advancer",
+    "contextKeys": [
+      "O:* P:1C",
+      "O:* P:1D",
+      "O:* P:1H",
+      "O:* P:1S",
+      "O:* P:2C",
+      "O:* P:2D",
+      "O:* P:2H",
+      "O:* P:2S"
+    ],
+    "hcp": {
+      "min": 12,
+      "max": 13
+    },
+    "shape": {
+      "balanced": true
+    },
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "均型，敌方花色有挡张，邀局。",
+    "source": "ACBL SAYC 手册 · 争叫后的应叫",
+    "tags": [
+      "邀局"
+    ],
+    "legacyP": "12~13",
+    "bid": "2N"
+  },
+  {
+    "id": "sayc.adv.3nt",
+    "system": "sayc",
+    "seatRole": "advancer",
+    "contextKeys": [
+      "O:* P:1C",
+      "O:* P:1D",
+      "O:* P:1H",
+      "O:* P:1S",
+      "O:* P:2C",
+      "O:* P:2D",
+      "O:* P:2H",
+      "O:* P:2S"
+    ],
+    "hcp": {
+      "min": 13,
+      "max": 15
+    },
+    "shape": {
+      "balanced": true
+    },
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "均型，敌方花色有挡张，止叫。",
+    "source": "ACBL SAYC 手册 · 争叫后的应叫",
+    "tags": [
+      "止叫"
+    ],
+    "legacyP": "13~15",
+    "bid": "3N"
+  },
+  {
+    "id": "sayc.adv.newSuit",
+    "system": "sayc",
+    "seatRole": "advancer",
+    "contextKeys": [
+      "O:* P:1C",
+      "O:* P:1D",
+      "O:* P:1H",
+      "O:* P:1S",
+      "O:* P:2C",
+      "O:* P:2D",
+      "O:* P:2H",
+      "O:* P:2S"
+    ],
+    "shape": {
+      "suitMin": {
+        "bid": 5
+      }
+    },
+    "forcing": "none",
+    "alert": false,
+    "recommendable": false,
+    "meaning": "叫新花色：5 张以上，不逼叫——同伴争叫之后没有「一盖一逼叫」这条规则。",
+    "source": "ACBL SAYC 手册 · 争叫后的应叫",
+    "tags": [],
+    "legacyP": "5 张以上",
+    "bidForm": {
+      "type": "newSuit"
+    }
+  },
+  {
+    "id": "sayc.adv.jumpNewSuit",
+    "system": "sayc",
+    "seatRole": "advancer",
+    "contextKeys": [
+      "O:* P:1C",
+      "O:* P:1D",
+      "O:* P:1H",
+      "O:* P:1S",
+      "O:* P:2C",
+      "O:* P:2D",
+      "O:* P:2H",
+      "O:* P:2S"
+    ],
+    "shape": {
+      "suitMin": {
+        "bid": 6
+      }
+    },
+    "forcing": "none",
+    "alert": false,
+    "recommendable": false,
+    "meaning": "跳叫新花色：6 张以上好套，邀局。",
+    "source": "ACBL SAYC 手册 · 争叫后的应叫",
+    "tags": [
+      "邀局"
+    ],
+    "legacyP": "6 张以上",
+    "bidForm": {
+      "type": "jumpNewSuit"
+    }
+  },
+  {
+    "id": "sayc.adv.cue",
+    "system": "sayc",
+    "seatRole": "advancer",
+    "contextKeys": [
+      "O:* P:1C",
+      "O:* P:1D",
+      "O:* P:1H",
+      "O:* P:1S",
+      "O:* P:2C",
+      "O:* P:2D",
+      "O:* P:2H",
+      "O:* P:2S"
+    ],
+    "hcp": {
+      "min": 12,
+      "max": 37
+    },
+    "forcing": "forcing",
+    "alert": true,
+    "recommendable": true,
+    "meaning": "扣叫对方花色：同伴争叫之后唯一的逼叫。表示 12 点以上，通常是对同伴花色的强支持，或强牌但找不到合适的自然叫。",
+    "source": "ACBL SAYC 手册 · 争叫后的应叫",
+    "tags": [
+      "逼叫"
+    ],
+    "legacyP": "12 以上",
+    "bidForm": {
+      "type": "cue"
+    }
+  },
+  {
+    "id": "sayc.adv.nt.stayman",
+    "system": "sayc",
+    "seatRole": "advancer",
+    "contextKeys": [
+      "O:* P:1N"
+    ],
+    "hcp": {
+      "min": 8,
+      "max": 37
+    },
+    "forcing": "none",
+    "alert": true,
+    "recommendable": false,
+    "meaning": "斯台曼：问同伴 1NT 争叫（15~18 均型）有无四张高花。",
+    "source": "1NT 争叫后（sayc.php 关联约定）",
+    "tags": [
+      "约定叫"
+    ],
+    "legacyP": "8 以上",
+    "bid": "2C"
+  },
+  {
+    "id": "sayc.adv.nt.trh",
+    "system": "sayc",
+    "seatRole": "advancer",
+    "contextKeys": [
+      "O:* P:1N"
+    ],
+    "shape": {
+      "suitMin": {
+        "H": 5
+      }
+    },
+    "forcing": "none",
+    "alert": true,
+    "recommendable": false,
+    "meaning": "杰克贝转移：要求同伴叫 2♥。",
+    "source": "1NT 争叫后（sayc.php 关联约定）",
+    "tags": [
+      "转移叫"
+    ],
+    "legacyP": "5 张以上红心",
+    "bid": "2D"
+  },
+  {
+    "id": "sayc.adv.nt.trs",
+    "system": "sayc",
+    "seatRole": "advancer",
+    "contextKeys": [
+      "O:* P:1N"
+    ],
+    "shape": {
+      "suitMin": {
+        "S": 5
+      }
+    },
+    "forcing": "none",
+    "alert": true,
+    "recommendable": false,
+    "meaning": "杰克贝转移：要求同伴叫 2♠。",
+    "source": "1NT 争叫后（sayc.php 关联约定）",
+    "tags": [
+      "转移叫"
+    ],
+    "legacyP": "5 张以上黑桃",
+    "bid": "2H"
+  },
+  {
+    "id": "sayc.adv.nt.gerber",
+    "system": "sayc",
+    "seatRole": "advancer",
+    "contextKeys": [
+      "O:* P:1N"
+    ],
+    "forcing": "none",
+    "alert": true,
+    "recommendable": false,
+    "meaning": "盖伯问 A。",
+    "source": "1NT 争叫后（sayc.php 关联约定）",
+    "tags": [
+      "满贯"
+    ],
+    "legacyP": "不限",
+    "bid": "4C"
+  },
+  {
+    "id": "sayc.adv.dbl.suit",
+    "system": "sayc",
+    "seatRole": "advancer",
+    "contextKeys": [
+      "O:* P:X"
+    ],
+    "hcp": {
+      "min": 0,
+      "max": 9
+    },
+    "shape": {
+      "suitMin": {
+        "bid": 3
+      }
+    },
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "最低可用阶叫花色：0~9 点，3 张以上（通常 4 张以上）。同伴加倍后必须叫牌，除非将牌足以把加倍转成惩罚。",
+    "source": "技术性加倍应答（takeout_double.php）",
+    "tags": [],
+    "legacyP": "0~9",
+    "bidForm": {
+      "type": "newSuit"
+    }
+  },
+  {
+    "id": "sayc.adv.dbl.jumpSuit",
+    "system": "sayc",
+    "seatRole": "advancer",
+    "contextKeys": [
+      "O:* P:X"
+    ],
+    "hcp": {
+      "min": 10,
+      "max": 12
+    },
+    "shape": {
+      "suitMin": {
+        "bid": 4
+      }
+    },
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "跳叫花色：10~12 点，4 张以上，邀局但不逼叫。",
+    "source": "技术性加倍应答（takeout_double.php）",
+    "tags": [
+      "邀局"
+    ],
+    "legacyP": "10~12",
+    "bidForm": {
+      "type": "jumpNewSuit"
+    }
+  },
+  {
+    "id": "sayc.adv.dbl.1nt",
+    "system": "sayc",
+    "seatRole": "advancer",
+    "contextKeys": [
+      "O:* P:X"
+    ],
+    "hcp": {
+      "min": 7,
+      "max": 10
+    },
+    "shape": {
+      "balanced": true
+    },
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "均型，敌方花色有挡张；通常否认四张可叫高花。",
+    "source": "技术性加倍应答（takeout_double.php）",
+    "tags": [],
+    "legacyP": "7~10",
+    "bid": "1N"
+  },
+  {
+    "id": "sayc.adv.dbl.2nt",
+    "system": "sayc",
+    "seatRole": "advancer",
+    "contextKeys": [
+      "O:* P:X"
+    ],
+    "hcp": {
+      "min": 11,
+      "max": 12
+    },
+    "shape": {
+      "balanced": true
+    },
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "均型，敌方花色有挡张，邀局。",
+    "source": "技术性加倍应答（takeout_double.php）",
+    "tags": [
+      "邀局"
+    ],
+    "legacyP": "11~12",
+    "bid": "2N"
+  },
+  {
+    "id": "sayc.adv.dbl.3nt",
+    "system": "sayc",
+    "seatRole": "advancer",
+    "contextKeys": [
+      "O:* P:X"
+    ],
+    "hcp": {
+      "min": 13,
+      "max": 15
+    },
+    "shape": {
+      "balanced": true
+    },
+    "forcing": "none",
+    "alert": false,
+    "recommendable": true,
+    "meaning": "均型，敌方花色有挡张，止叫。",
+    "source": "技术性加倍应答（takeout_double.php）",
+    "tags": [
+      "止叫"
+    ],
+    "legacyP": "13~15",
+    "bid": "3N"
+  },
+  {
+    "id": "sayc.adv.dbl.cue",
+    "system": "sayc",
+    "seatRole": "advancer",
+    "contextKeys": [
+      "O:* P:X"
+    ],
+    "hcp": {
+      "min": 10,
+      "max": 37
+    },
+    "forcing": "forcing",
+    "alert": true,
+    "recommendable": true,
+    "meaning": "扣叫对方花色：人工、逼叫，通常是不均型又没有合适的自然叫；加倍人的再叫全部自然。",
+    "source": "技术性加倍应答（takeout_double.php）",
+    "tags": [
+      "逼叫"
+    ],
+    "legacyP": "10 以上",
+    "bidForm": {
+      "type": "cue"
+    }
+  },
+  {
+    "id": "sayc.adv.dbl.pass",
+    "system": "sayc",
+    "seatRole": "advancer",
+    "contextKeys": [
+      "O:* P:X"
+    ],
+    "forcing": "none",
+    "alert": false,
+    "recommendable": false,
+    "meaning": "把技术性加倍转成惩罚：1~2 阶时要求很好的将牌与整体实力，不能拿弱牌「逃」；阶数越高，越可以只凭点数与平均牌型放罚。",
+    "source": "技术性加倍应答（takeout_double.php）",
+    "tags": [
+      "止叫"
+    ],
+    "legacyP": "强牌",
+    "bid": "P"
+  },
+  {
+    "system": "sayc",
+    "generic": true,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": false,
+    "source": "ACBL SAYC 手册 · 再叫三档通则",
+    "id": "sayc.gen.opener.raise",
+    "seatRole": "opener",
+    "hcp": {
+      "min": 13,
+      "max": 16
+    },
+    "meaning": "低限：把同伴的应叫花色加到最低可用阶（13~16 点）。",
+    "tags": [
+      "加叫"
+    ],
+    "legacyP": "13~16",
+    "bidForm": {
+      "type": "raise"
+    }
+  },
+  {
+    "system": "sayc",
+    "generic": true,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": false,
+    "source": "ACBL SAYC 手册 · 再叫三档通则",
+    "id": "sayc.gen.opener.jumpRaise",
+    "seatRole": "opener",
+    "hcp": {
+      "min": 17,
+      "max": 18
+    },
+    "meaning": "中限：跳加叫同伴的花色，邀局（17~18 点）。",
+    "tags": [
+      "邀局"
+    ],
+    "legacyP": "17~18",
+    "bidForm": {
+      "type": "jumpRaise"
+    }
+  },
+  {
+    "system": "sayc",
+    "generic": true,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": false,
+    "source": "ACBL SAYC 手册 · 再叫三档通则",
+    "id": "sayc.gen.opener.newSuit",
+    "seatRole": "opener",
+    "hcp": {
+      "min": 13,
+      "max": 16
+    },
+    "meaning": "低限叫新花，最低可用阶（13~16 点）。",
+    "tags": [],
+    "legacyP": "13~16",
+    "bidForm": {
+      "type": "newSuit"
+    }
+  },
+  {
+    "system": "sayc",
+    "generic": true,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": false,
+    "source": "ACBL SAYC 手册 · 再叫三档通则",
+    "id": "sayc.gen.opener.jumpNewSuit",
+    "seatRole": "opener",
+    "hcp": {
+      "min": 19,
+      "max": 21
+    },
+    "meaning": "高限跳叫新花，逼叫到局（19~21 点）。",
+    "tags": [
+      "逼叫"
+    ],
+    "legacyP": "19~21",
+    "bidForm": {
+      "type": "jumpNewSuit"
+    }
+  },
+  {
+    "system": "sayc",
+    "generic": true,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": false,
+    "source": "ACBL SAYC 手册 · 再叫三档通则",
+    "id": "sayc.gen.opener.rebidOwn",
+    "seatRole": "opener",
+    "hcp": {
+      "min": 13,
+      "max": 16
+    },
+    "meaning": "低限再叫开叫花色，通常 6 张以上（13~16 点）。",
+    "tags": [],
+    "legacyP": "13~16",
+    "bidForm": {
+      "type": "rebidOwn"
+    }
+  },
+  {
+    "system": "sayc",
+    "generic": true,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": false,
+    "source": "ACBL SAYC 手册 · 再叫三档通则",
+    "id": "sayc.gen.opener.jumpRebidOwn",
+    "seatRole": "opener",
+    "hcp": {
+      "min": 17,
+      "max": 18
+    },
+    "meaning": "中限跳再叫开叫花色（17~18 点）。",
+    "tags": [
+      "邀局"
+    ],
+    "legacyP": "17~18",
+    "bidForm": {
+      "type": "jumpRebidOwn"
+    }
+  },
+  {
+    "system": "sayc",
+    "generic": true,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": false,
+    "source": "ACBL SAYC 手册 · 再叫三档通则",
+    "id": "sayc.gen.opener.1nt",
+    "seatRole": "opener",
+    "hcp": {
+      "min": 13,
+      "max": 16
+    },
+    "meaning": "低限均型：13~16 点，所叫无将要有所缺花色的挡张。",
+    "tags": [],
+    "legacyP": "13~16",
+    "bid": "1N"
+  },
+  {
+    "system": "sayc",
+    "generic": true,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": false,
+    "source": "ACBL SAYC 手册 · 再叫三档通则",
+    "id": "sayc.gen.opener.2nt",
+    "seatRole": "opener",
+    "hcp": {
+      "min": 18,
+      "max": 19
+    },
+    "meaning": "中高限均型：18~19 点。",
+    "tags": [
+      "邀局"
+    ],
+    "legacyP": "18~19",
+    "bid": "2N"
+  },
+  {
+    "system": "sayc",
+    "generic": true,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": false,
+    "source": "ACBL SAYC 手册 · 再叫三档通则",
+    "id": "sayc.gen.opener.3nt",
+    "seatRole": "opener",
+    "hcp": {
+      "min": 19,
+      "max": 21
+    },
+    "meaning": "高限均型：19~21 点。",
+    "tags": [],
+    "legacyP": "19~21",
+    "bid": "3N"
+  },
+  {
+    "system": "sayc",
+    "generic": true,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": false,
+    "source": "ACBL SAYC 手册 · 再叫三档通则",
+    "id": "sayc.gen.opener.gameOwn",
+    "seatRole": "opener",
+    "meaning": "高限或牌型极好时直接加到局。",
+    "tags": [
+      "止叫"
+    ],
+    "legacyP": "高限",
+    "bidForm": {
+      "type": "gameOwn"
+    }
+  },
+  {
+    "system": "sayc",
+    "generic": true,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": false,
+    "source": "ACBL SAYC 手册 · 再叫三档通则",
+    "id": "sayc.gen.opener.pass",
+    "seatRole": "opener",
+    "meaning": "低限且没有合适叫品时不叫。",
+    "tags": [
+      "止叫"
+    ],
+    "legacyP": "13~16",
+    "bid": "P"
+  },
+  {
+    "system": "sayc",
+    "generic": true,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": false,
+    "source": "ACBL SAYC 手册 · 再叫三档通则",
+    "id": "sayc.gen.resp.rebidOwn",
+    "seatRole": "responder",
+    "hcp": {
+      "min": 6,
+      "max": 9
+    },
+    "meaning": "示弱：再叫自己的花色，止叫（6~9 点）。",
+    "tags": [
+      "止叫"
+    ],
+    "legacyP": "6~9",
+    "bidForm": {
+      "type": "rebidOwn"
+    }
+  },
+  {
+    "system": "sayc",
+    "generic": true,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": false,
+    "source": "ACBL SAYC 手册 · 再叫三档通则",
+    "id": "sayc.gen.resp.jumpRebidOwn",
+    "seatRole": "responder",
+    "hcp": {
+      "min": 10,
+      "max": 12
+    },
+    "meaning": "跳再叫自己的花色，邀局（10~12 点）。",
+    "tags": [
+      "邀局"
+    ],
+    "legacyP": "10~12",
+    "bidForm": {
+      "type": "jumpRebidOwn"
+    }
+  },
+  {
+    "system": "sayc",
+    "generic": true,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": false,
+    "source": "ACBL SAYC 手册 · 再叫三档通则",
+    "id": "sayc.gen.resp.raise",
+    "seatRole": "responder",
+    "hcp": {
+      "min": 6,
+      "max": 9
+    },
+    "meaning": "简单加叫同伴，示弱（6~9 点）。",
+    "tags": [
+      "加叫"
+    ],
+    "legacyP": "6~9",
+    "bidForm": {
+      "type": "raise"
+    }
+  },
+  {
+    "system": "sayc",
+    "generic": true,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": false,
+    "source": "ACBL SAYC 手册 · 再叫三档通则",
+    "id": "sayc.gen.resp.jumpRaise",
+    "seatRole": "responder",
+    "hcp": {
+      "min": 10,
+      "max": 12
+    },
+    "meaning": "跳加叫同伴，邀局（10~12 点）。",
+    "tags": [
+      "邀局"
+    ],
+    "legacyP": "10~12",
+    "bidForm": {
+      "type": "jumpRaise"
+    }
+  },
+  {
+    "system": "sayc",
+    "generic": true,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": false,
+    "source": "ACBL SAYC 手册 · 再叫三档通则",
+    "id": "sayc.gen.resp.2nt",
+    "seatRole": "responder",
+    "hcp": {
+      "min": 11,
+      "max": 12
+    },
+    "meaning": "均型邀局（11~12 点）。",
+    "tags": [
+      "邀局"
+    ],
+    "legacyP": "11~12",
+    "bid": "2N"
+  },
+  {
+    "system": "sayc",
+    "generic": true,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": false,
+    "source": "ACBL SAYC 手册 · 再叫三档通则",
+    "id": "sayc.gen.resp.3nt",
+    "seatRole": "responder",
+    "hcp": {
+      "min": 13,
+      "max": 15
+    },
+    "meaning": "均型进局（13~15 点）。",
+    "tags": [],
+    "legacyP": "13~15",
+    "bid": "3N"
+  },
+  {
+    "system": "sayc",
+    "generic": true,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": false,
+    "source": "ACBL SAYC 手册 · 再叫三档通则",
+    "id": "sayc.gen.resp.newSuit",
+    "seatRole": "responder",
+    "hcp": {
+      "min": 6,
+      "max": 37
+    },
+    "meaning": "叫新花，逼叫一轮（6 点以上）。",
+    "tags": [
+      "逼叫"
+    ],
+    "legacyP": "6 以上",
+    "bidForm": {
+      "type": "newSuit"
+    }
+  },
+  {
+    "system": "sayc",
+    "generic": true,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": false,
+    "source": "ACBL SAYC 手册 · 再叫三档通则",
+    "id": "sayc.gen.resp.pass",
+    "seatRole": "responder",
+    "meaning": "牌力不足，示弱不叫（6 点以下）。",
+    "tags": [
+      "止叫"
+    ],
+    "legacyP": "6 以下",
+    "bid": "P"
+  },
+  {
+    "system": "sayc",
+    "generic": true,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": false,
+    "source": "ACBL SAYC 手册 · 再叫三档通则",
+    "id": "sayc.gen.adv.cue",
+    "seatRole": "advancer",
+    "hcp": {
+      "min": 12,
+      "max": 37
+    },
+    "meaning": "扣叫对方花色：同伴争叫后唯一的逼叫（12 点以上）。",
+    "tags": [
+      "逼叫"
+    ],
+    "legacyP": "12 以上",
+    "bidForm": {
+      "type": "cue"
+    }
+  },
+  {
+    "system": "sayc",
+    "generic": true,
+    "forcing": "none",
+    "alert": false,
+    "recommendable": false,
+    "source": "ACBL SAYC 手册 · 再叫三档通则",
+    "id": "sayc.gen.adv.raise",
+    "seatRole": "advancer",
+    "hcp": {
+      "min": 6,
+      "max": 10
+    },
+    "meaning": "简单加叫同伴的争叫，不逼叫（6~10 点）。",
+    "tags": [
+      "加叫"
+    ],
+    "legacyP": "6~10",
+    "bidForm": {
+      "type": "raise"
+    }
   }
 ]

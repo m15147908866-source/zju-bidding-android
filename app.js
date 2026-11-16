@@ -113,10 +113,12 @@ function renderBoard(bd) {
       if (call) {
         const isC = isContract(call.bid);
         const inspecting = state.inspect === i;
+        const pre = isPreemptCall(bd.snap[i]);
         cells.push('<div class="ag-cell filled inspectable' +
           (isC ? ' contract' : '') + (call.bid === 'PASS' ? ' pass' : '') +
-          (inspecting ? ' inspecting' : '') +
-          '" data-call="' + i + '">' + bidHtml(call.bid) + '</div>');
+          (inspecting ? ' inspecting' : '') + (pre ? ' has-pre' : '') +
+          '" data-call="' + i + '">' + bidHtml(call.bid) +
+          (pre ? '<i class="pre-mark" title="阻击叫">s</i>' : '') + '</div>');
       } else if (i === bd.auction.length && !bd.done) {
         cells.push('<div class="ag-cell pending"><span class="pulse"></span></div>');
       } else {
@@ -147,6 +149,10 @@ function buildMeaningHtml(bid, res, seat, conv, opts) {
   h += '<div class="m-meta"><div class="m-ctx">' + ctxLabel(res.ctx, seat) + '</div>' +
     '<div class="m-seat">' + SEAT_CN[seat] + '家 · ' + CTX_CN[res.ctx.type] + '</div></div>';
   h += '</div>';
+
+  if (res.approx) {
+    h += '<div class="m-approx">手册只给到三档强度（低限 13~16 / 中限 17~18 / 高限 19~21），未逐条列出这个序列，下面按通则给。</div>';
+  }
 
   if (res.rules.length) {
     h += '<div class="m-list">';
@@ -260,6 +266,13 @@ function strainCls(bid) {
   if (s === 'H' || s === 'D') return 'red';
   if (bid === 'X' || bid === 'XX') return 'red';
   return '';
+}
+
+/* 这一手是不是阻击叫：直接看它当时命中规则的「阻击」标签，
+   与气泡里的说明同源，不另立一套判断。 */
+function isPreemptCall(sn) {
+  if (!sn || !sn.rules || !sn.rules.length) return false;
+  return sn.rules.some(r => (r.k || []).indexOf('阻击') >= 0);
 }
 function esc(s) {
   return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
