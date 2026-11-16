@@ -46,6 +46,9 @@ jobs:
       - name: 引擎适配层冒烟
         run: node scripts/smoke-engine.mjs
 
+      - name: 产品级流程冒烟
+        run: node scripts/smoke-ui.mjs
+
       - name: 资源与引用一致性
         run: node scripts/check-assets.mjs
 
