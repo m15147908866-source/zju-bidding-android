@@ -75,7 +75,12 @@ test('规则结构：必填字段、id 唯一、叫品与形态二选一', () =>
       ids.add(r.id);
       assert.equal(r.system, key);
       assert.ok(ROLES.has(r.seatRole), `${r.id} seatRole 非法：${r.seatRole}`);
-      assert.ok(Array.isArray(r.contextKeys) && r.contextKeys.length, `${r.id} 缺少 contextKeys`);
+      if (r.generic === true) {
+        assert.equal(r.recommendable, false, `${r.id} 通则不得参与推荐`);
+        assert.ok(!r.contextKeys || !r.contextKeys.length, `${r.id} 通则不应带 contextKeys`);
+      } else {
+        assert.ok(Array.isArray(r.contextKeys) && r.contextKeys.length, `${r.id} 缺少 contextKeys`);
+      }
       assert.ok(r.meaning && r.meaning.length, `${r.id} 缺少 meaning`);
       assert.ok(r.source && r.source.length, `${r.id} 缺少 source`);
       assert.equal(typeof r.recommendable, 'boolean', `${r.id} recommendable 必须是布尔`);
@@ -96,7 +101,7 @@ test('规则结构：必填字段、id 唯一、叫品与形态二选一', () =>
       if (r.shape) {
         assert.equal(typeof r.shape, 'object');
       }
-      for (const k of r.contextKeys) {
+      for (const k of (r.contextKeys || [])) {
         for (const seg of k.split(' ')) {
           if (!seg) continue;
           const call = seg.slice(2);
@@ -148,8 +153,8 @@ test('每条具体叫品规则都能被 findRules 查到（语境可达）', () 
   for (const key of KEYS) {
     const store = stores[key];
     for (const r of raw[key]) {
-      if (!r.bid) continue;
-      for (const ctxKey of r.contextKeys) {
+      if (!r.bid || r.generic === true) continue;
+      for (const ctxKey of (r.contextKeys || [])) {
         if (ctxKey.includes('*')) continue;
         const entry = auctionForKey(ctxKey);
         const au = auctionOf(entry);
@@ -164,8 +169,8 @@ test('每条具体叫品规则都能被 findRules 查到（语境可达）', () 
 test('每条形态规则至少能命中一个合法叫品（无死规则）', () => {
   for (const key of KEYS) {
     for (const r of raw[key]) {
-      if (!r.bidForm) continue;
-      const literal = r.contextKeys.filter((k) => !k.includes('*'));
+      if (!r.bidForm || r.generic === true) continue;
+      const literal = (r.contextKeys || []).filter((k) => !k.includes('*'));
       if (!literal.length) continue;          // 通配语境无法静态展开
       let matched = false;
       for (const ctxKey of literal) {
@@ -280,7 +285,7 @@ test('开叫规则的张数约束来自原说明', () => {
     xinrui: { '1C': ['C', 3], '1D': ['D', 3], '1H': ['H', 5], '1S': ['S', 5] }
   };
   for (const key of KEYS) {
-    const opens = raw[key].filter((r) => r.contextKeys.length === 1 && r.contextKeys[0] === '');
+    const opens = raw[key].filter((r) => (r.contextKeys || []).length === 1 && r.contextKeys[0] === '');
     for (const [bid, [suit, n]] of Object.entries(requireSuit[key])) {
       const rule = opens.find((r) => r.bid === bid);
       assert.ok(rule, `${key} 缺少开叫 ${bid}`);
@@ -292,8 +297,7 @@ test('开叫规则的张数约束来自原说明', () => {
   }
   // 浙大低花开叫明确要求「无 5 张高花」
   for (const bid of ['1C', '1D']) {
-    const rule = raw.zju.find((r) => r.bid === bid && r.contextKeys[0] === '');
-    assert.equal(rule.shape.suitMax.H, 4, `zju ${bid} 未排除 5 张红心`);
+    const rule = raw.zju.find((r) => r.bid === bid && r.contextKeys[0] === '');    assert.equal(rule.shape.suitMax.H, 4, `zju ${bid} 未排除 5 张红心`);
     assert.equal(rule.shape.suitMax.S, 4, `zju ${bid} 未排除 5 张黑桃`);
   }
 });

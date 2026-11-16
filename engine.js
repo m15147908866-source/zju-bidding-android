@@ -241,7 +241,7 @@ function lookupRules(bd, seat, bid) {
   const a = bdAuction(bd);
   const nb = C.normalizeCall(bid);
   const ctx = BC.analyze(a, seat);
-  const out = { ctx: ctx, rules: [], notes: [], found: false };
+  const out = { ctx: ctx, rules: [], notes: [], found: false, approx: false };
 
   if (!nb || !$store) return out;
 
@@ -256,6 +256,7 @@ function lookupRules(bd, seat, bid) {
   const hit = BC.findRules($store, a, seat, nb);
   out.rules = hit.rules.map(viewRule);
   out.found = out.rules.length > 0;
+  out.approx = !!hit.generic;
   out.notes = BC.findNotes($store, a, seat, nb).map((n) => ({ s: n.source, text: n.text }));
   return out;
 }
@@ -274,7 +275,8 @@ function snapshotFor(bd, seat, bid, legalAt) {
   const conv = res.found ? null : conventionFallback(bd, seat, bid);
   return {
     seat: seat, bid: bid, ctx: res.ctx, rules: res.rules,
-    notes: res.notes, conv: conv, found: res.found, legalAt: legalAt || null
+    notes: res.notes, conv: conv, found: res.found, approx: !!res.approx,
+    legalAt: legalAt || null
   };
 }
 

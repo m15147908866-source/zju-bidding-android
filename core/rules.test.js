@@ -4,6 +4,7 @@ const test = require('node:test');
 const assert = require('node:assert');
 const { Auction } = require('./auction.js');
 const R = require('./rules.js');
+const X = require('./context.js');
 
 function store(rules, extra) {
   return R.createStore(Object.assign({ rules: rules || [], notes: [], conventions: [], answers: {} }, extra || {}));
@@ -145,4 +146,59 @@ test('findConventionFallback：无将开叫后的 4NT 不再提示黑木', () =>
   const nt = a(['1N', 'P']);
   assert.equal(R.findConventionFallback(sys, nt, 'S', '4N'), null);
   assert.ok(R.findConventionFallback(sys, nt, 'S', '4C'), '1NT 开叫后的 4C 提示盖伯');
+});
+
+/* ---------------- 配合争叫 / 负加倍 / 通则兜底 ---------------- */
+
+test('advancer：同伴争叫后的加叫与扣叫走 advancer 桶', () => {
+  const sys = store([
+    { id: 'adv.raise', seatRole: 'advancer', contextKeys: ['O:* P:1S'], bidForm: { type: 'raise' },
+      meaning: '加叫同伴的争叫', source: 's', recommendable: true },
+    { id: 'adv.cue', seatRole: 'advancer', contextKeys: ['O:* P:1S'], bidForm: { type: 'cue' },
+      meaning: '扣叫：唯一逼叫', source: 's', recommendable: true }
+  ]);
+  const au = a(['1H', '1S', 'P']);          // 对手 1♥、同伴 1♠、上家 Pass，轮到我（W）
+  assert.equal(X.roleOfKey(X.contextKey(au, 'W')), 'advancer');
+
+  const raise = R.findRules(sys, au, 'W', '2S');
+  assert.equal(raise.rules.length, 1);
+  assert.equal(raise.rules[0].id, 'adv.raise');
+  assert.equal(raise.generic, false);
+
+  const cue = R.findRules(sys, au, 'W', '2H');
+  assert.equal(cue.rules[0].id, 'adv.cue');
+});
+
+test('负加倍：同伴开叫、上家争叫后的 X 命中 responder 规则', () => {
+  const sys = store([
+    { id: 'negdbl', seatRole: 'responder', contextKeys: ['P:1C O:1D'], bid: 'X',
+      meaning: '负加倍：6 点以上，未叫花色有一门 4 张', source: 's', recommendable: false }
+  ]);
+  const au = a(['1C', '1D']);               // 同伴开 1♣、上家争 1♦，轮到我（S）
+  assert.equal(X.roleOfKey(X.contextKey(au, 'S')), 'responder');
+  const hit = R.findRules(sys, au, 'S', 'X');
+  assert.equal(hit.rules.length, 1);
+  assert.equal(hit.rules[0].id, 'negdbl');
+  assert.equal(hit.generic, false, '负加倍是具体条目，不应标记为通则');
+});
+
+test('通则兜底：具体条目缺失时才回落到 generic 桶', () => {
+  const sys = store([
+    { id: 'open.1c', seatRole: 'opener', contextKeys: [''], bid: '1C',
+      meaning: '1♣ 开叫', source: 's', recommendable: true },
+    { id: 'gen.rebidOwn', seatRole: 'opener', generic: true, bidForm: { type: 'rebidOwn' },
+      meaning: '通则：低限再叫原花', source: 'ACBL SAYC 手册 · 再叫三档通则', recommendable: false }
+  ]);
+
+  // 1♣—P—1♥—P 之后开叫方再叫 2♣：没有具体条目 → 走通则
+  const au = a(['1C', 'P', '1H', 'P']);
+  const fb = R.findRules(sys, au, 'N', '2C');
+  assert.equal(fb.rules.length, 1);
+  assert.equal(fb.rules[0].id, 'gen.rebidOwn');
+  assert.equal(fb.generic, true, '应标记为通则');
+
+  // 开叫本身有具体条目 → 不回落
+  const open = R.findRules(sys, a([]), 'N', '1C');
+  assert.equal(open.rules[0].id, 'open.1c');
+  assert.equal(open.generic, false);
 });
