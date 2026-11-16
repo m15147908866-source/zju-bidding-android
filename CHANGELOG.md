@@ -2,6 +2,12 @@
 
 本项目的所有重要改动记录在此。格式参考 [Keep a Changelog](https://keepachangelog.com/zh-CN/1.1.0/)，版本号遵循 [语义化版本](https://semver.org/lang/zh-CN/)。
 
+## [Unreleased]
+
+### Added
+
+- 叫牌记录里，阻击叫的格子右侧显示红底白字 `s`（判定直接取该手命中规则的「阻击」标签，与气泡说明同源）；`scripts/smoke-ui.mjs` 增加对应断言
+
 ## [5.1.0] - 2026-11-16
 
 AI 成本与接口安全收口，补齐产品级流程冒烟，规则数据收口为 JSON 单一来源。

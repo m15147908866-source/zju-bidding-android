@@ -113,10 +113,12 @@ function renderBoard(bd) {
       if (call) {
         const isC = isContract(call.bid);
         const inspecting = state.inspect === i;
+        const pre = isPreemptCall(bd.snap[i]);
         cells.push('<div class="ag-cell filled inspectable' +
           (isC ? ' contract' : '') + (call.bid === 'PASS' ? ' pass' : '') +
-          (inspecting ? ' inspecting' : '') +
-          '" data-call="' + i + '">' + bidHtml(call.bid) + '</div>');
+          (inspecting ? ' inspecting' : '') + (pre ? ' has-pre' : '') +
+          '" data-call="' + i + '">' + bidHtml(call.bid) +
+          (pre ? '<i class="pre-mark" title="阻击叫">s</i>' : '') + '</div>');
       } else if (i === bd.auction.length && !bd.done) {
         cells.push('<div class="ag-cell pending"><span class="pulse"></span></div>');
       } else {
@@ -260,6 +262,13 @@ function strainCls(bid) {
   if (s === 'H' || s === 'D') return 'red';
   if (bid === 'X' || bid === 'XX') return 'red';
   return '';
+}
+
+/* 这一手是不是阻击叫：直接看它当时命中规则的「阻击」标签，
+   与气泡里的说明同源，不另立一套判断。 */
+function isPreemptCall(sn) {
+  if (!sn || !sn.rules || !sn.rules.length) return false;
+  return sn.rules.some(r => (r.k || []).indexOf('阻击') >= 0);
 }
 function esc(s) {
   return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
