@@ -1,8 +1,12 @@
 #!/usr/bin/env node
 /* ============================================================================
-   scripts/migrate-legacy.mjs — 一次性迁移脚本（保留在仓库里以便追溯）
-   把 data.js / data-zju.js / data-xinrui.js 里的扁平规则，转换成
-   data/rules/<system>.json：每条规则带 canonic 叫品、contextKeys、hcp、shape。
+   tools/migrate-legacy.mjs — 已冻结的一次性迁移脚本（仅用于追溯，CI 不再执行）
+   把 legacy/data*.js 里的扁平规则，转换成 data/rules/<system>.json：
+   每条规则带规范叫品、contextKeys、hcp、shape。
+
+   数据源已收口为 data/rules/*.json：日常改规则请直接改 JSON，不要再跑本脚本；
+   它只用于回答「当年这 599 条是怎么变成 768 条的」，不保证与现行 JSON 同步。
+   默认只计算并打印统计，不写文件；确需重放历史迁移时显式加 --write。
 
    迁移原则：
      1. 叫牌含义（d）、来源（s）、标签（k）逐字保留，不改写桥牌语义；
@@ -17,6 +21,8 @@ import { createRequire } from 'node:module';
 
 const require = createRequire(import.meta.url);
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+/* 冻结后默认只读：不写 data/，避免误把现行规则回退成历史迁移结果 */
+const WRITE = process.argv.includes('--write');
 const { Auction } = require(path.join(ROOT, 'core/auction.js'));
 const C = require(path.join(ROOT, 'core/calls.js'));
 const X = require(path.join(ROOT, 'core/context.js'));
@@ -669,8 +675,10 @@ for (const leg of LEGACY) {
     answers
   });
 
-  fs.mkdirSync(path.join(ROOT, 'data/rules'), { recursive: true });
-  fs.writeFileSync(path.join(ROOT, `data/rules/${leg.key}.json`), JSON.stringify(out, null, 2) + '\n', 'utf8');
+  if (WRITE) {
+    fs.mkdirSync(path.join(ROOT, 'data/rules'), { recursive: true });
+    fs.writeFileSync(path.join(ROOT, `data/rules/${leg.key}.json`), JSON.stringify(out, null, 2) + '\n', 'utf8');
+  }
   console.log(`${leg.key}: ${rules.length} 条旧规则 → ${out.length} 条新规则`);
 }
 
@@ -727,7 +735,9 @@ function migrateNote(n, sysKey, idx) {
   return entry;
 }
 
-fs.writeFileSync(path.join(ROOT, 'data/systems.json'), JSON.stringify(systems, null, 2) + '\n', 'utf8');
+if (WRITE) {
+  fs.writeFileSync(path.join(ROOT, 'data/systems.json'), JSON.stringify(systems, null, 2) + '\n', 'utf8');
+}
 console.log(`\n体系说明：${systems.map((s) => `${s.key} ${s.notes.length} 说明 / ${s.conventions.length} 约定`).join('，')}`);
 if (problems.length) {
   console.log(`\n需要人工确认 ${problems.length} 处：`);
@@ -737,3 +747,4 @@ if (dropped.length) {
   console.log('\n人工处理过的旧条目：');
   dropped.forEach((p) => console.log('  * ' + p));
 }
+if (!WRITE) console.log('\n（未写文件：仅统计。确需重放历史迁移请加 --write）');

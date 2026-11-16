@@ -57,18 +57,20 @@ node scripts/set-version.mjs
 
 ```bash
 for f in app.js engine.js core/*.js; do node --check "$f"; done   # 改动过的 JS 逐个检查
-node scripts/migrate-legacy.mjs         # 仅在改 legacy/ 或迁移规则时需要
 node scripts/validate-rules.mjs         # 规则结构 / 语境可达性 / 同叫品唯一性
+node scripts/coverage-report.mjs        # 覆盖率与未编码说明清单
 node scripts/build-data.mjs             # 重新打包 data/bridge-data.js
 node --test core/*.test.js              # 核心纯函数单测
 node scripts/smoke-engine.mjs           # 适配层冒烟：结算、合法集、语境、推荐、体系卡
+node scripts/smoke-ui.mjs               # 产品级冒烟：首屏、出价、结算、体系切换、AI 失败路径
 node scripts/check-assets.mjs           # 资源引用：index/sw/manifest/build.sh/原生桥一致性
 node scripts/package-web.mjs             # 网页版 zip 打包
 node scripts/set-version.mjs --check    # 版本一致性
 ```
 
-规则数据的「迁移 → 校验 → 打包」流程见 [README.md](README.md)。`data/bridge-data.js` 是生成物，
-必须和源数据一起提交；CI 会重跑迁移与打包，用 `git diff --exit-code data/` 确认仓库里的文件是最新的。
+`data/rules/*.json` 是唯一数据源，改规则直接改 JSON；`data/bridge-data.js` 是生成物，必须和
+JSON 一起提交。CI 只重跑打包，用 `git diff --exit-code data/` 确认生成物是最新的。
+`legacy/` 与 `tools/migrate-legacy.mjs` 已冻结，仅用于追溯，不再参与构建。
 
 改 Android 壳或影响启动路径时，另外确认：冷启动正常、返回键能逐级退出、旋转屏幕不重载、重启应用后多局记录还在（记录走 `AndroidStore` 桥存进 SharedPreferences）、AI 分析能正常请求（APK 内的网络请求走 `AndroidHttp` 原生桥，不受 WebView 的 CORS 限制）。
 
