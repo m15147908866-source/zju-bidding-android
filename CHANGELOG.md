@@ -6,6 +6,7 @@
 
 ### Added
 
+- 新增产品级流程冒烟 `scripts/smoke-ui.mjs`：首屏初始化、出价、结算、悔牌、体系切换、AI 未配置 / http 拦截 / 请求失败，已接入 CI
 - AI 分析按钮下方显示本次发送的字符数与 token 估算
 
 ### Changed

@@ -125,6 +125,7 @@ git diff --exit-code data/        # CI：确保迁移可重复
 | `node --test core/*.test.js` | 叫品编码、叫牌过程、语境键、规则匹配、手牌约束、推荐器 |
 | `node scripts/validate-rules.mjs` | 规则结构、语境可达性、唯一性 |
 | `node scripts/smoke-engine.mjs` | `engine.js` 适配层：结算、语境、推荐、体系卡 |
+| `node scripts/smoke-ui.mjs` | 产品级流程：首屏、出价、结算、悔牌、体系切换、AI 失败路径 |
 | `node scripts/check-assets.mjs` | 页面引用、构建脚本复制清单、资源完整性 |
 | `node scripts/set-version.mjs --check` | VERSION / AndroidManifest / sw.js 一致 |
 
