@@ -22,7 +22,7 @@
 | Android | `ZJU-bidding.apk` | Android 6.0（API 23）及以上；含 AI 分析与本地存档 |
 | 网页版 | `ZJU-bidding-web-v<版本>.zip` | 解压后用 HTTP 静态服务打开；支持安装到主屏幕与离线使用 |
 
-> Release 的 APK 由 CI 构建。仓库未配置 `ANDROID_KEYSTORE_BASE64` 时使用临时调试密钥签名；若与已装版本的签名不同，需先卸载旧版再安装。
+> Release 的 APK 由 CI 使用项目发布密钥签名，可直接覆盖升级。从 5.0.0 及更早版本（临时调试密钥）升级时需先卸载一次；自行构建且未提供 `KEYSTORE` 时仍会回退到临时调试密钥。
 
 ## 三套体系
 
@@ -39,7 +39,7 @@
 ### 网页版
 
 ```bash
-unzip ZJU-bidding-web-v5.0.0.zip -d zju-bidding
+unzip ZJU-bidding-web-v5.0.1.zip -d zju-bidding
 cd zju-bidding
 python -m http.server 8000
 ```

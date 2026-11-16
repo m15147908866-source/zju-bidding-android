@@ -2,6 +2,19 @@
 
 本项目的所有重要改动记录在此。格式参考 [Keep a Changelog](https://keepachangelog.com/zh-CN/1.1.0/)，版本号遵循 [语义化版本](https://semver.org/lang/zh-CN/)。
 
+## [5.0.1] - 2026-11-16
+
+发布签名。Release APK 改由固定发布密钥签名，从此支持覆盖升级。
+
+### Changed
+
+- Release 构建注入 `ANDROID_KEYSTORE_BASE64` / `ANDROID_KEYSTORE_PASS` / `ANDROID_KEY_ALIAS` / `ANDROID_KEY_PASS`，APK 固定由项目发布密钥签名
+- README 更新下载、签名与覆盖安装说明
+
+### Notes
+
+- 从 5.0.0 及更早版本（临时调试密钥签名）升级到本版需先卸载一次；此后可直接覆盖升级
+
 ## [5.0.0] - 2026-11-16
 
 叫牌内核重写。规则数据由「扁平列表 + 界面里再判断」改为「结构化规则 + 单一语境键」，
