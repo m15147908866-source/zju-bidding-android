@@ -99,24 +99,26 @@ node scripts/set-version.mjs 5.0.1    # 修改三处
 node scripts/set-version.mjs --check  # CI 用，校验三处一致
 ```
 
-## 规则数据流水线
+## 规则数据
 
-规则不手写进应用，而是「迁移 → 校验 → 打包」生成，CI 会验证生成物与仓库一致：
+`data/rules/*.json` 是唯一数据源，`data/bridge-data.js` 由它生成；CI 只验证「JSON → 打包」可重复，不再重跑迁移：
 
 ```
-legacy/*.js ──migrate-legacy.mjs──▶ data/rules/*.json ──build-data.mjs──▶ data/bridge-data.js
-                     │                        │
-                     └──────────── validate-rules.mjs（结构 / 语境可达 / 同叫品唯一）
+data/rules/*.json ──build-data.mjs──▶ data/bridge-data.js
+        │
+        └── validate-rules.mjs（结构 / 语境可达 / 同叫品唯一）
 ```
 
 ```bash
-node scripts/migrate-legacy.mjs   # 旧版扁平规则 → 结构化 JSON（点力、牌型、语境键）
 node scripts/validate-rules.mjs   # 0 错误 0 警告方可提交
 node scripts/build-data.mjs       # 生成运行时规则包
-git diff --exit-code data/        # CI：确保迁移可重复
+git diff --exit-code data/        # CI：确保打包可重复
+node scripts/coverage-report.mjs  # 覆盖率与未编码说明清单
 ```
 
-新增或修改规则时改 `legacy/data*.js`（或迁移脚本里的显式覆盖项），保留 `source` / `tags`，以便回指体系卡原文。
+新增或修改规则时直接改 `data/rules/*.json`，保留 `source` / `tags`，以便回指体系卡原文。
+
+`legacy/` 与 `tools/migrate-legacy.mjs` 只用于追溯 4.x → 5.x 的迁移，已冻结、不参与构建；脚本默认只打印统计，需显式 `--write` 才会写回 `data/`。逆朱瑞、Lebensohl、RKCB 4♦ 等因语境冲突或缺少 PASS 状态跟踪，仍以「未编码说明」保留，`coverage-report.mjs` 会逐条列出。
 
 ## 测试与 CI
 
@@ -126,6 +128,7 @@ git diff --exit-code data/        # CI：确保迁移可重复
 | `node scripts/validate-rules.mjs` | 规则结构、语境可达性、唯一性 |
 | `node scripts/smoke-engine.mjs` | `engine.js` 适配层：结算、语境、推荐、体系卡 |
 | `node scripts/smoke-ui.mjs` | 产品级流程：首屏、出价、结算、悔牌、体系切换、AI 失败路径 |
+| `node scripts/coverage-report.mjs` | 规则覆盖率、可推荐占比、未编码说明清单 |
 | `node scripts/check-assets.mjs` | 页面引用、构建脚本复制清单、资源完整性 |
 | `node scripts/set-version.mjs --check` | VERSION / AndroidManifest / sw.js 一致 |
 
@@ -149,9 +152,10 @@ CI（[ci.yml](.github/workflows/ci.yml)）在 PR 上跑「静态检查」与「�
 ├── data/
 │   ├── bridge-data.js       # 生成的规则包
 │   ├── systems.json         # 体系元数据、说明、约定叫
-│   └── rules/*.json         # 迁移后的结构化规则
-├── legacy/                  # 旧版扁平规则，仅供迁移
-├── scripts/                 # 迁移、校验、打包、版本、冒烟
+│   └── rules/*.json         # 唯一数据源：结构化规则
+├── legacy/                  # 旧版扁平规则，仅用于迁移追溯
+├── tools/                   # 已冻结的迁移脚本（默认只读）
+├── scripts/                 # 校验、打包、版本、覆盖率、冒烟
 ├── manifest.json / sw.js    # PWA 清单与离线缓存
 ├── icons/                   # 应用图标
 └── android/                 # Android 壳工程（WebView + 原生存储/HTTP 桥）

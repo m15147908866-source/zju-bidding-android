@@ -26,7 +26,7 @@ jobs:
 
       - name: JS 语法检查
         run: |
-          for f in ./*.js ./core/*.js ./data/*.js ./scripts/*.mjs; do
+          for f in ./*.js ./core/*.js ./data/*.js ./scripts/*.mjs ./tools/*.mjs; do
             echo "检查 $f"
             node --check "$f"
           done
@@ -34,11 +34,13 @@ jobs:
       - name: 规则数据校验
         run: node scripts/validate-rules.mjs
 
-      - name: 生成物与仓库一致（迁移 / 打包可重复）
+      - name: 打包可重复（JSON → bridge-data.js）
         run: |
-          node scripts/migrate-legacy.mjs
           node scripts/build-data.mjs
           git diff --exit-code data/
+
+      - name: 覆盖率与未收录清单
+        run: node scripts/coverage-report.mjs
 
       - name: 单元测试
         run: node --test core/*.test.js
