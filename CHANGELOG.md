@@ -2,7 +2,9 @@
 
 本项目的所有重要改动记录在此。格式参考 [Keep a Changelog](https://keepachangelog.com/zh-CN/1.1.0/)，版本号遵循 [语义化版本](https://semver.org/lang/zh-CN/)。
 
-## [Unreleased]
+## [5.1.0] - 2026-11-16
+
+AI 成本与接口安全收口，补齐产品级流程冒烟，规则数据收口为 JSON 单一来源。
 
 ### Added
 
