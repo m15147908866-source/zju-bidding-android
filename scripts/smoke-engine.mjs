@@ -121,6 +121,17 @@ for (const key of ['sayc', 'zju', 'xinrui']) {
     rec.map((c) => c.bid).join(','));
 }
 
+/* 7c. 体系卡按语境裁剪：默认切片明显短于整卡，且仍覆盖当前语境 */
+for (const key of ['sayc', 'zju', 'xinrui']) {
+  ev("useSystem(" + J(key) + ")");
+  const full = ev('systemCard({ full: true })');
+  const slice = ev("systemCard({ auction: bdAuction(" + J(bd('N', ['1S', 'PASS'])) + "), seat: 'S' })");
+  ok(key + ' 体系卡按语境裁剪', slice.length > 200 && slice.length < full.length * 0.85,
+    slice.length + ' / ' + full.length);
+  ok(key + ' 裁剪卡保留当前语境', slice.includes('【本卡范围】') && slice.includes('应叫方') && slice.includes('1♠'),
+    slice.slice(0, 120));
+}
+
 /* 7b. 人为约定叫的 Alert 标记必须送到界面 */
 ev("useSystem('xinrui')");
 const alertRule = ev("lookupRules(" + J(bd('N', ['1NT', 'PASS'])) + ", 'S', '2C')");

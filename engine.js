@@ -152,7 +152,8 @@ function load() {
     if (d.ai && typeof d.ai === 'object') {
       state.ai = {
         url: d.ai.url || '', key: d.ai.key || '', model: d.ai.model || '',
-        allowInsecure: d.ai.allowInsecure === true
+        allowInsecure: d.ai.allowInsecure === true,
+        fullCard: d.ai.fullCard === true
       };
     }
     if (Array.isArray(d.aiHand)) state.aiHand = d.aiHand;
@@ -322,15 +323,53 @@ function ruleLine(r) {
     ' → ' + bid + (pts ? '（' + pts + '）' : '') + '：' + r.meaning;
 }
 
-function systemCard() {
+/** 规则键与当前键的关系：past（走到这里）、now（当前）、next（下一手）、''（无关） */
+function keyRelation(pattern, key) {
+  const p = pattern ? pattern.split(' ') : [];
+  const k = key ? key.split(' ') : [];
+  const n = Math.min(p.length, k.length);
+  for (let i = 0; i < n; i++) {
+    if (p[i] === '*') continue;
+    const pc = p[i].split(':');
+    const kc = k[i].split(':');
+    if (pc[0] !== kc[0]) return '';
+    if (pc[1] !== '*' && pc[1] !== kc[1]) return '';
+  }
+  if (p.length === k.length) return 'now';
+  if (p.length < k.length) return 'past';
+  if (p.length === k.length + 1) return 'next';
+  return '';
+}
+
+function cardRuleRelevant(rule, key) {
+  return (rule.contextKeys || []).some((ck) => keyRelation(ck, key) !== '');
+}
+
+/**
+ * 体系卡。默认只带与当前语境相关的规则：怎么走到这里、当前这一手、
+ * 以及下一手可能用到的规则；opts.full 为真时发送整张卡。
+ * opts.auction 缺省（旧调用/测试）时也按整卡处理。
+ */
+function systemCard(opts) {
   if (!$sys) return '';
+  opts = opts || {};
+  const key = opts.auction ? C.contextKey(opts.auction, opts.seat) : null;
+  const filtered = key !== null && opts.full !== true;
   const lines = [];
   lines.push('体系：' + $sys.name + '（' + ($sys.full || '') + '）');
   if ($sys.blurb) lines.push($sys.blurb);
+
+  const rules = $sys.rules || [];
+  const kept = filtered ? rules.filter((r) => cardRuleRelevant(r, key)) : rules;
+  if (filtered) {
+    lines.push('【本卡范围】当前语境：' + (key ? contextText(key) : '开叫') +
+      '；已筛选 ' + kept.length + ' / ' + rules.length + ' 条规则');
+  }
+
   ($sys.notes || []).forEach((n) => {
     lines.push('【说明】' + (n.contextKeys || []).map(contextText).join(' ／ ') + '：' + n.text);
   });
-  ($sys.rules || []).forEach((r) => lines.push(ruleLine(r)));
+  kept.forEach((r) => lines.push(ruleLine(r)));
   ($sys.conventions || []).forEach((c) => {
     lines.push('【约定叫】' + c.title + '：' + c.meaning + '；答叫 ' +
       (c.rows || []).map((x) => x[0] + '=' + x[1]).join('，') + (c.note ? '；' + c.note : ''));
