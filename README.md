@@ -11,7 +11,7 @@
 - 手牌推荐：输入大牌点与四门张数，按「语境 + 点力 + 牌型 + 判断层」给出候选与理由
 - 体系切换：三套体系独立收录，切换后当前牌局重新开始
 - 记牌器：按花色记录已出与剩余张数
-- AI 分析（可选）：接入任意 OpenAI 兼容接口，把手牌与叫牌过程整理成提示词；Android 走原生 HTTP，网页版需接口允许跨域
+- AI 分析（可选）：接入任意 OpenAI 兼容接口，把手牌与叫牌过程整理成提示词；Android 走原生 HTTP，网页版需接口允许跨域。接口限 `https`，`http` 明文地址需二次确认
 
 ## 下载
 
@@ -53,6 +53,14 @@ python -m http.server 8000
 3. 左右滑动切换「分析 / 叫牌 / 记牌器」三页
 4. 分析页可切换本家座位，输入手牌后查看推荐叫品
 
+## AI 分析：成本与风险
+
+AI 分析默认关闭，只有填了接口地址与 Key 才会联网。使用前需要知道三件事：
+
+- **上下文体积不小**：首次分析会先发送当前体系的完整约定卡，之后每次分析都把它作为 `system` 消息一起重发（程序只裁剪最近 12 条对话，不裁体系卡）。实测体系卡字符数：SAYC 约 2.08 万、浙大约 2.58 万、新睿约 4.4 千，分别约合 1.3 万、1.6 万、3 千 tokens。费用按所用模型的输入单价计算，长对话还会叠加历史消息。
+- **Key 存在本机**：Android 存在 `SharedPreferences`、网页版存在 `localStorage`，均为明文。Key 只发往你填写的接口地址，不经过项目服务器。
+- **`http` 是明文传输**：一旦接口地址不是 `https`，Key 与手牌会以明文经过网络。保存 `http` 地址时会弹窗确认，接口设置里也会常驻红色提示；建议只在完全信任的本地或内网接口上使用。
+
 ## 从源码构建
 
 ### 依赖
@@ -72,6 +80,8 @@ OUT_APK=/tmp/app.apk bash android/build.sh
 ```
 
 可用变量：`BUILD_TOOLS`、`ANDROID_PLATFORM`、`OUT_APK`、`KEYSTORE`、`KEYSTORE_PASS`、`KEY_ALIAS`、`KEY_PASS`，详见 [android/build.sh](android/build.sh) 头部注释。
+
+SDK 只从 `ANDROID_HOME` / `ANDROID_SDK_ROOT` 读取；两者都没设置时，脚本会探测常见安装目录（如 `%LOCALAPPDATA%\Android\Sdk`、`~/Library/Android/sdk`），仍找不到就明确报错。JDK 同理：优先 `JAVA_HOME`，否则要求 `javac` 在 `PATH` 上。
 
 ### 网页版 zip
 

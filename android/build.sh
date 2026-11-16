@@ -15,10 +15,37 @@ set -euo pipefail
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 APP="$ROOT/android"
 
-SDK="${ANDROID_HOME:-${ANDROID_SDK_ROOT:-D:/WorkBuddy/.workbuddy/android/sdk}}"
+# Android SDK：环境变量优先；未设置时只探测各平台的常见安装位置，不猜个人目录
+if [ -z "${ANDROID_HOME:-}" ] && [ -z "${ANDROID_SDK_ROOT:-}" ]; then
+  for candidate in \
+    "${LOCALAPPDATA:-}/Android/Sdk" \
+    "$HOME/AppData/Local/Android/Sdk" \
+    "$HOME/Library/Android/sdk" \
+    "$HOME/Android/Sdk"
+  do
+    if [ -d "$candidate" ]; then
+      ANDROID_HOME="$candidate"
+      break
+    fi
+  done
+fi
+
+SDK="${ANDROID_HOME:-${ANDROID_SDK_ROOT:-}}"
+if [ -z "$SDK" ] || [ ! -d "$SDK" ]; then
+  echo "找不到 Android SDK：请设置 ANDROID_HOME 或 ANDROID_SDK_ROOT" >&2
+  echo "（已尝试探测 \$LOCALAPPDATA/Android/Sdk、\$HOME/Android/Sdk、\$HOME/Library/Android/sdk）" >&2
+  exit 1
+fi
+
 BT="$SDK/build-tools/${BUILD_TOOLS:-36.0.0}"
 PLATFORM="$SDK/platforms/${ANDROID_PLATFORM:-android-34}/android.jar"
 OUT_APK="${OUT_APK:-$ROOT/dist/ZJU-bidding.apk}"
+
+if [ ! -d "$BT" ]; then
+  echo "找不到 build-tools：$BT" >&2
+  echo "请安装 build-tools;36.0.0，或用 BUILD_TOOLS 指定已安装的版本" >&2
+  exit 1
+fi
 
 # Windows 下工具带 .bat，类 Unix 下是不带后缀的脚本
 case "$(uname -s)" in
@@ -30,12 +57,17 @@ esac
 if [ -f "$BT/aapt2.exe" ]; then AAPT2="$BT/aapt2.exe"; else AAPT2="$BT/aapt2"; fi
 if [ -f "$BT/zipalign.exe" ]; then ZIPALIGN="$BT/zipalign.exe"; else ZIPALIGN="$BT/zipalign"; fi
 
-# JDK：优先用环境里的 JAVA_HOME，否则回退到本机既有安装
-if [ -z "${JAVA_HOME:-}" ] && [ -d "C:/Program Files/Microsoft/jdk-25.0.3.9-hotspot" ]; then
-  export JAVA_HOME="C:/Program Files/Microsoft/jdk-25.0.3.9-hotspot"
+# JDK：优先 JAVA_HOME；macOS 上可用系统自带的 java_home 探测；否则要求 javac 在 PATH 上
+if [ -z "${JAVA_HOME:-}" ] && [ -x /usr/libexec/java_home ]; then
+  JAVA_HOME="$(/usr/libexec/java_home 2>/dev/null || true)"
+  if [ -n "$JAVA_HOME" ]; then export JAVA_HOME; fi
 fi
 if [ -n "${JAVA_HOME:-}" ]; then
   export PATH="$JAVA_HOME/bin:$PATH"
+fi
+if ! command -v javac >/dev/null 2>&1; then
+  echo "找不到 javac：请安装 JDK 17+ 并设置 JAVA_HOME（或把 JDK 的 bin 加入 PATH）" >&2
+  exit 1
 fi
 
 # Python 只用于把 classes.dex 写进 APK

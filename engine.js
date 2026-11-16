@@ -150,7 +150,10 @@ function load() {
     if (d.hand && typeof d.hand.hcp === 'number') state.hand = d.hand;
     if (Array.isArray(d.tracker)) state.tracker = d.tracker;
     if (d.ai && typeof d.ai === 'object') {
-      state.ai = { url: d.ai.url || '', key: d.ai.key || '', model: d.ai.model || '' };
+      state.ai = {
+        url: d.ai.url || '', key: d.ai.key || '', model: d.ai.model || '',
+        allowInsecure: d.ai.allowInsecure === true
+      };
     }
     if (Array.isArray(d.aiHand)) state.aiHand = d.aiHand;
     if (d.aiConv && typeof d.aiConv === 'object') state.aiConv = d.aiConv;

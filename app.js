@@ -555,6 +555,15 @@ function gotoPage(i) {
 /* ---------------- AI 叫牌分析 ---------------- */
 const HCP_OF = { A: 4, K: 3, Q: 2, J: 1, T: 0 };
 
+/* http 接口是明文传输：Key 与手牌会直接暴露在链路上，保存与发送前都要显式确认 */
+function isInsecureUrl(u) { return /^http:\/\//i.test(String(u || '').trim()); }
+
+function syncAIWarn() {
+  const el = $('#aiWarn');
+  if (!el) return;
+  el.hidden = !isInsecureUrl(state.ai && state.ai.url);
+}
+
 function openCfg() {
   const a = $('#aip');
   if (a) { a.classList.add('on'); a.setAttribute('aria-hidden', 'false'); }
@@ -563,6 +572,7 @@ function openCfg() {
   set('aiUrl', c.url);
   set('aiKey', c.key);
   set('aiModel', c.model);
+  syncAIWarn();
 }
 
 function closeCfg() {
@@ -929,6 +939,19 @@ async function runAI() {
     return;
   }
 
+  // 旧版本存下的 http 地址没有确认记录：发送前拦一次，避免 Key 悄悄明文上网
+  if (isInsecureUrl(cfg.url) && cfg.allowInsecure !== true) {
+    openCfg();
+    state.aiConv = state.aiConv || { key: '', sys: state.system, messages: [], ui: [] };
+    state.aiConv.ui = state.aiConv.ui || [];
+    state.aiConv.ui = state.aiConv.ui.concat([{
+      r: 'err',
+      t: '接口地址是 http（明文），本次没有发送。请改用 https，或在接口设置里重新保存并确认风险。'
+    }]);
+    renderChat();
+    return;
+  }
+
   const kHash = shortHash(cfg.key);
   if (!state.aiConv || state.aiConv.key !== kHash || state.aiConv.sys !== state.system) {
     state.aiConv = { key: kHash, sys: state.system, messages: [], ui: [] };
@@ -1194,8 +1217,28 @@ function init() {
     if (!el) return;
     el.addEventListener('change', () => {
       state.ai = state.ai || { url: '', key: '', model: '' };
-      state.ai[id.slice(2).toLowerCase()] = el.value.trim();
+      const field = id.slice(2).toLowerCase();
+      const val = el.value.trim();
+
+      if (field === 'url') {
+        state.ai.allowInsecure = false;
+        if (isInsecureUrl(val)) {
+          const ok = typeof confirm === 'function' && confirm(
+            '这个地址是 http，不是 https。\n\n' +
+            'API Key 与手牌会以明文经过网络，同一网络下的其他人可能看到。\n' +
+            '只在自己完全信任的本地或内网接口上使用。确定继续吗？');
+          if (!ok) {
+            el.value = state.ai.url || '';
+            syncAIWarn();
+            return;
+          }
+          state.ai.allowInsecure = true;
+        }
+      }
+
+      state.ai[field] = val;
       save();
+      syncAIWarn();
     });
   });
 
