@@ -572,6 +572,8 @@ function openCfg() {
   set('aiUrl', c.url);
   set('aiKey', c.key);
   set('aiModel', c.model);
+  const fc = $('#aiFullCard');
+  if (fc) fc.checked = c.fullCard === true;
   syncAIWarn();
 }
 
@@ -659,9 +661,22 @@ function syncAIHandToHand() {
   syncHandInputs();
 }
 
-/* 体系约定卡：首次用某个 Key 时发给 AI（由 engine.js 从规则数据生成） */
+/* 体系约定卡：由 engine.js 从规则数据生成；默认只带当前语境相关的规则 */
 function buildSystemCard() {
-  return systemCard();
+  const bd = board();
+  return systemCard({
+    auction: bdAuction(bd),
+    seat: seatToAct(bd),
+    full: !!(state.ai && state.ai.fullCard)
+  });
+}
+
+/* 粗略估算：中文为主的文本约 1.6 字符 / token，只用于提示量级 */
+function costText(chars, cardChars) {
+  const fmt = n => n >= 10000 ? (n / 10000).toFixed(1) + ' 万' : String(n);
+  let s = '本次发送约 ' + fmt(chars) + ' 字符 ≈ ' + fmt(Math.ceil(chars / 1.6)) + ' tokens';
+  if (cardChars) s += '（其中体系卡 ' + fmt(cardChars) + ' 字符）';
+  return s;
 }
 
 function buildAIContext() {
@@ -829,6 +844,17 @@ function syncAISub() {
   el.textContent = '当前体系：' + sys.name + (on ? '　·　对话进行中（' + Math.floor(conv.messages.filter(m => m.role !== 'system').length / 2) + ' 轮）' : '');
   const bs = $('#aiBlockSub');
   if (bs) bs.textContent = on ? Math.floor(conv.messages.filter(m => m.role !== 'system').length / 2) + ' 轮' : '';
+
+  const cost = $('#aiCost');
+  if (cost) {
+    if (on) {
+      const chars = conv.messages.reduce((n, m) => n + String(m.content || '').length, 0);
+      const card = conv.messages.find(m => m.role === 'system');
+      cost.textContent = costText(chars, card ? String(card.content || '').length : 0);
+    } else {
+      cost.textContent = '';
+    }
+  }
 }
 
 let AI_BUSY = false;
@@ -959,10 +985,11 @@ async function runAI() {
   const conv = state.aiConv;
   if (!conv.ui) conv.ui = [];
 
-  // 该 Key 首次使用：先发体系卡
-  if (!conv.messages.length) {
-    conv.messages.push({ role: 'system', content: buildSystemCard() });
-  }
+  // 体系卡按当前语境重建：叫牌推进后只带相关规则，避免每次重发整张卡
+  const card = buildSystemCard();
+  const sysIdx = conv.messages.findIndex(m => m.role === 'system');
+  if (sysIdx >= 0) conv.messages[sysIdx] = { role: 'system', content: card };
+  else conv.messages.unshift({ role: 'system', content: card });
 
   const ctx = buildAIContext();
   const prompt = aiPrompt(ctx);
@@ -972,6 +999,7 @@ async function runAI() {
   conv.messages.push({ role: 'user', content: prompt });
   conv.ui = [{ r: 'a', t: '正在思考…', sys: SYSTEMS[state.system].name, pending: true }];
   renderChat();
+  syncAISub();   // 发送前把本次字符 / token 估算显示出来
   save();
 
   AI_BUSY = true;
@@ -1241,6 +1269,14 @@ function init() {
       syncAIWarn();
     });
   });
+  const fullCard = $('#aiFullCard');
+  if (fullCard) {
+    fullCard.addEventListener('change', () => {
+      state.ai = state.ai || { url: '', key: '', model: '' };
+      state.ai.fullCard = fullCard.checked;
+      save();
+    });
+  }
 
   $('#tkClear').onclick = () => {
     if (!state.tracker || !state.tracker.length) return;
