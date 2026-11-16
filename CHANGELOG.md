@@ -2,6 +2,14 @@
 
 本项目的所有重要改动记录在此。格式参考 [Keep a Changelog](https://keepachangelog.com/zh-CN/1.1.0/)，版本号遵循 [语义化版本](https://semver.org/lang/zh-CN/)。
 
+## [Unreleased]
+
+### Changed
+
+- AI 接口为 `http://` 时，保存地址与发送请求前都需显式确认；接口设置里常驻明文传输警告
+- README 增加「AI 分析：成本与风险」，说明体系卡体积、token 计费、Key 明文存储与 `http` 风险
+- `android/build.sh` 不再回退到个人机器路径：SDK 仅从环境变量或常见安装目录探测，缺少 `build-tools` / JDK 时直接报错
+
 ## [5.0.1] - 2026-11-16
 
 发布签名。Release APK 改由固定发布密钥签名，从此支持覆盖升级。
