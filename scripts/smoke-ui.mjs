@@ -180,6 +180,18 @@ ev('nextBoard()');
 ok('新一局清空叫牌', ev('board().auction.length') === 0 && ev("board().dealer") === 'N');
 ok('新一局清空记牌器', ev('state.tracker.length') === 0);
 
+/* ---------------- 4b. 阻击叫标记 ---------------- */
+ev("onBid('3C')");
+ev("onBid('3C')");
+ok('阻击开叫在记录里标出 s', $('#auction').innerHTML.includes('pre-mark'),
+  $('#auction').innerHTML.slice(0, 160));
+ev('undo()');
+ev("onBid('1NT')");
+ev("onBid('1NT')");
+ok('非阻击叫不打标记', !$('#auction').innerHTML.includes('pre-mark'),
+  $('#auction').innerHTML.slice(0, 160));
+ev('undo()');
+
 /* ---------------- 5. 体系切换 ---------------- */
 ev("switchSystem('zju')");
 ok('切换到浙大体系', ev("state.system") === 'zju' && $('#brandSub').textContent.includes('浙大'), $('#brandSub').textContent);
