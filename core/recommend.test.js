@@ -219,3 +219,29 @@ test('1M 应叫缺口：13~14 点有五张套时优先二盖一/一阶新花', (
   assert.strictEqual(spades.candidates[0].bid, '1S', '14 点、5 张黑桃应叫 1♠：' + spades.candidates.map((x) => x.bid).join(','));
 });
 
+test('真实牌局校准：1M 应叫缺口与实战对照', () => {
+  // 2000 副 1997–2000 欧洲赛事里命中「13~14 点、2 张将牌、无五张套」的 5 副：
+  // 1325/1364/1443 实战 2♣（4 张，属搭档约定）；1629/1985 实战 1♠。
+  const cases = [
+    { id: '1325', dealer: 'S', calls: ['1S', 'P'], hand: hand(13, 2, 4, 3, 4), top: '1N' },
+    { id: '1364', dealer: 'W', calls: ['P', '1S', 'P'], hand: hand(13, 2, 3, 4, 4), top: '1N' },
+    { id: '1443', dealer: 'E', calls: ['1S', 'P'], hand: hand(13, 2, 3, 4, 4), top: '1N' },
+    { id: '1629', dealer: 'E', calls: ['P', '1H', 'P'], hand: hand(13, 4, 2, 4, 3), top: '1S' },
+    { id: '1985', dealer: 'E', calls: ['1H', 'P'], hand: hand(13, 4, 2, 4, 3), top: '1S' }
+  ];
+  for (const c of cases) {
+    const res = REC.recommend(sayc, ...Object.values(setup(c.calls, c.dealer)), c.hand);
+    assert.strictEqual(res.candidates[0].bid, c.top,
+      `${c.id} 首选应为 ${c.top}：` + res.candidates.map((x) => x.bid).join(','));
+  }
+
+  // 4 张 2♣ 是实战变通，只写进语境说明，不进入标准 SAYC 推荐
+  const gap = REC.recommend(sayc, ...Object.values(setup(['1S', 'P'])), hand(13, 2, 3, 4, 4));
+  assert.ok(!gap.candidates.some((x) => x.bid === '2C'),
+    '标准 SAYC 不应把 4 张 2♣ 作为推荐：' + gap.candidates.map((x) => x.bid).join(','));
+
+  const notes = R.findNotes(sayc, Auction.fromCalls('S', ['1S', 'P']), 'N', '2C');
+  assert.ok(notes.some((n) => n.text.includes('4 张 2♣')),
+    '应能查到 4 张 2♣ 的实战说明：' + JSON.stringify(notes));
+});
+
