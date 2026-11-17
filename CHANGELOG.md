@@ -2,6 +2,12 @@
 
 本项目的所有重要改动记录在此。格式参考 [Keep a Changelog](https://keepachangelog.com/zh-CN/1.1.0/)，版本号遵循 [语义化版本](https://semver.org/lang/zh-CN/)。
 
+## [Unreleased]
+
+### Changed
+
+- SAYC 1♠ 应叫说明补充「4 张 2♣ 过渡」的实战变通：用 2000 副 1997–2000 欧洲赛事校准，标准 SAYC 仍要求 2♣ 至少 5 张，4 张需搭档约定
+
 ## [5.1.0] - 2026-11-16
 
 AI 成本与接口安全收口，补齐产品级流程冒烟，规则数据收口为 JSON 单一来源。
@@ -107,6 +113,7 @@ AI 成本与接口安全收口，补齐产品级流程冒烟，规则数据收�
 - PWA 离线缓存，无网络也可使用
 - Android WebView 壳，页面全部内置，记录经 `AndroidStore` 桥存入 SharedPreferences
 
-[Unreleased]: https://github.com/m15147908866-source/zju-bidding-android/compare/v5.0.0...HEAD
+[Unreleased]: https://github.com/m15147908866-source/zju-bidding-android/compare/v5.1.0...HEAD
+[5.1.0]: https://github.com/m15147908866-source/zju-bidding-android/releases/tag/v5.1.0
 [5.0.0]: https://github.com/m15147908866-source/zju-bidding-android/releases/tag/v5.0.0
 [4.3.0]: https://github.com/m15147908866-source/zju-bidding-android/releases/tag/v4.3.0

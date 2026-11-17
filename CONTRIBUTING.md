@@ -68,6 +68,12 @@ node scripts/package-web.mjs             # 网页版 zip 打包
 node scripts/set-version.mjs --check    # 版本一致性
 ```
 
+有外部真实牌局数据时可以额外对拍（数据包不入库，只作人工复核线索）：
+
+```bash
+node tools/compare-real-deals.mjs path/to/deals.json [--system=sayc|zju|xinrui]
+```
+
 `data/rules/*.json` 是唯一数据源，改规则直接改 JSON；`data/bridge-data.js` 是生成物，必须和
 JSON 一起提交。CI 只重跑打包，用 `git diff --exit-code data/` 确认生成物是最新的。
 `legacy/` 与 `tools/migrate-legacy.mjs` 已冻结，仅用于追溯，不再参与构建。
