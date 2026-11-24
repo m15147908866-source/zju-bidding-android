@@ -180,6 +180,39 @@ ev('nextBoard()');
 ok('新一局清空叫牌', ev('board().auction.length') === 0 && ev("board().dealer") === 'N');
 ok('新一局清空记牌器', ev('state.tracker.length') === 0);
 
+/* ---------------- 4b. 阻击叫标记 ---------------- */
+ev("onBid('3C')");
+ev("onBid('3C')");
+ok('阻击开叫在记录里标出 s', $('#auction').innerHTML.includes('pre-mark'),
+  $('#auction').innerHTML.slice(0, 160));
+ev('undo()');
+ev("onBid('1NT')");
+ev("onBid('1NT')");
+ok('非阻击叫不打标记', !$('#auction').innerHTML.includes('pre-mark'),
+  $('#auction').innerHTML.slice(0, 160));
+ev('undo()');
+
+/* ---------------- 4c. 负加倍与通则兜底 ---------------- */
+ev('nextBoard()');
+ev("onBid('1C')");
+ev("onBid('1C')");
+ev("onBid('1D')");
+ev("onBid('1D')");
+ev("onBid('X')");
+ok('争叫后的加倍按负加倍解释', $('#bubble').innerHTML.includes('负加倍'),
+  $('#bubble').innerHTML.slice(0, 120));
+ev("state.sel = null");
+
+ev('nextBoard()');
+for (const bid of ['1C', 'P', '2C', 'P']) {
+  ev("onBid('" + bid + "')");
+  ev("onBid('" + bid + "')");
+}
+ev("onBid('2D')");
+ok('未收录序列给出三档通则提示', $('#bubble').innerHTML.includes('三档强度'),
+  $('#bubble').innerHTML.slice(0, 120));
+ev("state.sel = null");
+
 /* ---------------- 5. 体系切换 ---------------- */
 ev("switchSystem('zju')");
 ok('切换到浙大体系', ev("state.system") === 'zju' && $('#brandSub').textContent.includes('浙大'), $('#brandSub').textContent);
