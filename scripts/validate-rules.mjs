@@ -116,14 +116,17 @@ function validateRule(rule, sysKey, file) {
   if (!rule.id) err(`${at} 缺少 id`);
   if (rule.system !== sysKey) err(`${at} system 字段与文件名不一致`);
   if (!ROLES.includes(rule.seatRole)) err(`${at} seatRole 非法：${rule.seatRole}`);
-  if (!Array.isArray(rule.contextKeys) || !rule.contextKeys.length) err(`${at} contextKeys 为空`);
-  (rule.contextKeys || []).forEach((k) => {
-    if (typeof k !== 'string') err(`${at} contextKey 必须是字符串`);
-    else if (!keyIsReachable(k)) err(`${at} contextKey 不可达：${k}`);
-    else if (X.roleOfKey(k) !== rule.seatRole) {
-      err(`${at} seatRole=${rule.seatRole} 与 contextKey「${k}」推导出的 ${X.roleOfKey(k)} 不一致`);
-    }
-  });
+  const isGeneric = rule.generic === true;
+  if (!isGeneric) {
+    if (!Array.isArray(rule.contextKeys) || !rule.contextKeys.length) err(`${at} contextKeys 为空`);
+    (rule.contextKeys || []).forEach((k) => {
+      if (typeof k !== 'string') err(`${at} contextKey 必须是字符串`);
+      else if (!keyIsReachable(k)) err(`${at} contextKey 不可达：${k}`);
+      else if (X.roleOfKey(k) !== rule.seatRole) {
+        err(`${at} seatRole=${rule.seatRole} 与 contextKey「${k}」推导出的 ${X.roleOfKey(k)} 不一致`);
+      }
+    });
+  }
 
   if (rule.bid == null && !rule.bidForm) err(`${at} 既没有 bid 也没有 bidForm`);
   if (rule.bid != null) {
@@ -194,6 +197,8 @@ function specificity(r) {
  *   - 具体 vs 形态、形态 vs 更宽形态 → 允许（运行时按优先级取最具体的一条）
  */
 function checkUnique(rules, sysKey) {
+  // 通则兜底（generic）没有 contextKey，也不与具体条目争同一个「语境 + 叫品」，不参与判重
+  rules = rules.filter((r) => r.generic !== true);
   const claims = new Map();     // `${key}|${bid}` -> [{id, spec}]
   const byKey = new Map();
 

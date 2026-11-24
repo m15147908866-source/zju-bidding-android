@@ -126,11 +126,15 @@
 
   function indexSystem(system) {
     var byRole = { opener: [], responder: [], overcaller: [], advancer: [] };
+    /* generic = 手册只给「低/中/高」三档、没有逐条列序列时的兜底条目。
+       它们没有 contextKey，只在第一遍查不到时才会被用到（见 findRules）。 */
+    var generic = { opener: [], responder: [], overcaller: [], advancer: [] };
     (system.rules || []).forEach(function (r) {
-      var bucket = byRole[r.seatRole] || (byRole[r.seatRole] = []);
+      var target = r.generic === true ? generic : byRole;
+      var bucket = target[r.seatRole] || (target[r.seatRole] = []);
       bucket.push(r);
     });
-    return { system: system, byRole: byRole };
+    return { system: system, byRole: byRole, generic: generic };
   }
 
   function contextHit(keys, key) {
@@ -149,7 +153,8 @@
     return false;
   }
 
-  /** 命中该叫品的规则；同语境只返回最具体的一条 */
+  /** 命中该叫品的规则；同语境只返回最具体的一条。
+      具体条目全部落空时，再按角色查一次「通则」兜底，并标记 generic。 */
   function findRules(store, auction, seat, bid) {
     var key = X.contextKey(auction, seat);
     var role = X.roleOfKey(key);
@@ -164,7 +169,17 @@
       var s = specificity(r);
       if (s > bestScore) { bestScore = s; best = r; }
     }
-    return { key: key, role: role, rules: best ? [best] : [], matched: matched };
+    var generic = false;
+    if (!best) {
+      var gb = (store.generic && store.generic[role]) || [];
+      for (var j = 0; j < gb.length; j++) {
+        var gr = gb[j];
+        if (!ruleMatchesBid(gr, bid, auction, seat)) continue;
+        var gs = specificity(gr);
+        if (gs > bestScore) { bestScore = gs; best = gr; generic = true; }
+      }
+    }
+    return { key: key, role: role, rules: best ? [best] : [], matched: matched, generic: generic };
   }
 
   /** 命中当前语境的说明；bid 用于「只在选中某叫品时出现」的条目 */

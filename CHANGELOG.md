@@ -2,6 +2,20 @@
 
 本项目的所有重要改动记录在此。格式参考 [Keep a Changelog](https://keepachangelog.com/zh-CN/1.1.0/)，版本号遵循 [语义化版本](https://semver.org/lang/zh-CN/)。
 
+## [Unreleased]
+
+### Added
+
+- 叫牌记录里，阻击叫的格子右侧显示红底白字 `s`（判定直接取该手命中规则的「阻击」标签，与气泡说明同源）；`scripts/smoke-ui.mjs` 增加对应断言
+- **配合争叫**（`advancer` 角色）19 条规则：同伴一阶/二阶花色争叫后的加叫、跳加叫、1NT/2NT/3NT、新花、跳新花、扣叫（唯一逼叫）；同伴 1NT 争叫后的斯台曼与转移；同伴技术性加倍后的应叫与「Pass 转惩罚」
+- **负加倍** 1 条：同伴开叫、上家争叫后的 `X`，覆盖 22 个「开叫 × 争叫（≤2♠）」语境键，按 `negative_double.php` 区分 1♣—1♦ / 1♥—1♠ / 1♥—2♦ 三种典型形态
+- **三档通则兜底**（`generic` 层）21 条：手册只给「低限 13~16 / 中限 17~18 / 高限 19~21」而未逐条列序列时，具体条目查不到才回落到通则，气泡顶部标注「按通则给」；通则 `recommendable:false`，不参与推荐
+
+### Changed
+
+- `core/rules.js`：`indexSystem` 把 `generic:true` 的规则单独成桶，`findRules` 只在具体条目全部落空时做第二遍查询并返回 `generic` 标记
+- `scripts/validate-rules.mjs`：通则豁免 `contextKeys` 与唯一性校验（它不与具体条目争同一个「语境 + 叫品」）
+
 ## [5.1.1] - 2026-11-17
 
 ### Changed
